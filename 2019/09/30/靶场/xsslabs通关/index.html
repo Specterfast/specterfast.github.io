@@ -1,0 +1,702 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>xsslabs通关 | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="John Doe">
+    
+
+    
+    <meta name="description" content="前言xss小游戏 level1看了看level1的源码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xsslabs通关">
+<meta property="og:url" content="http://example.com/2019/09/30/%E9%9D%B6%E5%9C%BA/xsslabs%E9%80%9A%E5%85%B3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言xss小游戏 level1看了看level1的源码">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uJANSf.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uJEVBQ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uJEJHJ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uJVVxK.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uJeruT.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uJef81.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uJKHyt.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uJMFmV.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uJQkjI.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uJQXGQ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uJQ029.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uJ8gOA.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uJ8bOs.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/1569811007499.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/1569811096641.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uJYfT1.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uJBPPA.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uJBvzq.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uYdiSx.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uYsout.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uYd4c6.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uY0PsK.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uY06Y9.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uYyAC4.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uYc5v9.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uYcR4U.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uYgqLn.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uY2vnA.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uY2O6H.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/30/uYh9tx.png">
+<meta property="article:published_time" content="2019-09-30T01:10:22.000Z">
+<meta property="article:modified_time" content="2019-10-16T08:03:29.072Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="XSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/09/30/uJANSf.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/tou1.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.jpg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/09/30/靶场/xsslabs通关/" title="xsslabs通关" itemprop="url">xsslabs通关</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2019-09-30T01:10:22.000Z" itemprop="datePublished"> Published 2019-09-30</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level1"><span class="toc-number">2.</span> <span class="toc-text">level1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level2"><span class="toc-number">3.</span> <span class="toc-text">level2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level3"><span class="toc-number">4.</span> <span class="toc-text">level3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level4"><span class="toc-number">5.</span> <span class="toc-text">level4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level5"><span class="toc-number">6.</span> <span class="toc-text">level5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level6"><span class="toc-number">7.</span> <span class="toc-text">level6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level7"><span class="toc-number">8.</span> <span class="toc-text">level7</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level8"><span class="toc-number">9.</span> <span class="toc-text">level8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level9"><span class="toc-number">10.</span> <span class="toc-text">level9</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level10"><span class="toc-number">11.</span> <span class="toc-text">level10</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level11"><span class="toc-number">12.</span> <span class="toc-text">level11</span></a></li></ol>
+		
+		</div>
+		
+		<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>xss小游戏</p>
+<h3 id="level1"><a href="#level1" class="headerlink" title="level1"></a>level1</h3><p>看了看level1的源码<span id="more"></span></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;&lt;!--STATUS OK--&gt;&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html;charset=utf-8&quot;&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">window.alert = function()  </span><br><span class="line">&#123;     </span><br><span class="line">confirm(&quot;完成的不错！&quot;);</span><br><span class="line"> window.location.href=&quot;level2.php?keyword=test&quot;; </span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;title&gt;欢迎来到level1&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1 align=center&gt;欢迎来到level1&lt;/h1&gt;</span><br><span class="line">&lt;?php </span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = $_GET[&quot;name&quot;];</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;欢迎用户&quot;.$str.&quot;&lt;/h2&gt;&quot;;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;center&gt;&lt;img src=level1.png&gt;&lt;/center&gt;</span><br><span class="line">&lt;?php </span><br><span class="line">echo &quot;&lt;h3 align=center&gt;payload的长度:&quot;.strlen($str).&quot;&lt;/h3&gt;&quot;;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>通过$_GET[“name”]，获取name的值，没有过滤通过echo直接进行了输出，get请求的name变量放入xss脚本，完整的返回在html中，浏览器响应xss脚本</p>
+<p>构造payload：<code>name=&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;</code></p>
+<p>在xss中拥有同样弹窗效果的函数不止<code>alert</code>，还有<code>confirm</code>以及<code>prompt</code></p>
+<p>从代码角度去看，可以发现就是直接用GET方式获取参数然后输出到浏览器上面，这是典型的没做过滤。怎么防御？可以加一个转义函数<code>htmlspecialchars</code>把一些html格式的东西编码就可以有效防止了。</p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uJANSf.png" alt="uJANSf.png"></p>
+<h3 id="level2"><a href="#level2" class="headerlink" title="level2"></a>level2</h3><p>像上一关一样输入<code>&lt;script&gt;alert(&quot;xss&quot;);&lt;/script&gt;</code>，并没有弹窗，回显如下：</p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uJEVBQ.png" alt="uJEVBQ.png"></p>
+<p>再看看源码</p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uJEJHJ.png" alt="uJEJHJ.png"></p>
+<p>划红线部分就是提交的参数了，我们发现这里是可以闭合前面的引号和**&gt;**，再构造xss弹窗</p>
+<p>payload：<code>&quot;/&gt;&lt;script&gt;alert(&quot;xss&quot;);&lt;/script&gt;</code></p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uJVVxK.png" alt="uJVVxK.png"></p>
+<h3 id="level3"><a href="#level3" class="headerlink" title="level3"></a>level3</h3><p>输入上一关的试试，当然没用</p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uJeruT.png" alt="uJeruT.png"></p>
+<p>看看源码</p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uJef81.png" alt="uJef81.png"></p>
+<p>发现提交的xss脚本中的**&lt;**和**&gt;**都没了，应该是被htmlspecialchars函数过滤了</p>
+<p>所以这里可以用单引号闭合value，却没办法闭合input标签，但是可以注释掉后面标签然后用事件弹窗，这里介绍几个常用的事件函数，比如<code>onchange, onclick, oninput</code>等等</p>
+<p>payload：<code>1&#39; onclick=alert(&quot;xss&quot;)//</code></p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uJKHyt.png" alt="uJKHyt.png"></p>
+<h3 id="level4"><a href="#level4" class="headerlink" title="level4"></a>level4</h3><p>输入<code>&quot;/&gt;&lt;script&gt;alert(&quot;xss&quot;);&lt;/script&gt;</code>测试一下，</p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uJMFmV.png" alt="uJMFmV.png"></p>
+<p>**&lt;**和**&gt;**依然被转义，再试试点击事件弹窗</p>
+<p>payload：<code>1&quot; onclick=alert(&quot;xss&quot;)//</code></p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uJQkjI.png" alt="uJQkjI.png"></p>
+<h3 id="level5"><a href="#level5" class="headerlink" title="level5"></a>level5</h3><p>输入<code>&quot;/&gt;&lt;script&gt;alert(&quot;xss&quot;);&lt;/script&gt;</code>，发现<code>&lt;script&gt;</code>标签被过滤</p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uJQXGQ.png" alt="uJQXGQ.png"></p>
+<p>输入<code>1&quot; onclick=alert(&quot;xss&quot;)//</code>测试，</p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uJQ029.png" alt="uJQ029.png"></p>
+<p>可以看到onclick也被过滤，但是可以看到尖括号没有被过滤</p>
+<p>所以可以构造a标签，再尝试利用a标签的href属性执行javascript:伪协议，<code>&quot;&gt;&lt;a href=&quot;javascript:alert(1)&quot;</code>，没有对javascript进行过滤，触发xss</p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uJ8gOA.png" alt="uJ8gOA.png"></p>
+<h3 id="level6"><a href="#level6" class="headerlink" title="level6"></a>level6</h3><p>输入<code>&quot;&gt;&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;</code>测试，<code>&lt;script&gt;</code>标签被过滤</p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uJ8bOs.png" alt="uJ8bOs.png"></p>
+<p>输入<code>&quot; onclick=alert(1)//</code>测试，onclick被过滤</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\1569811007499.png" alt="1569811007499"></p>
+<p>输入<code>&quot;&gt;&lt;a href=&quot;javascript:alert(1)&quot;</code>测试。发现href也被过滤</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\1569811096641.png" alt="1569811096641"></p>
+<p>尝试是用大小写绕过</p>
+<p>payload：<code>&quot;&gt;&lt;a HREF=&quot; javascript:alert(1)&quot;</code></p>
+<p>或者<code>&quot;&gt; &lt;Script&gt;alert(&#39;123&#39;)&lt;/script&gt; //</code></p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uJYfT1.png" alt="uJYfT1.png"></p>
+<h3 id="level7"><a href="#level7" class="headerlink" title="level7"></a>level7</h3><p>按照前面的套路试了一遍，发现script、on、href都被过滤，大小写都被过滤</p>
+<p>使用双写单词来绕过</p>
+<p>payload1：<code>&quot; oonnclick=alert(1)//</code></p>
+<p>payload：<code>&quot;&gt;&lt;a hrhrefef=&quot; javascscriptript:alert(1)&quot;</code></p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uJBPPA.png" alt="uJBPPA.png"></p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uJBvzq.png" alt="uJBvzq.png"></p>
+<h3 id="level8"><a href="#level8" class="headerlink" title="level8"></a>level8</h3><p>随便输了一个试试，查看源码</p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uYdiSx.png" alt="uYdiSx.png"></p>
+<p>发现原本就有一个href标签，所以直接添加javascript:alert(1)即可，可是会发现script被过滤了，转换大小写也不行，</p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uYsout.png" alt="uYsout.png"></p>
+<p>可以发现还有一处调用的字符串里面没有使用这样的函数去进行防护，可以利用这一点下功夫，尝试编码绕过，进行<a target="_blank" rel="noopener" href="https://www.qqxiuzi.cn/bianma/zifushiti.php">html编码</a>之后可以成功饶过，</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">&amp;#x6A;</span><span class="symbol">&amp;#x61;</span><span class="symbol">&amp;#x76;</span><span class="symbol">&amp;#x61;</span><span class="symbol">&amp;#x73;</span><span class="symbol">&amp;#x63;</span><span class="symbol">&amp;#x72;</span><span class="symbol">&amp;#x69;</span><span class="symbol">&amp;#x70;</span><span class="symbol">&amp;#x74;</span><span class="symbol">&amp;#x3A;</span><span class="symbol">&amp;#x61;</span><span class="symbol">&amp;#x6C;</span><span class="symbol">&amp;#x65;</span><span class="symbol">&amp;#x72;</span><span class="symbol">&amp;#x74;</span><span class="symbol">&amp;#x28;</span><span class="symbol">&amp;#x31;</span><span class="symbol">&amp;#x29;</span></span><br></pre></td></tr></table></figure>
+
+<p>（其实这里编码的话只编码script其中一个字符就可以）</p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uYd4c6.png" alt="uYd4c6.png"></p>
+<h3 id="level9"><a href="#level9" class="headerlink" title="level9"></a>level9</h3><p>输入javascript:alert(1)测试一下</p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uY0PsK.png" alt="uY0PsK.png"></p>
+<p>发现这次的输入没有在href标签那里，所以，再试试<code>&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;</code></p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uY06Y9.png" alt="uY06Y9.png"></p>
+<p>尖括号和引号都被过滤，看来害的编码</p>
+<p>使用上一关的poc试试，也不行，，，只能看看源码</p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uYyAC4.png" alt="uYyAC4.png"></p>
+<p>发现这里对url进行了限制，必须包含<strong>http://</strong></p>
+<p>尝试构造<code>javascr&amp;#x69;pt:alert(1)http://</code>，居然不对、、、</p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uYc5v9.png" alt="uYc5v9.png"></p>
+<p>确实不对，那该怎么办呢，两</p>
+<p>个解决办法：注释或者把http://放到aler()里面</p>
+<p><code>javascr&amp;#x69;pt:alert(1)//http://</code></p>
+<p><code>javascr&amp;#x69;pt:alert(&amp;#x22;http://&amp;#x22;)</code>这里吧引号编码</p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uYcR4U.png" alt="uYcR4U.png"></p>
+<h3 id="level10"><a href="#level10" class="headerlink" title="level10"></a>level10</h3><p>明面上没有看到输入框，但是url栏里可以输入</p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uYgqLn.png" alt="uYgqLn.png"></p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uY2vnA.png" alt="uY2vnA.png"></p>
+<p>发现尖括号被过滤，但是这里有三个隐藏的参数，不明白，看看源码</p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uY2O6H.png" alt="uY2O6H.png"></p>
+<p>keyword被htmlspecialchars过滤，但是还有一个参数t_sort没有防护，只是过滤了尖括号，然后放到了一个input标签中隐藏起来</p>
+<p>可以闭合双引号，使用<code>onclick</code>事件，然后把隐藏的标签用<code>text</code>方式回显出来即可，最后的payload</p>
+<p><code>t_sort=&quot; onclick=alert(1) type=&quot;text&quot;</code></p>
+<p><img src="https://s2.ax1x.com/2019/09/30/uYh9tx.png" alt="uYh9tx.png"></p>
+<h3 id="level11"><a href="#level11" class="headerlink" title="level11"></a>level11</h3>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/ctf/">ctf</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/ctf/">ctf</a><a href="/tags/XSS/">XSS</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://example.com/2019/09/30/%E9%9D%B6%E5%9C%BA/xsslabs%E9%80%9A%E5%85%B3/" data-title="xsslabs通关 | Hexo" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2019/10/03/靶场/DVWA练习/" title="DVWA练习">
+  <strong>上一篇：</strong><br/>
+  <span>
+  DVWA练习</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2019/09/27/大学CTF/phpstudy漏洞复现/"  title="phpstudy漏洞复现">
+ <strong>下一篇：</strong><br/> 
+ <span>phpstudy漏洞复现
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level1"><span class="toc-number">2.</span> <span class="toc-text">level1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level2"><span class="toc-number">3.</span> <span class="toc-text">level2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level3"><span class="toc-number">4.</span> <span class="toc-text">level3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level4"><span class="toc-number">5.</span> <span class="toc-text">level4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level5"><span class="toc-number">6.</span> <span class="toc-text">level5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level6"><span class="toc-number">7.</span> <span class="toc-text">level6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level7"><span class="toc-number">8.</span> <span class="toc-text">level7</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level8"><span class="toc-number">9.</span> <span class="toc-text">level8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level9"><span class="toc-number">10.</span> <span class="toc-text">level9</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level10"><span class="toc-number">11.</span> <span class="toc-text">level10</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level11"><span class="toc-number">12.</span> <span class="toc-text">level11</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/CTF/" title="CTF">CTF<sup>10</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Other/" title="Other">Other<sup>24</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Sec/" title="Sec">Sec<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/buuctf/" title="buuctf">buuctf<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQLi/" title="SQLi">SQLi<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP绕过/" title="PHP绕过">PHP绕过<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MYSQL比较特性/" title="MYSQL比较特性">MYSQL比较特性<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SSRF/" title="SSRF">SSRF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/java-WEB-INF/" title="java-WEB-INF">java-WEB-INF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/无参数RCE/" title="无参数RCE">无参数RCE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模板注入/" title="模板注入">模板注入<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MISC/" title="MISC">MISC<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wifi密码破解/" title="wifi密码破解">wifi密码破解<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/安恒11月月赛/" title="安恒11月月赛">安恒11月月赛<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt/" title="cumt">cumt<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt双月赛一/" title="cumt双月赛一">cumt双月赛一<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php变量覆盖/" title="php变量覆盖">php变量覆盖<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/代码审计/" title="代码审计">代码审计<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Good Good Study！ <br/>
+			Day Day Up！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/about" target="_blank" title="John Doe">John Doe</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

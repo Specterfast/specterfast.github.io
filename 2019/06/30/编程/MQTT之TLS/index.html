@@ -1,0 +1,661 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>MQTT之TLS | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="John Doe">
+    
+
+    
+    <meta name="description" content="前言做了很久的实验，一直没能成功，最后还是down的大佬的源码，侵删。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MQTT之TLS">
+<meta property="og:url" content="http://example.com/2019/06/30/%E7%BC%96%E7%A8%8B/MQTT%E4%B9%8BTLS/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言做了很久的实验，一直没能成功，最后还是down的大佬的源码，侵删。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/30/Z1QfoT.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/30/Z1lg9e.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/30/Z1lxH0.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/30/Z11PCF.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/30/Z11VD1.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/30/Z111vd.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/30/Z11WPU.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/30/Z11fGF.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/30/Z13pqI.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/30/Z13mss.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/30/Z13Gz4.png">
+<meta property="article:published_time" content="2019-06-30T06:47:59.000Z">
+<meta property="article:modified_time" content="2021-05-23T07:31:14.826Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/06/30/Z1QfoT.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/tou1.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.jpg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/06/30/编程/MQTT之TLS/" title="MQTT之TLS" itemprop="url">MQTT之TLS</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2019-06-30T06:47:59.000Z" itemprop="datePublished"> Published 2019-06-30</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">2.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A6%81%E6%B1%82"><span class="toc-number">2.2.</span> <span class="toc-text">要求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.3.</span> <span class="toc-text">基本步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E8%BF%87%E7%A8%8B"><span class="toc-number">2.4.</span> <span class="toc-text">具体过程</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>做了很久的实验，一直没能成功，最后还是down的大佬的源码，侵删。<span id="more"></span></p>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h4><p>MQTT协议是物联网应用中重要的应用层协议，上一次实验开展了MQTT协议的分析，对MQTT协议的长连接机制、发布/订阅工作模式交互机制进行了分析。但如果MQTT协议不进行安全实现，黑客可以恶意发布信息给服务器，特别是在工业、交通等物联网应用场合后果不堪设想。本实验旨构建MQTT协议安全通信。</p>
+<h4 id="要求"><a href="#要求" class="headerlink" title="要求"></a><strong>要求</strong></h4><p>（1）掌握MQTT的安全通信的基本原理。</p>
+<p>（2）设计MQTT安全通信的安全措施。</p>
+<p>（3）实现基于TLS的MQTT通信。</p>
+<h4 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a><strong>基本步骤</strong></h4><p>（1）应用层：MQTT协议提供了客户标识以及用户名密码，以便验证设备。基于ACL对主题的订阅和发布权限设置基本的授权。</p>
+<p>（2）传输层：传输层可使用TLS加密、验证证书机制，防止中间人攻击。</p>
+<p>（3）网络层：可以通过专线或者使用VPN来连接设备与MQTT代理，以提高网络传输的安全性。可以通过防火墙保护MQTT代理端，比如限制端口、限制协议、限制IP段。</p>
+<p>   注意构建一个局域网，模拟MQTT服务端（代理端）、客户端（分订阅和发布），运用Wireshark抓包分析安全通信过程。</p>
+<p><img src="https://s2.ax1x.com/2019/06/30/Z1QfoT.png" alt="Z1QfoT.png"></p>
+<h4 id="具体过程"><a href="#具体过程" class="headerlink" title="具体过程"></a>具体过程</h4><p><strong>服务器</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mosca = <span class="built_in">require</span>(<span class="string">&#x27;mosca&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> SECURE_KEY = __dirname + <span class="string">&#x27;/tls-key.pem&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> SECURE_CERT = __dirname + <span class="string">&#x27;/tls-cert.pem&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> settings = &#123;</span><br><span class="line">  <span class="attr">logger</span>: &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;secureExample&quot;</span>,</span><br><span class="line">    <span class="attr">level</span>: <span class="number">40</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">secure</span> : &#123; </span><br><span class="line">    <span class="attr">port</span>: <span class="number">9090</span>,</span><br><span class="line">    <span class="attr">keyPath</span>: SECURE_KEY,</span><br><span class="line">    <span class="attr">certPath</span>: SECURE_CERT,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> server = <span class="keyword">new</span> mosca.Server(settings);</span><br><span class="line">server.on(<span class="string">&#x27;published&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">packet, client</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//当客户端有连接发布主题消息</span></span><br><span class="line">    <span class="keyword">var</span> topic = packet.topic;</span><br><span class="line">    <span class="built_in">console</span>.log(packet);</span><br><span class="line">    <span class="keyword">switch</span> (topic) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;test&#x27;</span>:</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;收到消息：&#x27;</span>, packet.payload.toString());</span><br><span class="line">            <span class="comment">//MQTT转发主题消息</span></span><br><span class="line">            <span class="comment">//MqttServer.publish(&#123; topic: &#x27;other&#x27;, payload: &#x27;sssss&#x27; &#125;);</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;other&#x27;</span>:</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;message-123&#x27;</span>, packet.payload.toString());</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">server.on(<span class="string">&#x27;ready&#x27;</span>, setup);</span><br><span class="line"><span class="comment">//若用户名与密码有效，接受链接</span></span><br><span class="line"><span class="keyword">var</span> authenticate = <span class="function"><span class="keyword">function</span>(<span class="params">client, username, password, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> authorized = (username === <span class="string">&#x27;alice&#x27;</span> &amp;&amp; password.toString() === <span class="string">&#x27;secret&#x27;</span>);</span><br><span class="line">  <span class="keyword">if</span> (authorized) &#123;</span><br><span class="line">      client.user = username;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;通过认证登录的用户：&#x27;</span>, username);</span><br><span class="line">  &#125;</span><br><span class="line">  callback(<span class="literal">null</span>, authorized);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 授权为alice的客户端可以发布/users/alice，</span></span><br><span class="line"><span class="comment">// 从主题中取得用户名，并校验与授权用户一致</span></span><br><span class="line"><span class="keyword">var</span> authorizePublish = <span class="function"><span class="keyword">function</span>(<span class="params">client, topic, payload, callback</span>) </span>&#123;</span><br><span class="line">  callback(<span class="literal">null</span>, client.user == topic);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 授权为alice的客户端可以订阅/users/alice，</span></span><br><span class="line"><span class="comment">// 从主题中取得用户名，并校验与授权用户一致</span></span><br><span class="line"><span class="keyword">var</span> authorizeSubscribe = <span class="function"><span class="keyword">function</span>(<span class="params">client, topic, callback</span>) </span>&#123;</span><br><span class="line">  callback(<span class="literal">null</span>, client.user == topic);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//mosca配置</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setup</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;Mosca secure server is up and running&#x27;</span>)</span><br><span class="line">  server.authenticate = authenticate;</span><br><span class="line">  server.authorizePublish = authorizePublish;</span><br><span class="line">  server.authorizeSubscribe = authorizeSubscribe;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.ax1x.com/2019/06/30/Z1lg9e.png" alt="Z1lg9e.png"></p>
+<p>订阅方**</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mqtt = <span class="built_in">require</span>(<span class="string">&#x27;mqtt&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> KEY = fs.readFileSync(path.join(__dirname, <span class="string">&#x27;/tls-key.pem&#x27;</span>))</span><br><span class="line"><span class="keyword">var</span> CERT = fs.readFileSync(path.join(__dirname, <span class="string">&#x27;/tls-cert.pem&#x27;</span>))</span><br><span class="line"><span class="keyword">var</span> TRUSTED_CA_LIST = fs.readFileSync(path.join(__dirname, <span class="string">&#x27;/crt.ca.cg.pem&#x27;</span>))</span><br><span class="line"><span class="keyword">var</span> PORT = <span class="number">9090</span></span><br><span class="line"><span class="keyword">var</span> HOST = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">  <span class="attr">port</span>: PORT,</span><br><span class="line">  <span class="attr">host</span>: HOST,</span><br><span class="line">  <span class="attr">key</span>: KEY,</span><br><span class="line">  <span class="attr">cert</span>: CERT,</span><br><span class="line">  <span class="attr">rejectUnauthorized</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">ca</span>: TRUSTED_CA_LIST,</span><br><span class="line">  <span class="attr">protocol</span>: <span class="string">&#x27;mqtts&#x27;</span>,</span><br><span class="line">  <span class="comment">//订阅者实现认证的参数</span></span><br><span class="line">  <span class="attr">username</span>:<span class="string">&quot;alice&quot;</span>,</span><br><span class="line">  <span class="attr">password</span>:<span class="string">&quot;secret&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> client2 = mqtt.connect(options)</span><br><span class="line">client2.subscribe(<span class="string">&#x27;alice&#x27;</span>,&#123;<span class="attr">qos</span>:<span class="number">0</span>&#125;);<span class="comment">//订阅主题为alice的消息  </span></span><br><span class="line">client2.on(<span class="string">&#x27;message&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">top,message</span>) </span>&#123;  </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;收到消息：&#x27;</span>, message.toString());  </span><br><span class="line">&#125;); </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.ax1x.com/2019/06/30/Z1lxH0.png" alt="Z1lxH0.png"></p>
+<p>发布方**</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mqtt = <span class="built_in">require</span>(<span class="string">&#x27;mqtt&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> KEY = fs.readFileSync(path.join(__dirname, <span class="string">&#x27;/tls-key.pem&#x27;</span>))</span><br><span class="line"><span class="keyword">var</span> CERT = fs.readFileSync(path.join(__dirname, <span class="string">&#x27;/tls-cert.pem&#x27;</span>))</span><br><span class="line"><span class="keyword">var</span> TRUSTED_CA_LIST = fs.readFileSync(path.join(__dirname, <span class="string">&#x27;/crt.ca.cg.pem&#x27;</span>))</span><br><span class="line"><span class="keyword">var</span> PORT = <span class="number">9090</span></span><br><span class="line"><span class="keyword">var</span> HOST = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">  <span class="attr">port</span>: PORT,</span><br><span class="line">  <span class="attr">host</span>: HOST,</span><br><span class="line">  <span class="attr">key</span>: KEY,</span><br><span class="line">  <span class="attr">cert</span>: CERT,</span><br><span class="line">  <span class="attr">rejectUnauthorized</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">ca</span>: TRUSTED_CA_LIST,</span><br><span class="line">  <span class="attr">protocol</span>: <span class="string">&#x27;mqtts&#x27;</span>,</span><br><span class="line">  <span class="comment">//发布者实现认证的参数</span></span><br><span class="line">  <span class="attr">username</span>:<span class="string">&quot;alice&quot;</span>,</span><br><span class="line">  <span class="attr">password</span>:<span class="string">&quot;secret&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> client = mqtt.connect(options)</span><br><span class="line"><span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> qtt = &#123;&#125;; <span class="comment">//定义消息</span></span><br><span class="line">qtt = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="comment">//一秒钟发送一次消息setr=xxxxxxx1xx</span></span><br><span class="line"><span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    client.publish(<span class="string">&#x27;alice&#x27;</span>, qtt, &#123; <span class="attr">qos</span>: <span class="number">0</span>, <span class="attr">retain</span>: <span class="literal">true</span> &#125;);  </span><br><span class="line">&#125;, <span class="number">10000</span>);</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/Z11PCF"><img src="https://s2.ax1x.com/2019/06/30/Z11PCF.png" alt="Z11PCF.png"></a></p>
+<p><strong>抓包分析</strong></p>
+<p><img src="https://s2.ax1x.com/2019/06/30/Z11VD1.png" alt="Z11VD1.png"></p>
+<p><strong>1</strong> <strong>客户端发出请求（ClientHello)</strong></p>
+<p><img src="https://s2.ax1x.com/2019/06/30/Z111vd.png" alt="Z111vd.png"></p>
+<p>(1) 客户端与服务端通过tcp三次握手建立tcp连接后，客户端首先向服务器发出建立加密通信的请求，发送ClientHello请求，从消息体结构看，tls/ssl是基于tcp连接之上，应用层之下的协议。</p>
+<p><strong>2</strong> <strong>服务器响应（SeverHello）</strong></p>
+<p><img src="https://s2.ax1x.com/2019/06/30/Z11WPU.png" alt="Z11WPU.png"></p>
+<p><img src="https://s2.ax1x.com/2019/06/30/Z11fGF.png" alt="Z11fGF.png"></p>
+<p>服务器收到客户端请求后，向客户端发出响应，叫做Sever Hello。</p>
+<p>从消息体中，可以看到服务器的响应包含以下内容：</p>
+<p>(1) 确认使用的加密通信协议版本，这里确认使用tls1.2，而不是client hello中的tls1.1。响应握手协议消息 server hello。如果浏览器与服务器支持的版本不一致，服务器关闭加密通信。</p>
+<p>(2) 一个服务器生成的随机数，稍后用于生成”对话密钥”。</p>
+<p>(3) 确认使用的加密套件,这里为rsa+aes128+sha256</p>
+<p>(4) 压缩方法为空。</p>
+<p>(5) 一些列扩展信息</p>
+<p><strong>3 服务端发送服务端电子证书（CA），密钥交换（server key exchange），及server hello done三个握手消息</strong></p>
+<p><img src="https://s2.ax1x.com/2019/06/30/Z13pqI.png" alt="Z13pqI.png"></p>
+<p>客户端接收到server hello握手消息后，及时反馈ack消息。服务端接收客户端ack消息后，发送服务端电子证书，密钥交换，及server hello done三个握手消息</p>
+<p>从封装内容看，包含两层ssl协议体信息，头一个为服务端证书，后面跟着公共密钥交换和hello done消息体，具体如下：</p>
+<p>（1）详细的电子证书信息和CA认证机构信息</p>
+<p>（2）密钥交换信息，包括DH算法计算出的pubkey公钥，电子签名的hash算法值</p>
+<p>（3）server hello done消息体</p>
+<p><strong>4 客户端发送密钥交换信息（client key exchange）、编码改变协议消息(change cipher spec)</strong></p>
+<p><img src="https://s2.ax1x.com/2019/06/30/Z13mss.png" alt="Z13mss.png"></p>
+<p>客户端发送ack消息给服务端，确认收到server hello done消息，然后发送客户端的密钥交换信息和修改密钥的协议消息</p>
+<p>主要内容如下：</p>
+<p>(1) 发送DH算法计算的pubkey，用于服务端计算生成解密私钥</p>
+<p>(2) 发送编码改变通知，表示随后的信息都将用双方商定的加密方法和密钥发送。</p>
+<p>(3) 发送加密后的握手消息，一个随机数。该随机数用服务器公钥加密，防止被窃听</p>
+<p>(4) 客户端握手结束通知，表示客户端的握手阶段已经结束。这一项同时也是前面发送的所有内容的hash值，用来供服务器校验。（可能在加密消息中，未确认）</p>
+<p>客户端收到服务器所有响应消息后，首先验证服务器证书。如果证书不是可信机构颁布、或者证书中的域名与实际域名不一致、或者证书已经过期，就会向访问者显示一个警告，由其选择是否还要继续通信。</p>
+<p>如果证书没有问题，客户端就会从证书中取出服务器的公钥，即server key exchange消息中携带的pubkey值。然后，根据根据已经收到的三个随机数计算书加密密钥，对握手信息进行加密通信，然后向服务器发送上面抓包中三项信息内容。</p>
+<p>​      至此，整个握手阶段全部结束。接下来，客户端与服务器进入加密通信，就完全是使用普通的HTTP协议，只不过用”会话密钥”加密数据内容。</p>
+<p>五 实验体会（不少于300字）</p>
+<p>​      TLS（Transport Layer Security，安全传输层)，TLS是建立在传输层TCP协议之上的协议，服务于应用层，它的前身是SSL（Secure Socket Layer，安全套接字层），它实现了将应用层的报文进行加密后再交由TCP进行传输的功能。</p>
+<p>​      TLS协议主要解决如下三个网络安全问题。</p>
+<p>1、保密(message privacy)，保密通过加密encryption实现，所有信息都加密传输，第三方无法嗅探；</p>
+<p>2、完整性(message integrity)，通过MAC校验机制，一旦被篡改，通信双方会立刻发现；</p>
+<p>3、认证(mutual authentication)，双方认证,双方都可以配备证书，防止身份被冒充；</p>
+<p>下面是TLS的握手过程。详细步骤上面也说过了。</p>
+<p><img src="https://s2.ax1x.com/2019/06/30/Z13Gz4.png" alt="Z13Gz4.png"></p>
+<p>Client1：TLS版本号 + 所支持加密套件列表 + 希望使用的TLS选项 </p>
+<p>Server1：选择一个客户端的加密套件 + 自己的公钥 + 自己的证书 + 希望使用的TLS选项 +（要求客户端证书） </p>
+<p>Client2：（自己的证书） + 使用服务器公钥和协商的加密套件加密一个对称密钥 </p>
+<p>Server2：使用私钥解密出对称密钥后，发送的加密的Finish消息，表明完成握手</p>
+<p>任何事物都是有利有弊，引入TLS机制固然是能够保证安全，但却在TCP握手和HTTP通信之间，多加了两个往返的TLS握手过程。</p>
+<p>安全问题：</p>
+<p>​      可能存在中间人攻击。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Other/">Other</a>
+</div>
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://example.com/2019/06/30/%E7%BC%96%E7%A8%8B/MQTT%E4%B9%8BTLS/" data-title="MQTT之TLS | Hexo" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2019/09/27/大学CTF/phpstudy漏洞复现/" title="phpstudy漏洞复现">
+  <strong>上一篇：</strong><br/>
+  <span>
+  phpstudy漏洞复现</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2019/06/18/编程/物联网应用层coap协议/"  title="物联网应用层coap协议">
+ <strong>下一篇：</strong><br/> 
+ <span>物联网应用层coap协议
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">2.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A6%81%E6%B1%82"><span class="toc-number">2.2.</span> <span class="toc-text">要求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.3.</span> <span class="toc-text">基本步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E8%BF%87%E7%A8%8B"><span class="toc-number">2.4.</span> <span class="toc-text">具体过程</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/CTF/" title="CTF">CTF<sup>10</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Other/" title="Other">Other<sup>24</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Sec/" title="Sec">Sec<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/buuctf/" title="buuctf">buuctf<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQLi/" title="SQLi">SQLi<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP绕过/" title="PHP绕过">PHP绕过<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MYSQL比较特性/" title="MYSQL比较特性">MYSQL比较特性<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SSRF/" title="SSRF">SSRF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/java-WEB-INF/" title="java-WEB-INF">java-WEB-INF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/无参数RCE/" title="无参数RCE">无参数RCE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模板注入/" title="模板注入">模板注入<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MISC/" title="MISC">MISC<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wifi密码破解/" title="wifi密码破解">wifi密码破解<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/安恒11月月赛/" title="安恒11月月赛">安恒11月月赛<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt/" title="cumt">cumt<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt双月赛一/" title="cumt双月赛一">cumt双月赛一<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php变量覆盖/" title="php变量覆盖">php变量覆盖<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/代码审计/" title="代码审计">代码审计<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Good Good Study！ <br/>
+			Day Day Up！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/about" target="_blank" title="John Doe">John Doe</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

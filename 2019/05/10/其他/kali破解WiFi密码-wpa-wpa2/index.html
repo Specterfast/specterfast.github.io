@@ -1,0 +1,656 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>kali破解WiFi密码(wpa/wpa2) | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="John Doe">
+    
+
+    
+    <meta name="description" content="前言物联网安全实践一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="kali破解WiFi密码(wpa&#x2F;wpa2)">
+<meta property="og:url" content="http://example.com/2019/05/10/%E5%85%B6%E4%BB%96/kali%E7%A0%B4%E8%A7%A3WiFi%E5%AF%86%E7%A0%81-wpa-wpa2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言物联网安全实践一">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/10/EWFPN4.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/10/EWFEg1.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/10/EWFVjx.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/10/EWFMUe.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/10/EWF1Cd.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/10/EWFYKP.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/10/EWFRVU.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/10/EWFxGd.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/10/EWkCsP.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/10/EWkkdS.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/10/EWkKs0.png">
+<meta property="article:published_time" content="2019-05-10T12:35:44.000Z">
+<meta property="article:modified_time" content="2019-05-10T13:03:03.884Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="IoT">
+<meta property="article:tag" content="wifi密码破解">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/05/10/EWFPN4.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/tou1.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.jpg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/05/10/其他/kali破解WiFi密码-wpa-wpa2/" title="kali破解WiFi密码(wpa/wpa2)" itemprop="url">kali破解WiFi密码(wpa/wpa2)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2019-05-10T12:35:44.000Z" itemprop="datePublished"> Published 2019-05-10</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A0%E7%BA%BF%E7%BD%91%E5%8D%A1%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.1.</span> <span class="toc-text">无线网卡连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A0%E7%BA%BF%E7%BD%91%E5%8D%A1%E9%85%8D%E7%BD%AE"><span class="toc-number">2.2.</span> <span class="toc-text">无线网卡配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%9B%91%E5%90%AC%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.3.</span> <span class="toc-text">设置监听模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%93%E5%8F%96%E6%8F%A1%E6%89%8B%E5%8C%85"><span class="toc-number">2.4.</span> <span class="toc-text">抓取握手包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E5%AD%97%E5%85%B8%E7%88%86%E7%A0%B4%E5%AF%86%E7%A0%81"><span class="toc-number">2.5.</span> <span class="toc-text">用字典爆破密码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E8%AD%A6%E5%91%8A"><span class="toc-number">2.6.</span> <span class="toc-text">错误警告</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>物联网安全实践一<span id="more"></span></p>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>这个是破解wpa/wpa2的，wep的另找办法，比较简单。</p>
+<h4 id="无线网卡连接"><a href="#无线网卡连接" class="headerlink" title="无线网卡连接"></a>无线网卡连接</h4><p>先要连接USB网卡，点击虚拟机—设置—USB控制器，设置如下，</p>
+<p><img src="https://s2.ax1x.com/2019/05/10/EWFPN4.png" alt="EWFPN4.png"></p>
+<p>查看右下角边框的usb显示，是否连接，未如连接，则点击右键，链接，连接成功如下显示</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/EWFEg1"><img src="https://s2.ax1x.com/2019/05/10/EWFEg1.png" alt="EWFEg1.png"></a></p>
+<p>还有，保证这个已连接，设置完成。</p>
+<p><img src="https://s2.ax1x.com/2019/05/10/EWFVjx.png" alt="EWFVjx.png"></p>
+<h4 id="无线网卡配置"><a href="#无线网卡配置" class="headerlink" title="无线网卡配置"></a>无线网卡配置</h4><p>连接好之后，通过iwconfig查看无线网卡工作是否正常，下面说明是正常的。</p>
+<p><img src="https://s2.ax1x.com/2019/05/10/EWFMUe.png" alt="EWFMUe.png"></p>
+<h4 id="设置监听模式"><a href="#设置监听模式" class="headerlink" title="设置监听模式"></a>设置监听模式</h4><p>使用aircrack-ng工具的airmon-ng来启动监听模式，在使用前先清理阻碍的进程，命令</p>
+<p><code>airmon-ng check kill</code> </p>
+<p><code>airmon-ng start wlan0</code></p>
+<p><img src="https://s2.ax1x.com/2019/05/10/EWF1Cd.png" alt="EWF1Cd.png"></p>
+<p>当wlan0后面有个mon时，说明monitor监听模式成功启动。</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/EWFYKP"><img src="https://s2.ax1x.com/2019/05/10/EWFYKP.png" alt="EWFYKP.png"></a></p>
+<h4 id="抓取握手包"><a href="#抓取握手包" class="headerlink" title="抓取握手包"></a>抓取握手包</h4><p>使用airodump-ng wlan0mon来扫描网络，如图.之后会开始扫描</p>
+<p><img src="https://s2.ax1x.com/2019/05/10/EWFRVU.png" alt="EWFRVU.png"></p>
+<p>命令参数：</p>
+<blockquote>
+<p>bssid是ap（access point）的mac地址，在这里ap为路由器</p>
+<p>pwr代表信号水平，信号只越高说明距离越近，但是注意，</p>
+<p>-1值说明无法监听</p>
+<p>ch表示工作的信道号</p>
+<p>enc表示算法加密体系</p>
+<p>cipher表示检测到的加密算法</p>
+<p>auth表示认证协议</p>
+<p>essid即ssid号,wifi的名称</p>
+<p>station表示客户端的mac地址（ctrl-c停止扫描）</p>
+</blockquote>
+<p>5、抓取握手包，从上一步扫描到的结果中选定目标，留意bssid和ch，使用命令</p>
+<p><code>airodump-ng -c 11 --ivs -w test --bssid 74:C3:30:12:DF:D2 wlan0mon</code></p>
+<p>参数：-c 选取频道号 –ivs -w test 保存ivs格式的包，名字为test –bssid 要破解ap的ssid</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/EWFxGd"><img src="https://s2.ax1x.com/2019/05/10/EWFxGd.png" alt="EWFxGd.png"></a></p>
+<p><strong>注意</strong></p>
+<p>我们只有一般的数据包，是无法进行密码破解的，我们需要的是用户连接WiFi时的握手包。</p>
+<p>在上面的图中，出现这个信息，说明成功抓到了握手包</p>
+<p><img src="https://s2.ax1x.com/2019/05/10/EWkCsP.png" alt="EWkCsP.png"></p>
+<p>但是，我们不一定每次都能正好抓到这个包，所以，我们需要使用一个叫aireplay-ng的工具，它可以强制用户断开wifi连接；</p>
+<p>原理是，给连接到wifi的一个设备发送一个deauth（反认证）包，让那个设备断开wifi，随后它自然会再次连接wifi。</p>
+<p>aireplay-ng的生效前提是，wifi网络中至少有一个连接的设备。从上图可以看到哪些设备连接到了wifi，STATION就是连接设备的MAC地址，记住一个。打开新终端执行： </p>
+<p><code>aireplay-ng -0 10 -a 74:C3:30:12:DF:D2 -c 90:F0:52:70:F7:13 wlan0mon</code></p>
+<blockquote>
+<p>参数：-0指定发送反认证包的个数 -a指定无线路由器BSSID -c指定强制断开的设备。</p>
+</blockquote>
+<p>直到出现上面的信息(红色框框)，说明成功抓到握手包，Ctrl+c结束。</p>
+<p>抓到握手包后，就可以结束监控模式了</p>
+<p><img src="https://s2.ax1x.com/2019/05/10/EWkkdS.png" alt="EWkkdS.png"></p>
+<h4 id="用字典爆破密码"><a href="#用字典爆破密码" class="headerlink" title="用字典爆破密码"></a>用字典爆破密码</h4><p>开始破解密码，执行如下的命令，就可以看到已经破解出密码，如果密码复杂一点，可能需要的时间。aircrack-ng -w 字典 保存的包</p>
+<p><code>aircrack-ng -w /root/wifi.txt /root/test-01.ivs</code>（要使用绝对路径）</p>
+<p>wifi.txt是爆破字典，test-01.ivs是抓的包的文件</p>
+<p><img src="https://s2.ax1x.com/2019/05/10/EWkKs0.png" alt="EWkKs0.png"></p>
+<p>成功得到密码。</p>
+<h4 id="错误警告"><a href="#错误警告" class="headerlink" title="错误警告"></a>错误警告</h4><p>1、实验过程中USB网卡可能检测不到，看看型号问题</p>
+<p>2、检测到了网卡了，但是不显示WiFi的网络适配器，看看驱动问题</p>
+<p>3、检测到网卡，也有WiFi设置，但是检测不到WiFi信号，输入命令<code>service NetworkManager start</code>，还检测不到信号，说明NetworkManager故障，重装虚拟机。</p>
+<p>个人见解。。。。。。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.51cto.com/520yg/1983192">参考文章</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/IoT/">IoT</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/IoT/">IoT</a><a href="/tags/wifi密码破解/">wifi密码破解</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://example.com/2019/05/10/%E5%85%B6%E4%BB%96/kali%E7%A0%B4%E8%A7%A3WiFi%E5%AF%86%E7%A0%81-wpa-wpa2/" data-title="kali破解WiFi密码(wpa/wpa2) | Hexo" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2019/05/15/编程/物联网安全实践二/" title="物联网安全实践二">
+  <strong>上一篇：</strong><br/>
+  <span>
+  物联网安全实践二</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2019/05/02/大学CTF/ISCC-2019/"  title="ISCC_2019">
+ <strong>下一篇：</strong><br/> 
+ <span>ISCC_2019
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A0%E7%BA%BF%E7%BD%91%E5%8D%A1%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.1.</span> <span class="toc-text">无线网卡连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A0%E7%BA%BF%E7%BD%91%E5%8D%A1%E9%85%8D%E7%BD%AE"><span class="toc-number">2.2.</span> <span class="toc-text">无线网卡配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%9B%91%E5%90%AC%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.3.</span> <span class="toc-text">设置监听模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%93%E5%8F%96%E6%8F%A1%E6%89%8B%E5%8C%85"><span class="toc-number">2.4.</span> <span class="toc-text">抓取握手包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E5%AD%97%E5%85%B8%E7%88%86%E7%A0%B4%E5%AF%86%E7%A0%81"><span class="toc-number">2.5.</span> <span class="toc-text">用字典爆破密码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E8%AD%A6%E5%91%8A"><span class="toc-number">2.6.</span> <span class="toc-text">错误警告</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/CTF/" title="CTF">CTF<sup>10</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Other/" title="Other">Other<sup>24</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Sec/" title="Sec">Sec<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/buuctf/" title="buuctf">buuctf<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQLi/" title="SQLi">SQLi<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP绕过/" title="PHP绕过">PHP绕过<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MYSQL比较特性/" title="MYSQL比较特性">MYSQL比较特性<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SSRF/" title="SSRF">SSRF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/java-WEB-INF/" title="java-WEB-INF">java-WEB-INF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/无参数RCE/" title="无参数RCE">无参数RCE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模板注入/" title="模板注入">模板注入<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MISC/" title="MISC">MISC<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wifi密码破解/" title="wifi密码破解">wifi密码破解<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/安恒11月月赛/" title="安恒11月月赛">安恒11月月赛<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt/" title="cumt">cumt<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt双月赛一/" title="cumt双月赛一">cumt双月赛一<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php变量覆盖/" title="php变量覆盖">php变量覆盖<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/代码审计/" title="代码审计">代码审计<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Good Good Study！ <br/>
+			Day Day Up！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/about" target="_blank" title="John Doe">John Doe</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

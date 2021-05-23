@@ -1,0 +1,608 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Python实现RSA | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="John Doe">
+    
+
+    
+    <meta name="description" content="前言密码学作业之RSA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python实现RSA">
+<meta property="og:url" content="http://example.com/2019/03/01/%E7%BC%96%E7%A8%8B/Python%E5%AE%9E%E7%8E%B0RSA/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言密码学作业之RSA">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-03-01T13:19:05.000Z">
+<meta property="article:modified_time" content="2021-05-23T07:32:54.280Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/tou1.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.jpg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/03/01/编程/Python实现RSA/" title="Python实现RSA" itemprop="url">Python实现RSA</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2019-03-01T13:19:05.000Z" itemprop="datePublished"> Published 2019-03-01</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text">代码</span></a></li></ol>
+		
+		</div>
+		
+		<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>密码学作业之RSA<span id="more"></span></p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>RSA公开密钥密码体制。所谓的公开密钥密码体制就是使用不同的加密密钥与解密密钥，是一种“由已知加密密钥推导出解密密钥在计算上是不可行的”密码体制。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>RSA 算法的可靠性基础：对极大整数做因数分解是很困难的。<br>RSA 是非对称算法，加解密使用不同的密钥。<br>两个密钥都可以用于加密，解密时需要使用另一个密钥。但是，通常用公钥加密私钥解密，因为公钥是近乎完全公开的，对于私钥加密的数据，有太多的人可以解密了。理论上 A 和 B 之间要通过 RSA 实现保密通信，需要 A 和 B 各自生成一组密钥，同时保管好自己的私钥；用对方的公钥加密要发送的消息，用自己的私钥解密对方发送过来的消息。</p>
+<p><strong>加密公式：</strong><br>               <code>c=me mod n</code><br><strong>解密公式：</strong><br>               <code>m=cd mod n </code></p>
+<p><strong>加密过程：</strong><br>（1）    获得接收方公钥（e,n）<br>（2）    把消息m分组为长度为L的消息分组<br>（3）    使用上面加密算法计算出密文<br>（4）    将密文c发送给接收方</p>
+<p><strong>解密过程:</strong><br>（1）    接收方收到明文c<br>（2）    使用私钥d和上面的解密算法逐一恢复明文分组<br>            （3） 得到明文消息m</p>
+<p><strong>生成公钥和私钥:</strong></p>
+<p>（1）随意选择两个大的质数 p 和 q，p 不等于 q，计算 N=pq。<br>（2）根据欧拉函数，求得 r=φ(N)=φ(p)φ(q)=(p−1)(q−1)<br>（3）选择一个小于 r 的整数 e，使 e 与 r 互质。并求得 e 关于 r 的模反元素，命名为 d（求 d 令 ed≡1(modr)）。（模反元素存在，当且仅当 e 与 r 互质）</p>
+<p><strong>将 p 和 q 的记录销毁</strong><br>(N,e) 是公钥， (N,d)(N,d) 是私钥。公钥发送给所有的通信对象（对服务器来说就是所有的客户端），私钥则必须保管好，防止泄露。</p>
+<p><strong>核心代码</strong><br>扩展欧几里得算法求模反元素</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ex_euclid</span>(<span class="params">a, b, <span class="built_in">list</span></span>):</span></span><br><span class="line">    <span class="keyword">if</span> b == <span class="number">0</span>:</span><br><span class="line">        <span class="built_in">list</span>[<span class="number">0</span>] = <span class="number">1L</span></span><br><span class="line">        <span class="built_in">list</span>[<span class="number">1</span>] = <span class="number">0L</span></span><br><span class="line">        <span class="built_in">list</span>[<span class="number">2</span>] = a</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        ex_euclid(b, a % b, <span class="built_in">list</span>)</span><br><span class="line">        temp = <span class="built_in">list</span>[<span class="number">0</span>]</span><br><span class="line">        <span class="built_in">list</span>[<span class="number">0</span>] = <span class="built_in">list</span>[<span class="number">1</span>]</span><br><span class="line">        <span class="built_in">list</span>[<span class="number">1</span>] = temp - a / b * <span class="built_in">list</span>[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<p>求模反元素</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mod_inverse</span>(<span class="params">a, b</span>):</span></span><br><span class="line">    <span class="built_in">list</span> = [<span class="number">0L</span>, <span class="number">0L</span>, <span class="number">0L</span>]</span><br><span class="line">    <span class="keyword">if</span> a &lt; b:</span><br><span class="line">        a, b = b, a</span><br><span class="line">    ex_euclid(a, b, <span class="built_in">list</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">list</span>[<span class="number">1</span>] &lt; <span class="number">0</span>:</span><br><span class="line">        <span class="built_in">list</span>[<span class="number">1</span>] = a + <span class="built_in">list</span>[<span class="number">1</span>]</span><br><span class="line">    	   <span class="keyword">return</span> <span class="built_in">list</span>[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<p>快速幂模运算，把b拆分为二进制，遍历b的二进制，当二进制位为0时不计入计算</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_pow_mod</span>(<span class="params">a, b, c</span>):</span></span><br><span class="line">    a = a % c</span><br><span class="line">    ans = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> b != <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">if</span> b &amp; <span class="number">1</span>:</span><br><span class="line">            ans = (ans * a) % c</span><br><span class="line">        b &gt;&gt;= <span class="number">1</span></span><br><span class="line">        a = (a % c) * (a % c)</span><br><span class="line">    	   <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">miller_rabin_witness</span>(<span class="params">a, n</span>):</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span>:      <span class="comment"># n为要检验的大数，a &lt; n,k = n - 1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    k = n - <span class="number">1</span></span><br><span class="line">    q = <span class="built_in">int</span>(math.floor(math.log(k, <span class="number">2</span>)))</span><br><span class="line">    <span class="keyword">while</span> q &gt; <span class="number">0</span>:</span><br><span class="line">        m = k / <span class="number">2</span> ** q</span><br><span class="line">        <span class="keyword">if</span> k % <span class="number">2</span> ** q == <span class="number">0</span> <span class="keyword">and</span> m % <span class="number">2</span> == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        q = q - <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> quick_pow_mod(a, n - <span class="number">1</span>, n) != <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    b1 = quick_pow_mod(a, m, n)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, q + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> b1 == n - <span class="number">1</span> <span class="keyword">or</span> b1 == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        b2 = b1 ** <span class="number">2</span> % n</span><br><span class="line">        b1 = b2</span><br><span class="line">    <span class="keyword">if</span> b1 == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    	   <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<p>Miller-Rabin素性检验算法,检验8次</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">prime_test_miller_rabin</span>(<span class="params">p, k</span>):</span></span><br><span class="line">    <span class="keyword">while</span> k &gt; <span class="number">0</span>:</span><br><span class="line">        a = random.randint(<span class="number">1</span>, p - <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> miller_rabin_witness(a, p):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        k = k - <span class="number">1</span></span><br><span class="line">    		   <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<p>判断 num 是否与 prime_arr 中的每一个数都互质</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">prime_each</span>(<span class="params">num, prime_arr</span>):</span></span><br><span class="line">    <span class="keyword">for</span> prime <span class="keyword">in</span> prime_arr:</span><br><span class="line">        remainder = num % prime</span><br><span class="line">        <span class="keyword">if</span> remainder == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>正确性分析</strong><br><code>ϕ(n)=(p−1)(q−1)</code> 成立的正确性，ϕ(n)表示小于n且与n互质数的个数则小于等于n且与n非互质的数的个数为，<code>n-ϕ(n) = n - (p-1)*(q-1) = n - (pq-q-p+1) = n-n+p+q-1 = p+q-1</code>所以只要证明小于等于n且与n非互质的数的个数为p+q-1即能证明ϕ(n)=(p−1)(q−1) ：这点很容易证明，由于n只有两个素因子p，q。则所有与n非互质的数都可以写成<code>p*x</code>或<code>q*x</code>，对于<code>p*x</code>来讲，x的取值范围为1&lt;=x&lt;=q，对<code>q*x</code>来讲x的取值范围为1&lt;=x&lt;=p，<code>p*x</code>与<code>q*x</code>的唯一交集为<code>p*q</code>，所以结论成立。</p>
+<p><strong>合理性分析</strong><br>RSA是目前最有影响力和最常用的公钥加密算法，它能够抵抗到目前为止已知的绝大多数密码攻击，已被ISO推荐为公钥数据加密标准。今天只有短的RSA钥匙才可能被强力方式解破。只要其钥匙的长度足够长，用RSA加密的信息实际上是不能被解破的。<br>但是RSA还是有缺陷的：<br>（1）产生密钥很麻烦，受到素数产生技术的限制，因而难以做到一次一密。<br>（2）安全性，RSA的安全性依赖于大数的因子分解，但并没有从理论上证明破译RSA的难度与大数分解难度等价，而且密码学界多数人士倾向于因子分解不是NP问题。<br>（3）速度太慢，由于RSA 的分组长度太大，为保证安全性，n 至少也要 600 bits以上，使运算代价很高，尤其是速度较慢，较对称密码算法慢几个数量级;且随着大数分解技术的发展，这个长度还在增加，不利于数据格式的标准化。</p>
+<p><strong>安全性分析</strong><br>RSA的安全性依赖于大数分解，这样攻击RSA系统的难度就是大整数因子分解的难度，一般认为这是一个NPC问题，但是否等同于大数分解一直未能得到理论上的证明，因为没有证明破解RSA就一定需要作大数分解。假设存在一种无须分解大数的算法，那它肯定可以修改成为大数分解算法。 RSA 的一些变种算法已被证明等价于大数分解。不管怎样，分解n是最显然的攻击方法。人们已能分解多个十进制位的大素数。因此，模数n必须选大一些，因具体适用情况而定。<br>攻击方法：<br>（1）    共模攻击<br>（2）    分析RSA锁结构<br>（3）    素因子的分解<br>若用1台1 s能进行1亿次因子分解的高速计算机来计算，分解十进制长度为200位的n，其所需时间为3 800 000年.由此可见，对于RSA系统，如果用一个长度为200位（十进制）的n，认为它是比较安全的，如果n的长度更长，因子分解越困难，一般来说，每增加10位二进制数，分解的时间就要加长1倍.密码就越难以破译，加密强度就越高</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding:utf-8</span></span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">str1 = <span class="string">&quot;abcdefg&quot;</span></span><br><span class="line"></span><br><span class="line">e = <span class="number">65537</span>	<span class="comment">#公钥</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#快速幂 大大减少了计算幂的时间复杂度</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick</span>(<span class="params">a,b,n</span>):</span></span><br><span class="line">	ans = <span class="number">1</span></span><br><span class="line">	a = a%n</span><br><span class="line">	<span class="keyword">while</span> b!=<span class="number">0</span>:</span><br><span class="line">		<span class="keyword">if</span> b&amp;<span class="number">1</span>==<span class="number">1</span>:</span><br><span class="line">			ans = (ans*a)%n</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span></span><br><span class="line">		a = (a*a)%n</span><br><span class="line">	<span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line"><span class="comment">#Miller—Rabin素性判断</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">miller_rabin</span>(<span class="params">n,k=<span class="number">80</span></span>):</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">2</span> <span class="keyword">or</span> n == <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">if</span> n % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    r, s = <span class="number">0</span>, n - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> s % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        r += <span class="number">1</span></span><br><span class="line">        s //= <span class="number">2</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(k):</span><br><span class="line">        a = random.randrange(<span class="number">2</span>, n - <span class="number">1</span>)</span><br><span class="line">        x = <span class="built_in">pow</span>(a, s, n)</span><br><span class="line">        <span class="keyword">if</span> x == <span class="number">1</span> <span class="keyword">or</span> x == n - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(r - <span class="number">1</span>):</span><br><span class="line">            x = <span class="built_in">pow</span>(x, <span class="number">2</span>, n)</span><br><span class="line">            <span class="keyword">if</span> x == n - <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">proBin</span>():</span></span><br><span class="line">	<span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">		p = <span class="string">&quot;1&quot;</span></span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">1022</span>):</span><br><span class="line">			p = p+<span class="built_in">str</span>(random.randint(<span class="number">0</span>,<span class="number">1</span>))</span><br><span class="line">		p = p+<span class="string">&quot;1&quot;</span></span><br><span class="line">		p = <span class="built_in">int</span>(p,<span class="number">2</span>)</span><br><span class="line">		<span class="keyword">if</span> miller_rabin(p):</span><br><span class="line">			<span class="keyword">return</span> p</span><br><span class="line"></span><br><span class="line"><span class="comment">#求模拟，用扩展欧几里得除法</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">modReserse</span>(<span class="params">a,m</span>):</span></span><br><span class="line">	u1,u2,u3 = <span class="number">1</span>,<span class="number">0</span>,a</span><br><span class="line">	v1,v2,v3 = <span class="number">0</span>,<span class="number">1</span>,m</span><br><span class="line">	<span class="keyword">while</span> v3!=<span class="number">0</span>:</span><br><span class="line">		q = u3//v3</span><br><span class="line">		v1,v2,v3,u1,u2,u3 = (u1-q*v1),(u2-q*v2),(u3-q*v3),v1,v2,v3</span><br><span class="line">	<span class="keyword">return</span> u1%m</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt</span>(<span class="params">m,n</span>):</span></span><br><span class="line">	c = <span class="built_in">str</span>(quick(<span class="built_in">int</span>(m),e,n))</span><br><span class="line">	<span class="keyword">return</span> c</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decrypt</span>(<span class="params">c,p,q</span>):</span></span><br><span class="line">	n = p*q</span><br><span class="line">	d = modReserse(e,(p-<span class="number">1</span>)*(q-<span class="number">1</span>))</span><br><span class="line">	m = <span class="built_in">str</span>(quick(<span class="built_in">int</span>(c),d,n))</span><br><span class="line">	<span class="keyword">return</span> m</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">	m = base64.b16encode(str1)</span><br><span class="line">	p=proBin()</span><br><span class="line">	q=proBin()</span><br><span class="line">	<span class="built_in">print</span> <span class="string">&#x27;p=&#x27;</span>,p</span><br><span class="line">	<span class="built_in">print</span> <span class="string">&#x27;q=&#x27;</span>,q</span><br><span class="line">	n = p*q</span><br><span class="line">	c = encrypt(m,n)</span><br><span class="line">	<span class="built_in">print</span> <span class="string">&quot;Encrypt：&quot;</span></span><br><span class="line">	<span class="built_in">print</span> c</span><br><span class="line">	m = decrypt(c,p,q)</span><br><span class="line">	<span class="built_in">print</span> <span class="string">&quot;Decrypt：&quot;</span></span><br><span class="line">	<span class="built_in">print</span> base64.b16decode(m)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Other/">Other</a>
+</div>
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://example.com/2019/03/01/%E7%BC%96%E7%A8%8B/Python%E5%AE%9E%E7%8E%B0RSA/" data-title="Python实现RSA | Hexo" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2019/03/01/编程/简单学习Python安全/" title="简单学习Python安全">
+  <strong>上一篇：</strong><br/>
+  <span>
+  简单学习Python安全</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2019/03/01/编程/Python实现DES/"  title="Python实现DES">
+ <strong>下一篇：</strong><br/> 
+ <span>Python实现DES
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text">代码</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/CTF/" title="CTF">CTF<sup>10</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Other/" title="Other">Other<sup>24</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Sec/" title="Sec">Sec<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/buuctf/" title="buuctf">buuctf<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQLi/" title="SQLi">SQLi<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP绕过/" title="PHP绕过">PHP绕过<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MYSQL比较特性/" title="MYSQL比较特性">MYSQL比较特性<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SSRF/" title="SSRF">SSRF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/java-WEB-INF/" title="java-WEB-INF">java-WEB-INF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/无参数RCE/" title="无参数RCE">无参数RCE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模板注入/" title="模板注入">模板注入<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MISC/" title="MISC">MISC<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wifi密码破解/" title="wifi密码破解">wifi密码破解<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/安恒11月月赛/" title="安恒11月月赛">安恒11月月赛<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt/" title="cumt">cumt<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt双月赛一/" title="cumt双月赛一">cumt双月赛一<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php变量覆盖/" title="php变量覆盖">php变量覆盖<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/代码审计/" title="代码审计">代码审计<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Good Good Study！ <br/>
+			Day Day Up！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/about" target="_blank" title="John Doe">John Doe</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

