@@ -1,0 +1,640 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>buuctf-web-3 | Specter&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="specter">
+    
+
+    
+    <meta name="description" content="[护网杯 2018]easy_tornado tornado模板注入。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="buuctf-web-3">
+<meta property="og:url" content="http://example.com/2021/05/27/buuctf-web-3/index.html">
+<meta property="og:site_name" content="Specter&#39;s Blog">
+<meta property="og:description" content="[护网杯 2018]easy_tornado tornado模板注入。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ae01.alicdn.com/kf/U4a8dd319754d4281b99730a233fe5e86J.jpg">
+<meta property="article:published_time" content="2021-05-27T13:34:07.000Z">
+<meta property="article:modified_time" content="2021-05-27T13:37:59.227Z">
+<meta property="article:author" content="specter">
+<meta property="article:tag" content="SSTI">
+<meta property="article:tag" content="tornado">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ae01.alicdn.com/kf/U4a8dd319754d4281b99730a233fe5e86J.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Specter&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/tou1.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.jpg" alt="Specter&#39;s Blog" title="Specter&#39;s Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Specter&#39;s Blog">Specter&#39;s Blog</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2021/05/27/buuctf-web-3/" title="buuctf-web-3" itemprop="url">buuctf-web-3</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="specter" target="_blank" itemprop="author">specter</a>
+		
+  <p class="article-time">
+    <time datetime="2021-05-27T13:34:07.000Z" itemprop="datePublished"> Published 2021-05-27</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%A4%E7%BD%91%E6%9D%AF-2018-easy-tornado"><span class="toc-number">1.</span> <span class="toc-text">[护网杯 2018]easy_tornado</span></a></li></ol>
+		
+		</div>
+		
+		<p>[护网杯 2018]easy_tornado</p>
+<p>tornado模板注入。</p>
+<span id="more"></span>
+
+<h3 id="护网杯-2018-easy-tornado"><a href="#护网杯-2018-easy-tornado" class="headerlink" title="[护网杯 2018]easy_tornado"></a>[护网杯 2018]easy_tornado</h3><p>打开题目</p>
+<p><img src="https://ae01.alicdn.com/kf/U4a8dd319754d4281b99730a233fe5e86J.jpg"> </p>
+<p>分别打开三个文件查看</p>
+<p>flag.txt   flag in /fllllllllllllag</p>
+<p>Welcome.txt  render</p>
+<p>Hints.txt    md5(cookie_secret+md5(filename))</p>
+<p>百度一下render</p>
+<p>tornado render是python中的一个渲染函数，也就是一种模板，通过调用的参数不同，生成不同的网页，如果用户对render内容可控，不仅可以注入XSS代码，而且还可以通过<code>&#123;&#123;&#125;&#125;`进行传递变量和执行简单的表达式。
+
+由此可知:render是一个类似模板的东西，可以使用不同的参数来访问网页。Render是存在模板注入的。
+
+hint.txt，给我们了一个计算公式：md5(cookie_secret+md5(filename))
+
+看来需要按照这个公式计算出对应正确的filehash，并且按照这种格式访问url，就可以得到flag。
+
+那么问题来了，文件名知道，md5函数可以调用，这个cookie_secret怎么得到呢？这时候注意到我们还有一个线索没有使用：render，模板注入！
+
+尝试直接把文件名改成fllllllllllllag，报错了。
+
+![](https://ae01.alicdn.com/kf/U0a8a3f428efb417c9056174aea3384abH.jpg) 
+
+看这个错误页面还有一个参数呢！把参数值随便修改一下，发现显示出来的内容也会随之变化：
+
+![](https://ae01.alicdn.com/kf/U11df5b0f2bac44108646145f7e1e3326p.jpg) 
+
+可见页面返回的由msg的值决定,修改msg的值形成注入,我们可以由此获得环境变量
+
+![](https://ae01.alicdn.com/kf/U6a979d46532f43b389913ec2461fe6b7u.jpg) 
+
+由此得到cookie_secret
+
+所以只需要计算出/fllllllllllllag的md5值即可
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="built_in">hash</span> = hashlib.md5()</span><br><span class="line">filename=<span class="string">&#x27;/fllllllllllllag&#x27;</span></span><br><span class="line">cookie_secret=<span class="string">&quot;29da21c4-2598-41f6-9c7b-462160a552f8&quot;</span></span><br><span class="line"><span class="built_in">hash</span>.update(filename.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">s1=<span class="built_in">hash</span>.hexdigest()</span><br><span class="line"><span class="built_in">hash</span> = hashlib.md5()</span><br><span class="line"><span class="built_in">hash</span>.update((cookie_secret+s1).encode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">hash</span>.hexdigest())</span><br></pre></td></tr></table></figure>
+
+
+
+![](https://ae01.alicdn.com/kf/U64c9e5ac40c04ef49d39f68a192c6062K.jpg) 
+
+flag&#123;f9b6276b-49ff-4b84-a58f-20e84d9fe362&#125;
+
+学习
+
+**原理**
+tornado render是python中的一个渲染函数，也就是一种模板，通过调用的参数不同，生成不同的网页，如果用户对render内容可控，不仅可以注入XSS代码，而且还可以通过`&#123;&#123;&#125;&#125;</code>进行传递变量和执行简单的表达式。<br>简单的理解例子如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tornado.ioloop</span><br><span class="line"><span class="keyword">import</span> tornado.web</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainHandler</span>(<span class="params">tornado.web.RequestHandler</span>):</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">self</span>):</span></span><br><span class="line">    self.render(<span class="string">&#x27;index.html&#x27;</span>)    </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoginHandler</span>(<span class="params">BaseHandler</span>):</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">self</span>):</span></span><br><span class="line">     <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    当用户访登录的时候我们就得给他写cookie了,但是这里没有写在哪里写了呢?</span></span><br><span class="line"><span class="string">    在哪里呢?之前写的Handler都是继承的RequestHandler,这次继承的是BaseHandler是自己写的Handler</span></span><br><span class="line"><span class="string">    继承自己的类,在类了加扩展initialize! 在这里我们可以在这里做获取用户cookie或者写cookie都可以在这里做</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    我们知道LoginHandler对象就是self,我们可不可以self.set_cookie()可不可以self.get_cookie()</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    \<span class="comment"># self.set_cookie()</span></span><br><span class="line">    \<span class="comment"># self.get_cookie()</span></span><br><span class="line">    self.render(<span class="string">&#x27;login.html&#x27;</span>, **&#123;<span class="string">&#x27;status&#x27;</span>: <span class="string">&#x27;&#x27;</span>&#125;)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span>(<span class="params">request</span>):</span></span><br><span class="line">  \<span class="comment">#获取用户输入</span></span><br><span class="line">  login_form = AccountForm.LoginForm(request.POST)</span><br><span class="line">  <span class="keyword">if</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">    \<span class="comment">#判断用户输入是否合法</span></span><br><span class="line">    <span class="keyword">if</span> login_form.is_valid():<span class="comment">#如果用户输入是合法的</span></span><br><span class="line">      username = request.POST.get(<span class="string">&#x27;username&#x27;</span>)</span><br><span class="line">      password = request.POST.get(<span class="string">&#x27;password&#x27;</span>)</span><br><span class="line">      <span class="keyword">if</span> models.UserInfo.objects.get(username=username) <span class="keyword">and</span> models.UserInfo.objects.get(username=username).password == password:</span><br><span class="line">          request.session[<span class="string">&#x27;auth_user&#x27;</span>] = username</span><br><span class="line">          <span class="keyword">return</span> redirect(<span class="string">&#x27;/index/&#x27;</span>)</span><br><span class="line">      <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> render(request,<span class="string">&#x27;account/login.html&#x27;</span>,&#123;<span class="string">&#x27;model&#x27;</span>: login_form,<span class="string">&#x27;backend_autherror&#x27;</span>:<span class="string">&#x27;用户名或密码错误&#x27;</span>&#125;)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">      error_msg = login_form.errors.as_data()</span><br><span class="line">      <span class="keyword">return</span> render(request,<span class="string">&#x27;account/login.html&#x27;</span>,&#123;<span class="string">&#x27;model&#x27;</span>: login_form,<span class="string">&#x27;errors&#x27;</span>:error_msg&#125;) </span><br><span class="line">  \<span class="comment"># 如果登录成功，写入session，跳转index</span></span><br><span class="line">  <span class="keyword">return</span> render(request, <span class="string">&#x27;account/login.html&#x27;</span>, &#123;<span class="string">&#x27;model&#x27;</span>: login_form&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由上面可知:render是一个类似模板的东西，可以使用不同的参数来访问网页<br>在tornado模板中，存在一些可以访问的快速对象，例如<br>    <code> &#123;&#123; escape(handler.settings["cookie"]) &#125;&#125;</code></p>
+<p>这两个<code>&#123;&#123;&#125;&#125;`和这个字典对象也许大家就看出来了，没错就是这个handler.settings对象
+handler 指向RequestHandler
+
+而RequestHandler.settings又指向self.application.settings
+
+所有handler.settings就指向RequestHandler.application.settings了！
+
+大概就是说，这里面就是我们一下环境变量，我们正是从这里获取的cookie_secret
+
+看题目的错误页面
+![](https://ae01.alicdn.com/kf/U0a8a3f428efb417c9056174aea3384abH.jpg)
+可见页面返回的由msg的值决定,修改msg的值形成注入,获得环境变量
+`?msg=&#123;&#123;handler.settings&#125;&#125; </code>(见上面灰色高显部分)<br>页面回显环境变量<br><code>&#123;&#39;autoreload&#39;: True, &#39;compiled_template_cache&#39;: False, &#39;cookie_secret&#39;: &#39;M)Z.&gt;&#125;&#123;O]lYIp(oW7$dc132uDaK&lt;C%wqj@PA![VtR#geh9UHsbnL_+mT5N~J84*r&#39;&#125; </code><br>得到cookie_secret</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/SSTI/">SSTI</a><a href="/tags/tornado/">tornado</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://example.com/2021/05/27/buuctf-web-3/" data-title="buuctf-web-3 | Specter&#39;s Blog" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2021/05/23/hello-world/"  title="Hello World">
+ <strong>下一篇：</strong><br/> 
+ <span>Hello World
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%A4%E7%BD%91%E6%9D%AF-2018-easy-tornado"><span class="toc-number">1.</span> <span class="toc-text">[护网杯 2018]easy_tornado</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/CTF/" title="CTF">CTF<sup>10</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Other/" title="Other">Other<sup>24</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Sec/" title="Sec">Sec<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/ctf/" title="ctf">ctf<sup>21</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/buuctf/" title="buuctf">buuctf<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQLi/" title="SQLi">SQLi<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQL/" title="SQL">SQL<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP绕过/" title="PHP绕过">PHP绕过<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MYSQL比较特性/" title="MYSQL比较特性">MYSQL比较特性<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SSRF/" title="SSRF">SSRF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/java-WEB-INF/" title="java-WEB-INF">java-WEB-INF<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/无参数RCE/" title="无参数RCE">无参数RCE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/模板注入/" title="模板注入">模板注入<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MISC/" title="MISC">MISC<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IoT/" title="IoT">IoT<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wifi密码破解/" title="wifi密码破解">wifi密码破解<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/安恒11月月赛/" title="安恒11月月赛">安恒11月月赛<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt/" title="cumt">cumt<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cumt双月赛一/" title="cumt双月赛一">cumt双月赛一<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php变量覆盖/" title="php变量覆盖">php变量覆盖<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/代码审计/" title="代码审计">代码审计<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Good Good Study！ <br/>
+			Day Day Up！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/about" target="_blank" title="specter">specter</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
